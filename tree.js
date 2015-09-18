@@ -1,15 +1,14 @@
 $(document).on("click", ".open", function() {
 
     var query = "";
-    // var id = this.id;
+   
     var name = $(this).parents('div:eq(1)').attr('id'); //get name of taxon
     var rank = $(this).parents('div:eq(2)').attr('id'); //get rank of taxon
     var next_rank = $("#" + rank).next().attr('id') //get the next rank
-    console.log("rank is" + rank)
+  
     if (rank == "genus")
         query = 'PREFIX db: <http://dbpedia.org/resource/> SELECT ?taxon,?thumb WHERE { ?taxon  dbp:genus \"' + name + '\"@en ; dbo:thumbnail ?thumb.FILTER (?taxon!=dbr:' + name + ')}';
     else
-       // query = "PREFIX db: <http://dbpedia.org/resource/> SELECT ?taxon (SAMPLE(?thumb) AS ?thumbnail) WHERE { ?name  dbo:" + rank + " dbr:" + name + ";dbo:" + next_rank + " ?taxon;dbo:thumbnail ?thumb;rdf:type ?type.FILTER (?type=dbo:Animal)  }GROUP BY ?taxon order by asc(UCASE(str(?taxon)))";
         query =   "PREFIX db: <http://dbpedia.org/resource/> SELECT DISTINCT ?taxon, ?thumb WHERE {?name  dbo:" + rank + " dbr:" + name + ";dbo:" + next_rank + "  ?taxon.?taxon dbo:thumbnail ?thumb;rdf:type ?type.FILTER (?type=umbel-rc:Animal)} order by asc(UCASE(str(?taxon)))";
 
     executeQuery(query, next_rank, name)
