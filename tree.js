@@ -7,10 +7,10 @@ $(document).on("click", ".open", function() {
     var next_rank = $("#" + rank).next().attr('id') //get the next rank
     console.log("rank is" + rank)
     if (rank == "genus")
-        query = 'PREFIX db: <http://dbpedia.org/resource/> SELECT ?taxon WHERE { ?taxon  dbp:genus \"' + name + '\"@en .FILTER (?taxon!=dbr:' + name + ')}';
+        query = 'PREFIX db: <http://dbpedia.org/resource/> SELECT ?taxon,?thumb WHERE { ?taxon  dbp:genus \"' + name + '\"@en ; dbo:thumbnail ?thumb.FILTER (?taxon!=dbr:' + name + ')}';
     else
-        query = "PREFIX db: <http://dbpedia.org/resource/> SELECT DISTINCT ?taxon WHERE { ?name  dbo:" + rank + " dbr:" + name + ";dbo:" + next_rank + " ?taxon;rdf:type ?type.FILTER (?type=dbo:Animal)  }";
-
+       // query = "PREFIX db: <http://dbpedia.org/resource/> SELECT ?taxon (SAMPLE(?thumb) AS ?thumbnail) WHERE { ?name  dbo:" + rank + " dbr:" + name + ";dbo:" + next_rank + " ?taxon;dbo:thumbnail ?thumb;rdf:type ?type.FILTER (?type=dbo:Animal)  }GROUP BY ?taxon order by asc(UCASE(str(?taxon)))";
+        query =   "PREFIX db: <http://dbpedia.org/resource/> SELECT DISTINCT ?taxon, ?thumb WHERE {?name  dbo:" + rank + " dbr:" + name + ";dbo:" + next_rank + "  ?taxon.?taxon dbo:thumbnail ?thumb;rdf:type ?type.FILTER (?type=umbel-rc:Animal)} order by asc(UCASE(str(?taxon)))";
 
     executeQuery(query, next_rank, name)
 });
@@ -18,7 +18,7 @@ $(document).on("click", ".open", function() {
 
 function executeQuery(query, rank, name) {
     var url = "http://dbpedia.org/sparql";
-    console.log("next rank is " + rank);
+
     var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
     $.ajax({
         dataType: "jsonp",
@@ -31,12 +31,15 @@ function executeQuery(query, rank, name) {
             if (results.length > 0) {
                 for (var i in results) {
                     var src = results[i].taxon.value;
-                    var value = src.substring(src.lastIndexOf('/') + 1);
-                    value = value.replace(/\_/g, ' ');
+                    var name = src.substring(src.lastIndexOf('/') + 1);
+                    name = name.replace(/\_/g, ' ');
+                    
+                    var thumb_url = results[i].thumb.value;
+                    
 
-                    var html = '   <div class=\"thumbnail\" id=\"' + value + '\">' +
-                        '<img src=\"\" alt=\"...\">' +
-                        '<div class=\"caption\">' + value +
+                    var html = '   <div class=\"thumbnail\" id=\"' + name + '\">' +
+                        '<img src=\"'+thumb_url+'\" alt=\"...\">' +
+                        '<div class=\"caption\">' + name +
                         '<p><a href=\"#\" class=\"btn btn-primary\" role=\"button\">Λεπτομέρειες</a> <a href=\"#\" class=\"btn btn-primary open\" role=\"button\"> Aνοιγμα</a></p>    ' +
                         '</div>   ' +
                         '</div>';

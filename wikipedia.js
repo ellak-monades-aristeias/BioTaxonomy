@@ -68,7 +68,7 @@ var WIKIPEDIA = function() {
   // get raw RDF JSON for DBPedia resource from DBPedia SPARQL endpoint
   my.getRawJson = function(url, callback, error) {
     var sparqlQuery = 'DESCRIBE <{{url}}>'.replace('{{url}}', url);
-  
+     console.log(sparqlQuery);
     var jqxhr = $.ajax({
       url: my.endpoint,
       data: {
