@@ -2,6 +2,8 @@
 <head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="wikipedia.js"></script>
+<script type="text/javascript" language="javascript" src="rank0.json"></script> 
+<script type="text/javascript" language="javascript" src="animals.json"></script> 
   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.0/css/bootstrap-combined.min.css" />
 
 </head>
@@ -46,6 +48,55 @@
     </div>
 </body>
 <script type="text/javascript">
+ $(document).ready(function(e) {
+   var a=0;
+   var k=0;  
+   var array=[];    
+           var results = jsonObject.items;
+          var results2=jsonObject2.results.bindings;  
+           for (var j in results2) {
+                var src2 = results2[j].name.value;
+                    var name = src2.substring(src2.lastIndexOf('/') + 1);
+                    name = name.replace(/\_/g, ' ');
+                    name = name.replace("_", ' ');
+                  array[j]=name;
+                   
+                  
+                  
+                }    
+          
+               
+                for (var i in results) {
+                
+                    var src = $.trim(results[i].n);
+                 
+           if($.inArray(src, array)>-1){
+           k++;
+           console.log(src)
+           }
+               
+              if(k>5)
+              break;
+
+                }
+               
+           console.log(k);     
+             
+   });
+    
+   
+
+
+ 
+
+  // Parse JSON string into object
+ 
+ 
+
+ 
+   /*
+
+
     var url = "http://dbpedia.org/sparql";
     var query = "PREFIX db: <http://dbpedia.org/resource/> SELECT ?name WHERE { ?name  dbp:genus \"Felis\"@en .FILTER (?name!=dbr:Felis)}";
     var queryUrl = encodeURI( url+"?query="+query+"&format=json" );
@@ -75,7 +126,7 @@ jQuery(function() {
     
 
       rawData = info.raw;
-      console.log(rawData);
+     // console.log(rawData);
       var summaryInfo = info.summary;
       var properties = rawData[info.dbpediaUrl];
 
@@ -85,7 +136,7 @@ jQuery(function() {
       $('.summary .thumbnail').attr('src', summaryInfo.image);
       var dataAsJson = JSON.stringify(summaryInfo, null, '    ')
       $('.summary .raw').val(dataAsJson);
-      console.log(dataAsJson);
+    //  console.log(dataAsJson);
       // Raw Data Summary
       var count = 0;
       for (key in properties) {
@@ -115,5 +166,6 @@ jQuery(function() {
 
 
 });
+*/
 </script>
 </html>

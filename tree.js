@@ -1,3 +1,21 @@
+$(document).on("click", ".details", function() {
+var img_url = $(this).closest('.thumbnail').find('img').attr('src'); 
+var name = $(this).closest('.thumbnail').find('.caption').children().first().text();   
+
+  $("body").append('<div id="dialog"  ><div>'+name+'</div><img src="'+img_url+'"><p></p></div>');
+  $( "#dialog" ).dialog({
+ width: 500,
+  height: 400 ,
+  close: function( event, ui ) {
+  $( "#dialog" ).remove();
+  }
+ 
+});
+  console.log("click");
+});
+
+
+
 $(document).on("click", ".open", function() {
 
     var query = "";
@@ -27,7 +45,7 @@ function executeQuery(query, rank, name) {
 
             $("#" + rank).nextAll().andSelf().html(""); // clear data of next ranks before adding new data
             var results = _data.results.bindings;
-            if (results.length > 0) {
+            if (results.length > 0) {  
                 for (var i in results) {
                     var src = results[i].taxon.value;
                     var name = src.substring(src.lastIndexOf('/') + 1);
@@ -38,8 +56,8 @@ function executeQuery(query, rank, name) {
 
                     var html = '   <div class=\"thumbnail\" id=\"' + name + '\">' +
                         '<img src=\"'+thumb_url+'\" alt=\"...\">' +
-                        '<div class=\"caption\">' + name +
-                        '<p><a href=\"#\" class=\"btn btn-primary\" role=\"button\">Λεπτομέρειες</a> <a href=\"#\" class=\"btn btn-primary open\" role=\"button\"> Aνοιγμα</a></p>    ' +
+                        '<div class=\"caption\"><p>' + name +
+                        '</p>         <p><a href=\"#\" class=\"btn btn-primary\" role=\"button\">Λεπτομέρειες</a> <a href=\"#\" class=\"btn btn-primary open\" role=\"button\"> Aνοιγμα</a></p>    ' +
                         '</div>   ' +
                         '</div>';
 
