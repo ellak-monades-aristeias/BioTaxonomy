@@ -1,5 +1,6 @@
 
 $(document).on("click", ".details", function() {
+console.log("sf");
  var animals_html="";
   var name = $(this).parents('div:eq(1)').attr('id'); //get name of taxon
   var rank = $(this).parents('div:eq(2)').attr('id'); //get rank of taxon
@@ -25,6 +26,7 @@ var title = $(this).closest('.thumbnail').find('.caption').children().first().te
    var array=[];  
        
             var dbpedia_results = _data.results.bindings;
+            console.log(dbpedia_results);
            var wikirank_results = jsonObject.items;
            for (var j in dbpedia_results) {
                 var src2 = dbpedia_results[j].name.value;
@@ -41,9 +43,10 @@ var title = $(this).closest('.thumbnail').find('.caption').children().first().te
                     var src = $.trim(wikirank_results[i].n);
                  
            if($.inArray(src, array)>-1){
+           console.log("find")
            k++;
            var thumb = dbpedia_results[$.inArray(src, array)].thumb.value;
-           animals_html=animals_html+" <div class='span1'><img src='"+thumb+"'width='50px' ><p>"+src+"</p></div>" ;
+           animals_html=animals_html+" <li><div class='span1'><img src='"+thumb+"'width='50px' ><p>"+src+"</p></div></li>" ;
            
            }
                
@@ -52,9 +55,9 @@ var title = $(this).closest('.thumbnail').find('.caption').children().first().te
 
                 }
          
-         $("body").append('<div id="dialog"  ><div class="container-fluid">   <div class="row"><div class="span7">'+title+'</div><div class="row "><div class="span7"><img src="'+img_url+'"width="80%"></div></div><div class="span6"><div class="row">'+animals_html+'</div></div></div></div></div>');
+         $("body").append('<div id="dialog"  ><div class="container-fluid">   <div class="row"><div class="span7">'+title+'</div><div class="row "><div class="span7"><img src="'+img_url+'"width="200px"></div></div><div class="span6"><div class="row"><ul class="list-inline">'+animals_html+'</ul></div></div></div></div></div>');
   $( "#dialog" ).dialog({
- width: 600,
+ width: 700,
   height: 400 ,
   close: function( event, ui ) {
   $( "#dialog" ).remove();
@@ -122,7 +125,7 @@ function executeQuery(query, rank, name) {
                     var html = '   <div class=\"thumbnail\" id=\"' + name + '\">' +
                         '<img src=\"'+thumb_url+'\" alt=\"...\">' +
                         '<div class=\"caption\"><p>' + name +
-                        '</p>         <p><a href=\"#\" class=\"btn btn-primary\" role=\"button\">Λεπτομέρειες</a> <a href=\"#\" class=\"btn btn-primary open\" role=\"button\"> Aνοιγμα</a></p>    ' +
+                        '</p>         <p><a href=\"#\" class=\"btn btn-primary details\" role=\"button\">Λεπτομέρειες</a> <a href=\"#\" class=\"btn btn-primary open\" role=\"button\"> Aνοιγμα</a></p>    ' +
                         '</div>   ' +
                         '</div>';
 
