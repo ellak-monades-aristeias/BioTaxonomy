@@ -1,16 +1,16 @@
 
 $(document).on("click", ".details", function() {
-console.log("sf");
+
  var animals_html="";
   var name = $(this).parents('div:eq(1)').attr('id'); //get name of taxon
   var rank = $(this).parents('div:eq(2)').attr('id'); //get rank of taxon
   
   var img_url = $(this).closest('.thumbnail').find('img').attr('src'); 
-console.log(img_url);
+
 var title = $(this).closest('.thumbnail').find('.caption').children().first().text();   
   
  query='SELECT DISTINCT ?name,?thumb, COUNT(*) AS ?count WHERE {?name dbo:'+rank+' dbr:'+name+';dbo:thumbnail ?thumb;dbo:genus ?k.?s ?p ?name} ORDER BY DESC(COUNT(*)) LIMIT 500 ';
- 
+ console.log("details "+query); 
  var url = "http://dbpedia.org/sparql";
 
     var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
@@ -26,7 +26,7 @@ var title = $(this).closest('.thumbnail').find('.caption').children().first().te
    var array=[];  
        
             var dbpedia_results = _data.results.bindings;
-            console.log(dbpedia_results);
+         
            var wikirank_results = jsonObject.items;
            for (var j in dbpedia_results) {
                 var src2 = dbpedia_results[j].name.value;
@@ -43,7 +43,7 @@ var title = $(this).closest('.thumbnail').find('.caption').children().first().te
                     var src = $.trim(wikirank_results[i].n);
                  
            if($.inArray(src, array)>-1){
-           console.log("find")
+           
            k++;
            var thumb = dbpedia_results[$.inArray(src, array)].thumb.value;
            animals_html=animals_html+" <li><div class='span1'><img src='"+thumb+"'width='50px' ><p>"+src+"</p></div></li>" ;
@@ -88,7 +88,7 @@ $(document).on("click", ".open", function() {
         query = 'PREFIX db: <http://dbpedia.org/resource/> SELECT ?taxon,?thumb WHERE { ?taxon  dbp:genus \"' + name + '\"@en ; dbo:thumbnail ?thumb.FILTER (?taxon!=dbr:' + name + ')}';
     else
         query =   "PREFIX db: <http://dbpedia.org/resource/> SELECT DISTINCT ?taxon, ?thumb WHERE {?name  dbo:" + rank + " dbr:" + name + ";dbo:" + next_rank + "  ?taxon.?taxon dbo:thumbnail ?thumb;rdf:type ?type.FILTER (?type=umbel-rc:Animal)} order by asc(UCASE(str(?taxon)))";
-
+    console.log("tree "+query);
     executeQuery(query, next_rank, name);
 });
 
