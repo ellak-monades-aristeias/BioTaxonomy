@@ -1,17 +1,74 @@
-$(document).on("click", ".details", function() {
-var img_url = $(this).closest('.thumbnail').find('img').attr('src'); 
-var name = $(this).closest('.thumbnail').find('.caption').children().first().text();   
 
-  $("body").append('<div id="dialog"  ><div>'+name+'</div><img src="'+img_url+'"><p></p></div>');
+$(document).on("click", ".details", function() {
+ var animals_html="";
+  var name = $(this).parents('div:eq(1)').attr('id'); //get name of taxon
+  var rank = $(this).parents('div:eq(2)').attr('id'); //get rank of taxon
+  
+  var img_url = $(this).closest('.thumbnail').find('img').attr('src'); 
+console.log(img_url);
+var title = $(this).closest('.thumbnail').find('.caption').children().first().text();   
+  
+ query='SELECT DISTINCT ?name,?thumb, COUNT(*) AS ?count WHERE {?name dbo:'+rank+' dbr:'+name+';dbo:thumbnail ?thumb;dbo:genus ?k.?s ?p ?name} ORDER BY DESC(COUNT(*)) LIMIT 500 ';
+ 
+ var url = "http://dbpedia.org/sparql";
+
+    var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
+    $.ajax({
+        dataType: "jsonp",
+        url: queryUrl,
+        rank: rank,
+        data:{img_url:img_url,title:title},
+        success: function(_data) {
+			animals_html="";
+  var a=0;
+   var k=0;  
+   var array=[];  
+       
+            var dbpedia_results = _data.results.bindings;
+           var wikirank_results = jsonObject.items;
+           for (var j in dbpedia_results) {
+                var src2 = dbpedia_results[j].name.value;
+                    var name = src2.substring(src2.lastIndexOf('/') + 1);
+                    name = name.replace(/\_/g, ' ');
+                    name = name.replace("_", ' ');
+                  array[j]=name;
+                    
+                }    
+          
+               
+                for (var i in wikirank_results) {
+                
+                    var src = $.trim(wikirank_results[i].n);
+                 
+           if($.inArray(src, array)>-1){
+           k++;
+           var thumb = dbpedia_results[$.inArray(src, array)].thumb.value;
+           animals_html=animals_html+" <div class='span1'><img src='"+thumb+"'width='50px' ><p>"+src+"</p></div>" ;
+           
+           }
+               
+              if(k>6)
+              break;
+
+                }
+         
+         $("body").append('<div id="dialog"  ><div class="container-fluid">   <div class="row"><div class="span7">'+title+'</div><div class="row "><div class="span7"><img src="'+img_url+'"width="80%"></div></div><div class="span6"><div class="row">'+animals_html+'</div></div></div></div></div>');
   $( "#dialog" ).dialog({
- width: 500,
+ width: 600,
   height: 400 ,
   close: function( event, ui ) {
   $( "#dialog" ).remove();
   }
  
-});
-  console.log("click");
+});          
+
+        }
+    });
+              
+
+
+ 
+
 });
 
 
@@ -29,10 +86,18 @@ $(document).on("click", ".open", function() {
     else
         query =   "PREFIX db: <http://dbpedia.org/resource/> SELECT DISTINCT ?taxon, ?thumb WHERE {?name  dbo:" + rank + " dbr:" + name + ";dbo:" + next_rank + "  ?taxon.?taxon dbo:thumbnail ?thumb;rdf:type ?type.FILTER (?type=umbel-rc:Animal)} order by asc(UCASE(str(?taxon)))";
 
-    executeQuery(query, next_rank, name)
+    executeQuery(query, next_rank, name);
 });
 
+function getName(){
+  var name = $(this).parents('div:eq(1)').attr('id'); //get name of taxon
+ return name;
+}
 
+function getRank(){
+   var rank = $(this).parents('div:eq(2)').attr('id'); //get rank of taxon
+   return rank;
+}
 function executeQuery(query, rank, name) {
     var url = "http://dbpedia.org/sparql";
 
