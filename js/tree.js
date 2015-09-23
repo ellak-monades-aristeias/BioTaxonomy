@@ -1,24 +1,53 @@
 var url = "http://dbpedia.org/sparql";
+var animals_html="";
 $(document).on("click", ".details", function() {
 
- var animals_html="";
+ 
   var name = getName($(this));
   var rank = getRank($(this));
   
   var img_url = $(this).closest('.thumbnail').find('img').attr('src'); 
 
 var title = $(this).closest('.thumbnail').find('.caption').children().first().text();   
+  query=getSummaryQuery(name);
+ 
+  // var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
+   var queryUrl=query;
+	$.ajax({
+        dataType: "jsonp",
+        url: queryUrl,
+        rank: rank,
+        data:{img_url:img_url,title:title,rank:rank,name:name},
+        success: function(_data) {
+		 
+    
+		 var results=_data.query.pages;
+		
+	
+		 for (var j in results) {
+		 var sum = results[j].extract;
+		
+              
+		 }
+         getMembers(rank,name,img_url,title,sum);
+                    
+        
+ 
   
- query= getImportantQuery(rank,name);
- console.log("details "+query); 
 
-
+}
+});
+});
+function getMembers(rank,name,img_url,title,sum){
+	console.log("in members")
+	query= getImportantQuery(rank,name);
+	console.log(query);
     var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
     $.ajax({
         dataType: "jsonp",
         url: queryUrl,
         rank: rank,
-        data:{img_url:img_url,title:title},
+        data:{img_url:img_url,title:title,sum:sum},
         success: function(_data) {
 			animals_html="";
   var a=0;
@@ -26,13 +55,11 @@ var title = $(this).closest('.thumbnail').find('.caption').children().first().te
    var array=[];  
        
             var dbpedia_results = _data.results.bindings;
-         
+         console.log(dbpedia_results);
            var wikirank_results = jsonObject.items;
            for (var j in dbpedia_results) {
                 var src2 = dbpedia_results[j].name.value;
-                   var name = nameFromUrl(src2);
-                    name = name.replace("_", ' ');
-                  array[j]=name;
+                   
                     
                 }    
           
@@ -46,26 +73,20 @@ var title = $(this).closest('.thumbnail').find('.caption').children().first().te
            k++;
            var thumb = dbpedia_results[$.inArray(src, array)].thumb.value;
            animals_html=animals_html+" <li><div class='span1'><img src='"+thumb+"'width='50px' ><p>"+src+"</p></div></li>" ;
-           
+           console.log("animals "+animals_html);
            }
                
               if(k>6)
               break;
 
                 }
- makeDialog(title,img_url,animals_html);       
+				
+ makeDialog(title,img_url,animals_html,sum);       
         
 
         }
     });
-              
-
-
- 
-
-});
-
-
+}
 
 $(document).on("click", ".open", function() {
 
@@ -115,6 +136,8 @@ function executeQuery(query, rank, name) {
     });
 
 }
+
+
 //Helper functions
 function getName(obj){
   return name = obj.parents('div:eq(1)').attr('id'); //get name of taxon
@@ -123,8 +146,9 @@ function getName(obj){
 function getRank(obj){
   return rank = obj.parents('div:eq(2)').attr('id'); 
 }
-function makeDialog(title,img_url,animals_html){      
-         $("body").append('<div id="dialog"  ><div class="container-fluid">   <div class="row"><div class="span7">'+title+'</div><div class="row "><div class="span7"><img src="'+img_url+'"width="200px"></div></div><div class="span6"><div class="row"><ul class="list-inline">'+animals_html+'</ul></div></div></div></div></div>');
+function makeDialog(title,img_url,animals_html,sum){   
+console.log("in dialog");   
+         $("body").append('<div id="dialog"  ><div class="container-fluid">   <div class="row"><div class="span7">'+title+'</div></div> <div class="row "><div class="span7"><img src="'+img_url+'"width="200px"></div></div><div class="row"><div class="span7">'+sum+'</div></div>  <div class="row"><div class="span6"><ul class="list-inline">'+animals_html+'</ul></div></div></div></div>');
   $( "#dialog" ).dialog({
  width: 700,
   height: 400 ,
