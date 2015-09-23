@@ -8,8 +8,16 @@
 ##Σε ποιούς απευθύνεται η εφαρμογή
 Μπορεί να χρησιμοποιηθεί από φοιτητές βιολογίας, καθηγητές δευτεροβάθμιας και τριτοβάθμιας εκπαίδευσης, μαθητές, γεωπόνους, κτηνιάτρους ή γενικά όποιον ενδιαφέρεται για τη βιολογία. 
 
-##Τεχνολογίες 
-Η εφαρμογή είναι υλοποιημένη σε Html και Jquery. Η λήψη των δεδομένων γίνεται σε μορφή JSON με SPARQL queries στην RDF βάση DBpedia και με χρήση του API της Wikipedia.
+##Τεχνολογίες και βιβλιοθήκες
+##Γλώσσες
+* Η εφαρμογή είναι υλοποιημένη σε Html και jQuery/Javascript.
+* Η λήψη των δεδομένων γίνεται σε μορφή JSON με SPARQL queries στην RDF βάση DBpedia και με χρήση του API της Wikipedia.  
+
+##Βιβλιοθήκες  
+* [Twitter Bootstrap](http://getbootstrap.com/): Framework για τη γρήγορη ανάπτυξη responsive ιστοσελίδων
+* [jQueryUI](https://jqueryui.com): Βιβλιοθήκη με διάφορα jQuery Widgets
+* [Wikiblurb](https://github.com/9bitStudios/wikiblurb): jQuery Plugin για τη λήψη δεδομένων από τη Wikipedia και άλλα wikis
+
 
 ##Εγκατάσταση  
 Κατεβάζετε όλα τα αρχεία εκτελείτε το αρχείο index.html  
