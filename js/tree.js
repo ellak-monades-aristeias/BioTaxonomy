@@ -59,9 +59,12 @@ function getMembers(rank,name,img_url,title,sum){
            var wikirank_results = jsonObject.items;
            for (var j in dbpedia_results) {
                 var src2 = dbpedia_results[j].name.value;
-                   
+                   var name = nameFromUrl(src2);
+                    name = name.replace("_", ' ');
+                  array[j]=name;
                     
                 }    
+            
           
                
                 for (var i in wikirank_results) {
@@ -69,7 +72,7 @@ function getMembers(rank,name,img_url,title,sum){
                     var src = $.trim(wikirank_results[i].n);
                  
            if($.inArray(src, array)>-1){
-           
+           console.log("match")
            k++;
            var thumb = dbpedia_results[$.inArray(src, array)].thumb.value;
            animals_html=animals_html+" <li><div class='span1'><img src='"+thumb+"'width='50px' ><p>"+src+"</p></div></li>" ;
@@ -147,7 +150,7 @@ function getRank(obj){
   return rank = obj.parents('div:eq(2)').attr('id'); 
 }
 function makeDialog(title,img_url,animals_html,sum){   
-console.log("in dialog");   
+console.log("in dialog "+animals_html);   
          $("body").append('<div id="dialog"  ><div class="container-fluid">   <div class="row"><div class="span7">'+title+'</div></div> <div class="row "><div class="span7"><img src="'+img_url+'"width="200px"></div></div><div class="row"><div class="span7">'+sum+'</div></div>  <div class="row"><div class="span6"><ul class="list-inline">'+animals_html+'</ul></div></div></div></div>');
   $( "#dialog" ).dialog({
  width: 700,
