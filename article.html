@@ -15,8 +15,9 @@
     <script type="text/javascript" language="javascript" src="rank0.json"></script> 
 <script type="text/javascript" language="javascript" src="animals.json"></script>
        <script src="bootstrap/js/jquery.min.js"></script>
-    <script src="jquery_ui/jquery-ui.min.js"></script>
-
+	
+	<link href="lity-1.5.0/dist/lity.css" rel="stylesheet">
+<script src="lity-1.5.0/dist/lity.js"></script>
 	
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -53,76 +54,35 @@
         </div>
     </nav>
 
-    <div class="container" >
-        <div class="row seven-cols">
-            <!-- Fixed navbar -->
-            <div class="col-md-1">Βασίλειο</div>
-            <div class="col-md-1">Συνομοταξία</div>
-            <div class="col-md-1">Ομοταξία</div>
-            <div class="col-md-1">Τάξη</div>
-            <div class="col-md-1">Οικογένεια</div>
-            <div class="col-md-1">Γένος</div>
-            <div class="col-md-1">Είδος</div>
-        </div>
-
-
-
-
-        <div class="row seven-cols" id="tree_container">
-            <div class="col-md-1" id="kingdom">
-
-
-
-                <div class="thumbnail" id="Animal">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Animal_diversity.png" alt="...">
-                    <div class="caption">
-                        <p>Animalia</p>
-
-                        <p><a href="#" class="btn btn-primary details" role="button">Λεπτομέρειες</a> <a href="#" class="btn btn-primary open" role="button"> Aνοιγμα</a></p>
-                    </div>
-                </div>
-
-                <div class="thumbnail" id="Plantae">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Diversity_of_plants_image_version_5.png/161px-Diversity_of_plants_image_version_5.png" alt="...">
-                    <div class="caption">
-                        <p>Plantae</p>
-
-                        <p><a href="#" class="btn btn-primary details" role="button">Λεπτομέρειες</a><a href="#" class="btn btn-primary open" role="button">Aνοιγμα</a> </p>
-                    </div>
-                </div>
-
-
-            </div>
-            <div class="col-md-1" id="phylum"></div>
-            <div class="col-md-1" id="class"></div>
-            <div class="col-md-1" id="order"></div>
-            <div class="col-md-1" id="family"></div>
-            <div class="col-md-1" id="genus"></div>
-            <div class="col-md-1" id="species"></div>
-        </div>
-
-
-  
-    </div>
-
-
+ <div class="container" id="article_container">
+ 
+ <div id="article" style="float:left;width:70%;"></div>
+<div id="custom_info" style="float:right;"></div>
+</div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
  
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
 	
     <!-- Script that handles tree functions-->
-    <script src="wikiblurb-master/js/jquery.wikiblurb.js"></script>
-	<script src="js/queries.js"></script>
-    <script src="js/tree.js"></script>
+  
 	<script src="js/navigation.js"></script>
-	<script>
-if (localStorage.getItem('treePage')!=undefined){
-console.log('tree page');
-$('#tree_container').html(localStorage.getItem('treePage'));
-}
-</script>
+    
+   <script src="wikiblurb-master/js/jquery.wikiblurb.js"></script>
+   <script type="text/javascript">
+  if (localStorage.getItem('title')!=undefined){
+  console.log(localStorage.getItem('title'))
+ $('#article').wikiblurb({
+        section: 0,
+        page: localStorage.getItem('title'),
+    });
+    
+ //$("#dialog").remove();
+ }else
+ {$('#article').html("No article selected!")}
 
+
+</script>
 </body>
 
 </html>

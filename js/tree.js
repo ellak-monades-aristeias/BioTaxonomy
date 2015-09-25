@@ -121,32 +121,11 @@ function makeDialog(title, img_url, animals_html, sum) {
     });
 }
 
-function showArticle(title){
-$("#tree_container").css({display: "none"});	
-$("#about_container").css({display: "none"});
-$("#article_container").css({display: "block"});
-
-  $('#article').wikiblurb({
-        section: 0,
-        page: title,
-		
-    
-        
-
-    });
-    
- $("#dialog").remove();
- 
-
-}
-
 
 /*End of details functions*/
 
 /*Functions that make the tree*/
 $(document).on("click", ".open", function() {
-
-
 
     var name = getName($(this));
     var rank = getRank($(this));
@@ -184,7 +163,7 @@ function openSuccess(_data) {
 
 
             $("#" + rank).append(html);
-
+ localStorage.setItem('treePage',$('#tree_container').html());
 
         }
     } else {
