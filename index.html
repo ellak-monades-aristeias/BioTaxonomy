@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>BioTaxonomy</title>
-
+<link rel="stylesheet" type="text/css" href="wikiblurb-master/css/style.css" />
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/navbar-static-top.css" rel="stylesheet">
@@ -16,6 +16,10 @@
 <script type="text/javascript" language="javascript" src="animals.json"></script>
        <script src="bootstrap/js/jquery.min.js"></script>
     <script src="jquery_ui/jquery-ui.min.js"></script>
+	
+	<link href="lity-1.5.0/dist/lity.css" rel="stylesheet">
+<script src="lity-1.5.0/dist/lity.js"></script>
+	
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -41,9 +45,10 @@
             <div id="navbar" class="navbar-collapse collapse">
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="../navbar/">About</a></li>
-                    <li><a href="../navbar-static-top/">en/gr</a></li>
-                    <li class="active"><a href="./">Search <span class="sr-only">(current)</span></a></li>
+                    <li><a href="javascript:showAbout();">About</a></li>
+                    <li><a href="javascript:changeLanguage();">en/gr</a></li>
+                    <li class="active"><a href="javascript:search();">Search <span class="sr-only">(current)</span></a></li>
+					<li><input class="form-control"  type="text" name="searchBox" id="searchBox" value="" ><br/></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -105,14 +110,38 @@
  </div>
  <div class="container" id="article_container">
  </div>
+ <div id="article" style="float:left;width:70%;"></div>
+<div id="custom_info" style="float:right;"></div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
  
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
+	
     <!-- Script that handles tree functions-->
-    <script src="js/queries.js"></script>
+    <script src="wikiblurb-master/js/jquery.wikiblurb.js"></script>
+	<script src="js/queries.js"></script>
     <script src="js/tree.js"></script>
+    <script type="text/javascript">
+
+$(document).ready(function(){
+      $(".infobox").attr('data-lity','')
+		  
+		  $("#custom_info").html("<a href='' class ='image'></a>")
+			$('a.image').attr('data-lity',''); 
+       $('#article').wikiblurb({
+        section: 0,
+        page: 'Acanthocephala',
+		
     
+        
+
+    });
+    
+ 
+});
+
+
+</script>
 </body>
 
 </html>

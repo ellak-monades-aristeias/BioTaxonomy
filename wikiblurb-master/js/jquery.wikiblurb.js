@@ -71,23 +71,35 @@
 	    initializeItems: function() {
                 
                 var page = methods.addUnderscores(settings.page);
+				
                 
 		$.ajax({
 		    type: "GET",
-		    url: settings.wikiURL + settings.apiPath + "/api.php?action=parse&format=json&prop=text&section="+settings.section+"&page="+settings.page+"&callback=?",
+		    url: settings.wikiURL + settings.apiPath + "/api.php?action=parse&format=json&prop=text&page="+settings.page+"&callback=?",
 		    contentType: "application/json; charset=utf-8",
 		    async: true,
 		    dataType: "json",
 		    success: function (data, textStatus, jqXHR) {
 
 			try {
-			    var markup = data.parse.text["*"];
-          console.log(markup)
+			 var markup = data.parse.text["*"];
+			
+			
+           markup=markup.replace("//upload", "https://upload");
+		   markup=markup.replace("/wiki/File:","https://en.wikipedia.org/wiki/File:")
+		 
+		 
+		 // console.log(markup);
 			    var blurb = $('<div class="nbs-wikiblurb"></div>').html(markup);
-           console.log(data);
+          
            blurb
+		   
 			    // remove links?
-         $("#custom_info").append(blurb.find('.infobox').html());  
+         $("#custom_info").append(blurb.find('.infobox').html());
+		  $(".infobox").attr('data-lity','')
+		  $('.image').attr('data-lity',''); 
+          blurb.find('.mw-editsection').remove();	
+          blurb.find('.hatnote').remove();			  
           blurb.find('.infobox').replaceWith('').html()
 			    if(settings.removeLinks) {
 				blurb.find('a').each(function() { 
@@ -98,8 +110,14 @@
 				blurb.find('a').each(function() {
 				    var link = $(this);
 				    var relativePath = link.attr('href').substring(1); // remove leading slash
+					
 				    link.attr('href', settings.wikiURL + relativePath); 
-				});			    
+				});			
+				
+				
+					
+				   
+				
 			    }
 
 			    // remove any references
@@ -136,7 +154,11 @@
 			    }
                             
                             settings.callback();
+		
 				
+					
+				  
+			
 			}
 			catch(e){
 			    methods.showError();
