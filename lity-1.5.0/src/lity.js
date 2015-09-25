@@ -123,6 +123,7 @@
         }
 
         var img = $('<img src="' + target + '">');
+        console.log("img" +img);
         var deferred = $.Deferred();
         var failed = function() {
             deferred.reject(error('Failed loading image'));

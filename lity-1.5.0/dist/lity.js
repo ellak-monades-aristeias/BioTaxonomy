@@ -124,8 +124,9 @@
         if (!_imageRegexp.test(target)) {
             return false;
         }
-
+       
         var img = $('<img src="' + target + '">');
+        console.log("img"+target);
         var deferred = $.Deferred();
         var failed = function() {
             deferred.reject(error('Failed loading image'));
@@ -394,7 +395,7 @@
 
             var el = $(this);
             var target = el.data('lity-target') || el.attr('href') || el.attr('src');
-
+            console.log("the source"+target)
             if (!target) {
                 return;
             }

@@ -1,9 +1,6 @@
 var url = "http://dbpedia.org/sparql";
 
-$(document).on("click", ".details", function() {
-	});
-	
-$
+
 	
 
 /*Functions that handle details and important taxon members*/
@@ -129,10 +126,18 @@ $("#tree_container").css({display: "none"});
 $("#about_container").css({display: "none"});
 $("#article_container").css({display: "block"});
 
+  $('#article').wikiblurb({
+        section: 0,
+        page: title,
+		
+    
+        
 
+    });
+    
  $("#dialog").remove();
  
-$
+
 }
 
 

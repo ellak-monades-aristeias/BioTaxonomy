@@ -85,7 +85,7 @@
 			 var markup = data.parse.text["*"];
 			
 			
-           markup=markup.replace("//upload", "https://upload");
+           markup=markup.replace(/\/\/upload/g, "https://upload");
 		   markup=markup.replace("/wiki/File:","https://en.wikipedia.org/wiki/File:")
 		 
 		 
@@ -94,31 +94,47 @@
           
            blurb
 		   
-			    // remove links?
+			    
+          		blurb.find('a.image').each(function() {
+				    var link = $(this);
+            console.log("the orig "+link.attr('href')) ;
+				    link.attr('data-lity',''); 
+            new_src=  link.children("img:first").attr('src');
+            new_src=new_src.replace("thumb/","");
+             new_src=new_src.replace(new RegExp("(.*/)[^/]+$"),"$1" );
+             new_src=new_src.slice(0,-1) ;
+            link.attr('href', new_src);
+					  console.log("after "+link.attr('href') );
+			
+				});		
          $("#custom_info").append(blurb.find('.infobox').html());
-		  $(".infobox").attr('data-lity','')
-		  $('.image').attr('data-lity',''); 
+	
+	
+       
+      
           blurb.find('.mw-editsection').remove();	
           blurb.find('.hatnote').remove();			  
           blurb.find('.infobox').replaceWith('').html()
+        
+          // remove links?
 			    if(settings.removeLinks) {
 				blurb.find('a').each(function() { 
 				    $(this).replaceWith($(this).html()); 
-				});
+				});        
 			    }
 			    else {
-				blurb.find('a').each(function() {
+				blurb.find('a:not(.image)').each(function() {
 				    var link = $(this);
-				    var relativePath = link.attr('href').substring(1); // remove leading slash
+				  var relativePath = link.attr('href').substring(1); // remove leading slash
 					
 				    link.attr('href', settings.wikiURL + relativePath); 
 				});			
 				
 				
-					
+				
 				   
 				
-			    }
+			    }   
 
 			    // remove any references
 			    blurb.find('sup').remove();
