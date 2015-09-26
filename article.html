@@ -8,6 +8,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>BioTaxonomy</title>
 <link rel="stylesheet" type="text/css" href="wikiblurb-master/css/style.css" />
+
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/navbar-static-top.css" rel="stylesheet">
@@ -39,7 +40,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">BioTaxonomy</a>
+               <a class="navbar-brand" href="javascript:showIndex()">BioTaxonomy</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
 
@@ -70,11 +71,12 @@
     
    <script src="wikiblurb-master/js/jquery.wikiblurb.js"></script>
    <script type="text/javascript">
-  if (localStorage.getItem('title')!=undefined){
-  console.log(localStorage.getItem('title'))
+    console.log(sessionStorage.getItem('title'));
+  if (sessionStorage.getItem('title')!=undefined){
+  console.log(sessionStorage.getItem('title'));
  $('#article').wikiblurb({
         section: 0,
-        page: localStorage.getItem('title'),
+        page: sessionStorage.getItem('title'),
     });
     
  //$("#dialog").remove();

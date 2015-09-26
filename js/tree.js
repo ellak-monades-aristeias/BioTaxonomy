@@ -1,4 +1,4 @@
-var url = "http://dbpedia.org/sparql";
+var url = "http://live.dbpedia.org/sparql";
 
 
 	
@@ -130,8 +130,9 @@ $(document).on("click", ".open", function() {
     var name = getName($(this));
     var rank = getRank($(this));
     var next_rank = $("#" + rank).next().attr('id') //get the next rank
-
+$("#" + next_rank).append("Loading...");
     query = getOpenQuery(name, rank, next_rank);
+	console.log(query);
     executeQuery(query, next_rank, name);
 });
 
@@ -149,6 +150,7 @@ function executeQuery(query, rank, name) {
 }
 
 function openSuccess(_data) {
+	var thumb_url="";
     var rank = this.rank;
     $("#" + rank).nextAll().andSelf().html(""); // clear data of next ranks before adding new data
     var results = _data.results.bindings;
@@ -157,13 +159,16 @@ function openSuccess(_data) {
             var src = results[i].taxon.value;
             var name = nameFromUrl(src);
 
-
-            var thumb_url = results[i].thumb.value;
-            var html = thumbHtml(name, thumb_url);
+				if (results[i].thumb==undefined){
+				thumb_url="assets/no_img_thumb.jpg"}
+				else{
+				thumb_url = results[i].thumb.value;
+				}
+            var html = thumbHtml(name, thumb_url,rank);
 
 
             $("#" + rank).append(html);
- localStorage.setItem('treePage',$('#tree_container').html());
+ sessionStorage.setItem('treePage',$('#tree_container').html());
 
         }
     } else {
@@ -187,13 +192,24 @@ function getRank(obj) {
 }
 
 
-function thumbHtml(name, thumb_url) {
+function thumbHtml(name, thumb_url,rank) {
+
+	if (rank!="species"){
     return html = '   <div class=\"thumbnail\" id=\"' + name + '\">' +
         '<img src=\"' + thumb_url + '\" alt=\"...\">' +
         '<div class=\"caption\"><p>' + name +
         '</p>         <p><a href=\"#\" class=\"btn btn-primary details\" role=\"button\">Λεπτομέρειες</a> <a href=\"#\" class=\"btn btn-primary open\" role=\"button\"> Aνοιγμα</a></p>    ' +
         '</div>   ' +
         '</div>';
+	}else{
+		
+	 return html = '   <div class=\"thumbnail\" id=\"' + name + '\">' +
+        '<img src=\"' + thumb_url + '\" alt=\"...\">' +
+        '<div class=\"caption\"><p>' + name +
+        '</p>         <p><a href=\"#\" class=\"btn btn-primary details\" role=\"button\">Λεπτομέρειες</a> </p>    ' +
+        '</div>   ' +
+        '</div>';	
+	}
 
 }
 

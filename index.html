@@ -38,7 +38,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">BioTaxonomy</a>
+                <a class="navbar-brand" href="index.html">BioTaxonomy</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
 
@@ -117,9 +117,9 @@
     <script src="js/tree.js"></script>
 	<script src="js/navigation.js"></script>
 	<script>
-if (localStorage.getItem('treePage')!=undefined){
+if (sessionStorage.getItem('treePage')!=undefined){
 console.log('tree page');
-$('#tree_container').html(localStorage.getItem('treePage'));
+$('#tree_container').html(sessionStorage.getItem('treePage'));
 }
 </script>
 
