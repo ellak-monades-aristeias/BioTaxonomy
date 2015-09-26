@@ -14,23 +14,24 @@
 * Η λήψη των δεδομένων γίνεται σε μορφή JSON με SPARQL queries στην RDF βάση DBpedia και με χρήση του API της Wikipedia.  
 
 ###Βιβλιοθήκες  
-* [Twitter Bootstrap](http://getbootstrap.com/): Framework για τη γρήγορη ανάπτυξη responsive ιστοσελίδων
-* [jQueryUI](https://jqueryui.com): Βιβλιοθήκη με διάφορα jQuery Widgets
-* [Wikiblurb](https://github.com/9bitStudios/wikiblurb): jQuery Plugin για τη λήψη δεδομένων από τη Wikipedia και άλλα wikis
+* [Twitter Bootstrap](http://getbootstrap.com/): Framework για τη γρήγορη ανάπτυξη responsive ιστοσελίδων.
+* [jQueryUI](https://jqueryui.com): Βιβλιοθήκη με διάφορα jQuery Widgets.
+* [Wikiblurb](https://github.com/9bitStudios/wikiblurb): jQuery Plugin για τη λήψη δεδομένων από τη Wikipedia και άλλα wikis.
+* [Lity](http://sorgalla.com/lity/): Lightbox plugin για τη προβολή εικόνων. 
 
 ##Issues  
 Στα issues της εφαρμογής μπορείτε να δείτε τα θέματα προς επίλυση που προκύπτουν κατά την υλοποίηση. 
 
 ##Εγκατάσταση  
-Κατεβάζετε όλα τα αρχεία εκτελείτε το αρχείο index.html  
+Κατεβάζετε όλα τα αρχεία εκτελείτε το αρχείο index.html .  
 Γεια να λειτουργήσει η εφαρμογή είναι απαραίτητη η σύνδεση στο διαδίκτυο καθώς τα δεδομένα λαμβάνονται σε πραγματικό χρόνο.  
 
 ##Demo της εφαρμογής  
-Demo της εφαρμογής μπορείτε να δείτε στο http://ellak-monades-aristeias.github.io/BioTaxonomy  
+Demo της εφαρμογής μπορείτε να δείτε στο http://ellak-monades-aristeias.github.io/BioTaxonomy . 
 
 ##Χρονοδιάγραμμα - Wiki
-Το έργο είναι προγραμματισμένο να ολοκληρωθεί σε 7 εβδομάδες, από τις 26/08/2015-15/10/2015 και μπορείτε να δείτε την εβδομαδιαία πρόοδο στο Wiki.   
+Το έργο είναι προγραμματισμένο να ολοκληρωθεί σε 7 εβδομάδες, από τις 26/08/2015-15/10/2015 και μπορείτε να δείτε την εβδομαδιαία πρόοδο στο [Wiki](https://github.com/ellak-monades-aristeias/BioTaxonomy/wiki).   
 
 ##License/Attributions
-Για το λογότυπο χρησιμοποιήθηκε η εικόνα του χρήστη https://openclipart.org/user-detail/tzunghaor .  
+Για το λογότυπο χρησιμοποιήθηκε η εικόνα του χρήστη [tzunghaor](https://openclipart.org/user-detail/tzunghaor) .  
 Η εφαρμογή υλοποιείται στο πλαίσιο του έργου “Ηλεκτρονικές Υπηρεσίες για την Ανάπτυξη και Διάδοση του Ανοιχτού Λογισμικού”.
