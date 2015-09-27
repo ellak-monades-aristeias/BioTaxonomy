@@ -1,0 +1,38 @@
+{
+  "name": "lity",
+  "authors": [
+    "Jan Sorgalla <jsorgalla@gmail.com>"
+  ],
+  "description": "Lightweight responsive lightbox.",
+  "main": "dist/lity.min.js",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "dependencies": {
+    "jquery": ">=1.7"
+  },
+  "keywords": [
+    "lightbox",
+    "modal",
+    "popup",
+    "lightweight",
+    "responsive",
+    "jquery",
+    "jquery-plugin",
+    "ecosystem:jquery"
+  ],
+  "license": "MIT",
+  "homepage": "http://sorgalla.com/lity/",
+  "ignore": [
+    "**/.*",
+    "assets",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "Gruntfile.js",
+    "index.html",
+    "package.json"
+  ]
+}
