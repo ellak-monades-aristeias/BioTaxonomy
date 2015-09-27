@@ -71,7 +71,7 @@
 	    initializeItems: function() {
                 
                 var page = methods.addUnderscores(settings.page);
-				
+				        $("#custom_info").html(''); 
                 
 		$.ajax({
 		    type: "GET",
@@ -107,6 +107,7 @@
 					  console.log("after "+link.attr('href') );
 			
 				});		
+           //Clear custom_info before adding infobox
          $("#custom_info").append(blurb.find('.infobox').html());
 	
 	

@@ -21,8 +21,24 @@ function changeLanguage(){
 	console.log("TODO");
 }
 
-function search(){
-	console.log("TODO");
+function searchTree(){
+searchText=$('#searchBox').val();
+}
+function searchArticle(){
+
+var queryUrl = articleExistsQuery($('#searchBox').val())
+  $.ajax({
+        dataType: "jsonp",
+        url: queryUrl,
+        success: searchSuccess
+    });
+
+
+
+    
+
+ 
+
 }
 
 function saveTree(){
@@ -33,3 +49,19 @@ if (currPage=='index.html')
 	
 }
 
+function searchSuccess(_data){
+ var results = _data.query.pages;   
+for (var i in results) {
+
+ }
+
+if (i>0){
+ $('#article').wikiblurb({
+        section: 0,
+        page: $('#searchBox').val()
+    });
+    }else{
+    $('#article').html("Wikipedia article doesn't exist")
+    
+    }
+}

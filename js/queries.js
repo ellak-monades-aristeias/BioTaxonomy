@@ -17,3 +17,6 @@ return query='https://en.wikipedia.org/w/api.php?format=json&action=query&prop=e
 //return query='SELECT ?sum WHERE {<http://dbpedia.org/resource/'+name+'> dbo:abstract?sum.filter(langMatches(lang(?sum),"EN"))} '
 }
 
+function articleExistsQuery(title){
+return query='https://en.wikipedia.org/w/api.php?action=query&format=json&titles='+title;
+}

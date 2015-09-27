@@ -16,7 +16,7 @@
 <script type="text/javascript" language="javascript" src="animals.json"></script>
        <script src="plugins/bootstrap_7_col/js/jquery.min.js"></script>
     <script src="plugins/jquery_ui/jquery-ui.min.js"></script>
-
+  <script src="js/navigation.js"></script>
 	
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -45,7 +45,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="javascript:showAbout();">About</a></li>
                     <li><a href="javascript:changeLanguage();">en/gr</a></li>
-                    <li class="active"><a href="javascript:search();">Search <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="javascript:searchTree();">Search <span class="sr-only">(current)</span></a></li>
 					<li><input class="form-control"  type="text" name="searchBox" id="searchBox" value="" ><br/></li>
                 </ul>
             </div>
@@ -76,7 +76,7 @@
                 <div class="thumbnail" id="Animal">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Animal_diversity.png" alt="...">
                     <div class="caption">
-                        <p>Animalia</p>
+                        <p>Animal</p>
 
                         <p><a href="#" class="btn btn-primary details" role="button">Λεπτομέρειες</a> <a href="#" class="btn btn-primary open" role="button"> Aνοιγμα</a></p>
                     </div>
@@ -115,7 +115,7 @@
 
 	<script src="js/queries.js"></script>
     <script src="js/tree.js"></script>
-	<script src="js/navigation.js"></script>
+	
 	<script>
 if (sessionStorage.getItem('treePage')!=undefined){
 console.log('tree page');
