@@ -121,6 +121,10 @@ if (sessionStorage.getItem('treePage')!=undefined){
 console.log('tree page');
 $('#tree_container').html(sessionStorage.getItem('treePage'));
 }
+
+$(document).ajaxError(function(){
+    alert("An error occurred!");
+});
 </script>
 
 </body>

@@ -22,7 +22,8 @@ function changeLanguage(){
 }
 
 function searchTree(){
-searchText=$('#searchBox').val();
+//Load function from tree.js to make tree	
+makeSearchTree();
 }
 function searchArticle(){
 
@@ -33,17 +34,10 @@ var queryUrl = articleExistsQuery($('#searchBox').val())
         success: searchSuccess
     });
 
-
-
-    
-
- 
-
 }
 
 function saveTree(){
-var currPageUrl = document.location.href;
-var currPage = currPageUrl.substr(currPageUrl.lastIndexOf('/') + 1);
+var currPage = getCurrPage();
 if (currPage=='index.html')
  sessionStorage.setItem('treePage',$('#tree_container').html());	
 	
@@ -52,7 +46,6 @@ if (currPage=='index.html')
 function searchSuccess(_data){
  var results = _data.query.pages;   
 for (var i in results) {
-
  }
 
 if (i>0){
@@ -64,4 +57,10 @@ if (i>0){
     $('#article').html("Wikipedia article doesn't exist")
     
     }
+}
+
+function getCurrPage(){
+	var currPageUrl = document.location.href;
+return currPage = currPageUrl.substr(currPageUrl.lastIndexOf('/') + 1);
+	
 }

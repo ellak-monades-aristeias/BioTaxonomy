@@ -1,8 +1,6 @@
 var url = "http://live.dbpedia.org/sparql";
 
 
-	
-
 /*Functions that handle details and important taxon members*/
 
 $(document).on("click", ".details", function() {
@@ -10,7 +8,9 @@ $(document).on("click", ".details", function() {
 
     var name = getName($(this));
     var rank = getRank($(this));
-
+	console.log(name)
+	name =name.replace(/ /g,"_");
+	console.log(name)
     var img_url = $(this).closest('.thumbnail').find('img').attr('src');
 
     var title = $(this).closest('.thumbnail').find('.caption').children().first().text();
@@ -128,23 +128,31 @@ function makeDialog(title, img_url, animals_html, sum) {
 $(document).on("click", ".open", function() {
 
     var name = getName($(this));
+	console.log(name);
+	name.replace(/ /g,"_");
+	console.log(name);
     var rank = getRank($(this));
     var next_rank = $("#" + rank).next().attr('id') //get the next rank
-$("#" + next_rank).append("Loading...");
+$("#" + rank).nextAll().html(""); // clear data of next ranks before adding new data
+	$("#" + next_rank).append("Loading...");
+
     query = getOpenQuery(name, rank, next_rank);
 	console.log(query);
+	
     executeQuery(query, next_rank, name);
 });
 
-function executeQuery(query, rank, name) {
+function executeQuery(query, rank, name,callback) {
 
 
     var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
     $.ajax({
+		type: "GET",
         dataType: "jsonp",
         url: queryUrl,
         rank: rank,
-        success: openSuccess
+        success: openSuccess,
+
     });
 
 }
@@ -152,7 +160,7 @@ function executeQuery(query, rank, name) {
 function openSuccess(_data) {
 	var thumb_url="";
     var rank = this.rank;
-    $("#" + rank).nextAll().andSelf().html(""); // clear data of next ranks before adding new data
+$("#" + rank).html("");
     var results = _data.results.bindings;
     if (results.length > 0) {
         for (var i in results) {
@@ -167,7 +175,7 @@ function openSuccess(_data) {
             var html = thumbHtml(name, thumb_url,rank);
 
 
-            $("#" + rank).append(html);
+           $("#" + rank).append(html);
  sessionStorage.setItem('treePage',$('#tree_container').html());
 
         }
@@ -178,7 +186,90 @@ function openSuccess(_data) {
 
 
 }
+function openError(){
+	console.log("error");
+	
+ var rank = this.rank;
+ $("#" + rank).html("</br>There was a problem with the data");	
+}
 
+function makeSearchTree(){
+var name=$('#searchBox').val().replace(/ /g,"_");
+console.log("name "+name)
+query=getSearchQuery(name);
+console.log("search query "+ query);
+ var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
+    $.ajax({
+        dataType: "jsonp",
+        url: queryUrl,
+        title: $('#searchBox').val(),
+        success: makeSearchTreeSuccess
+    });
+}
+
+function makeSearchTreeSuccess(_data){
+	$("#kingdom").nextAll().html(""); 
+	var kingdom ='';
+	var phylum ='';
+	var classis ='';
+	var order = '';
+	var family = '';
+	var genus = '';
+	var type = '';
+	var results = _data.results.bindings;
+	 for (var i in results) {
+		 console.log("in results");
+			if (results[i].kingdom!=undefined){
+				var kingdom = nameFromUrl(results[i].kingdom.value);
+				kingdom=kingdom.replace(/ /g,"_");
+			}
+			if (results[i].phylum!=undefined){
+				var phylum = nameFromUrl(results[i].phylum.value);
+				phylum=phylum.replace(/ /g,"_");
+			}
+			if (results[i].classis!=undefined){
+				var classis = nameFromUrl(results[i].classis.value);
+				classis=classis.replace(/ /g,"_");
+			}
+			if (results[i].order!=undefined){
+				var order = nameFromUrl(results[i].order.value);
+				order=order.replace(/ /g,"_");
+			}
+			if (results[i].family!=undefined){
+				var family = nameFromUrl(results[i].family.value);
+				family=family.replace(/ /g,"_");
+			}
+			if (results[i].genus!=undefined){
+				var genus = nameFromUrl(results[i].genus.value);
+				genus=genus.replace(/ /g,"_");
+			}
+		console.log("phylum is "+phylum)
+	if (kingdom=='Animal'||kingdom=='Animalia')	
+		kingdom_type="Animal";
+	if (kingdom=='Plant'||kingdom=='Plantae')
+		kingdom_type="Plant";
+	 }
+//Find phylums	 
+	query = getOpenQuery(kingdom_type, 'kingdom', 'phylum');
+	console.log(query);
+    executeQuery(query, 'phylum', type);
+//Find classes
+	query = getOpenQuery(phylum, 'phylum', 'class');
+	console.log(query);
+    executeQuery(query, 'class', phylum);
+//Find orders
+	query = getOpenQuery(classis, 'class', 'order');
+	console.log(query);
+    executeQuery(query, 'order', classis);
+//Find families
+	query = getOpenQuery(order, 'order', 'family');
+	console.log(query);
+    executeQuery(query, 'family', order);
+//Find genii
+	query = getOpenQuery(family, 'family', 'genus');
+	console.log(query);
+    executeQuery(query, 'genus', family);
+}
 /*End of tree functions*/
 
 /*Helper functions*/
@@ -195,6 +286,7 @@ function getRank(obj) {
 function thumbHtml(name, thumb_url,rank) {
 
 	if (rank!="species"){
+		
     return html = '   <div class=\"thumbnail\" id=\"' + name + '\">' +
         '<img src=\"' + thumb_url + '\" alt=\"...\">' +
         '<div class=\"caption\"><p>' + name +
@@ -202,7 +294,7 @@ function thumbHtml(name, thumb_url,rank) {
         '</div>   ' +
         '</div>';
 	}else{
-		
+	console.log(name)
 	 return html = '   <div class=\"thumbnail\" id=\"' + name + '\">' +
         '<img src=\"' + thumb_url + '\" alt=\"...\">' +
         '<div class=\"caption\"><p>' + name +
