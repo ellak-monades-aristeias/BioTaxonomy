@@ -56,12 +56,13 @@
  <div class="container-fluid" id="article_container">
  <div class="row">
  
-  <div  class="col-sm-2" ><div id="statistics"><p></p></div></div>
+  <div  class="col-sm-2" ><div id="statistics"><p><canvas id="myChart" width="200" height="200"></canvas></p></div></div>
  <div class="col-sm-7" ><div id="article" ></div></div>
 <div class="col-sm-3" ><div id="custom_info"></div></div>
 
 </div>
 </div>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
  
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -69,8 +70,33 @@
 	
     <!-- Script that handles tree functions-->
 <script src="js/queries.js"></script>  
+<script src="plugins/Chart/Chart.min.js"></script> 
     
    <script type="text/javascript">
+  var data = [
+    {
+        value: 300,
+        color:"#F7464A",
+        highlight: "#FF5A5E",
+        label: "Red"
+    },
+    {
+        value: 50,
+        color: "#46BFBD",
+        highlight: "#5AD3D1",
+        label: "Green"
+    },
+    {
+        value: 100,
+        color: "#FDB45C",
+        highlight: "#FFC870",
+        label: "Yellow"
+    }
+];
+var ctx = $("#myChart").get(0).getContext("2d");
+// This will get the first returned node in the jQuery collection.
+var myPieChart = new Chart(ctx).Pie(data);
+
     console.log(sessionStorage.getItem('title'));
   if (sessionStorage.getItem('title')!=undefined){
   console.log(sessionStorage.getItem('title'));
