@@ -1,3 +1,5 @@
+var rankArray =["kingdom","phylum","class","order","family","genus","species"];
+
 function getImportantQuery(rank,name){
 return query='SELECT DISTINCT ?name,?thumb, COUNT(*) AS ?count WHERE {?name dbo:'+rank+' dbr:'+name+';dbo:thumbnail ?thumb;dbo:genus ?k.?s ?p ?name} ORDER BY DESC(COUNT(*)) LIMIT 500 ';
 
@@ -40,6 +42,15 @@ else if(rank=='Plant'){
 }
 }
 
+function getNextRank(rank){
+
+return rankArray[rankArray.indexOf(rank)+1];
+}
+
+function getPrevRank(rank){
+return rankArray[rankArray.indexOf(rank)-1];
+	
+}
 
 
 
