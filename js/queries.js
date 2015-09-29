@@ -25,3 +25,38 @@ function getSearchQuery(name){
 	return query='SELECT DISTINCT ?kingdom,?phylum,?classis,?order,?family,?genus  WHERE {dbr:'+name+' dbo:kingdom ?kingdom.OPTIONAL{dbr:'+name+' dbo:class ?classis}.OPTIONAL{dbr:'+name+' dbo:phylum ?phylum}.OPTIONAL{dbr:'+name+' dbp:ordo ?order}.OPTIONAL{dbr:'+name+' dbp:familia ?family}.OPTIONAL{dbr:'+name+' dbo:genus ?genus}}'
 ;
 }
+
+function getStatsQuery(prev_rank,rank,name){
+	return query='SELECT DISTINCT ?order, COUNT(*) AS ?count WHERE {{?name  dbo:'+prev_rank+' dbr:'+name+';dbo:'+rank+' ?order}UNION {?name  dbo:'+prev_rank+' dbr:'+name+'ia;dbo:'+rank+' ?order}}order by asc(UCASE(str(?order)))';
+}
+
+function getTotalQuery(rank){
+	if (rank=='Animal'){
+return query='SELECT DISTINCT COUNT(*) AS ?count WHERE {{?name  dbo:kingdom dbr:Animal}UNION {?name  dbo:kingdom dbr:Animalia}}';
+	}
+else if(rank=='Plant'){
+	return query='SELECT DISTINCT COUNT(*) AS ?count WHERE {{?name  dbo:kingdom dbr:Plant}UNION {?name  dbo:kingdom dbr:Plantae}}';
+	
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
