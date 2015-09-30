@@ -29,15 +29,12 @@ function getSearchQuery(name){
 ;
 }
 
-function getStatsQuery(prev_rank,rank,name){
-	return query='SELECT DISTINCT ?order, COUNT(*) AS ?count WHERE {{?name  dbo:'+prev_rank+' dbr:'+name+';dbo:'+rank+' ?order}UNION {?name  dbo:'+prev_rank+' dbr:'+name+'ia;dbo:'+rank+' ?order}}order by asc(UCASE(str(?order)))';
-}
+
 
 function getTotalQuery(prevRank,prevRankName,rank){
 	
 return query='SELECT DISTINCT ?order, COUNT(*) AS ?count WHERE {{?name  dbo:'+prevRank+' dbr:'+prevRankName+';dbo:'+rank+' ?order}UNION {dbr:'+prevRankName+'  dbo:wikiPageRedirects ?rank.?rank dbo:'+rank+' ?rank2.?rank2 dbo:'+rank+' ?order}}order by desc(?count)';
 	
-
 }
 
 function getNextRank(rank){
