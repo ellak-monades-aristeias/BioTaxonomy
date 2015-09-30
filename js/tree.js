@@ -1,4 +1,4 @@
-var url = "http://live.dbpedia.org/sparql";
+
 
 
 /*Functions that handle details and important taxon members*/
@@ -8,15 +8,17 @@ $(document).on("click", ".details", function() {
 
     var name = getName($(this));
     var rank = getRank($(this));
-	console.log(name)
+	console.log('rank'+rank);
 	name =name.replace(/ /g,"_");
-	console.log(name)
+
     var img_url = $(this).closest('.thumbnail').find('img').attr('src');
 
     var title = $(this).closest('.thumbnail').find('.caption').children().first().text();
     query = getSummaryQuery(name);
 
-    // var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
+ sessionStorage.setItem('title',title);
+ sessionStorage.setItem('rank',rank);
+
     var queryUrl = query;
     $.ajax({
         dataType: "jsonp",
@@ -94,7 +96,7 @@ function membersSuccess(_data) {
             k++;
             var thumb = dbpedia_results[$.inArray(src, array)].thumb.value;
             animals_html = animals_html + " <li><div class='span1'><img src='" + thumb + "'width='50px' ><p>" + src + "</p></div></li>";
-            console.log("animals " + animals_html);
+           
         }
 
         if (k > 6)
@@ -128,16 +130,15 @@ function makeDialog(title, img_url, animals_html, sum) {
 $(document).on("click", ".open", function() {
 
     var name = getName($(this));
-	console.log(name);
-	name.replace(/ /g,"_");
-	console.log(name);
+	sessionStorage.setItem('prevRankName',name)
+	//name.replace(/ /g,"_");
     var rank = getRank($(this));
     var next_rank = $("#" + rank).next().attr('id') //get the next rank
 $("#" + rank).nextAll().html(""); // clear data of next ranks before adding new data
 	$("#" + next_rank).append("Loading...");
 
     query = getOpenQuery(name, rank, next_rank);
-	console.log(query);
+
 	
     executeQuery(query, next_rank, name);
 });
@@ -195,9 +196,8 @@ function openError(){
 
 function makeSearchTree(){
 var name=$('#searchBox').val().replace(/ /g,"_");
-console.log("name "+name)
+
 query=getSearchQuery(name);
-console.log("search query "+ query);
  var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
     $.ajax({
         dataType: "jsonp",
@@ -218,7 +218,7 @@ function makeSearchTreeSuccess(_data){
 	var type = '';
 	var results = _data.results.bindings;
 	 for (var i in results) {
-		 console.log("in results");
+		 
 			if (results[i].kingdom!=undefined){
 				var kingdom = nameFromUrl(results[i].kingdom.value);
 				kingdom=kingdom.replace(/ /g,"_");
@@ -294,7 +294,7 @@ function thumbHtml(name, thumb_url,rank) {
         '</div>   ' +
         '</div>';
 	}else{
-	console.log(name)
+
 	 return html = '   <div class=\"thumbnail\" id=\"' + name + '\">' +
         '<img src=\"' + thumb_url + '\" alt=\"...\">' +
         '<div class=\"caption\"><p>' + name +
@@ -305,9 +305,5 @@ function thumbHtml(name, thumb_url,rank) {
 
 }
 
-function nameFromUrl(src) {
-        var name = src.substring(src.lastIndexOf('/') + 1);
-        name = name.replace(/\_/g, ' ');
-        return name;
-    }
+
     /*End of helper functions*/

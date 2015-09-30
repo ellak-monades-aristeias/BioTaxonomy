@@ -1,3 +1,4 @@
+var url = "http://live.dbpedia.org/sparql";
 var rankArray =["kingdom","phylum","class","order","family","genus","species"];
 
 function getImportantQuery(rank,name){
@@ -32,14 +33,11 @@ function getStatsQuery(prev_rank,rank,name){
 	return query='SELECT DISTINCT ?order, COUNT(*) AS ?count WHERE {{?name  dbo:'+prev_rank+' dbr:'+name+';dbo:'+rank+' ?order}UNION {?name  dbo:'+prev_rank+' dbr:'+name+'ia;dbo:'+rank+' ?order}}order by asc(UCASE(str(?order)))';
 }
 
-function getTotalQuery(rank){
-	if (rank=='Animal'){
-return query='SELECT DISTINCT COUNT(*) AS ?count WHERE {{?name  dbo:kingdom dbr:Animal}UNION {?name  dbo:kingdom dbr:Animalia}}';
-	}
-else if(rank=='Plant'){
-	return query='SELECT DISTINCT COUNT(*) AS ?count WHERE {{?name  dbo:kingdom dbr:Plant}UNION {?name  dbo:kingdom dbr:Plantae}}';
+function getTotalQuery(prevRank,prevRankName,rank){
 	
-}
+return query='SELECT DISTINCT ?order, COUNT(*) AS ?count WHERE {{?name  dbo:'+prevRank+' dbr:'+prevRankName+';dbo:'+rank+' ?order}UNION {dbr:'+prevRankName+'  dbo:wikiPageRedirects ?rank.?rank dbo:'+rank+' ?rank2.?rank2 dbo:'+rank+' ?order}}order by desc(?count)';
+	
+
 }
 
 function getNextRank(rank){
@@ -48,9 +46,14 @@ return rankArray[rankArray.indexOf(rank)+1];
 }
 
 function getPrevRank(rank){
-return rankArray[rankArray.indexOf(rank)-1];
-	
+return rankArray[rankArray.indexOf(rank)-1];	
 }
+
+function nameFromUrl(src) {
+        var name = src.substring(src.lastIndexOf('/') + 1);
+        name = name.replace(/\_/g, ' ');
+        return name;
+    }
 
 
 
