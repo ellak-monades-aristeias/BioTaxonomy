@@ -20,10 +20,11 @@ for (var j in dbpedia_results) {
         name = name.replace("_", ' ');
 		if (name==sessionStorage.getItem('title'))
 			var currRanking=parseInt(j)+1;
-		data.push({value: count,color:randomColorGenerator(),highlight: randomColorGenerator(),label: '#'+j+':'+name});
+			
+		data.push({value: count,color:randomColorGenerator(),highlight: randomColorGenerator(),label: '#'+(parseInt(j)+1)+':'+name});
     }
 var total=parseInt(j)+1;
-$('#totalNumber').html('Number of '+sessionStorage.getItem('rank')+' in '+getPrevRank(sessionStorage.getItem('rank'))+' '+sessionStorage.getItem('prevRankName')+'is:'+total+' with a total of '+totalCount+' members');
+$('#totalNumber').html('Number of '+sessionStorage.getItem('rank')+' in '+getPrevRank(sessionStorage.getItem('rank'))+' '+sessionStorage.getItem('prevRankName')+' is: '+total+' with a total of '+totalCount+' members');
 $('#current').html('#'+currRanking+":"+sessionStorage.getItem('title'));
 var ctx = $("#myChart").get(0).getContext("2d");
 // This will get the first returned node in the jQuery collection.
@@ -62,4 +63,6 @@ var dbUrl="http://dbpedia.org/sparql"
     }
 	
 ];	
+
 */
+//TODO na vazw tis lexeis sto plithintiko

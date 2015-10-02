@@ -110,7 +110,7 @@ $('#wikiLink').attr('href', 'https://en.wikipedia.org/wiki/'+(sessionStorage.get
 			
 				});		
            //Clear custom_info before adding infobox
-         $("#custom_info").append(blurb.find('.infobox').html());
+         $("#custom_info").html('<table  class="table">'+blurb.find('.infobox').html()+'</table>');
 	
 	
        

@@ -12,7 +12,10 @@
     "text/css"><!-- Bootstrap -->
     <link href="plugins/bootstrap_12_col/css/bootstrap.min.css" rel=
     "stylesheet">
+	
     <link href="plugins/bootstrap_7_col/css/navbar-static-top.css" rel=
+    "stylesheet">
+	<link href="plugins/bootstrap_12_col/css/custom.css" rel=
     "stylesheet">
     <script src="plugins/bootstrap_7_col/js/jquery.min.js"></script>
     <script src="plugins/bootstrap_12_col/js/bootstrap.min.js"></script>
@@ -65,38 +68,44 @@
     </nav>
 
     <div class="container-fluid" id="article_container">
-	<div class="row">
-	<div class="col-sm-2">
+	 
+	<div class="row row-margin" id="titleRow">
+	<div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
 	<button type="button" onclick="goBack()" class="btn btn-block"  >
   Επιστροφή
 </button>
 	</div>
-	<div   class="col-sm-7">
+	<div   class="col-lg-8 col-md-8 col-sm-8 text-center">
 	<h1 id="title"></h1>
 	</div>
-	<div class="col-sm-3">
+	<div id="wikiColumn" class="col-lg-2 col-md-2 col-sm-2 text-center">
 	<a href="#" id="wikiLink" target="_blank">Μετάβαση στη σελίδα της wikipedia</a>
 	</div>
 	</div>
+	<ul class="nav nav-list"> <li class="divider"></li></ul>
         <div class="row">
-            <div class="col-sm-2">
+          
+ <div class="col-lg-2 col-lg-push-10 col-md-3 col-md-push-9 col-sm-6 ">
+                <div id="custom_info" style="word-wrap: break-word;">
+				
+				</div>
+            </div>
+			
+			
+			  <div  id="statisticsCol" class="col-lg-2 col-lg-pull-2 hidden-md col-sm-6 text-center" >
                 <div id="statistics">
                     <p id="totalNumber"></p>
 
-                    <p><canvas height="200" id="myChart" width=
-                    "200"></canvas></p>
+                    <p><canvas height="190px" id="myChart" width="190px"></canvas></p>
 
                     <p id="current"></p>
                 </div>
             </div>
-
-            <div class="col-sm-7">
+			
+			 <div class="col-lg-8 col-lg-pull-2 col-md-9 col-md-pull-3 col-sm-12 ">
                 <div id="article"></div>
             </div>
-
-            <div class="col-sm-3">
-                <div id="custom_info"></div>
-            </div>
+			
         </div>
     </div><!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -114,6 +123,25 @@ $('#wikiLink').attr('href', 'https://en.wikipedia.org/wiki/'+(sessionStorage.get
     }else
     {$('#article').html("No article selected!")}
 
+//stack statistics div link
+function ChangeDiv(width){
+    if (width < 1200 && width > 992) {
+	console.log("a")
+        $("#custom_info").after($("#statistics"));
+    } else {
+	console.log('b')
+        $("#statistics").appendTo($("#statisticsCol"));
+    }
+}
+
+$(function () {
+    var onLoadWidth = $(window).width();
+    ChangeDiv(onLoadWidth);
+    $(window).resize(function () {
+        var resizeWidth = $(window).width();
+        ChangeDiv(resizeWidth);
+    });
+})
 	
 
     </script>

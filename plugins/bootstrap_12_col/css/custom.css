@@ -1,0 +1,21 @@
+.row-margin{
+ 
+  margin-bottom: 20px;
+}
+
+body { overflow-x: hidden;}
+
+#titleRow{
+border-bottom:1px solid;
+border-color:#e7e7e7;
+}
+
+#title{
+	margin-top:-5px;
+	margin-bottom:10px;
+}
+
+table{
+	 table-layout: fixed;
+    word-wrap: break-word;
+}
