@@ -76,6 +76,7 @@
 		$.ajax({
 		    type: "GET",
 		    url: settings.wikiURL + settings.apiPath + "/api.php?action=parse&format=json&prop=text&page="+settings.page+"&callback=?",
+			page:settings.page,
 		    contentType: "application/json; charset=utf-8",
 		    async: true,
 		    dataType: "json",
@@ -88,8 +89,9 @@
            markup=markup.replace(/\/\/upload/g, "https://upload");
 		   markup=markup.replace("/wiki/File:","https://en.wikipedia.org/wiki/File:")
 		 
-		 
-		 // console.log(markup);
+			sessionStorage.setItem('title',this.page);
+		 $('#title').html(sessionStorage.getItem('title'));
+$('#wikiLink').attr('href', 'https://en.wikipedia.org/wiki/'+(sessionStorage.getItem('title')).replace(' ','_'));
 			    var blurb = $('<div class="nbs-wikiblurb"></div>').html(markup);
           
            blurb

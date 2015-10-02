@@ -8,7 +8,6 @@ $(document).on("click", ".details", function() {
 
     var name = getName($(this));
     var rank = getRank($(this));
-	console.log('rank'+rank);
 	name =name.replace(/ /g,"_");
 
     var img_url = $(this).closest('.thumbnail').find('img').attr('src');
@@ -243,7 +242,7 @@ function makeSearchTreeSuccess(_data){
 				var genus = nameFromUrl(results[i].genus.value);
 				genus=genus.replace(/ /g,"_");
 			}
-		console.log("phylum is "+phylum)
+		
 	if (kingdom=='Animal'||kingdom=='Animalia')	
 		kingdom_type="Animal";
 	if (kingdom=='Plant'||kingdom=='Plantae')
@@ -251,23 +250,18 @@ function makeSearchTreeSuccess(_data){
 	 }
 //Find phylums	 
 	query = getOpenQuery(kingdom_type, 'kingdom', 'phylum');
-	console.log(query);
     executeQuery(query, 'phylum', type);
 //Find classes
 	query = getOpenQuery(phylum, 'phylum', 'class');
-	console.log(query);
     executeQuery(query, 'class', phylum);
 //Find orders
 	query = getOpenQuery(classis, 'class', 'order');
-	console.log(query);
     executeQuery(query, 'order', classis);
 //Find families
 	query = getOpenQuery(order, 'order', 'family');
-	console.log(query);
     executeQuery(query, 'family', order);
 //Find genii
 	query = getOpenQuery(family, 'family', 'genus');
-	console.log(query);
     executeQuery(query, 'genus', family);
 }
 /*End of tree functions*/

@@ -1,5 +1,6 @@
+
 function showArticle(title){
- sessionStorage.setItem('title',title);
+
  sessionStorage.setItem('treePage',$('#tree_container').html());
  window.location.replace('article.html');
 
@@ -63,4 +64,7 @@ function getCurrPage(){
 	var currPageUrl = document.location.href;
 return currPage = currPageUrl.substr(currPageUrl.lastIndexOf('/') + 1);
 	
+}
+function goBack() {
+    window.history.back();
 }

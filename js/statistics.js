@@ -8,7 +8,7 @@ function shadeColor2(color, percent) {
   
 
 function totalQuerySuccess(_data){
-	console.log(_data);
+
 	var totalCount=0;
 var data =[];
 var dbpedia_results = _data.results.bindings;
@@ -35,7 +35,6 @@ var rank =sessionStorage.getItem('rank');
 var prevRank=getPrevRank(rank);
 
 query = getTotalQuery(prevRank,prevRankName,rank);
-console.log("stats"+query);
 var dbUrl="http://dbpedia.org/sparql"   
     var queryUrl = encodeURI(dbUrl + "?query=" + query + "&format=json");
     $.ajax({
