@@ -19,3 +19,33 @@ table{
 	 table-layout: fixed;
     word-wrap: break-word;
 }
+
+#totalNumber:first-letter{
+	  text-transform:capitalize;
+}
+
+.tleft{
+	float:left;
+	clear:left;
+	margin:.5em 1.4em 1.3em 0;
+}
+
+.tright{
+	float:right;
+	clear:right;
+	margin:.5em 0 1.3em 1.4em;
+}
+
+.nbs-wikiblurb h2{
+	margin-top:1em;
+	border-bottom:1px solid #aaa;
+}
+
+#custom_info td{
+	padding:0px;
+	margin-bottom:5px;
+	margin-left:0px;
+	margin-right:-5px;
+	margin-top:5px;
+	
+}

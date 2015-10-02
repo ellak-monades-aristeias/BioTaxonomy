@@ -18,14 +18,15 @@ for (var j in dbpedia_results) {
         var count = dbpedia_results[j].count.value;
 		totalCount=totalCount+parseInt(count);
         name = name.replace("_", ' ');
-		if (name==sessionStorage.getItem('title'))
+		if (name==sessionStorage.getItem('title')){
 			var currRanking=parseInt(j)+1;
-			
+			var currCount=count;
+		}
 		data.push({value: count,color:randomColorGenerator(),highlight: randomColorGenerator(),label: '#'+(parseInt(j)+1)+':'+name});
     }
 var total=parseInt(j)+1;
-$('#totalNumber').html('Number of '+sessionStorage.getItem('rank')+' in '+getPrevRank(sessionStorage.getItem('rank'))+' '+sessionStorage.getItem('prevRankName')+' is: '+total+' with a total of '+totalCount+' members');
-$('#current').html('#'+currRanking+":"+sessionStorage.getItem('title'));
+$('#totalNumber').html(getPrevRank(sessionStorage.getItem('rank'))+' <b>'+sessionStorage.getItem('prevRankName')+'</b> has <b>'+total+' '+getPlural(sessionStorage.getItem('rank'))+'</b> with a total of <b>'+totalCount+'</b> members');
+$('#current').html('<b>'+sessionStorage.getItem('title')+'</b> is <b>#'+currRanking+'</b> with <b>'+currCount+'</b> members ');
 var ctx = $("#myChart").get(0).getContext("2d");
 // This will get the first returned node in the jQuery collection.
 
@@ -65,4 +66,17 @@ var dbUrl="http://dbpedia.org/sparql"
 ];	
 
 */
-//TODO na vazw tis lexeis sto plithintiko
+function getPlural(word){
+	if (word=='phylum')
+		return 'phyla'
+	else if (word=='class')
+		return 'classes'
+	else if (word == 'order')
+		return 'orders'
+	else if (word=='family')
+		return families
+	else if (word=='genus')
+		return 'genera'
+	else if (word=='kingdom')
+		return 'kingdoms'
+}

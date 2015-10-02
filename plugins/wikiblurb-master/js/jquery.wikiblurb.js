@@ -99,14 +99,14 @@ $('#wikiLink').attr('href', 'https://en.wikipedia.org/wiki/'+(sessionStorage.get
 			    
           		blurb.find('a.image').each(function() {
 				    var link = $(this);
-            console.log("the orig "+link.attr('href')) ;
+            
 				    link.attr('data-lity',''); 
             new_src=  link.children("img:first").attr('src');
             new_src=new_src.replace("thumb/","");
              new_src=new_src.replace(new RegExp("(.*/)[^/]+$"),"$1" );
              new_src=new_src.slice(0,-1) ;
             link.attr('href', new_src);
-					  console.log("after "+link.attr('href') );
+					
 			
 				});		
            //Clear custom_info before adding infobox
@@ -118,7 +118,9 @@ $('#wikiLink').attr('href', 'https://en.wikipedia.org/wiki/'+(sessionStorage.get
           blurb.find('.mw-editsection').remove();	
           blurb.find('.hatnote').remove();			  
           blurb.find('.infobox').replaceWith('').html()
-        
+		  
+        blurb.find('.thumbinner').attr('class', 'thumbnail');
+		blurb.find('.thumbcaption').attr('class', 'caption');
           // remove links?
 			    if(settings.removeLinks) {
 				blurb.find('a').each(function() { 

@@ -48,12 +48,17 @@
                     </li>
 
                     <li class="active">
-                        <a href="javascript:searchTree();">Search <span class=
-                        "sr-only">(current)</span></a>
+                       <form class="navbar-form" role="search" onsubmit="return false">
+        <div class="input-group">
+            <input type="text" id="searchBox"class="form-control" placeholder="Search" >
+            <div class="input-group-btn">
+                <button class="btn btn-default"  onclick="searchArticle();"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+        </form>
                     </li>
 
-                    <li><input class="form-control" id="searchBox" name=
-                    "searchBox" type="text" value=""><br></li>
+                 
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

@@ -55,13 +55,18 @@
                         <a href="javascript:changeLanguage();">en/gr</a>
                     </li>
 
-                    <li class="active">
-                        <a href="javascript:searchArticle();">Search
-                        <span class="sr-only">(current)</span></a>
-                    </li>
+                   
 
-                    <li><input class="form-control" id="searchBox" name=
-                    "searchBox" type="text" value=""><br></li>
+                    <li><form class="navbar-form" role="search" onsubmit="return false">
+        <div class="input-group">
+            <input type="text" id="searchBox"class="form-control" placeholder="Search" >
+            <div class="input-group-btn">
+                <button class="btn btn-default"  onclick="searchArticle();"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+        </form>
+		
+		</li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -70,19 +75,19 @@
     <div class="container-fluid" id="article_container">
 	 
 	<div class="row row-margin" id="titleRow">
-	<div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
-	<button type="button" onclick="goBack()" class="btn btn-block"  >
-  Επιστροφή
-</button>
+	<div class="col-lg-2 col-md-2 col-sm-2 hidden-xs text-center ">
+	<a href="javascript:history.back()">Επιστροφή</a>
+	
 	</div>
+	
 	<div   class="col-lg-8 col-md-8 col-sm-8 text-center">
 	<h1 id="title"></h1>
 	</div>
 	<div id="wikiColumn" class="col-lg-2 col-md-2 col-sm-2 text-center">
-	<a href="#" id="wikiLink" target="_blank">Μετάβαση στη σελίδα της wikipedia</a>
+	<a href="#" id="wikiLink" target="_blank">Σελίδα της wikipedia</a>
 	</div>
 	</div>
-	<ul class="nav nav-list"> <li class="divider"></li></ul>
+
         <div class="row">
           
  <div class="col-lg-2 col-lg-push-10 col-md-3 col-md-push-9 col-sm-6 ">
@@ -93,13 +98,13 @@
 			
 			
 			  <div  id="statisticsCol" class="col-lg-2 col-lg-pull-2 hidden-md col-sm-6 text-center" >
-                <div id="statistics">
-                    <p id="totalNumber"></p>
+                <table class="table" id="statistics">
+                   <tr> <td id="totalNumber"></td></tr>
 
-                    <p><canvas height="190px" id="myChart" width="190px"></canvas></p>
+                    <tr><td><canvas height="190px" id="myChart" width="190px"></canvas></td></tr>
 
-                    <p id="current"></p>
-                </div>
+                   <tr> <td id="current"></td></tr>
+                </table>
             </div>
 			
 			 <div class="col-lg-8 col-lg-pull-2 col-md-9 col-md-pull-3 col-sm-12 ">
@@ -126,10 +131,10 @@ $('#wikiLink').attr('href', 'https://en.wikipedia.org/wiki/'+(sessionStorage.get
 //stack statistics div link
 function ChangeDiv(width){
     if (width < 1200 && width > 992) {
-	console.log("a")
+	
         $("#custom_info").after($("#statistics"));
     } else {
-	console.log('b')
+	
         $("#statistics").appendTo($("#statisticsCol"));
     }
 }

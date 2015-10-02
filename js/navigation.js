@@ -50,10 +50,10 @@ for (var i in results) {
  }
 
 if (i>0){
- $('#article').wikiblurb({
-        section: 0,
-        page: $('#searchBox').val()
-    });
+	console.log("search "+$('#searchBox').val());
+var title =$('#searchBox').val();	
+sessionStorage.setItem('title',title);
+window.location.replace('article.html');
     }else{
     $('#article').html("Wikipedia article doesn't exist")
     
