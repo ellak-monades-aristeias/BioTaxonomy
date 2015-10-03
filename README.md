@@ -18,6 +18,7 @@
 * [jQueryUI](https://jqueryui.com): Βιβλιοθήκη με διάφορα jQuery Widgets.
 * [Wikiblurb](https://github.com/9bitStudios/wikiblurb): jQuery Plugin για τη λήψη δεδομένων από τη Wikipedia και άλλα wikis.
 * [Lity](http://sorgalla.com/lity/): Lightbox plugin για τη προβολή εικόνων. 
+* [Chart.js](http://www.chartjs.org/): Plugin για τη δημιουργία διαγραμμάτων
 
 ##Issues  
 Στα issues της εφαρμογής μπορείτε να δείτε τα θέματα προς επίλυση που προκύπτουν κατά την υλοποίηση. 
