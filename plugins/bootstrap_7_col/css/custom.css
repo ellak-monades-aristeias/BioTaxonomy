@@ -1,6 +1,6 @@
-.thumbnail img { min-height:100px; height:100px; }
 
 #titleRow{
+
 border-bottom:1px solid;
 border-color:#e7e7e7;
 margin-bottom:20px;
@@ -14,6 +14,7 @@ font-size:18px;
 }
 
 .caption p{
+
 	border-top:1px solid;
 	border-bottom:1px solid;
 	border-color:#ddd;
@@ -22,6 +23,7 @@ font-size:18px;
 }
 
 .thumbnail{
+
 	margin-bottom:10px;
 	padding:4px 4px 0px;
 }
@@ -32,6 +34,8 @@ font-size:18px;
 	padding-right:0px;
 }
 
+.thumbnail img { min-height:100px; height:100px; }
+
 .ui-dialog .ui-dialog-title {
     float: left;
     margin: .1em 16px .1em 0;
@@ -41,5 +45,32 @@ font-size:18px;
 .ui-front{
    z-index: 1060;
 }
-
 .span1 .thumbnail img { min-width:100px; width:100px; }
+
+#titleRow,.thumbnail{
+	background-image: url("../../../assets/green_cup.png");
+	
+	}
+
+body,.caption p{
+	background-image: url("../../../assets/ricepaper_v3.png");
+	color:#334433;
+	border-radius:5px;
+}
+
+.selected{
+background-image: url("../../../assets/green_cup_selected.png");	
+}
+html {
+	overflow-y: scroll; 
+}
+
+.caption .details{
+	background-color:#DDBB22;
+	border-color:#DDBB22;
+	color:#334433;
+}
+
+.caption .open{
+color:#334433;	
+}

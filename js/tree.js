@@ -133,6 +133,7 @@ $(document).on("click", ".open", function() {
 	sessionStorage.setItem('prevRankName',name)
 	//name.replace(/ /g,"_");
     var rank = getRank($(this));
+	selectRank($(this),rank);
     var next_rank = $("#" + rank).next().attr('id') //get the next rank
 $("#" + rank).nextAll().html(""); // clear data of next ranks before adding new data
 	$("#" + next_rank).append("Loading...");
@@ -283,7 +284,7 @@ function thumbHtml(name, thumb_url,rank) {
 	if (rank!="species"){
 		
     return html = '   <div class=\"thumbnail\" id=\"' + name + '\">' +
-        '<img src=\"' + thumb_url + '\" alt=\"...\">' +
+        '<img class="img-rounded" src=\"' + thumb_url + '\" alt=\"...\">' +
         '<div class=\"caption\"><p><b>' + name +
         '</b></p><div class="btn-group" role="group" aria-label="..."><button type="button"class="btn btn-info details">Λεπτομέρειες</button> <button type="button"class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></div>    ' +
         '</div>   ' +
@@ -291,7 +292,7 @@ function thumbHtml(name, thumb_url,rank) {
 	}else{
 
 	 return html = '   <div class=\"thumbnail\" id=\"' + name + '\">' +
-        '<img src=\"' + thumb_url + '\" alt=\"...\">' +
+        '<img class="img-rounded" src=\"' + thumb_url + '\" alt=\"...\">' +
         '<div class=\"caption\"><p><b>' + name +
         '</b></p><p><button type="button"class="btn btn-info details">Λεπτομέρειες</button> </p>    ' +
         '</div>   ' +
@@ -300,5 +301,11 @@ function thumbHtml(name, thumb_url,rank) {
 
 }
 
+function selectRank(button,rank){
+
+	$('#'+rank+' .thumbnail').removeClass('selected');
+	button.closest('.thumbnail').addClass('selected');
+	
+}
 
     /*End of helper functions*/

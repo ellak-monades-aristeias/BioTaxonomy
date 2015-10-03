@@ -10,7 +10,9 @@
     <title>BioTaxonomy</title><!-- Bootstrap -->
     <link href="plugins/bootstrap_7_col/css/bootstrap.min.css" rel=
     "stylesheet">
+<link rel="shortcut icon" href="favicon.ico">
 
+<link rel="icon" href="favicon.ico">
 	
     <link href="plugins/jquery_ui/jquery-ui.min.css" rel="stylesheet">
 	<link href="plugins/jquery_ui/jquery-ui.theme.min.css" rel="stylesheet">
@@ -41,8 +43,17 @@
                 data-toggle="collapse" type="button"><span class=
                 "sr-only">Toggle navigation</span> <span class=
                 "icon-bar"></span> <span class="icon-bar"></span> <span class=
-                "icon-bar"></span></button> <a class="navbar-brand" href=
-                "index.html">BioTaxonomy</a>
+                "icon-bar"></span></button>
+				<a class="navbar-brand" href="index.html"><img src='assets/biotaxonomy_logo_100px.png' style="height:30px;width:35px;"></img></a>
+				<a class="navbar-brand" href="index.html">BioTaxonomy</a>
+				   <form class="navbar-form collapsed navbar-right visible-xs" role="search" onsubmit="return false">
+        <div class="input-group">
+            <input type="text" id="searchBox"class="form-control" placeholder="Search" >
+            <div class="input-group-btn">
+                <button class="btn btn-default"  onclick="searchTree();"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+        </form>
             </div>
 
             <div class="navbar-collapse collapse" id="navbar">
@@ -55,8 +66,8 @@
                         <a href="javascript:changeLanguage();">en/gr</a>
                     </li>
 
-                    <li class="active">
-                     <form class="navbar-form" role="search" onsubmit="return false">
+                    <li >
+                     <form class="navbar-form collapsed navbar-right hidden-xs" role="search" onsubmit="return false">
         <div class="input-group">
             <input type="text" id="searchBox"class="form-control" placeholder="Search" >
             <div class="input-group-btn">
@@ -73,6 +84,7 @@
     </nav>
 
     <div class="container">
+
         <div class="row seven-cols text-center" id="titleRow">
             <!-- Fixed navbar -->
 
@@ -108,7 +120,7 @@
         <div class="row seven-cols text-center" id="tree_container">
             <div class="col-md-1" id="kingdom">
                 <div class="thumbnail" id="Animal">
-                    <img style="height:auto;" alt="Animals" src=
+                    <img class="img-rounded" style="height:auto;" alt="Animals" src=
                     "https://upload.wikimedia.org/wikipedia/commons/1/14/Animal_diversity.png">
 
                     <div class="caption">
@@ -124,12 +136,12 @@
                     </div>
                 </div>
 
-                <div class="thumbnail" id="Plantae">
-                    <img style="height:auto;" alt="Plantae" src=
+                <div class="thumbnail" id="Plant">
+                    <img class="img-rounded" style="height:auto;" alt="Plant" src=
                     "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Diversity_of_plants_image_version_5.png/161px-Diversity_of_plants_image_version_5.png">
 
                     <div class="caption">
-                        <p><b>Plantae</b></p>
+                        <p><b>Plant</b></p>
 
                       	<div class="btn-group" role="group" aria-label="...">
                         <button type="button"class="btn btn-info details">Λεπτομέρειες</button> 
