@@ -66,5 +66,6 @@ return currPage = currPageUrl.substr(currPageUrl.lastIndexOf('/') + 1);
 	
 }
 function goBack() {
+	//fix to go to index if there is no back
     window.history.back();
 }

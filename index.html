@@ -10,11 +10,15 @@
     <title>BioTaxonomy</title><!-- Bootstrap -->
     <link href="plugins/bootstrap_7_col/css/bootstrap.min.css" rel=
     "stylesheet">
-    <link href="plugins/bootstrap_7_col/css/navbar-static-top.css" rel=
-    "stylesheet">
+
+	
     <link href="plugins/jquery_ui/jquery-ui.min.css" rel="stylesheet">
+	<link href="plugins/jquery_ui/jquery-ui.theme.min.css" rel="stylesheet">
+	<link href="plugins/jquery_ui/jquery-ui.structure.min.css" rel="stylesheet">
+	<link href="plugins/bootstrap_7_col/css/custom.css" rel=
+    "stylesheet">
     <script language="javascript" src="rank0.json" type="text/javascript"></script>
-    <script src="plugins/bootstrap_7_col/js/jquery.min.js"></script>
+    <script src="plugins/jquery.min.js"></script>
     <script src="plugins/jquery_ui/jquery-ui.min.js"></script>
     <script src="js/navigation.js"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -22,7 +26,9 @@
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	  
     <![endif]-->
+
 </head>
 
 <body style="padding-top: 70px;">
@@ -67,7 +73,7 @@
     </nav>
 
     <div class="container">
-        <div class="row seven-cols">
+        <div class="row seven-cols text-center" id="titleRow">
             <!-- Fixed navbar -->
 
             <div class="col-md-1">
@@ -95,35 +101,41 @@
             </div>
 
             <div class="col-md-1">
-                Είδος
+               Είδος
             </div>
         </div>
 
-        <div class="row seven-cols" id="tree_container">
+        <div class="row seven-cols text-center" id="tree_container">
             <div class="col-md-1" id="kingdom">
                 <div class="thumbnail" id="Animal">
-                    <img alt="..." src=
+                    <img style="height:auto;" alt="Animals" src=
                     "https://upload.wikimedia.org/wikipedia/commons/1/14/Animal_diversity.png">
 
                     <div class="caption">
-                        <p>Animal</p>
-
-                        <p><a class="btn btn-primary details" href=
-                        "#">Λεπτομέρειες</a> <a class="btn btn-primary open"
-                        href="#">Aνοιγμα</a></p>
+                        <p><b>Animal</b></p>
+						
+						<div class="btn-group" role="group" aria-label="...">
+                        <button type="button"class="btn btn-info details">Λεπτομέρειες</button> 
+						
+						<button type="button" class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button>
+						</div>
+						 
+	
                     </div>
                 </div>
 
                 <div class="thumbnail" id="Plantae">
-                    <img alt="..." src=
+                    <img style="height:auto;" alt="Plantae" src=
                     "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Diversity_of_plants_image_version_5.png/161px-Diversity_of_plants_image_version_5.png">
 
                     <div class="caption">
-                        <p>Plantae</p>
+                        <p><b>Plantae</b></p>
 
-                        <p><a class="btn btn-primary details" href=
-                        "#">Λεπτομέρειες</a><a class="btn btn-primary open"
-                        href="#">Aνοιγμα</a></p>
+                      	<div class="btn-group" role="group" aria-label="...">
+                        <button type="button"class="btn btn-info details">Λεπτομέρειες</button> 
+						
+						<button type="button" class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button>
+						</div>
                     </div>
                 </div>
             </div>

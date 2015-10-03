@@ -94,7 +94,7 @@ function membersSuccess(_data) {
          
             k++;
             var thumb = dbpedia_results[$.inArray(src, array)].thumb.value;
-            animals_html = animals_html + " <li><div class='span1'><img src='" + thumb + "'width='50px' ><p>" + src + "</p></div></li>";
+            animals_html = animals_html + " <li><div class='span1'> <div class='thumbnail'><img src='" + thumb + "'width='50px' > <div class='caption'>" + src + "</div></div></div></li>";
            
         }
 
@@ -111,8 +111,9 @@ function membersSuccess(_data) {
 
 function makeDialog(title, img_url, animals_html, sum) {
    
-    $("body").append('<div id="dialog"  ><div class="container-fluid text-center">   <div class="row"><div class="span7" id="details_title">' + title + '</div></div> <div class="row "><div class="span7"><img src="' + img_url + '"width="200px"></div></div><div class="row"><div class="span7">' + sum + '</div></div>  <div class="row"><div class="span7"><a href="javascript:showArticle(\''+title+'\');" class="article" >Δείτε το πλήρες άρθρο</a></div></div> <div class="row"><div class="span6"><ul class="list-inline">' + animals_html + '</ul></div></div></div></div>');
+    $("body").append('<div id="dialog"  class="text-center" ><div class="container-fluid text-center"><div class="row "><div class="span7">  <div class="thumbnail"><img src="' + img_url + '"style="height:auto;width:auto;></div></div></div><div class="row"><div class="span7">' + sum + '</div></div>  <div class="row"><div class="span7"> <button type="button" class="btn btn-info article" onclick="showArticle('+title+')">Δείτε το πλήρες άρθρο</button></div></div> <div class="row"><div class="span6"><ul class="list-inline">' + animals_html + '</ul></div></div></div></div>');
     $("#dialog").dialog({
+		title:title,
         width: 700,
         height: 400,
         close: function(event, ui) {
@@ -268,12 +269,12 @@ function makeSearchTreeSuccess(_data){
 
 /*Helper functions*/
 function getName(obj) {
-    return name = obj.parents('div:eq(1)').attr('id'); //get name of taxon
+    return name = obj.parents('div:eq(2)').attr('id'); //get name of taxon
 
 }
 
 function getRank(obj) {
-    return rank = obj.parents('div:eq(2)').attr('id');
+    return rank = obj.parents('div:eq(3)').attr('id');
 }
 
 
@@ -283,16 +284,16 @@ function thumbHtml(name, thumb_url,rank) {
 		
     return html = '   <div class=\"thumbnail\" id=\"' + name + '\">' +
         '<img src=\"' + thumb_url + '\" alt=\"...\">' +
-        '<div class=\"caption\"><p>' + name +
-        '</p>         <p><a href=\"#\" class=\"btn btn-primary details\" role=\"button\">Λεπτομέρειες</a> <a href=\"#\" class=\"btn btn-primary open\" role=\"button\"> Aνοιγμα</a></p>    ' +
+        '<div class=\"caption\"><p><b>' + name +
+        '</b></p><div class="btn-group" role="group" aria-label="..."><button type="button"class="btn btn-info details">Λεπτομέρειες</button> <button type="button"class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></div>    ' +
         '</div>   ' +
         '</div>';
 	}else{
 
 	 return html = '   <div class=\"thumbnail\" id=\"' + name + '\">' +
         '<img src=\"' + thumb_url + '\" alt=\"...\">' +
-        '<div class=\"caption\"><p>' + name +
-        '</p>         <p><a href=\"#\" class=\"btn btn-primary details\" role=\"button\">Λεπτομέρειες</a> </p>    ' +
+        '<div class=\"caption\"><p><b>' + name +
+        '</b></p><p><button type="button"class="btn btn-info details">Λεπτομέρειες</button> </p>    ' +
         '</div>   ' +
         '</div>';	
 	}

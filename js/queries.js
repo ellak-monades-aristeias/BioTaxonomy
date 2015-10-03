@@ -1,4 +1,4 @@
-var url = "http://live.dbpedia.org/sparql";
+var url = "http://dbpedia.org/sparql";
 var rankArray =["kingdom","phylum","class","order","family","genus","species"];
 
 function getImportantQuery(rank,name){
