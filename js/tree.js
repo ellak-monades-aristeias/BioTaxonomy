@@ -2,9 +2,12 @@ var buttonClicked=false;
 
 
 /*Functions that handle details and important taxon members*/
-$(function() {
-	$(".details").unbind('click');
-$('.details').click(function(){
+
+$(document).on("click", ".details", function() {	
+
+	buttonClicked=!buttonClicked;
+  //$('button').prop('disabled', true);
+	if(buttonClicked==true){
 console.log("in details")
 
     var name = getName($(this));
@@ -20,7 +23,7 @@ console.log("in details")
  sessionStorage.setItem('rank',rank);
  
  $(".modal-title").text(title);	
-  $(".modal-title").quickfit();
+
   
  $(".article").attr('onclick', 'showArticle("'+title+'")');
 $('#modalThumb').children('img').attr('src', img_url);
@@ -37,8 +40,9 @@ startLoading('#modalSum');
         name: name,
         success: summarySuccess
     });
+    }
 });
-});
+
 
 
 function summarySuccess(_data) {
@@ -125,48 +129,53 @@ function membersSuccess(_data) {
 
 /*End of details functions*/
 
-/*Functions that make the tree*/
-
-$(document).click("click", ".open", function() {
+/*Functions that make the tree*/  
+$(document).on("click", ".open", function() {
 	buttonClicked=!buttonClicked;
-	console.log(buttonClicked);
+  $('button').prop('disabled', true);
 	if(buttonClicked==true){
-	$('button').prop('disabled', true);
+	
 	
     // Do stuff once
 	
 	console.log("big screen")
-  
-if ($( window ).width() <= 480) {
-				  console.log("in 480 immediate");
-}
+
 
     var name = getName($(this));
 	sessionStorage.setItem('prevRankName',name)
 	//name.replace(/ /g,"_");
     var rank = getRank($(this));
 	selectRank($(this),rank);
-  if ($( window ).width() <= 480) {
-				 
-		console.log("prev rank is "+$("#" + rank).attr('id'))
-        var contents=$("#" + rank).detach();
-        $($("#" + rank).prev()).find('.selected').after(contents);
-		
-			  }
-    var next_rank = $("#" + rank).next().attr('id') //get the next rank
-$("#" + rank).nextAll().html(""); // clear data of next ranks before adding new data
+
+    var next_rank = getNextRank(rank); //get the next rank
+    console.log("next_rank is"+next_rank);
+   
+//$("#" + rank).nextAll().html(""); // clear data of next ranks before adding new data
+var rank_index=rankArray.indexOf(rank);
+for (i=rank_index+1;i<rankArray.length;i++)
+{
+$("#" + rankArray[i]).html("");
+}
 
 
 startLoading('#'+next_rank);
-	
+	   if ($( window ).width() <= 480) {
+				  console.log($(this).parent().parent().parent())
+          var mobilePlace=$(this).parent().parent().parent(); 
+		 
+        var contents=$("#" + next_rank).detach(); 
+        //$(this).closest('.thumbnail').after(contents);
+     mobilePlace.after(contents);
+		
+			  }
 
     query = getOpenQuery(name, rank, next_rank);
 
 	
     executeQuery(query, next_rank, name);
 	}
-	return false;
-});
+
+});      
 
 
 function executeQuery(query, rank, name,callback) {
@@ -208,7 +217,12 @@ function openSuccess(_data) {
         }
 		$("#" + rank).find('.caption p').quickfit();
 	sessionStorage.setItem('treePage',$('#tree_container').html());	
-	
+    
+if ($( window ).width() <= 480) {
+    $(".glyphicon-menu-right").addClass("glyphicon-plus-sign");
+        $(".glyphicon-menu-right").removeClass("glyphicon-menu-right");			
+}
+	  
 
 			  
 			  

@@ -27,7 +27,8 @@
 	  <script src="plugins/bootstrap_7_col/js/bootstrap.min.js"></script> <!-- Script that handles tree functions-->
      <script src="js/queries.js"></script> <script src="js/tree.js"></script> 
 	 
-	 <script src="plugins/jquery-quickfit/jquery.quickfit.js"></script> <script src="js/tree.js"></script> 
+	 <script src="plugins/jquery-quickfit/jquery.quickfit.js">
+   </script> <script src="js/tree.js"></script> 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -201,8 +202,8 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
   
 	 <script>
-$(".details").unbind('click');
-$(".open").unbind('click');
+
+
 if (sessionStorage.getItem('treePage')!=undefined){
     $('#tree_container').html(sessionStorage.getItem('treePage'));
     }
@@ -254,7 +255,7 @@ if (sessionStorage.getItem('treePage')!=undefined){
  $(".glyphicon-plus-sign").addClass("glyphicon-menu-right");
         $(".glyphicon-plus-sign").removeClass("glyphicon-plus-sign");
 		
-		contents=$('#phylum').detach();
+		contents=$('#phylum').detach();        
 		$('#tree_container').children('.col-md-1:nth-child(1)').after(contents)
 		
 		contents=$('#class').detach();
@@ -280,6 +281,8 @@ if (sessionStorage.getItem('treePage')!=undefined){
 }
 
  $(function() {
+ $('button').prop('disabled', false);
+
     $('.caption p').quickfit();
   });
   
