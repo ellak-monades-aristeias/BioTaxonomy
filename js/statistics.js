@@ -25,7 +25,7 @@ for (var j in dbpedia_results) {
 		data.push({value: count,color:randomColorGenerator(),highlight: randomColorGenerator(),label: '#'+(parseInt(j)+1)+':'+name});
     }
 var total=parseInt(j)+1;
-$('#totalNumber').html(getPrevRank(sessionStorage.getItem('rank'))+' <b>'+sessionStorage.getItem('prevRankName')+'</b> has <b>'+total+' '+getPlural(sessionStorage.getItem('rank'))+'</b> with a total of <b>'+totalCount+'</b> members');
+$('#totalNumber').html(getPrevRank(sessionStorage.getItem('rank'))+'<b><a href="javascript:showArticle(\''+sessionStorage.getItem('prevRankName')+'\');"> '+sessionStorage.getItem('prevRankName')+'</a></b> has <b>'+total+' '+getPlural(sessionStorage.getItem('rank'))+'</b> with a total of <b>'+totalCount+'</b> members');
 $('#current').html('<b>'+sessionStorage.getItem('title')+'</b> is <b>#'+currRanking+'</b> with <b>'+currCount+'</b> members ');
 var ctx = $("#myChart").get(0).getContext("2d");
 // This will get the first returned node in the jQuery collection.

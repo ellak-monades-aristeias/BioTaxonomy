@@ -67,5 +67,8 @@ return currPage = currPageUrl.substr(currPageUrl.lastIndexOf('/') + 1);
 }
 function goBack() {
 	//fix to go to index if there is no back
+	var currPage = getCurrPage();
+if (currPage=='article.html')
+window.location.replace('index.html');	
     window.history.back();
 }

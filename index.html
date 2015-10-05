@@ -85,36 +85,37 @@
 
     <div class="container">
 
-        <div class="row seven-cols text-center" id="titleRow">
-            <!-- Fixed navbar -->
+        <div class="row seven-cols text-center hidden-xs" id="titleRow">
+         
 
             <div class="col-md-1">
-                Βασίλειο
+               <div class="rankHead">Βασίλειο</div>
             </div>
 
             <div class="col-md-1">
-                Συνομοταξία
+               <span class="rankHead">Συνομοταξία </span>
             </div>
 
             <div class="col-md-1">
-                Ομοταξία
+               <span class="rankHead">Ομοταξία </span>
             </div>
 
             <div class="col-md-1">
-                Τάξη
+                <span class="rankHead">Τάξη</span>
             </div>
 
             <div class="col-md-1">
-                Οικογένεια
+              <span class="rankHead">Οικογένεια</span>
             </div>
 
             <div class="col-md-1">
-                Γένος
+               <span class="rankHead">Γένος</span>
             </div>
 
             <div class="col-md-1">
-               Είδος
+               <span class="rankHead">Είδος</span>
             </div>
+			
         </div>
 
         <div class="row seven-cols text-center" id="tree_container">
@@ -127,7 +128,7 @@
                         <p><b>Animal</b></p>
 						
 						<div class="btn-group" role="group" aria-label="...">
-                        <button type="button"class="btn btn-info details">Λεπτομέρειες</button> 
+                        <button type="button"class="btn btn-info details" data-toggle="modal" data-target="#myModal">Λεπτομέρειες</button> 
 						
 						<button type="button" class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button>
 						</div>
@@ -164,7 +165,33 @@
 
             <div class="col-md-1" id="species"></div>
         </div>
-    </div><!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    </div>
+
+ <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+   <div class="modal-content">
+      <div class="modal-header text-center">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body ">
+        
+		<div class="thumbnail" id="modalThumb"><img src=""> <div class="caption"></div></div>
+		
+		<p id="modalSum" class="text-justify"></p>
+		<p class="text-center"><button type="button" class="btn btn-info article" onclick="">Δείτε το πλήρες άρθρο</button></p>
+		
+      </div>
+      <div class="modal-footer">
+       <ul class="list-inline text-center" id="membersList"></ul> 
+      </div>
+    </div>
+
+  </div>
+</div>
+
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="plugins/bootstrap_7_col/js/bootstrap.min.js"></script> <!-- Script that handles tree functions-->
      <script src="js/queries.js"></script> <script src="js/tree.js"></script> <script>

@@ -17,6 +17,12 @@ $(document).on("click", ".details", function() {
 
  sessionStorage.setItem('title',title);
  sessionStorage.setItem('rank',rank);
+ 
+ $(".modal-title").text(title);	
+ $(".article").attr('onclick', 'showArticle("'+title+'")');
+$('#modalThumb').children('img').attr('src', img_url);
+
+startLoading('#modalSum');
 
     var queryUrl = query;
     $.ajax({
@@ -39,10 +45,12 @@ function summarySuccess(_data) {
 
     for (var j in results) {
         var sum = results[j].extract;
-
-
     }
-    getMembers(this.rank, this.name, this.img_url, this.title, sum);
+	stopLoading('#modalSum');
+	$('#modalSum').text(sum);
+
+	startLoading('#membersList');
+    getMembers(this.rank, this.name, this.img_url, this.title);
 
 
 
@@ -50,7 +58,7 @@ function summarySuccess(_data) {
 }
 
 
-function getMembers(rank, name, img_url, title, sum) {
+function getMembers(rank, name, img_url, title) {
     
     query = getImportantQuery(rank, name);
    
@@ -60,15 +68,12 @@ function getMembers(rank, name, img_url, title, sum) {
         url: queryUrl,
         img_url: img_url,
         title: title,
-        sum: sum,
         success: membersSuccess
     });
 }
 
 function membersSuccess(_data) {
-    var img_url = this.img_url;
-    var title = this.title;
-    var sum = this.sum;
+   
     animals_html = "";
     var a = 0;
     var k = 0;
@@ -94,7 +99,7 @@ function membersSuccess(_data) {
          
             k++;
             var thumb = dbpedia_results[$.inArray(src, array)].thumb.value;
-            animals_html = animals_html + " <li><div class='span1'> <div class='thumbnail'><img src='" + thumb + "'width='50px' > <div class='caption'>" + src + "</div></div></div></li>";
+            animals_html = animals_html + " <li> <div class='thumbnail'><img src='" + thumb + "'width='50px' > <div class='caption'><p><a href='javascript:showArticle(\""+src+"\")'>" + src + "</a></p></div></div></li>";
            
         }
 
@@ -103,25 +108,15 @@ function membersSuccess(_data) {
 
     }
 
-    makeDialog(title, img_url, animals_html, sum);
+	stopLoading('#membersList');
+	$('#membersList').html(animals_html)
+ 
 
 
 }
 
 
-function makeDialog(title, img_url, animals_html, sum) {
-   
-    $("body").append('<div id="dialog"  class="text-center" ><div class="container-fluid text-center"><div class="row "><div class="span7">  <div class="thumbnail"><img src="' + img_url + '"style="height:auto;width:auto;></div></div></div><div class="row"><div class="span7">' + sum + '</div></div>  <div class="row"><div class="span7"> <button type="button" class="btn btn-info article" onclick="showArticle('+title+')">Δείτε το πλήρες άρθρο</button></div></div> <div class="row"><div class="span6"><ul class="list-inline">' + animals_html + '</ul></div></div></div></div>');
-    $("#dialog").dialog({
-		title:title,
-        width: 700,
-        height: 400,
-        close: function(event, ui) {
-            $("#dialog").remove();
-        }
 
-    });
-}
 
 
 /*End of details functions*/
@@ -136,7 +131,8 @@ $(document).on("click", ".open", function() {
 	selectRank($(this),rank);
     var next_rank = $("#" + rank).next().attr('id') //get the next rank
 $("#" + rank).nextAll().html(""); // clear data of next ranks before adding new data
-	$("#" + next_rank).append("Loading...");
+startLoading('#'+next_rank);
+	
 
     query = getOpenQuery(name, rank, next_rank);
 
@@ -162,7 +158,8 @@ function executeQuery(query, rank, name,callback) {
 function openSuccess(_data) {
 	var thumb_url="";
     var rank = this.rank;
-$("#" + rank).html("");
+	stopLoading('#'+rank);
+
     var results = _data.results.bindings;
     if (results.length > 0) {
         for (var i in results) {
@@ -286,7 +283,7 @@ function thumbHtml(name, thumb_url,rank) {
     return html = '   <div class=\"thumbnail\" id=\"' + name + '\">' +
         '<img class="img-rounded" src=\"' + thumb_url + '\" alt=\"...\">' +
         '<div class=\"caption\"><p><b>' + name +
-        '</b></p><div class="btn-group" role="group" aria-label="..."><button type="button"class="btn btn-info details">Λεπτομέρειες</button> <button type="button"class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></div>    ' +
+        '</b></p><div class="btn-group" role="group" aria-label="..."><button type="button"class="btn btn-info details" data-toggle="modal" data-target="#myModal">Λεπτομέρειες</button>  <button type="button"class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></div>    ' +
         '</div>   ' +
         '</div>';
 	}else{
@@ -294,7 +291,7 @@ function thumbHtml(name, thumb_url,rank) {
 	 return html = '   <div class=\"thumbnail\" id=\"' + name + '\">' +
         '<img class="img-rounded" src=\"' + thumb_url + '\" alt=\"...\">' +
         '<div class=\"caption\"><p><b>' + name +
-        '</b></p><p><button type="button"class="btn btn-info details">Λεπτομέρειες</button> </p>    ' +
+        '</b></p><p><button type="button"class="btn btn-info details" data-toggle="modal" data-target="#myModal">Λεπτομέρειες</button> </p>    ' +
         '</div>   ' +
         '</div>';	
 	}
@@ -306,6 +303,13 @@ function selectRank(button,rank){
 	$('#'+rank+' .thumbnail').removeClass('selected');
 	button.closest('.thumbnail').addClass('selected');
 	
+}
+
+function startLoading(container){
+	$(container).append("<span class='glyphicon glyphicon-refresh glyphicon-refresh-animate'></span> Loading...");
+}
+function stopLoading(container){
+	$(container).html("");
 }
 
     /*End of helper functions*/
