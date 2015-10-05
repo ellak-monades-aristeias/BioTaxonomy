@@ -54,3 +54,30 @@ table{
 	margin-top:5px;
 	
 }
+
+.navbar-default {
+		    
+	background-color: #94821b;
+background-image: url(http://www.transparenttextures.com/patterns/wavecut.png);	
+		
+	}
+	.navbar-default{
+	border-color: #D2BD4A;
+	    color: #334433;
+	
+	}
+	.navbar-default .navbar-brand,.navbar-default .navbar-nav>li>a{
+		    color: #334433;
+	}
+.navbar-fixed-top{
+	    border-width: 0 0 3px;
+}
+
+body{
+	background-color: #decc66;
+background-color: #decc66;
+background-image: url(http://www.transparenttextures.com/patterns/wavecut.png);
+/* This is mostly in#decc66tended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+	color:#334433;
+	border-radius:5px;
+}

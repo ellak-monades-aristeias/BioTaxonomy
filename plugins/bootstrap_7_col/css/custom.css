@@ -1,10 +1,8 @@
 
 #titleRow{
 
-border-bottom:1px solid;
-border-color:#e7e7e7;
 margin-bottom:10px;
-padding-bottom:15px;
+padding-bottom:5px;
 padding-top:15px;
 margin-top:-18px;
 line-height:0.5;
@@ -23,16 +21,14 @@ img {
 
 .caption p{
 
-	border-top:1px solid;
-	border-bottom:1px solid;
-	border-color:#ddd;
+	border: 1px solid #094004;
 	padding-top:3px;
 	padding-bottom:3px;
 	
 }
 
 .thumbnail{
-
+    border: 2px solid #12540B;
 	margin-bottom:10px;
 	padding:4px 4px 0px;
 }
@@ -46,6 +42,8 @@ img {
 .thumbnail img {
 min-height:100px; 
 height:100px;
+ border: 1px solid #094004;
+
  }
  
 li>.thumbnail img{
@@ -70,19 +68,52 @@ li>.thumbnail img{
 	}
 
 
-#titleRow,.thumbnail{
-	background-image: url("../../../assets/green_cup.png");
+.thumbnail{
+	background-color: #1f7916;
+background-image: url(http://www.transparenttextures.com/patterns/light-wool.png);
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 	
 	}
 
-body,.caption p,.modal-content,.rankHead{
-	background-image: url("../../../assets/ricepaper_v3.png");
+.navbar-default {
+		    
+	background-color: #94821b;
+background-image: url(http://www.transparenttextures.com/patterns/wavecut.png);	
+		
+	}
+	.navbar-default{
+	border-color: #D2BD4A;
+	    color: #334433;
+	
+	}
+	.navbar-default .navbar-brand,.navbar-default .navbar-nav>li>a{
+		    color: #334433;
+	}
+.navbar-fixed-top{
+	    border-width: 0 0 3px;
+}
+body,.modal-content{
+	background-color: #decc66;
+background-color: #decc66;
+background-image: url(http://www.transparenttextures.com/patterns/wavecut.png);
+/* This is mostly in#decc66tended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 	color:#334433;
 	border-radius:5px;
 }
 
+.caption p{
+	
+	background-color: #decb3e;
+	border-radius:5px;
+	color:#334433;
+
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
 .selected{
-background-image: url("../../../assets/green_cup_selected.png");	
+background-color: #1f7916;
+background-image: url(http://www.transparenttextures.com/patterns/light-wool.png);
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 html {
 	overflow-y: scroll; 
@@ -100,6 +131,16 @@ color:#334433;
 .modal-body{
 	padding:30px;
 }
+.modal-header{
+	border-color:#8C5607;
+	    border-bottom: 3px solid #8C5607;
+}
+
+.modal-footer{
+	border-color:#8C5607;
+	    border-top: 3px solid #8C5607;
+}
+
 .glyphicon-refresh-animate {
     -animation: spin .7s infinite linear;
     -webkit-animation: spin2 .7s infinite linear;
