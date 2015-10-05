@@ -120,32 +120,33 @@
 
         <div class="row seven-cols text-center" id="tree_container">
             <div class="col-md-1" id="kingdom">
-                <div class="thumbnail" id="Animal">
-                    <img class="img-rounded" style="height:auto;" alt="Animals" src=
+                <div class="thumbnail clearfix" id="Animal">
+                    <img class="img-rounded" alt="Animals" src=
                     "https://upload.wikimedia.org/wikipedia/commons/1/14/Animal_diversity.png">
 
                     <div class="caption">
                         <p><b>Animal</b></p>
 						
 						<div class="btn-group" role="group" aria-label="...">
-                        <button type="button"class="btn btn-info details" data-toggle="modal" data-target="#myModal">Λεπτομέρειες</button> 
+                        <button type="button"class="btn btn-info details hidden-xs" data-toggle="modal" data-target="#myModal">Λεπτομέρειες</button> 
 						
 						<button type="button" class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button>
-						</div>
-						 
+					
+						        
+                    </div>
 	
                     </div>
                 </div>
 
-                <div class="thumbnail" id="Plant">
-                    <img class="img-rounded" style="height:auto;" alt="Plant" src=
+                <div class="thumbnail clearfix" id="Plant">
+                    <img class="img-rounded"  alt="Plant" src=
                     "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Diversity_of_plants_image_version_5.png/161px-Diversity_of_plants_image_version_5.png">
 
                     <div class="caption">
                         <p><b>Plant</b></p>
 
                       	<div class="btn-group" role="group" aria-label="...">
-                        <button type="button"class="btn btn-info details">Λεπτομέρειες</button> 
+                        <button type="button"class="btn btn-info details hidden-xs">Λεπτομέρειες</button> 
 						
 						<button type="button" class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button>
 						</div>
@@ -202,6 +203,48 @@ if (sessionStorage.getItem('treePage')!=undefined){
     $(document).ajaxError(function(){
     alert("An error occurred!");
     });
+    
+    
+    function ChangeDiv(width){
+    if (width <= 480) {
+	       var contents='';
+        $(".glyphicon-menu-right").addClass("glyphicon-plus-sign");
+        $(".glyphicon-menu-right").removeClass("glyphicon-menu-right");
+        
+        contents=$('#phylum').detach();
+        $('#kingdom').find('.selected').after(contents);
+       
+       contents=$('#class').detach();
+        $('#phylum').find('.selected').after(contents);
+        
+        contents=$('#order').detach();
+        $('#class').find('.selected').after(contents);
+        
+        contents=$('#family').detach();
+        $('#order').find('.selected').after(contents);
+        
+        contents=$('#genus').detach();
+        $('#family').find('.selected').after(contents);
+        
+        contents=$('#species').detach();
+        $('#genus').find('.selected').after(contents);
+      
+        
+    } else {
+	
+ $(".glyphicon-plus-sign").addClass("glyphicon-menu-right");
+        $(".glyphicon-plus-sign").removeClass("glyphicon-plus-sign");
+    }
+}
+
+$(function () {
+    var onLoadWidth = $(window).width();
+    ChangeDiv(onLoadWidth);
+    $(window).resize(function () {
+        var resizeWidth = $(window).width();
+        ChangeDiv(resizeWidth);
+    });
+})
     </script>
 </body>
 </html>

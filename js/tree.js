@@ -280,18 +280,18 @@ function thumbHtml(name, thumb_url,rank) {
 
 	if (rank!="species"){
 		
-    return html = '   <div class=\"thumbnail\" id=\"' + name + '\">' +
+    return html = '   <div class=\"thumbnail clearfix\" id=\"' + name + '\">' +
         '<img class="img-rounded" src=\"' + thumb_url + '\" alt=\"...\">' +
         '<div class=\"caption\"><p><b>' + name +
-        '</b></p><div class="btn-group" role="group" aria-label="..."><button type="button"class="btn btn-info details" data-toggle="modal" data-target="#myModal">Λεπτομέρειες</button>  <button type="button"class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></div>    ' +
+        '</b></p><div class="btn-group" role="group" aria-label="..."><button type="button"class="btn btn-info details hidden-xs" data-toggle="modal" data-target="#myModal">Λεπτομέρειες</button>  <button type="button"class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></div>    ' +
         '</div>   ' +
         '</div>';
 	}else{
 
-	 return html = '   <div class=\"thumbnail\" id=\"' + name + '\">' +
+	 return html = '   <div class=\"thumbnail clearfix\" id=\"' + name + '\">' +
         '<img class="img-rounded" src=\"' + thumb_url + '\" alt=\"...\">' +
         '<div class=\"caption\"><p><b>' + name +
-        '</b></p><p><button type="button"class="btn btn-info details" data-toggle="modal" data-target="#myModal">Λεπτομέρειες</button> </p>    ' +
+        '</b></p><p><button type="button"class="btn btn-info details hidden-xs" data-toggle="modal" data-target="#myModal">Λεπτομέρειες</button> </p>    ' +
         '</div>   ' +
         '</div>';	
 	}
