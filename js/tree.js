@@ -1,10 +1,11 @@
-
+var buttonClicked=false;
 
 
 /*Functions that handle details and important taxon members*/
-
-$(document).on("click", ".details", function() {
-
+$(function() {
+	$(".details").unbind('click');
+$('.details').click(function(){
+console.log("in details")
 
     var name = getName($(this));
     var rank = getRank($(this));
@@ -19,6 +20,8 @@ $(document).on("click", ".details", function() {
  sessionStorage.setItem('rank',rank);
  
  $(".modal-title").text(title);	
+  $(".modal-title").quickfit();
+  
  $(".article").attr('onclick', 'showArticle("'+title+'")');
 $('#modalThumb').children('img').attr('src', img_url);
 
@@ -34,6 +37,7 @@ startLoading('#modalSum');
         name: name,
         success: summarySuccess
     });
+});
 });
 
 
@@ -110,7 +114,7 @@ function membersSuccess(_data) {
 
 	stopLoading('#membersList');
 	$('#membersList').html(animals_html)
- 
+	  $('#membersList').find('.caption p').quickfit();
 
 
 }
@@ -122,15 +126,37 @@ function membersSuccess(_data) {
 /*End of details functions*/
 
 /*Functions that make the tree*/
-$(document).on("click", ".open", function() {
+
+$(document).click("click", ".open", function() {
+	buttonClicked=!buttonClicked;
+	console.log(buttonClicked);
+	if(buttonClicked==true){
+	$('button').prop('disabled', true);
+	
+    // Do stuff once
+	
+	console.log("big screen")
+  
+if ($( window ).width() <= 480) {
+				  console.log("in 480 immediate");
+}
 
     var name = getName($(this));
 	sessionStorage.setItem('prevRankName',name)
 	//name.replace(/ /g,"_");
     var rank = getRank($(this));
 	selectRank($(this),rank);
+  if ($( window ).width() <= 480) {
+				 
+		console.log("prev rank is "+$("#" + rank).attr('id'))
+        var contents=$("#" + rank).detach();
+        $($("#" + rank).prev()).find('.selected').after(contents);
+		
+			  }
     var next_rank = $("#" + rank).next().attr('id') //get the next rank
 $("#" + rank).nextAll().html(""); // clear data of next ranks before adding new data
+
+
 startLoading('#'+next_rank);
 	
 
@@ -138,7 +164,10 @@ startLoading('#'+next_rank);
 
 	
     executeQuery(query, next_rank, name);
+	}
+	return false;
 });
+
 
 function executeQuery(query, rank, name,callback) {
 
@@ -175,15 +204,20 @@ function openSuccess(_data) {
 
 
            $("#" + rank).append(html);
- sessionStorage.setItem('treePage',$('#tree_container').html());
-
+		     
         }
-    } else {
+		$("#" + rank).find('.caption p').quickfit();
+	sessionStorage.setItem('treePage',$('#tree_container').html());	
+	
+
+			  
+			  
+		} else {
 
         $("#" + rank).append("</br>No results!");
     }
 
-
+$('button').prop('disabled', false);
 }
 function openError(){
 	console.log("error");
@@ -291,7 +325,7 @@ function thumbHtml(name, thumb_url,rank) {
 	 return html = '   <div class=\"thumbnail clearfix\" id=\"' + name + '\">' +
         '<img class="img-rounded" src=\"' + thumb_url + '\" alt=\"...\">' +
         '<div class=\"caption\"><p><b>' + name +
-        '</b></p><p><button type="button"class="btn btn-info details hidden-xs" data-toggle="modal" data-target="#myModal">Λεπτομέρειες</button> </p>    ' +
+        '</b></p><button type="button"class="btn btn-info details hidden-xs" data-toggle="modal" data-target="#myModal">Λεπτομέρειες</button>' +
         '</div>   ' +
         '</div>';	
 	}

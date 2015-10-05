@@ -23,6 +23,11 @@
     <script src="plugins/jquery.min.js"></script>
     <script src="plugins/jquery_ui/jquery-ui.min.js"></script>
     <script src="js/navigation.js"></script>
+	
+	  <script src="plugins/bootstrap_7_col/js/bootstrap.min.js"></script> <!-- Script that handles tree functions-->
+     <script src="js/queries.js"></script> <script src="js/tree.js"></script> 
+	 
+	 <script src="plugins/jquery-quickfit/jquery.quickfit.js"></script> <script src="js/tree.js"></script> 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -146,7 +151,7 @@
                         <p><b>Plant</b></p>
 
                       	<div class="btn-group" role="group" aria-label="...">
-                        <button type="button"class="btn btn-info details hidden-xs">Λεπτομέρειες</button> 
+                        <button type="button"class="btn btn-info details hidden-xs" data-toggle="modal" data-target="#myModal">Λεπτομέρειες</button> 
 						
 						<button type="button" class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button>
 						</div>
@@ -194,8 +199,10 @@
 	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="plugins/bootstrap_7_col/js/bootstrap.min.js"></script> <!-- Script that handles tree functions-->
-     <script src="js/queries.js"></script> <script src="js/tree.js"></script> <script>
+  
+	 <script>
+$(".details").unbind('click');
+$(".open").unbind('click');
 if (sessionStorage.getItem('treePage')!=undefined){
     $('#tree_container').html(sessionStorage.getItem('treePage'));
     }
@@ -211,32 +218,71 @@ if (sessionStorage.getItem('treePage')!=undefined){
         $(".glyphicon-menu-right").addClass("glyphicon-plus-sign");
         $(".glyphicon-menu-right").removeClass("glyphicon-menu-right");
         
+		if( $('#kingdom').find('.selected').length){
+		
         contents=$('#phylum').detach();
         $('#kingdom').find('.selected').after(contents);
-       
+		}
+       if( $('#phylum').find('.selected').length){
        contents=$('#class').detach();
         $('#phylum').find('.selected').after(contents);
-        
+        }
+		
+		if( $('#class').find('.selected').length){
         contents=$('#order').detach();
         $('#class').find('.selected').after(contents);
-        
+        }
+		
+		if( $('#order').find('.selected').length){
         contents=$('#family').detach();
         $('#order').find('.selected').after(contents);
-        
+		}
+		
+		
+		
+        if( $('#family').find('.selected').length){
         contents=$('#genus').detach();
         $('#family').find('.selected').after(contents);
-        
+		}
+        if( $('#genus').find('.selected').length){
         contents=$('#species').detach();
         $('#genus').find('.selected').after(contents);
-      
+      }
         
     } else {
 	
  $(".glyphicon-plus-sign").addClass("glyphicon-menu-right");
         $(".glyphicon-plus-sign").removeClass("glyphicon-plus-sign");
+		
+		contents=$('#phylum').detach();
+		$('#tree_container').children('.col-md-1:nth-child(1)').after(contents)
+		
+		contents=$('#class').detach();
+		$('#tree_container').children('.col-md-1:nth-child(2)').after(contents)
+		
+		contents=$('#order').detach();
+		$('#tree_container').children('.col-md-1:nth-child(3)').after(contents)
+		
+		
+		
+		contents=$('#family').detach();
+		$('#tree_container').children('.col-md-1:nth-child(4)').after(contents)
+		
+		contents=$('#genus').detach();
+		$('#tree_container').children('.col-md-1:nth-child(5)').after(contents)
+		
+		contents=$('#species').detach();
+		$('#tree_container').children('.col-md-1:nth-child(6)').after(contents)
+		
+		
+		
     }
 }
 
+ $(function() {
+    $('.caption p').quickfit();
+  });
+  
 $(function () {
     var onLoadWidth = $(window).width();
     ChangeDiv(onLoadWidth);
