@@ -70,7 +70,7 @@ li>.thumbnail img{
 
 .thumbnail{
 	background-color: #1f7916;
-background-image: url(http://www.transparenttextures.com/patterns/light-wool.png);
+background-image: url(../../../assets/light-wool.png);
 /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 	
 	}
@@ -78,7 +78,7 @@ background-image: url(http://www.transparenttextures.com/patterns/light-wool.png
 .navbar-default {
 		    
 	background-color: #94821b;
-background-image: url(http://www.transparenttextures.com/patterns/wavecut.png);	
+background-image: url(../../../assets/wavecut.png);
 		
 	}
 	.navbar-default{
@@ -95,7 +95,7 @@ background-image: url(http://www.transparenttextures.com/patterns/wavecut.png);
 body,.modal-content{
 	background-color: #decc66;
 background-color: #decc66;
-background-image: url(http://www.transparenttextures.com/patterns/wavecut.png);
+background-image: url(../../../assets/wavecut.png);
 /* This is mostly in#decc66tended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 	color:#334433;
 	border-radius:5px;
@@ -112,7 +112,7 @@ background-image: url(http://www.transparenttextures.com/patterns/wavecut.png);
 
 .selected{
 background-color: #1f7916;
-background-image: url(http://www.transparenttextures.com/patterns/light-wool.png);
+background-image: url(../../../assets/light-wool.png);
 /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 html {
