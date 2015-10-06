@@ -15,7 +15,7 @@ console.log("in details")
 	name =name.replace(/ /g,"_");
 
     var img_url = $(this).closest('.thumbnail').find('img').attr('src');
-
+	img_url=getImg300(img_url);
     var title = $(this).closest('.thumbnail').find('.caption').children().first().text();
     query = getSummaryQuery(name);
 
@@ -164,7 +164,7 @@ startLoading('#'+next_rank);
           var mobilePlace=$(this).parent().parent().parent(); 
 		 
         var contents=$("#" + next_rank).detach(); 
-        //$(this).closest('.thumbnail').after(contents);
+      
      mobilePlace.after(contents);
 		
 			  }
@@ -207,7 +207,7 @@ function openSuccess(_data) {
 				if (results[i].thumb==undefined){
 				thumb_url="assets/no_img_thumb.jpg"}
 				else{
-				thumb_url = results[i].thumb.value;
+				thumb_url = shrinkImg200(results[i].thumb.value);
 				}
             var html = thumbHtml(name, thumb_url,rank);
 
@@ -358,6 +358,18 @@ function startLoading(container){
 }
 function stopLoading(container){
 	$(container).html("");
+}
+
+function shrinkImg200(thumb_url){
+	var shrinkedImg=thumb_url.replace('width=300','width=200');
+	return shrinkedImg;
+}
+
+
+
+function getImg300(thumb_url){
+	var bigImg=thumb_url.replace('width=100','width=300');
+	return bigImg;	
 }
 
     /*End of helper functions*/
