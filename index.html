@@ -1,297 +1,273 @@
 <!DOCTYPE html>
-
 <html lang="gr">
-<head>
-    <meta charset="UTF-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <head>
+        <meta charset="UTF-8">
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>
+            BioTaxonomy
+        </title><!-- Bootstrap -->
+        <link href="plugins/bootstrap_7_col/css/bootstrap.min.css" rel=
+        "stylesheet">
+        <link href="favicon.ico" rel="shortcut icon">
+        <link href="favicon.ico" rel="icon">
+        <link href="plugins/bootstrap_7_col/css/custom.css" rel="stylesheet">
+        <script language="javascript" src="rank0.json" type="text/javascript"></script>
+        <script src="plugins/jquery.min.js"></script>
+        <script src="js/navigation.js"></script>
+        <script src="plugins/bootstrap_7_col/js/bootstrap.min.js"></script><!-- Script that handles tree functions-->
 
-    <title>BioTaxonomy</title><!-- Bootstrap -->
-    <link href="plugins/bootstrap_7_col/css/bootstrap.min.css" rel=
-    "stylesheet">
-<link rel="shortcut icon" href="favicon.ico">
-
-<link rel="icon" href="favicon.ico">
-	
-  
-	<link href="plugins/bootstrap_7_col/css/custom.css" rel=
-    "stylesheet">
-    <script language="javascript" src="rank0.json" type="text/javascript"></script>
-    <script src="plugins/jquery.min.js"></script>
-  
-    <script src="js/navigation.js"></script>
-	
-	  <script src="plugins/bootstrap_7_col/js/bootstrap.min.js"></script> <!-- Script that handles tree functions-->
-     <script src="js/queries.js"></script> <script src="js/tree.js"></script> 
-	 
-	 <script src="plugins/jquery-quickfit/jquery.quickfit.js">
-   </script> <script src="js/tree.js"></script> 
+        <script src="js/queries.js"></script>
+        <script src="js/tree.js"></script>
+        <script src="plugins/jquery-quickfit/jquery.quickfit.js"></script>
+        <script src="js/tree.js"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	  
+      
     <![endif]-->
-
-</head>
-
-<body style="padding-top: 70px;">
-    <!-- Fixed navbar -->
-
-    <nav class="navbar navbar-default navbar-fixed-top">
+    </head>
+    <body style="padding-top: 70px;">
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle collapsed" data-target=
+                    "#navbar" data-toggle="collapse" type="button"><span class=
+                    "sr-only">Toggle navigation</span> <span class=
+                    "icon-bar"></span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span></button> <a class=
+                    "navbar-brand" href="index.html"><img src=
+                    'assets/biotaxonomy_logo_100px.png' style=
+                    "height:30px;width:35px;"></a> <a class=
+                    "navbar-brand hidden-xs" href="index.html">BioTaxonomy</a>
+                    <form class="navbar-form collapsed navbar-right visible-xs"
+                    onsubmit="return false">
+                        <div class="input-group">
+                            <input class="form-control" id="searchBox"
+                            placeholder="Search" type="text">
+                            <div class="input-group-btn">
+                                <button class=
+                                "btn btn-default glyphicon glyphicon-search"
+                                onclick="searchTree();" style=
+                                "font-style: italic"></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="javascript:showAbout();">About</a>
+                        </li>
+                        <li>
+                            <a href="javascript:changeLanguage();">en/gr</a>
+                        </li>
+                        <li>
+                            <form class=
+                            "navbar-form collapsed navbar-right hidden-xs"
+                            onsubmit="return false">
+							
+							
+		
+							
+							
+							
+                                <div class="input-group">
+                                    <input class="form-control" id="searchBox"
+                                    placeholder="Search" type="text">
+                                    <div class="input-group-btn">
+                                        <button class=
+                                        "btn btn-default "
+                                        onclick="searchTree();" style=
+                                        "font-style: italic"><span class="glyphicon glyphicon-search"></span></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
         <div class="container">
-            <div class="navbar-header">
-                <button class="navbar-toggle collapsed" data-target="#navbar"
-                data-toggle="collapse" type="button"><span class=
-                "sr-only">Toggle navigation</span> <span class=
-                "icon-bar"></span> <span class="icon-bar"></span> <span class=
-                "icon-bar"></span></button>
-				<a class="navbar-brand" href="index.html"><img src='assets/biotaxonomy_logo_100px.png' style="height:30px;width:35px;"></img></a>
-				<a class="navbar-brand" href="index.html">BioTaxonomy</a>
-				   <form class="navbar-form collapsed navbar-right visible-xs" role="search" onsubmit="return false">
-        <div class="input-group">
-            <input type="text" id="searchBox"class="form-control" placeholder="Search" >
-            <div class="input-group-btn">
-                <button class="btn btn-default"  onclick="searchTree();"><i class="glyphicon glyphicon-search"></i></button>
-            </div>
-        </div>
-        </form>
-            </div>
-
-            <div class="navbar-collapse collapse" id="navbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="javascript:showAbout();">About</a>
-                    </li>
-
-                    <li>
-                        <a href="javascript:changeLanguage();">en/gr</a>
-                    </li>
-
-                    <li >
-                     <form class="navbar-form collapsed navbar-right hidden-xs" role="search" onsubmit="return false">
-        <div class="input-group">
-            <input type="text" id="searchBox"class="form-control" placeholder="Search" >
-            <div class="input-group-btn">
-                <button class="btn btn-default"  onclick="searchTree();"><i class="glyphicon glyphicon-search"></i></button>
-            </div>
-        </div>
-        </form>
-                    </li>
-
-                   
-                </ul>
-            </div><!--/.nav-collapse -->
-        </div>
-    </nav>
-
-    <div class="container">
-
-        <div class="row seven-cols text-center hidden-xs" id="titleRow">
-         
-
-            <div class="col-md-1">
-               <div class="rankHead">Βασίλειο</div>
-            </div>
-
-            <div class="col-md-1">
-               <span class="rankHead">Συνομοταξία </span>
-            </div>
-
-            <div class="col-md-1">
-               <span class="rankHead">Ομοταξία </span>
-            </div>
-
-            <div class="col-md-1">
-                <span class="rankHead">Τάξη</span>
-            </div>
-
-            <div class="col-md-1">
-              <span class="rankHead">Οικογένεια</span>
-            </div>
-
-            <div class="col-md-1">
-               <span class="rankHead">Γένος</span>
-            </div>
-
-            <div class="col-md-1">
-               <span class="rankHead">Είδος</span>
-            </div>
-			
-        </div>
-
-        <div class="row seven-cols text-center" id="tree_container">
-            <div class="col-md-1" id="kingdom">
-                <div class="thumbnail clearfix" id="Animal">
-                    <img class="img-rounded" alt="Animals" src=
-                    "https://upload.wikimedia.org/wikipedia/commons/1/14/Animal_diversity.png">
-
-                    <div class="caption">
-                        <p><b>Animal</b></p>
-						
-						<div class="btn-group" role="group" aria-label="...">
-                        <button type="button"class="btn btn-info details hidden-xs" data-toggle="modal" data-target="#myModal">Λεπτομέρειες</button> 
-						
-						<button type="button" class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button>
-					
-						        
+       
+            <div class="row seven-cols text-center" id="tree_container">
+                <div class="col-sm-1" id="kingdom">
+				 <div class="rankHead"> Βασίλειο</div>
+                    <div class="thumbnail clearfix" id="Animal">
+                        <img alt="Animals" class="img-rounded" src=
+                        "https://upload.wikimedia.org/wikipedia/commons/1/14/Animal_diversity.png">
+                        <div class="caption">
+                            <p><b>Animal</b></p>
+                            <div class="btn-group">
+                                <button class="btn btn-info details hidden-xs  "
+                                data-target="#myModal" data-toggle="modal"
+                                type="button"><span class=
+                                "glyphicon glyphicon-search hidden-lg "></span><span class="visible-lg">Λεπτομέρειες</span></button>
+								
+                                <button class="btn btn-default open" type=
+                                "button"><span class=
+                                "glyphicon glyphicon-menu-right"></span></button>
+                            </div>
+                        </div>
                     </div>
-	
+                    <div class="thumbnail clearfix" id="Plant">
+                        <img alt="Plant" class="img-rounded" src=
+                        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Diversity_of_plants_image_version_5.png/161px-Diversity_of_plants_image_version_5.png">
+                        <div class="caption">
+                            <p><b>Plant</b></p>
+                            <div class="btn-group">
+                                <button class="btn btn-info details hidden-xs "
+                                data-target="#myModal" data-toggle="modal"
+                                type="button"><span class=
+                                "glyphicon glyphicon-search hidden-lg "></span><span class="visible-lg">Λεπτομέρειες</span></button>
+                                <button class="btn btn-default open" type=
+                                "button"><span class=
+                                "glyphicon glyphicon-menu-right"></span></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="thumbnail clearfix" id="Plant">
-                    <img class="img-rounded"  alt="Plant" src=
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Diversity_of_plants_image_version_5.png/161px-Diversity_of_plants_image_version_5.png">
-
-                    <div class="caption">
-                        <p><b>Plant</b></p>
-
-                      	<div class="btn-group" role="group" aria-label="...">
-                        <button type="button"class="btn btn-info details hidden-xs" data-toggle="modal" data-target="#myModal">Λεπτομέρειες</button> 
-						
-						<button type="button" class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button>
-						</div>
+                <div class="col-sm-1 " id="phylum"><div class="rankHead">Συνομοταξία</div ></div>
+                <div class="col-sm-1 " id="class"><div  class="rankHead">Ομοταξία</div ></div>
+                <div class="col-sm-1 " id="order"><div  class="rankHead">Τάξη</div ></div>
+                <div class="col-sm-1 " id="family"><div  class="rankHead">Οικογένεια</div ></div>
+                <div class="col-sm-1 " id="genus"><div class="rankHead">Γένος</div ></div>
+                <div class="col-sm-1 " id="species"><div  class="rankHead">Είδος</div ></div>
+            </div>
+        </div>
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <button class="close" data-dismiss="modal" type=
+                        "button">&times;</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="thumbnail" id="modalThumb">
+                            <img src="">
+                            <div class="caption"></div>
+                        </div>
+                        <p class="text-justify" id="modalSum"></p>
+                        <p class="text-center">
+                            <a class="btn btn-info article" href="#">Δείτε το
+                            πλήρες άρθρο</a>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <ul class="list-inline text-center" id="membersList">
+                        </ul>
                     </div>
                 </div>
             </div>
+        </div><!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script>
 
-            <div class="col-md-1" id="phylum"></div>
 
-            <div class="col-md-1" id="class"></div>
+        if (sessionStorage.getItem('treePage')!=undefined){
+        $('#tree_container').html(sessionStorage.getItem('treePage'));
+        }
 
-            <div class="col-md-1" id="order"></div>
+        $(document).ajaxError(function(){
+        alert("An error occurred!");
+        });
 
-            <div class="col-md-1" id="family"></div>
 
-            <div class="col-md-1" id="genus"></div>
-
-            <div class="col-md-1" id="species"></div>
-        </div>
-    </div>
-
- <div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-   <div class="modal-content">
-      <div class="modal-header text-center">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"></h4>
-      </div>
-      <div class="modal-body ">
-        
-		<div class="thumbnail" id="modalThumb"><img src=""> <div class="caption"></div></div>
-		
-		<p id="modalSum" class="text-justify"></p>
-		<p class="text-center"><button type="button" class="btn btn-info article" onclick="">Δείτε το πλήρες άρθρο</button></p>
-		
-      </div>
-      <div class="modal-footer">
-       <ul class="list-inline text-center" id="membersList"></ul> 
-      </div>
-    </div>
-
-  </div>
-</div>
-
+        function ChangeDiv(width){
+		if (width <= 1200) {
+		$('button').addClass('btn-lg');
+		//$('.input-group').addClass('input-group-lg');
+		}else{
+		$('button').removeClass('btn-lg');
+		}
 	
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-  
-	 <script>
-
-
-if (sessionStorage.getItem('treePage')!=undefined){
-    $('#tree_container').html(sessionStorage.getItem('treePage'));
-    }
-
-    $(document).ajaxError(function(){
-    alert("An error occurred!");
-    });
-    
-    
-    function ChangeDiv(width){
-    if (width <= 480) {
-	       var contents='';
+		
+        if (width <= 480) {
+$('.caption p').quickfit();
+		var contents='';
         $(".glyphicon-menu-right").addClass("glyphicon-plus-sign");
         $(".glyphicon-menu-right").removeClass("glyphicon-menu-right");
-        
-		if( $('#kingdom').find('.selected').length){
-		
+
+        if( $('#kingdom').find('.selected').length){
+
         contents=$('#phylum').detach();
         $('#kingdom').find('.selected').after(contents);
-		}
-       if( $('#phylum').find('.selected').length){
-       contents=$('#class').detach();
+        }
+        if( $('#phylum').find('.selected').length){
+        contents=$('#class').detach();
         $('#phylum').find('.selected').after(contents);
         }
-		
-		if( $('#class').find('.selected').length){
+
+        if( $('#class').find('.selected').length){
         contents=$('#order').detach();
         $('#class').find('.selected').after(contents);
         }
-		
-		if( $('#order').find('.selected').length){
+
+        if( $('#order').find('.selected').length){
         contents=$('#family').detach();
         $('#order').find('.selected').after(contents);
-		}
-		
-		
-		
+        }
+
+
+
         if( $('#family').find('.selected').length){
         contents=$('#genus').detach();
         $('#family').find('.selected').after(contents);
-		}
+        }
         if( $('#genus').find('.selected').length){
         contents=$('#species').detach();
         $('#genus').find('.selected').after(contents);
-      }
-        
-    } else {
-	
- $(".glyphicon-plus-sign").addClass("glyphicon-menu-right");
+        }
+
+        } else {
+
+        $(".glyphicon-plus-sign").addClass("glyphicon-menu-right");
         $(".glyphicon-plus-sign").removeClass("glyphicon-plus-sign");
-		
-		contents=$('#phylum').detach();        
-		$('#tree_container').children('.col-md-1:nth-child(1)').after(contents)
-		
-		contents=$('#class').detach();
-		$('#tree_container').children('.col-md-1:nth-child(2)').after(contents)
-		
-		contents=$('#order').detach();
-		$('#tree_container').children('.col-md-1:nth-child(3)').after(contents)
-		
-		
-		
-		contents=$('#family').detach();
-		$('#tree_container').children('.col-md-1:nth-child(4)').after(contents)
-		
-		contents=$('#genus').detach();
-		$('#tree_container').children('.col-md-1:nth-child(5)').after(contents)
-		
-		contents=$('#species').detach();
-		$('#tree_container').children('.col-md-1:nth-child(6)').after(contents)
-		
-		
-		
-    }
-}
 
- $(function() {
- $('button').prop('disabled', false);
+        contents=$('#phylum').detach();        
+        $('#tree_container').children('.col-sm-1:nth-child(1)').after(contents)
 
-    $('.caption p').quickfit();
-  });
-  
-$(function () {
-    var onLoadWidth = $(window).width();
-    ChangeDiv(onLoadWidth);
-    $(window).resize(function () {
+        contents=$('#class').detach();
+        $('#tree_container').children('.col-sm-1:nth-child(2)').after(contents)
+
+        contents=$('#order').detach();
+        $('#tree_container').children('.col-sm-1:nth-child(3)').after(contents)
+
+
+
+        contents=$('#family').detach();
+        $('#tree_container').children('.col-sm-1:nth-child(4)').after(contents)
+
+        contents=$('#genus').detach();
+        $('#tree_container').children('.col-sm-1:nth-child(5)').after(contents)
+
+        contents=$('#species').detach();
+        $('#tree_container').children('.col-sm-1:nth-child(6)').after(contents)
+
+
+
+        }
+        }
+
+        $(function() {
+        $('button').prop('disabled', false);
+
+        $('.caption p').quickfit();
+        });
+
+        $(function () {
+        var onLoadWidth = $(window).width();
+        ChangeDiv(onLoadWidth);
+        $(window).resize(function () {
         var resizeWidth = $(window).width();
         ChangeDiv(resizeWidth);
-    });
-})
-    </script>
-</body>
+        });
+        })
+        </script>
+    </body>
 </html>

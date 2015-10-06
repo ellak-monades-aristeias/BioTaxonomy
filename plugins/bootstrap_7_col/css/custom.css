@@ -1,191 +1,220 @@
-
-#titleRow{
-
-margin-bottom:10px;
-padding-bottom:5px;
-padding-top:15px;
-margin-top:-18px;
-line-height:0.5;
-font-size:18px;
+.rankHead {
+    margin-top: -10px;
+    margin-bottom: 5px;
+    font-size: 18px
 }
 
 img {
-          display: block;
-          height: auto;
-          max-width: 100%;
-   }
-
-.details ,.open{
-	padding:2px 5px;
+    display: block;
+    height: auto;
+    max-width: 100%
 }
 
-.caption p{
-
-	border: 1px solid #094004;
-	padding-top:3px;
-	padding-bottom:3px;
-	
+.details,.open {
+    padding: 2px 5px
 }
 
-.thumbnail{
+.caption p {
+    border: 1px solid #094004;
+    padding-top: 3px;
+    padding-bottom: 3px
+}
+
+.thumbnail {
     border: 2px solid #12540B;
-	margin-bottom:10px;
-	padding:4px 4px 0px;
+    margin-bottom: 10px;
+    padding: 4px 4px 0
 }
-.thumbnail .caption{
-	padding-top:9px;
-	padding-bottom:9px;
-	padding-left:0px;
-	padding-right:0px;
+
+.thumbnail .caption {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 0;
+    padding-right: 0
 }
 
 .thumbnail img {
-min-height:100px; 
-height:100px;
- border: 1px solid #094004;
+    min-height: 100px;
+    height: 100px;
+    border: 1px solid #094004
+}
 
- }
- 
-li>.thumbnail img{
-	 min-width:100px;
- width:100px;
- }
+li>.thumbnail img {
+    min-width: 100px;
+    width: 100px
+}
 
 .ui-dialog .ui-dialog-title {
     float: left;
     margin: .1em 16px .1em 0;
     text-align: center;
-    width: 100%;
-}
-.ui-front{
-   z-index: 1060;
+    width: 100%
 }
 
+.ui-front {
+    z-index: 1060
+}
 
-#modalThumb img{
-	max-height:300px;
-	height:auto;
-	}
+#modalThumb img {
+    max-height: 300px;
+    height: auto
+}
 
-
-.thumbnail{
-	background-color: #1f7916;
-background-image: url(../../../assets/light-wool.png);
-/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-	
-	}
+.thumbnail {
+    background-color: #1f7916;
+    background-image: url(../../../assets/light-wool.png)
+}
 
 .navbar-default {
-		    
-	background-color: #94821b;
-background-image: url(../../../assets/wavecut.png);
-		
-	}
-	.navbar-default{
-	border-color: #D2BD4A;
-	    color: #334433;
-	
-	}
-	.navbar-default .navbar-brand,.navbar-default .navbar-nav>li>a{
-		    color: #334433;
-	}
-.navbar-fixed-top{
-	    border-width: 0 0 3px;
-}
-body,.modal-content{
-	background-color: #decc66;
-background-color: #decc66;
-background-image: url(../../../assets/wavecut.png);
-/* This is mostly in#decc66tended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-	color:#334433;
-	border-radius:5px;
+    background-color: #94821b;
+    background-image: url(../../../assets/wavecut.png)
 }
 
-.caption p{
-	
-	background-color: #decb3e;
-	border-radius:5px;
-	color:#334433;
-
-/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+.navbar-default {
+    border-color: #D2BD4A;
+    color: #343
 }
 
-.selected{
-background-color: #1f7916;
-background-image: url(../../../assets/light-wool.png);
-/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+.navbar-default .navbar-brand,.navbar-default .navbar-nav>li>a {
+    color: #343
 }
+
+.navbar-fixed-top {
+    border-width: 0 0 3px
+}
+
+body,.modal-content {
+    background-color: #decc66;
+    background-image: url(../../../assets/wavecut.png);
+    color: #343;
+    border-radius: 5px
+}
+
+.caption p {
+    background-color: #decb3e;
+    border-radius: 5px;
+    color: #343
+}
+
+.selected {
+    background-color: #1f7916;
+    background-image: url(../../../assets/light-wool.png)
+}
+
 html {
-	overflow-y: scroll; 
-}
-.btn-info{
-background-color:#DDBB22;
-	border-color:#DDBB22;
-	color:#334433;
+    overflow-y: scroll
 }
 
-.caption .open{
-color:#334433;	
+.btn-info {
+    background-color: #DB2;
+    border-color: #DB2;
+    color: #343
 }
 
-.modal-body{
-	padding:30px;
-}
-.modal-header{
-	border-color:#8C5607;
-	    border-bottom: 3px solid #8C5607;
+.caption .open {
+    color: #343
 }
 
-.modal-footer{
-	border-color:#8C5607;
-	    border-top: 3px solid #8C5607;
+.modal-body {
+    padding: 30px
+}
+
+.modal-header {
+    border-color: #8C5607;
+    border-bottom: 3px solid #8C5607
+}
+
+.modal-footer {
+    border-color: #8C5607;
+    border-top: 3px solid #8C5607
 }
 
 .glyphicon-refresh-animate {
     -animation: spin .7s infinite linear;
-    -webkit-animation: spin2 .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear
 }
 
 @-webkit-keyframes spin2 {
-    from { -webkit-transform: rotate(0deg);}
-    to { -webkit-transform: rotate(360deg);}
+from {
+    -webkit-transform: rotate(0deg)
+}
+
+to {
+    -webkit-transform: rotate(360deg)
+}
 }
 
 @keyframes spin {
-    from { transform: scale(1) rotate(0deg);}
-    to { transform: scale(1) rotate(360deg);}
+from {
+    transform: scale(1) rotate(0deg)
+}
+
+to {
+    transform: scale(1) rotate(360deg)
+}
 }
 
 @media only screen and (max-width : 480px) {
-.thumbnail{
-padding:4px;
+.thumbnail {
+    padding: 4px
 }
 
-.caption{
-margin-top:8px;
+.caption {
+    margin-top: 8px
 }
 
- .thumbnail img {
- float:left;
-    min-height:60px; 
-    height:60px;
-    max-width:20%;
-    width:20%;
- }
- .caption p{
- float:left;
- width:60%;
- text-align:left;
- margin-left:10px;
- padding-left:5px;
- 
+.thumbnail img {
+    float: left;
+    min-height: 60px;
+    height: 60px;
+    max-width: 20%;
+    width: 20%
+}
 
- }
- .caption>.btn-group{
- float:right;
- margin-right:10px;
- 
- } 
+.caption p {
+    float: left;
+    width: 60%;
+    text-align: left;
+    margin-left: 10px;
+    padding-left: 5px
+}
+
+.caption>.btn-group {
+    float: right;
+    margin-right: 10px
+}
+}
+
+@media only screen and (max-width : 768px) {
+.navbar-default .navbar-collapse,.navbar-default .navbar-form {
+    margin-bottom: -2px;
+    border: 0
+}
+
+.navbar-default .navbar-toggle {
+    border: 0
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #343
+}
+
+.rankHead {
+    margin-top: 0px;
 
 }
 
+
+}
+@media only screen and (max-width : 992px) and  (min-width : 480px){
+
+.row{
+	width:1270px;
+	}
+	.col-sm-1{
+	display: inline-block;
+    float: left;
+    width: 180px;
+	}
+	
+}
