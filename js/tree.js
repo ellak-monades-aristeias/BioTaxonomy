@@ -143,10 +143,8 @@ function openSuccess(_data) {
                 thumb_url = shrinkImg200(results[i].thumb.value);
             }
             var html = thumbHtml(name, thumb_url, rank);
-			console.log(html);
-			console.log("rank is"+"#" + rank+">div")
          $("#" + rank ).append(html);
-		 //$( "<p>Test</p>" ).insertAfter( ".inner" );
+		
         }
         $("#" + rank).find('.caption p').quickfit();
         sessionStorage.setItem('treePage', $('#tree_container').html());
@@ -246,16 +244,23 @@ function getRank(obj) {
 }
 
 function thumbHtml(name, thumb_url, rank) {
+	 var buttonStart='';
+	 var buttonEnd='';
+	 if ($(window).width() <= 480) {
+	buttonStart='<button class="btn btn-info details" data-target="#myModal" data-toggle="modal" type="button">';
+	 buttonEnd='</button>';
+	 }
+
     if (rank != "species") {
         return html = '   <div class=\"thumbnail clearfix\" id=\"' + name +
-            '\">' + '<img class="img-rounded" src=\"' + thumb_url +
-            '\" alt=\"...\">' + '<div class=\"caption\"><p><b>' + name +
+            '\">' + buttonStart+'<img class="img-rounded" src=\"' + thumb_url +
+            '\" alt=\"...\">' +buttonEnd+ '<div class=\"caption\"><p><b>' + name +
             '</b></p><div class="btn-group" role="group" aria-label="..."> <button class="btn btn-info details hidden-xs "data-target="#myModal" data-toggle="modal"type="button"><span class="glyphicon glyphicon-search hidden-lg "></span><span class="visible-lg">Λεπτομέρειες</span></button>  <button type="button"class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></div>' +
             '</div>   ' + '</div>';
     } else {
         return html = '   <div class=\"thumbnail clearfix\" id=\"' + name +
-            '\">' + '<img class="img-rounded" src=\"' + thumb_url +
-            '\" alt=\"...\">' + '<div class=\"caption\"><p><b>' + name +
+            '\">' + buttonStart+'<img class="img-rounded" src=\"' + thumb_url +
+            '\" alt=\"...\">' + buttonEnd+'<div class=\"caption\"><p><b>' + name +
             '</b></p> <button class="btn btn-info details hidden-xs "data-target="#myModal" data-toggle="modal"type="button"><span class="glyphicon glyphicon-search hidden-lg "></span><span class="visible-lg">Λεπτομέρειες</span></button>' +
             '</div>   ' + '</div>';
     }

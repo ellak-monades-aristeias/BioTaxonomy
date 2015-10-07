@@ -70,10 +70,7 @@
                             <form class=
                             "navbar-form collapsed navbar-right hidden-xs"
                             onsubmit="return false">
-							
-							
-		
-							
+					
 							
 							
                                 <div class="input-group">
@@ -98,7 +95,8 @@
                 <div class="col-sm-1" id="kingdom">
 				 <div class="rankHead"> Βασίλειο</div>
                     <div class="thumbnail clearfix" id="Animal">
-                        <img alt="Animals" class="img-rounded" src=
+					
+						<img alt="Animals" class="img-rounded" src=
                         "https://upload.wikimedia.org/wikipedia/commons/1/14/Animal_diversity.png">
                         <div class="caption">
                             <p><b>Animal</b></p>
@@ -115,7 +113,7 @@
                         </div>
                     </div>
                     <div class="thumbnail clearfix" id="Plant">
-                        <img alt="Plant" class="img-rounded" src=
+						<img alt="Plant" class="img-rounded" src=
                         "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Diversity_of_plants_image_version_5.png/161px-Diversity_of_plants_image_version_5.png">
                         <div class="caption">
                             <p><b>Plant</b></p>
@@ -179,16 +177,14 @@
 
 
         function ChangeDiv(width){
-		if (width <= 1200) {
-		$('button').addClass('btn-lg');
-		//$('.input-group').addClass('input-group-lg');
-		}else{
-		$('button').removeClass('btn-lg');
-		}
+	
 	
 		
         if (width <= 480) {
-$('.caption p').quickfit();
+		
+		//put img in button
+		 $( ".thumbnail>img" ).wrap( '<button class="btn btn-info details" data-target="#myModal" data-toggle="modal" type="button"> </button>');
+
 		var contents='';
         $(".glyphicon-menu-right").addClass("glyphicon-plus-sign");
         $(".glyphicon-menu-right").removeClass("glyphicon-menu-right");
@@ -225,6 +221,9 @@ $('.caption p').quickfit();
         }
 
         } else {
+//remove img from button
+$( "button>.img-rounded" ).unwrap();
+
 
         $(".glyphicon-plus-sign").addClass("glyphicon-menu-right");
         $(".glyphicon-plus-sign").removeClass("glyphicon-plus-sign");
