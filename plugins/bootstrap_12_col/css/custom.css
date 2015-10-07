@@ -10,9 +10,17 @@ img {
    
 body { overflow-x: hidden;}
 
+.table>tbody>tr>td{
+	border-top:0px;
+}
+
 #titleRow{
-border-bottom:1px solid;
-border-color:#e7e7e7;
+
+    border-bottom: 2px solid;
+    border-color: rgba(234, 214, 113, 0.75);
+    background-color: rgba(241, 247, 145, 0.25);
+    margin-top: -20px;
+    padding-top: 15px;
 }
 
 #title{
@@ -41,11 +49,11 @@ table{
 	margin:.5em 0 1.3em 1.4em;
 }
 
-.nbs-wikiblurb h2{
-	margin-top:1em;
-	border-bottom:1px solid #aaa;
+.nbs-wikiblurb h2 {
+margin-top: 1em;
+border-bottom: 1px solid rgba(183, 138, 55, 0.36);
+	
 }
-
 #custom_info td{
 	padding:0px;
 	margin-bottom:5px;

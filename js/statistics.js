@@ -52,8 +52,8 @@
   var rank = sessionStorage.getItem('rank');
   var prevRank = getPrevRank(rank);
   query = getTotalQuery(prevRank, prevRankName, rank);
-  var dbUrl = "http://dbpedia.org/sparql"
-  var queryUrl = encodeURI(dbUrl + "?query=" + query + "&format=json");
+
+  var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
   $.ajax({
       dataType: "jsonp",
       url: queryUrl,
