@@ -61,7 +61,7 @@
                 <div class="navbar-collapse collapse" id="navbar">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="javascript:showAbout();">About</a>
+                            <a href="javascript:showAbout();"><span name="lbl" caption="about"></span></a>
                         </li>
                         <li>
                             <a href="javascript:changeLanguage();">en/gr</a>
@@ -93,7 +93,7 @@
        
             <div class="row seven-cols text-center" id="tree_container">
                 <div class="col-sm-1" id="kingdom">
-				 <div class="rankHead"> Βασίλειο</div>
+				 <div class="rankHead"><span name="lbl" caption="kingdom"></span></div>
                     <div class="thumbnail clearfix" id="Animal">
 					
 						<img alt="Animals" class="img-rounded" src=
@@ -104,7 +104,7 @@
                                 <button class="btn btn-info details hidden-xs  "
                                 data-target="#myModal" data-toggle="modal"
                                 type="button"><span class=
-                                "glyphicon glyphicon-search hidden-lg "></span><span class="visible-lg">Λεπτομέρειες</span></button>
+                                "glyphicon glyphicon-search hidden-lg "></span><span name="lbl" caption="details" class="visible-lg"></span></button>
 								
                                 <button class="btn btn-default open" type=
                                 "button"><span class=
@@ -129,12 +129,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-1 " id="phylum"><div class="rankHead">Συνομοταξία</div ></div>
-                <div class="col-sm-1 " id="class"><div  class="rankHead">Ομοταξία</div ></div>
-                <div class="col-sm-1 " id="order"><div  class="rankHead">Τάξη</div ></div>
-                <div class="col-sm-1 " id="family"><div  class="rankHead">Οικογένεια</div ></div>
-                <div class="col-sm-1 " id="genus"><div class="rankHead">Γένος</div ></div>
-                <div class="col-sm-1 " id="species"><div  class="rankHead">Είδος</div ></div>
+                <div class="col-sm-1 " id="phylum"><div class="rankHead"><span name="lbl" caption="phylum"></span></div ></div>
+                <div class="col-sm-1 " id="class"><div  class="rankHead"><span name="lbl" caption="class"></span></div ></div>
+                <div class="col-sm-1 " id="order"><div  class="rankHead"><span name="lbl" caption="order"></span></div ></div>
+                <div class="col-sm-1 " id="family"><div  class="rankHead"><span name="lbl" caption="family"></span></div ></div>
+                <div class="col-sm-1 " id="genus"><div class="rankHead">
+				<span name="lbl" caption="genus"></span></div ></div>
+                <div class="col-sm-1 " id="species"><div  class="rankHead"><span name="lbl" caption="species"></span></div ></div>
             </div>
         </div>
         <div class="modal fade" id="myModal">
@@ -152,8 +153,7 @@
                         </div>
                         <p class="text-justify" id="modalSum"></p>
                         <p class="text-center">
-                            <a class="btn btn-info article" href="#">Δείτε το
-                            πλήρες άρθρο</a>
+                            <a class="btn btn-info article" href="#"><span name="lbl" caption="full_article"></span></a>
                         </p>
                     </div>
                     <div class="modal-footer">

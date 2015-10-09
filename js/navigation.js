@@ -61,3 +61,16 @@ function goBack() {
     if (currPage == 'article.html') window.location.replace('index.html');
     window.history.back();
 }
+
+function changeLanguage(lang) {
+    var langResources = getLanguageResources()[lang];
+ 
+    $("span[name='lbl']").each(function (i, elt) {
+        $(elt).text(langResources[$(elt).attr("caption")]);
+    });
+}
+ 
+$(document).ready(function () {
+    $("input[name='radio-language']").click(function () {
+        changeLanguage($(this).val());
+    });
