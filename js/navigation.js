@@ -13,9 +13,6 @@ function showIndex() {
     window.location.replace('index.html');
 }
 
-function changeLanguage() {
-    console.log("TODO");
-}
 
 function searchTree() {
     //Load function from tree.js to make tree	
@@ -63,7 +60,9 @@ function goBack() {
 }
 
 function changeLanguage(lang) {
+	$('html').attr('lang',lang);
     var langResources = getLanguageResources()[lang];
+	sessionStorage.setItem('lang', lang);
  
     $("span[name='lbl']").each(function (i, elt) {
         $(elt).text(langResources[$(elt).attr("caption")]);

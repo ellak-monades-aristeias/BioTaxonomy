@@ -1,39 +1,35 @@
 function getLanguageResources() {
     var gr = new Array(); var en = new Array();
  
-    gr['about'] = "Σχετικά"; en['about'] = "settings";
-    gr['kingdom'] = "Βασίλειο"; en['kingdom'] = "Kingdom";
-    gr['phylum'] = "Συνομοταξία"; en['phylum'] = "Phylum";
-    gr['class'] = "Ομοταξία"; en['class'] = "Class";
-	gr['order'] = "Τάξη"; en['order'] = "Order";
-	gr['family'] = "Οικογένεια"; en['family'] = "Family";
-	gr['genus'] = "Γένος"; en['genus'] = "Genus";
-	gr['species'] = "Είδος"; en['species'] = "Species";
+    gr['about'] = "Ξ£Ο‡ΞµΟ„ΞΉΞΊΞ¬"; en['about'] = "About";
+    gr['kingdom'] = "Ξ’Ξ±ΟƒΞ―Ξ»ΞµΞΉΞΏ"; en['kingdom'] = "Kingdom";
+    gr['phylum'] = "Ξ£Ο…Ξ½ΞΏΞΌΞΏΟ„Ξ±ΞΎΞ―Ξ±"; en['phylum'] = "Phylum";
+    gr['class'] = "ΞΞΌΞΏΟ„Ξ±ΞΎΞ―Ξ±"; en['class'] = "Class";
+	gr['order'] = "Ξ¤Ξ¬ΞΎΞ·"; en['order'] = "Order";
+	gr['family'] = "ΞΞΉΞΊΞΏΞ³Ξ­Ξ½ΞµΞΉΞ±"; en['family'] = "Family";
+	gr['genus'] = "Ξ“Ξ­Ξ½ΞΏΟ‚"; en['genus'] = "Genus";
+	gr['species'] = "Ξ•Ξ―Ξ΄ΞΏΟ‚"; en['species'] = "Species";
   
-    gr['kingdomPlural'] = "Βασίλεια"; en['kingdomPlural'] = "Kingdoms";
-    gr['phylumPlural'] = "Συνομοταξίες"; en['phylumPlural'] = "Phyla";
-    gr['classPlural'] = "Ομοταξίες"; en['classPlural'] = "Classes";
-	gr['orderPlural'] = "Τάξεις"; en['orderPlural'] = "Orders";
-	gr['familyPlural'] = "Οικογένειες"; en['familyPlural'] = "Families";
-	gr['genusPlural'] = "Γένη"; en['genusPlural'] = "Genera";
-	gr['speciesPlural'] = "Είδη"; en['speciesPlural'] = "Species";
+    gr['kingdomPlural'] = "Ξ’Ξ±ΟƒΞ―Ξ»ΞµΞΉΞ±"; en['kingdomPlural'] = "Kingdoms";
+    gr['phylumPlural'] = "Ξ£Ο…Ξ½ΞΏΞΌΞΏΟ„Ξ±ΞΎΞ―ΞµΟ‚"; en['phylumPlural'] = "Phyla";
+    gr['classPlural'] = "ΞΞΌΞΏΟ„Ξ±ΞΎΞ―ΞµΟ‚"; en['classPlural'] = "Classes";
+	gr['orderPlural'] = "Ξ¤Ξ¬ΞΎΞµΞΉΟ‚"; en['orderPlural'] = "Orders";
+	gr['familyPlural'] = "ΞΞΉΞΊΞΏΞ³Ξ­Ξ½ΞµΞΉΞµΟ‚"; en['familyPlural'] = "Families";
+	gr['genusPlural'] = "Ξ“Ξ­Ξ½Ξ·"; en['genusPlural'] = "Genera";
+	gr['speciesPlural'] = "Ξ•Ξ―Ξ΄Ξ·"; en['speciesPlural'] = "Species";
   
-	gr['full_article'] = "Δείτε το πλήρες άρθρο"; en['full_article'] = "Read full article";
-	gr['details'] = "Λεπτομέρειες"; en['details'] = "Details";
-   	gr['plant'] = "Φυτό"; en['plant'] = "Plant";
-   	gr['animal'] = "Ζώο"; en['animal'] = "Animal";
-    gr['return'] = "Επιστροφή"; en['return'] = "Return";
-   gr['wikiPage'] = "Σελίδα της Wikipedia"; en['wikiPage'] = "Wikipedia Page"; 
-   gr['articleTo'] = "Το"; en['articleTo'] = ""; 
-   gr['articleΗ'] = "H"; en['articleΗ'] = ""; 
-    gr['has'] = "έχει"; en['has'] = "has"; 
-    gr['withTotal'] = "με σύνολο"; en['withTotal'] = "with a total of"; 
-    gr['members'] = "μέλη"; en['members'] = "members"; 
-    
-    
-    
-    
-    
+	gr['full_article'] = "Ξ”ΞµΞ―Ο„Ξµ Ο„ΞΏ Ο€Ξ»Ξ®ΟΞµΟ‚ Ξ¬ΟΞΈΟΞΏ"; en['full_article'] = "Read full article";
+	gr['details'] = "Ξ›ΞµΟ€Ο„ΞΏΞΌΞ­ΟΞµΞΉΞµΟ‚"; en['details'] = "Details";
+   	gr['plant'] = "Ξ¦Ο…Ο„Ο"; en['plant'] = "Plant";
+   	gr['animal'] = "Ξ–ΟΞΏ"; en['animal'] = "Animal";
+    gr['return'] = "Ξ•Ο€ΞΉΟƒΟ„ΟΞΏΟ†Ξ®"; en['return'] = "Return";
+   gr['wikiPage'] = "Ξ£ΞµΞ»Ξ―Ξ΄Ξ± Ο„Ξ·Ο‚ Wikipedia"; en['wikiPage'] = "Wikipedia Page"; 
+   gr['articleTo'] = "Ξ¤ΞΏ"; en['articleTo'] = ""; 
+   gr['articleΞ—'] = "H"; en['articleΞ—'] = ""; 
+    gr['has'] = "Ξ­Ο‡ΞµΞΉ"; en['has'] = "has"; 
+    gr['withTotal'] = "ΞΌΞµ ΟƒΟΞ½ΞΏΞ»ΞΏ"; en['withTotal'] = "with a total of"; 
+    gr['members'] = "ΞΌΞ­Ξ»Ξ·"; en['members'] = "members"; 
+	gr['noResults'] = "ΞΞ±Ξ½Ξ­Ξ½Ξ± Ξ±Ο€ΞΏΟ„Ξ­Ξ»ΞµΟƒΞΌΞ±!"; en['noResults'] = "No results!"; 
     
    
     var resources = new Array();
@@ -42,6 +38,18 @@ function getLanguageResources() {
  
     return resources;
 }
+
+function changeLanguage(lang) {
+	$('html').attr('lang',lang);
+    var langResources = getLanguageResources()[lang];
+	sessionStorage.setItem('lang', lang);
+ 
+    $("span[name='lbl']").each(function (i, elt) {
+        $(elt).text(langResources[$(elt).attr("caption")]);
+    });
+}
+
+
 // na allaxw kai to placeholder <input class="form-control" id="searchBox"
 //                                    placeholder="Search" type="text">
-<span name="lbl" caption="about"></span>
+//<span name="lbl" caption="about"></span>

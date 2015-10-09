@@ -15,13 +15,15 @@
         <link href="plugins/bootstrap_7_col/css/custom.css" rel="stylesheet">
         <script language="javascript" src="rank0.json" type="text/javascript"></script>
         <script src="plugins/jquery.min.js"></script>
+		<script src="js/languages.js"></script>
         <script src="js/navigation.js"></script>
         <script src="plugins/bootstrap_7_col/js/bootstrap.min.js"></script><!-- Script that handles tree functions-->
 
         <script src="js/queries.js"></script>
+		
         <script src="js/tree.js"></script>
         <script src="plugins/jquery-quickfit/jquery.quickfit.js"></script>
-        <script src="js/tree.js"></script>
+     
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -60,12 +62,7 @@
                 </div>
                 <div class="navbar-collapse collapse" id="navbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="javascript:showAbout();"><span name="lbl" caption="about"></span></a>
-                        </li>
-                        <li>
-                            <a href="javascript:changeLanguage();">en/gr</a>
-                        </li>
+                      
                         <li>
                             <form class=
                             "navbar-form collapsed navbar-right hidden-xs"
@@ -85,6 +82,12 @@
                                 </div>
                             </form>
                         </li>
+						  <li>
+                            <a href="javascript:showAbout();"><span name="lbl" caption="about"></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:changeLanguage('en');">en</a></li><li><a href="javascript:changeLanguage('gr');">gr</a>
+                        </li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -94,25 +97,22 @@
             <div class="row seven-cols text-center" id="tree_container">
                 <div class="col-sm-1" id="kingdom">
 				 <div class="rankHead"><span name="lbl" caption="kingdom"></span></div>
-                    <div class="thumbnail clearfix" id="Animal">
-					
-						<img alt="Animals" class="img-rounded" src=
+                    <div class="thumbnail clearfix"><img alt="Plant" class="img-rounded" src=
                         "https://upload.wikimedia.org/wikipedia/commons/1/14/Animal_diversity.png">
                         <div class="caption">
                             <p><b><span name="lbl" caption="animal"></span></b></p>
                             <div class="btn-group">
-                                <button class="btn btn-info details hidden-xs  "
+                                <button class="btn btn-info details hidden-xs "
                                 data-target="#myModal" data-toggle="modal"
                                 type="button"><span class=
-                                "glyphicon glyphicon-search hidden-lg "></span><span name="lbl" caption="details" class="visible-lg"></span></button>
-								
+                                "glyphicon glyphicon-search hidden-lg "></span><span class="visible-lg"><span name="lbl" caption="details" class="visible-lg"></span></span></button>
                                 <button class="btn btn-default open" type=
                                 "button"><span class=
                                 "glyphicon glyphicon-menu-right"></span></button>
                             </div>
                         </div>
                     </div>
-                    <div class="thumbnail clearfix" id="Plant">
+                    <div class="thumbnail clearfix">
 						<img alt="Plant" class="img-rounded" src=
                         "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Diversity_of_plants_image_version_5.png/161px-Diversity_of_plants_image_version_5.png">
                         <div class="caption">
@@ -170,6 +170,13 @@
         if (sessionStorage.getItem('treePage')!=undefined){
         $('#tree_container').html(sessionStorage.getItem('treePage'));
         }
+		
+		  if (sessionStorage.getItem('lang')!=undefined){
+        changeLanguage(sessionStorage.getItem('lang'));
+        }else{
+		changeLanguage('en');
+		sessionStorage.setItem('lang','en');
+		}
 
         $(document).ajaxError(function(){
         alert("An error occurred!");

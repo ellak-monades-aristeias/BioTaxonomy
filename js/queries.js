@@ -66,6 +66,6 @@ function getPrevRank(rank) {
 
 function nameFromUrl(src) {
     var name = src.substring(src.lastIndexOf('/') + 1);
-    name = name.replace(/\_/g, ' ');
+	name = name.replace("_", ' ');
     return name;
 }

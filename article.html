@@ -59,28 +59,32 @@
                     </form>
                 </div>
                 <div class="navbar-collapse collapse" id="navbar">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="javascript:showAbout();"><span name="lbl" caption="about"></span></a>
-                        </li>
-                        <li>
-                            <a href="javascript:changeLanguage();">en/gr</a>
-                        </li>
+                     <ul class="nav navbar-nav navbar-right">
+                      
                         <li>
                             <form class=
                             "navbar-form collapsed navbar-right hidden-xs"
                             onsubmit="return false">
+					
+							
+							
                                 <div class="input-group">
                                     <input class="form-control" id="searchBox"
                                     placeholder="Search" type="text">
                                     <div class="input-group-btn">
                                         <button class=
-                                        "btn btn-default glyphicon glyphicon-search"
-                                        onclick="searchArticle();" style=
-                                        "font-style: italic"></button>
+                                        "btn btn-default "
+                                        onclick="searchTree();" style=
+                                        "font-style: italic"><span class="glyphicon glyphicon-search"></span></button>
                                     </div>
                                 </div>
                             </form>
+                        </li>
+						  <li>
+                            <a href="javascript:showAbout();"><span name="lbl" caption="about"></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:changeLanguage('en');">en</a></li><li><a href="javascript:changeLanguage('gr');">gr</a>
                         </li>
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -131,14 +135,20 @@
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <!-- Script that handles tree functions-->
         <script src="js/queries.js"></script> <script src="plugins/Chart/Chart.min.js"></script> <script src="js/statistics.js"></script> <script type="text/javascript">
-
-        if (sessionStorage.getItem('title')!=undefined){
+ if (sessionStorage.getItem('lang')!=undefined){
+        changeLanguage(sessionStorage.getItem('lang'));
+        }else{
+		changeLanguage('en');
+		sessionStorage.setItem('lang','en');
+		}
+		
+        if (sessionStorage.getItem('name')!=undefined){
         $('#article').wikiblurb({
         section: 0,
-        page: sessionStorage.getItem('title'),
+        page: sessionStorage.getItem('name'),
         });
-        $('#title').html(sessionStorage.getItem('title'));
-        $('#wikiLink').attr('href', 'https://en.wikipedia.org/wiki/'+(sessionStorage.getItem('title')).replace(' ','_'));
+        $('#title').html(sessionStorage.getItem('name'));
+        $('#wikiLink').attr('href', 'https://en.wikipedia.org/wiki/'+(sessionStorage.getItem('name')).replace(' ','_'));
 
         }else
         {$('#article').html("No article selected!")}

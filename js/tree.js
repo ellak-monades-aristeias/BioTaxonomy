@@ -1,23 +1,23 @@
-var buttonClicked = false;
+//var buttonClicked = false;
 /*Functions that handle details and important taxon members*/
 $(document).on("click", ".details", function() {
-    buttonClicked = !buttonClicked;
-   
-    if (buttonClicked == true) {
-        console.log("in details")
+ //   buttonClicked = !buttonClicked;
+   console.log('in details');
+  //  if (buttonClicked == true) {
+       
         var name = getName($(this));
         var rank = getRank($(this));
-        name = name.replace(/ /g, "_");
+ console.log("name"+name)
+	
         var img_url = $(this).closest('.thumbnail').find('img').attr(
             'src');
         img_url = getImg300(img_url);
-        var title = $(this).closest('.thumbnail').find('.caption').children()
-            .first().text();
-        query = getSummaryQuery(name);
-        sessionStorage.setItem('title', title);
+      
+        query = getSummaryQuery(name.replace(' ', "_"));
+        sessionStorage.setItem('name', name);
         sessionStorage.setItem('rank', rank);
-        $(".modal-title").text(title);
-        $(".article").attr('onclick', 'showArticle("' + title + '")');
+        $(".modal-title").text(name);
+        $(".article").attr('onclick', 'showArticle("' + name+ '")');
         $('#modalThumb').children('img').attr('src', img_url);
         startLoading('#modalSum');
         var queryUrl = query;
@@ -26,11 +26,10 @@ $(document).on("click", ".details", function() {
             url: queryUrl,
             rank: rank,
             img_url: img_url,
-            title: title,
             name: name,
             success: summarySuccess
         });
-    }
+   // }
 });
 
 function summarySuccess(_data) {
@@ -41,17 +40,16 @@ function summarySuccess(_data) {
     stopLoading('#modalSum');
     $('#modalSum').text(sum);
     startLoading('#membersList');
-    getMembers(this.rank, this.name, this.img_url, this.title);
+    getMembers(this.rank, this.name, this.img_url);
 }
 
-function getMembers(rank, name, img_url, title) {
-    query = getImportantQuery(rank, name);
+function getMembers(rank, name, img_url) {
+    query = getImportantQuery(rank, name.replace(' ', "_"));
     var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
     $.ajax({
         dataType: "jsonp",
         url: queryUrl,
         img_url: img_url,
-        title: title,
         success: membersSuccess
     });
 }
@@ -64,9 +62,9 @@ function membersSuccess(_data) {
         var dbpedia_results = _data.results.bindings;
         var wikirank_results = jsonObject.items;
         for (var j in dbpedia_results) {
-            var src2 = dbpedia_results[j].name.value;
-            var name = nameFromUrl(src2);
-            name = name.replace("_", ' ');
+            var src = dbpedia_results[j].name.value;
+            var name = nameFromUrl(src);
+            
             array[j] = name;
         }
         for (var i in wikirank_results) {
@@ -83,16 +81,16 @@ function membersSuccess(_data) {
         }
         stopLoading('#membersList');
         $('#membersList').html(animals_html)
-        $('#membersList').find('.caption p').quickfit();
+        $('#membersList').find('.caption>p').quickfit();
     }
     /*End of details functions*/
     /*Functions that make the tree*/
 $(document).on("click", ".open", function() {
     buttonClicked = !buttonClicked;
     $('button').prop('disabled', true);
-    if (buttonClicked == true) {
+	console.log('buttonClicked '+buttonClicked)
+    //if (buttonClicked == true) {
         // Do stuff once
-        console.log("big screen")
         var name = getName($(this));
         sessionStorage.setItem('prevRankName', name)
             //name.replace(/ /g,"_");
@@ -100,7 +98,7 @@ $(document).on("click", ".open", function() {
         selectRank($(this), rank);
         var next_rank = getNextRank(rank); //get the next rank
         console.log("next_rank is" + next_rank);
- 
+		console.log("name is "+name);
         var rank_index = rankArray.indexOf(rank);
         for (i = rank_index + 1; i < rankArray.length; i++) { // clear data of next ranks before adding new data
             $("#" + rankArray[i]+'>div').nextAll().remove();
@@ -114,7 +112,7 @@ $(document).on("click", ".open", function() {
         }
         query = getOpenQuery(name, rank, next_rank);
         executeQuery(query, next_rank, name);
-    }
+    //}
 });
 
 function executeQuery(query, rank, name, callback) {
@@ -153,8 +151,9 @@ function openSuccess(_data) {
             $(".glyphicon-menu-right").removeClass("glyphicon-menu-right");
         }
     } else {
-        $("#" + rank).append("<span></br>No results!</span>");
+        $("#" + rank).append('<span name="lbl" caption="noResults"></span>');
     }
+	changeLanguage(sessionStorage.getItem('lang'));
     $('button').prop('disabled', false);
 }
 
@@ -165,7 +164,7 @@ function openError() {
 }
 
 function makeSearchTree() {
-    var name = $('#searchBox').val().replace(/ /g, "_");
+    var name = $('#searchBox').val().replace(' ', "_");
     query = getSearchQuery(name);
     var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
     $.ajax({
@@ -189,27 +188,27 @@ function makeSearchTreeSuccess(_data) {
         for (var i in results) {
             if (results[i].kingdom != undefined) {
                 var kingdom = nameFromUrl(results[i].kingdom.value);
-                kingdom = kingdom.replace(/ /g, "_");
+                kingdom = kingdom.replace(' ', "_");
             }
             if (results[i].phylum != undefined) {
                 var phylum = nameFromUrl(results[i].phylum.value);
-                phylum = phylum.replace(/ /g, "_");
+                phylum = phylum.replace(' ', "_");
             }
             if (results[i].classis != undefined) {
                 var classis = nameFromUrl(results[i].classis.value);
-                classis = classis.replace(/ /g, "_");
+                classis = classis.replace(' ', "_");
             }
             if (results[i].order != undefined) {
                 var order = nameFromUrl(results[i].order.value);
-                order = order.replace(/ /g, "_");
+                order = order.replace(' ', "_");
             }
             if (results[i].family != undefined) {
                 var family = nameFromUrl(results[i].family.value);
-                family = family.replace(/ /g, "_");
+                family = family.replace(' ', "_");
             }
             if (results[i].genus != undefined) {
                 var genus = nameFromUrl(results[i].genus.value);
-                genus = genus.replace(/ /g, "_");
+                genus = genus.replace(' ', "_");
             }
             if (kingdom == 'Animal' || kingdom == 'Animalia') kingdom_type =
                 "Animal";
@@ -236,7 +235,8 @@ function makeSearchTreeSuccess(_data) {
     /*Helper functions*/
 
 function getName(obj) {
-    return name = obj.parents('div:eq(2)').attr('id'); //get name of taxon
+    
+	return name = obj.closest('.thumbnail').find('.caption>p').text();
 }
 
 function getRank(obj) {
