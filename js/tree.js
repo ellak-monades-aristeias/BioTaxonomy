@@ -7,7 +7,7 @@ $(document).on("click", ".details", function() {
        
         var name = getName($(this));
         var rank = getRank($(this));
- console.log("name"+name)
+
 	
         var img_url = $(this).closest('.thumbnail').find('img').attr(
             'src');
@@ -86,9 +86,9 @@ function membersSuccess(_data) {
     /*End of details functions*/
     /*Functions that make the tree*/
 $(document).on("click", ".open", function() {
-    buttonClicked = !buttonClicked;
+  //  buttonClicked = !buttonClicked;
     $('button').prop('disabled', true);
-	console.log('buttonClicked '+buttonClicked)
+	
     //if (buttonClicked == true) {
         // Do stuff once
         var name = getName($(this));
@@ -105,7 +105,7 @@ $(document).on("click", ".open", function() {
         }
        startLoading('#' + next_rank+'>div');
         if ($(window).width() <= 480) {
-            console.log($(this).parent().parent().parent())
+           
             var mobilePlace = $(this).parent().parent().parent();
             var contents = $("#" + next_rank).detach();
             mobilePlace.after(contents);
@@ -122,7 +122,7 @@ function executeQuery(query, rank, name, callback) {
         dataType: "jsonp",
         url: queryUrl,
         rank: rank,
-        success: openSuccess,
+        success: openSuccess
     });
 }
 
@@ -130,6 +130,7 @@ function openSuccess(_data) {
     var thumb_url = "";
     var rank = this.rank;
    stopLoading('#' + rank+'>div');
+
     var results = _data.results.bindings;
     if (results.length > 0) {
         for (var i in results) {
@@ -141,10 +142,29 @@ function openSuccess(_data) {
                 thumb_url = shrinkImg200(results[i].thumb.value);
             }
             var html = thumbHtml(name, thumb_url, rank);
+				
          $("#" + rank ).append(html);
 		
         }
-        $("#" + rank).find('.caption p').quickfit();
+		
+		
+       
+		//edw na exetazei th glwssa
+		 if (sessionStorage.getItem('lang')=='gr'){
+			
+			 treeToGreek("#" + rank);//Translates tree to greek
+			 
+        }else{
+	changeLanguage('en');
+	$("#" + rank).find('.caption>p[caption]').each(function() {
+
+$( this ).html($( this ).attr('caption')) ;
+});
+$("#" + rank).find('.caption p').quickfit();	
+		}
+		
+	
+		
         sessionStorage.setItem('treePage', $('#tree_container').html());
         if ($(window).width() <= 480) {
             $(".glyphicon-menu-right").addClass("glyphicon-plus-sign");
@@ -157,6 +177,33 @@ function openSuccess(_data) {
     $('button').prop('disabled', false);
 }
 
+
+
+
+
+
+
+function thumbHtml(name, thumb_url, rank) {
+	 var buttonStart='';
+	 var buttonEnd='';
+	 if ($(window).width() <= 480) {
+	buttonStart='<button class="btn btn-info details" data-target="#myModal" data-toggle="modal" type="button">';
+	 buttonEnd='</button>';
+	 }
+
+    if (rank != "species") {
+        return html = '   <div class=\"thumbnail clearfix\">' +buttonStart+'<img class="img-rounded" src=\"' + thumb_url +
+            '\" alt=\"...\">' +buttonEnd+ '<div class=\"caption\">'+
+			'<p caption=\"'+name+'\"></p>'+
+			'<div class="btn-group" role="group" aria-label="..."> <button class="btn btn-info details hidden-xs "data-target="#myModal" data-toggle="modal"type="button"><span class="glyphicon glyphicon-search hidden-lg "></span><span name="lbl" class="visible-lg" caption="details"></span></button>  <button type="button"class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></div>' +
+            '</div>   ' + '</div>';
+    } else {
+        return html = '   <div class=\"thumbnail clearfix\">'+buttonStart+'<img class="img-rounded" src=\"' + thumb_url +
+            '\" alt=\"...\">' + buttonEnd+'<div class=\"caption\"><p caption="'+name+'">'+
+            +'</p> <button class="btn btn-info details hidden-xs "data-target="#myModal" data-toggle="modal"type="button"><span class="glyphicon glyphicon-search hidden-lg "></span><span name="lbl" class="visible-lg" caption="details"></span></button>' +
+            '</div>   ' + '</div>';
+    }
+}
 function openError() {
     console.log("error");
     var rank = this.rank;
@@ -235,36 +282,16 @@ function makeSearchTreeSuccess(_data) {
     /*Helper functions*/
 
 function getName(obj) {
-    
-	return name = obj.closest('.thumbnail').find('.caption>p').text();
+  
+	return name = obj.closest('.thumbnail').find('.caption>p[caption]').attr('caption');
+	
 }
 
 function getRank(obj) {
     return rank = obj.parents('div:eq(3)').attr('id');
 }
 
-function thumbHtml(name, thumb_url, rank) {
-	 var buttonStart='';
-	 var buttonEnd='';
-	 if ($(window).width() <= 480) {
-	buttonStart='<button class="btn btn-info details" data-target="#myModal" data-toggle="modal" type="button">';
-	 buttonEnd='</button>';
-	 }
 
-    if (rank != "species") {
-        return html = '   <div class=\"thumbnail clearfix\" id=\"' + name +
-            '\">' + buttonStart+'<img class="img-rounded" src=\"' + thumb_url +
-            '\" alt=\"...\">' +buttonEnd+ '<div class=\"caption\"><p><b>' + name +
-            '</b></p><div class="btn-group" role="group" aria-label="..."> <button class="btn btn-info details hidden-xs "data-target="#myModal" data-toggle="modal"type="button"><span class="glyphicon glyphicon-search hidden-lg "></span><span name="lbl" class="visible-lg" caption="details"></span></button>  <button type="button"class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></div>' +
-            '</div>   ' + '</div>';
-    } else {
-        return html = '   <div class=\"thumbnail clearfix\" id=\"' + name +
-            '\">' + buttonStart+'<img class="img-rounded" src=\"' + thumb_url +
-            '\" alt=\"...\">' + buttonEnd+'<div class=\"caption\"><p><b>' + name +
-            '</b></p> <button class="btn btn-info details hidden-xs "data-target="#myModal" data-toggle="modal"type="button"><span class="glyphicon glyphicon-search hidden-lg "></span><span name="lbl" class="visible-lg" caption="details"></span></button>' +
-            '</div>   ' + '</div>';
-    }
-}
 
 function selectRank(button, rank) {
     $('#' + rank + ' .thumbnail').removeClass('selected');

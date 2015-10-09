@@ -29,7 +29,17 @@ function getSummaryQuery(name) {
         name;
     //return query='SELECT ?sum WHERE {<http://dbpedia.org/resource/'+name+'> dbo:abstract?sum.filter(langMatches(lang(?sum),"EN"))} '
 }
+function returnGreekNameQuery(nameList){
+	var nameString='';
+	 for (var i in nameList) {
+		 nameString=nameString+nameList[i]+'|';
+		 
+	 }
+	 nameString=nameString.slice(0,-1)//=nameString(0, nameString.length - 1);
+	 
+return query='https://en.wikipedia.org/w/api.php?format=json&action=query&titles='+nameString+'&lllang=el&prop=langlinks';
 
+}
 function articleExistsQuery(title) {
     return query =
         'https://en.wikipedia.org/w/api.php?action=query&format=json&titles=' +

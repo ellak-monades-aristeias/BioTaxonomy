@@ -39,15 +39,77 @@ function getLanguageResources() {
     return resources;
 }
 
+function treeToGreek(container){
+	console.log("in maketRe");
+ var nameList=[];
+			 	$(container).find('.caption>p[caption]').each(function() {
+		nameList.push($( this ).attr('caption'));
+});
+   var queryUrl = returnGreekNameQuery(nameList);
+
+    $.ajax({
+       // type: "GET",
+        dataType: "jsonp",
+        url: queryUrl,
+		container:container,
+        success:greekSuccess 
+    });
+	
+	
+}
+
+function greekSuccess(_data){
+	
+ //changeLanguage('gr');
+
+var results = _data.query.pages; 
+
+	
+        for (var i in results) {
+			
+		if (results[i].langlinks != undefined){
+		
+		
+		var greekName=results[i].langlinks[0][Object.keys(results[i].langlinks[0])[1]];
+		$( "p[caption='"+results[i].title+"']" ).html(greekName);
+		}else{
+			$( "p[caption='"+results[i].title+"']" ).html(results[i].title);	
+		
+		}	
+			
+		}
+ $(this.container).find('.caption p').quickfit();	
+}	
+	
+
 function changeLanguage(lang) {
+	
 	$('html').attr('lang',lang);
-    var langResources = getLanguageResources()[lang];
-	sessionStorage.setItem('lang', lang);
  
+	
+	if (lang=='gr'){
+		console.log('sdf');
+	treeToGreek('#tree_container');
+	}else{
+		
+		$('#tree_container').find('.caption p').each(function() {
+		
+$( this ).html($( this ).attr('caption')) ;
+});
+
+$('#tree_container').find('.caption p').quickfit();
+	}
+	
+   var langResources = getLanguageResources()[lang];
+	sessionStorage.setItem('lang', lang);
+
     $("span[name='lbl']").each(function (i, elt) {
         $(elt).text(langResources[$(elt).attr("caption")]);
     });
+		
 }
+
+//todo na allazoun ta onomata otan kapoios allazei glwssa
 
 
 // na allaxw kai to placeholder <input class="form-control" id="searchBox"

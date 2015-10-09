@@ -15,9 +15,11 @@ img {
 }
 
 .caption p {
+	
     border: 1px solid #094004;
     padding-top: 3px;
     padding-bottom: 3px
+	font-weight:bold;
 }
 
 .thumbnail {

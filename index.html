@@ -15,8 +15,9 @@
         <link href="plugins/bootstrap_7_col/css/custom.css" rel="stylesheet">
         <script language="javascript" src="rank0.json" type="text/javascript"></script>
         <script src="plugins/jquery.min.js"></script>
+		  <script src="js/navigation.js"></script>
 		<script src="js/languages.js"></script>
-        <script src="js/navigation.js"></script>
+      
         <script src="plugins/bootstrap_7_col/js/bootstrap.min.js"></script><!-- Script that handles tree functions-->
 
         <script src="js/queries.js"></script>
@@ -86,7 +87,7 @@
                             <a href="javascript:showAbout();"><span name="lbl" caption="about"></span></a>
                         </li>
                         <li>
-                            <a href="javascript:changeLanguage('en');">en</a></li><li><a href="javascript:changeLanguage('gr');">gr</a>
+                            <a href='#' onclick="javascript:changeLanguage('en');return false;">en</a></li><li><a href='#' onclick="javascript:changeLanguage('gr');return false;">gr</a>
                         </li>
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -100,7 +101,7 @@
                     <div class="thumbnail clearfix"><img alt="Plant" class="img-rounded" src=
                         "https://upload.wikimedia.org/wikipedia/commons/1/14/Animal_diversity.png">
                         <div class="caption">
-                            <p><b><span name="lbl" caption="animal"></span></b></p>
+                            <p caption="Animal"><b><span name="lbl" caption="animal"></span></b></p>
                             <div class="btn-group">
                                 <button class="btn btn-info details hidden-xs "
                                 data-target="#myModal" data-toggle="modal"
@@ -116,7 +117,7 @@
 						<img alt="Plant" class="img-rounded" src=
                         "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Diversity_of_plants_image_version_5.png/161px-Diversity_of_plants_image_version_5.png">
                         <div class="caption">
-                            <p><b><span name="lbl" caption="plant"></span></b></p>
+                            <p caption="Plant"><b><span name="lbl" caption="plant"></span></b></p>
                             <div class="btn-group">
                                 <button class="btn btn-info details hidden-xs "
                                 data-target="#myModal" data-toggle="modal"
@@ -171,12 +172,13 @@
         $('#tree_container').html(sessionStorage.getItem('treePage'));
         }
 		
-		  if (sessionStorage.getItem('lang')!=undefined){
+		if (sessionStorage.getItem('lang')!=undefined){
         changeLanguage(sessionStorage.getItem('lang'));
         }else{
 		changeLanguage('en');
 		sessionStorage.setItem('lang','en');
 		}
+		
 
         $(document).ajaxError(function(){
         alert("An error occurred!");
