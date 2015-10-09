@@ -70,7 +70,3 @@ function changeLanguage(lang) {
     });
 }
  
-$(document).ready(function () {
-    $("input[name='radio-language']").click(function () {
-        changeLanguage($(this).val());
-    });

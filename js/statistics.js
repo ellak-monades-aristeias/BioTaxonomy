@@ -35,15 +35,15 @@
           });
       }
       var total = parseInt(j) + 1;
-      $('#totalNumber').html(getPrevRank(sessionStorage.getItem('rank')) +
+      $('#totalNumber').html(getArticle()+getPrevRank(sessionStorage.getItem('rank')) +
           '<b><a href="javascript:showArticle(\'' + sessionStorage.getItem(
               'prevRankName') + '\');"> ' + sessionStorage.getItem(
-              'prevRankName') + '</a></b> has <b>' + total + ' ' +
-          getPlural(sessionStorage.getItem('rank')) +
-          '</b> with a total of <b>' + totalCount + '</b> members');
+              'prevRankName') + '</a></b> <span name="lbl" caption="has"></span> <b>' + total + ' ' +
+          getPluralRank() +
+          '</b> <span name="lbl" caption="withTotal"></span> <b>' + totalCount + '</b> members');
       $('#current').html('<b>' + sessionStorage.getItem('title') +
           '</b> is <b>#' + currRanking + '</b> with <b>' + currCount +
-          '</b> members ');
+          '</b> <span name="lbl" caption="members"></span> ');
       var ctx = $("#myChart").get(0).getContext("2d");
       // This will get the first returned node in the jQuery collection.
       var myPieChart = new Chart(ctx).Pie(data);
@@ -60,11 +60,15 @@
       success: totalQuerySuccess
   });
 
-  function getPlural(word) {
-      if (word == 'phylum') return 'phyla'
-      else if (word == 'class') return 'classes'
-      else if (word == 'order') return 'orders'
-      else if (word == 'family') return families
-      else if (word == 'genus') return 'genera'
-      else if (word == 'kingdom') return 'kingdoms'
+ function getPluralRank(rank) {
+ return '<span name="lbl" caption="'+sessionStorage.getItem('rank')+'Plural"></span>';'
+  
+  }
+  function getArticle(){
+  rank= getPrevRank(sessionStorage.getItem('rank'));
+  if (rank=='kingdom'||rank=='genus'||rank=='species'){
+    return '<span name="lbl" caption="articleTo"></span> ';
+  }else{
+    return '<span name="lbl" caption="articleH"></span> ';
+  }
   }

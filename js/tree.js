@@ -255,13 +255,13 @@ function thumbHtml(name, thumb_url, rank) {
         return html = '   <div class=\"thumbnail clearfix\" id=\"' + name +
             '\">' + buttonStart+'<img class="img-rounded" src=\"' + thumb_url +
             '\" alt=\"...\">' +buttonEnd+ '<div class=\"caption\"><p><b>' + name +
-            '</b></p><div class="btn-group" role="group" aria-label="..."> <button class="btn btn-info details hidden-xs "data-target="#myModal" data-toggle="modal"type="button"><span class="glyphicon glyphicon-search hidden-lg "></span><span class="visible-lg">Λεπτομέρειες</span></button>  <button type="button"class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></div>' +
+            '</b></p><div class="btn-group" role="group" aria-label="..."> <button class="btn btn-info details hidden-xs "data-target="#myModal" data-toggle="modal"type="button"><span class="glyphicon glyphicon-search hidden-lg "></span><span name="lbl" class="visible-lg" caption="details"></span></button>  <button type="button"class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></div>' +
             '</div>   ' + '</div>';
     } else {
         return html = '   <div class=\"thumbnail clearfix\" id=\"' + name +
             '\">' + buttonStart+'<img class="img-rounded" src=\"' + thumb_url +
             '\" alt=\"...\">' + buttonEnd+'<div class=\"caption\"><p><b>' + name +
-            '</b></p> <button class="btn btn-info details hidden-xs "data-target="#myModal" data-toggle="modal"type="button"><span class="glyphicon glyphicon-search hidden-lg "></span><span class="visible-lg">Λεπτομέρειες</span></button>' +
+            '</b></p> <button class="btn btn-info details hidden-xs "data-target="#myModal" data-toggle="modal"type="button"><span class="glyphicon glyphicon-search hidden-lg "></span><span name="lbl" class="visible-lg" caption="details"></span></button>' +
             '</div>   ' + '</div>';
     }
 }

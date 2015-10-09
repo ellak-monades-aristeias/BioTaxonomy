@@ -99,7 +99,7 @@
 						<img alt="Animals" class="img-rounded" src=
                         "https://upload.wikimedia.org/wikipedia/commons/1/14/Animal_diversity.png">
                         <div class="caption">
-                            <p><b>Animal</b></p>
+                            <p><b><span name="lbl" caption="animal"></span></b></p>
                             <div class="btn-group">
                                 <button class="btn btn-info details hidden-xs  "
                                 data-target="#myModal" data-toggle="modal"
@@ -116,12 +116,12 @@
 						<img alt="Plant" class="img-rounded" src=
                         "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Diversity_of_plants_image_version_5.png/161px-Diversity_of_plants_image_version_5.png">
                         <div class="caption">
-                            <p><b>Plant</b></p>
+                            <p><b><span name="lbl" caption="plant"></span></b></p>
                             <div class="btn-group">
                                 <button class="btn btn-info details hidden-xs "
                                 data-target="#myModal" data-toggle="modal"
                                 type="button"><span class=
-                                "glyphicon glyphicon-search hidden-lg "></span><span class="visible-lg">Λεπτομέρειες</span></button>
+                                "glyphicon glyphicon-search hidden-lg "></span><span class="visible-lg"><span name="lbl" caption="details" class="visible-lg"></span></span></button>
                                 <button class="btn btn-default open" type=
                                 "button"><span class=
                                 "glyphicon glyphicon-menu-right"></span></button>
@@ -208,9 +208,7 @@
         contents=$('#family').detach();
         $('#order').find('.selected').after(contents);
         }
-
-
-
+        
         if( $('#family').find('.selected').length){
         contents=$('#genus').detach();
         $('#family').find('.selected').after(contents);
