@@ -6,6 +6,7 @@ $(document).on("click", ".details", function() {
   //  if (buttonClicked == true) {
        
         var name = getName($(this));
+        var greekName = getGreekName($(this));
         var rank = getRank($(this));
 
 	
@@ -13,7 +14,8 @@ $(document).on("click", ".details", function() {
             'src');
         img_url = getImg300(img_url);
       
-        query = getSummaryQuery(name.replace(' ', "_"));
+        query = getSummaryQuery(name,greekName);
+        console.log("sum query "+query);
         sessionStorage.setItem('name', name);
         sessionStorage.setItem('rank', rank);
         $(".modal-title").text(name);
@@ -283,6 +285,10 @@ function getName(obj) {
   
 	return name = obj.closest('.thumbnail').find('.caption>p[caption]').attr('caption');
 	
+}
+function getGreekName(obj) {
+  return obj.closest('.thumbnail').find('.caption>p[caption]').html()
+
 }
 
 function getRank(obj) {

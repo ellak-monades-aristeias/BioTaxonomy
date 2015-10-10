@@ -89,3 +89,13 @@ background-image: url(http://www.transparenttextures.com/patterns/wavecut.png);
 	color:#334433;
 	border-radius:5px;
 }
+
+
+#langNotActive {
+   pointer-events: none;
+   cursor: default;
+  background-color: rgba(255, 255, 255, 0.08);
+  
+   font-weight:bold;
+    
+}

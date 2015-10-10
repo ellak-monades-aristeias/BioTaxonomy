@@ -45,7 +45,12 @@ function treeToGreek(container){
 			 	$(container).find('.caption>p[caption]').each(function() {
 		nameList.push($( this ).attr('caption'));
 });
-   var queryUrl = returnGreekNameQuery(nameList);
+fiftyCounter=Math.floor(nameList.length/50);
+console.log("counter "+fiftyCounter)
+for (i = 0; i <= fiftyCounter; i++) {
+console.log("in loop "+i);
+fiftyNameList=nameList.slice(i*50,(i*50)+50) ;
+var queryUrl = returnGreekNameQuery(fiftyNameList);
 
     $.ajax({
        // type: "GET",
@@ -55,16 +60,15 @@ function treeToGreek(container){
         success:greekSuccess 
     });
 	
-	
+}	
 }
 
 function greekSuccess(_data){
 	
- //changeLanguage('gr');
+ 
 
 var results = _data.query.pages; 
-
-	
+console.log(_data);	
         for (var i in results) {
 			
 		if (results[i].langlinks != undefined){
@@ -85,13 +89,21 @@ var results = _data.query.pages;
 function changeLanguage(lang) {
 	
 	$('html').attr('lang',lang);
+  
+  $( "a:contains('en')" ).removeClass("not-active");
+  $( "a:contains('gr')" ).addClass("not-active");
+  
  
 	
 	if (lang=='gr'){
-		console.log('sdf');
+		console.log('in gr');
+    $( "a:contains('en')" ).attr('id', ' ')
+  $( "a:contains('gr')" ).attr('id', 'langNotActive')
 	treeToGreek('#tree_container');
 	}else{
-		
+  $( "a:contains('gr')" ).attr('id', ' ')
+  $( "a:contains('en')" ).attr('id', 'langNotActive')
+		console.log('in en');
 		$('#tree_container').find('.caption p').each(function() {
 		
 $( this ).html($( this ).attr('caption')) ;

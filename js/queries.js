@@ -25,12 +25,20 @@ function getOpenQuery(name, rank, next_rank) {
     }
 }
 
-function getSummaryQuery(name) {
-    return query =
-        'https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=' +
-        name;
+function getSummaryQuery(name,greekName) {
+console.log("name "+name+" greek "+greekName);
+if(sessionStorage.getItem('lang')=='gr'&&(name!=greekName)){
+return query =
+        'https://el.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles='+greekName;
+
     //return query='SELECT ?sum WHERE {<http://dbpedia.org/resource/'+name+'> dbo:abstract?sum.filter(langMatches(lang(?sum),"EN"))} '
+    }else{
+          return query =
+        'https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles='+name;
+    }
 }
+
+
 function returnGreekNameQuery(nameList){
 	var nameString='';
 	 for (var i in nameList) {
