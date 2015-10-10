@@ -4,6 +4,7 @@ var rankArray = ["kingdom", "phylum", "class", "order", "family", "genus",
 ];
 
 function getImportantQuery(rank, name) {
+	name=name.replace(' ',"_");
     return query =
         'SELECT DISTINCT ?name,?thumb, COUNT(*) AS ?count WHERE {?name dbo:' +
         rank + ' dbr:' + name +
@@ -11,11 +12,12 @@ function getImportantQuery(rank, name) {
 }
 
 function getOpenQuery(name, rank, next_rank) {
+	name=name.replace(' ',"_");
     if (rank == "genus") {
         return query = 'SELECT ?taxon,?thumb WHERE { ?taxon  dbp:genus \"' +
             name +
-            '\"@en .OPTIONAL{?taxon dbo:thumbnail ?thumb}.FILTER (?taxon!=dbr:' +
-            name + ')}';
+            '\"@en .OPTIONAL{?taxon dbo:thumbnail ?thumb}.FILTER (?taxon!=<http://dbpedia.org/resource/' +
+            name + '>)}';
     } else {
         return query = "SELECT DISTINCT ?taxon, ?thumb WHERE {?name  dbo:" +
             rank + " dbr:" + name + ";dbo:" + next_rank +
@@ -47,6 +49,7 @@ function articleExistsQuery(title) {
 }
 
 function getSearchQuery(name) {
+	name=name.replace(' ',"_");
     return query =
         'SELECT DISTINCT ?kingdom,?phylum,?classis,?order,?family,?genus  WHERE {dbr:' +
         name + ' dbo:kingdom ?kingdom.OPTIONAL{dbr:' + name +
@@ -58,6 +61,7 @@ function getSearchQuery(name) {
 }
 
 function getTotalQuery(prevRank, prevRankName, rank) {
+	prevRankName=prevRankName.replace(' ',"_");
     return query =
         'SELECT DISTINCT ?order, COUNT(*) AS ?count WHERE {{?name  dbo:' +
         prevRank + ' dbr:' + prevRankName + ';dbo:' + rank +

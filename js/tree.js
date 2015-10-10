@@ -97,8 +97,7 @@ $(document).on("click", ".open", function() {
         var rank = getRank($(this));
         selectRank($(this), rank);
         var next_rank = getNextRank(rank); //get the next rank
-        console.log("next_rank is" + next_rank);
-		console.log("name is "+name);
+      
         var rank_index = rankArray.indexOf(rank);
         for (i = rank_index + 1; i < rankArray.length; i++) { // clear data of next ranks before adding new data
             $("#" + rankArray[i]+'>div').nextAll().remove();
@@ -111,6 +110,7 @@ $(document).on("click", ".open", function() {
             mobilePlace.after(contents);
         }
         query = getOpenQuery(name, rank, next_rank);
+		console.log(query);
         executeQuery(query, next_rank, name);
     //}
 });
@@ -146,8 +146,6 @@ function openSuccess(_data) {
          $("#" + rank ).append(html);
 		
         }
-		
-		
        
 		//edw na exetazei th glwssa
 		 if (sessionStorage.getItem('lang')=='gr'){
