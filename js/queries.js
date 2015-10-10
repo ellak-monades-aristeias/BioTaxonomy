@@ -4,7 +4,7 @@ var rankArray = ["kingdom", "phylum", "class", "order", "family", "genus",
 ];
 
 function getImportantQuery(rank, name) {
-	name=name.replace(' ',"_");
+    name = name.replace(' ', "_");
     return query =
         'SELECT DISTINCT ?name,?thumb, COUNT(*) AS ?count WHERE {?name dbo:' +
         rank + ' dbr:' + name +
@@ -12,7 +12,7 @@ function getImportantQuery(rank, name) {
 }
 
 function getOpenQuery(name, rank, next_rank) {
-	name=name.replace(' ',"_");
+    name = name.replace(' ', "_");
     if (rank == "genus") {
         return query = 'SELECT ?taxon,?thumb WHERE { ?taxon  dbp:genus \"' +
             name +
@@ -25,31 +25,37 @@ function getOpenQuery(name, rank, next_rank) {
     }
 }
 
-function getSummaryQuery(name,greekName) {
-console.log("name "+name+" greek "+greekName);
-if(sessionStorage.getItem('lang')=='gr'&&(name!=greekName)){
-return query =
-        'https://el.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles='+greekName;
-
-    //return query='SELECT ?sum WHERE {<http://dbpedia.org/resource/'+name+'> dbo:abstract?sum.filter(langMatches(lang(?sum),"EN"))} '
-    }else{
-          return query =
-        'https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles='+name;
+function getSummaryQuery(name, greekName) {
+    console.log("name " + name + " greek " + greekName);
+    if (sessionStorage.getItem('lang') == 'gr' && (name != greekName)) {
+        return query =
+            'https://el.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=' +
+            greekName;
+        //return query='SELECT ?sum WHERE {<http://dbpedia.org/resource/'+name+'> dbo:abstract?sum.filter(langMatches(lang(?sum),"EN"))} '
+    } else {
+        return query =
+            'https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=' +
+            name;
     }
 }
 
-
-function returnGreekNameQuery(nameList){
-	var nameString='';
-	 for (var i in nameList) {
-		 nameString=nameString+nameList[i]+'|';
-		 
-	 }
-	 nameString=nameString.slice(0,-1)//=nameString(0, nameString.length - 1);
-	 
-return query='https://en.wikipedia.org/w/api.php?format=json&action=query&titles='+nameString+'&lllang=el&prop=langlinks';
-
+function returnGreekNameQuery(nameList) {
+    var nameString = '';
+    for (var i in nameList) {
+        nameString = nameString + nameList[i] + '|';
+    }
+    nameString = nameString.slice(0, -1) //=nameString(0, nameString.length - 1);
+    return query =
+        'https://en.wikipedia.org/w/api.php?format=json&action=query&titles=' +
+        nameString + '&lllang=el&prop=langlinks';
 }
+
+function returnOneGreekNameQuery(name) {
+    return query =
+        'https://en.wikipedia.org/w/api.php?format=json&action=query&titles=' +
+        name + '&lllang=el&prop=langlinks';
+}
+
 function articleExistsQuery(title) {
     return query =
         'https://en.wikipedia.org/w/api.php?action=query&format=json&titles=' +
@@ -57,7 +63,7 @@ function articleExistsQuery(title) {
 }
 
 function getSearchQuery(name) {
-	name=name.replace(' ',"_");
+    name = name.replace(' ', "_");
     return query =
         'SELECT DISTINCT ?kingdom,?phylum,?classis,?order,?family,?genus  WHERE {dbr:' +
         name + ' dbo:kingdom ?kingdom.OPTIONAL{dbr:' + name +
@@ -69,7 +75,7 @@ function getSearchQuery(name) {
 }
 
 function getTotalQuery(prevRank, prevRankName, rank) {
-	prevRankName=prevRankName.replace(' ',"_");
+    prevRankName = prevRankName.replace(' ', "_");
     return query =
         'SELECT DISTINCT ?order, COUNT(*) AS ?count WHERE {{?name  dbo:' +
         prevRank + ' dbr:' + prevRankName + ';dbo:' + rank +
@@ -79,15 +85,15 @@ function getTotalQuery(prevRank, prevRankName, rank) {
 }
 
 function getNextRank(rank) {
-    return rankArray[rankArray.indexOf(rank) + 1];
+    if (rank != 'species') return rankArray[rankArray.indexOf(rank) + 1];
 }
 
 function getPrevRank(rank) {
-    return rankArray[rankArray.indexOf(rank) - 1];
+    if (rank != 'kingdom') return rankArray[rankArray.indexOf(rank) - 1];
 }
 
 function nameFromUrl(src) {
     var name = src.substring(src.lastIndexOf('/') + 1);
-	name = name.replace("_", ' ');
+    name = name.replace("_", ' ');
     return name;
 }

@@ -35,12 +35,15 @@
           });
       }
       var total = parseInt(j) + 1;
-      $('#totalNumber').html(getArticle()+getPrevRank(sessionStorage.getItem('rank')) +
+      $('#totalNumber').html(getArticle() + '<span name="lbl" caption="' +
+          getPrevRank(sessionStorage.getItem('rank')) + '"></span> ' +
           '<b><a href="javascript:showArticle(\'' + sessionStorage.getItem(
               'prevRankName') + '\');"> ' + sessionStorage.getItem(
-              'prevRankName') + '</a></b> <span name="lbl" caption="has"></span> <b>' + total + ' ' +
-          getPluralRank() +
-          '</b> <span name="lbl" caption="withTotal"></span> <b>' + totalCount + '</b> members');
+              'prevRankName') +
+          '</a></b> <span name="lbl" caption="has"></span> <b>' + total +
+          ' ' + getPluralRank() +
+          '</b> <span name="lbl" caption="withTotal"></span> <b>' +
+          totalCount + '</b> members');
       $('#current').html('<b>' + sessionStorage.getItem('title') +
           '</b> is <b>#' + currRanking + '</b> with <b>' + currCount +
           '</b> <span name="lbl" caption="members"></span> ');
@@ -52,23 +55,23 @@
   var rank = sessionStorage.getItem('rank');
   var prevRank = getPrevRank(rank);
   query = getTotalQuery(prevRank, prevRankName, rank);
-
   var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
   $.ajax({
       dataType: "jsonp",
       url: queryUrl,
       success: totalQuerySuccess
   });
+   //Otan ginetai allagh glwssas na allazei kai to prohgoumeno rank
+  function getPluralRank(rank) {
+      return '<span name="lbl" caption="' + sessionStorage.getItem('rank') +
+          'Plural"></span>';
+  }
 
- function getPluralRank(rank) {
- return '<span name="lbl" caption="'+sessionStorage.getItem('rank')+'Plural"></span>';'
-  
-  }
-  function getArticle(){
-  rank= getPrevRank(sessionStorage.getItem('rank'));
-  if (rank=='kingdom'||rank=='genus'||rank=='species'){
-    return '<span name="lbl" caption="articleTo"></span> ';
-  }else{
-    return '<span name="lbl" caption="articleH"></span> ';
-  }
+  function getArticle() {
+      rank = getPrevRank(sessionStorage.getItem('rank'));
+      if (rank == 'kingdom' || rank == 'genus' || rank == 'species') {
+          return '<span name="lbl" caption="articleTo"></span> ';
+      } else {
+          return '<span name="lbl" caption="articleH"></span> ';
+      }
   }

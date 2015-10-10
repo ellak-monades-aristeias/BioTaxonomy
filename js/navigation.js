@@ -13,7 +13,6 @@ function showIndex() {
     window.location.replace('index.html');
 }
 
-
 function searchTree() {
     //Load function from tree.js to make tree	
     makeSearchTree();
@@ -38,9 +37,8 @@ function searchSuccess(_data) {
     var results = _data.query.pages;
     for (var i in results) {}
     if (i > 0) {
-        console.log("search " + $('#searchBox').val());
-        var title = $('#searchBox').val();
-        sessionStorage.setItem('title', title);
+        var searchTerm = $('#searchBox').val();
+        sessionStorage.setItem('name', searchTerm);
         window.location.replace('article.html');
     } else {
         $('#article').html("Wikipedia article doesn't exist")
@@ -59,13 +57,29 @@ function goBack() {
     window.history.back();
 }
 
-function changeLanguage(lang) {
-	$('html').attr('lang',lang);
-    var langResources = getLanguageResources()[lang];
-	sessionStorage.setItem('lang', lang);
- 
-    $("span[name='lbl']").each(function (i, elt) {
-        $(elt).text(langResources[$(elt).attr("caption")]);
-    });
+function loadArticle() {
+    if (sessionStorage.getItem('name') != undefined) {
+        if (sessionStorage.getItem('lang') == 'gr' && sessionStorage.getItem(
+            'name') != sessionStorage.getItem('greekName')) {
+            $('#title').html(sessionStorage.getItem('greekName'));
+            $('#wikiLink').attr('href', 'https://el.wikipedia.org/wiki/' +
+                (sessionStorage.getItem('greekName')).replace(' ', '_')
+            );
+            $('#article').wikiblurb({
+                wikiURL: "http://el.wikipedia.org/",
+                section: 0,
+                page: sessionStorage.getItem('greekName'),
+            });
+        } else {
+            $('#title').html(sessionStorage.getItem('name'));
+            $('#wikiLink').attr('href', 'https://en.wikipedia.org/wiki/' +
+                (sessionStorage.getItem('name')).replace(' ', '_'));
+            $('#article').wikiblurb({
+                section: 0,
+                page: sessionStorage.getItem('name'),
+            });
+        }
+    } else {
+        $('#article').html("No article selected!")
+    }
 }
- 

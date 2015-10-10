@@ -1,101 +1,102 @@
-.row-margin{
- 
-  margin-bottom: 20px;
+a {
+    color: #134E82;
 }
+
+.row-margin {
+    margin-bottom: 20px
+}
+
 img {
-          display: block;
-          height: auto;
-          max-width: 100%;
-   }
-   
-body { overflow-x: hidden;}
-
-.table>tbody>tr>td{
-	border-top:0px;
+    display: block;
+    height: auto;
+    max-width: 100%
 }
 
-#titleRow{
+body {
+    overflow-x: hidden
+}
 
+.table>tbody>tr>td {
+    border-top: 0
+}
+
+#titleRow {
     border-bottom: 2px solid;
-    border-color: rgba(234, 214, 113, 0.75);
-    background-color: rgba(241, 247, 145, 0.25);
+    border-color: rgba(234,214,113,0.75);
+    background-color: rgba(241,247,145,0.25);
     margin-top: -20px;
-    padding-top: 15px;
+    padding-top: 15px
 }
 
-#title{
-	margin-top:-5px;
-	margin-bottom:10px;
+#title {
+    margin-top: -5px;
+    margin-bottom: 10px
 }
 
-table{
-	 table-layout: fixed;
-    word-wrap: break-word;
+table {
+    table-layout: fixed;
+    word-wrap: break-word
 }
 
-#totalNumber:first-letter{
-	  text-transform:capitalize;
+#totalNumber:first-letter {
+    text-transform: capitalize
 }
 
-.tleft{
-	float:left;
-	clear:left;
-	margin:.5em 1.4em 1.3em 0;
+.tleft {
+    float: left;
+    clear: left;
+    margin: .5em 1.4em 1.3em 0
 }
 
-.tright{
-	float:right;
-	clear:right;
-	margin:.5em 0 1.3em 1.4em;
+.tright {
+    float: right;
+    clear: right;
+    margin: .5em 0 1.3em 1.4em
 }
 
 .nbs-wikiblurb h2 {
-margin-top: 1em;
-border-bottom: 1px solid rgba(183, 138, 55, 0.36);
-	
+    margin-top: 1em;
+    border-bottom: 1px solid rgba(183,138,55,0.36)
 }
-#custom_info td{
-	padding:0px;
-	margin-bottom:5px;
-	margin-left:0px;
-	margin-right:-5px;
-	margin-top:5px;
-	
+
+#custom_info td {
+    padding: 0;
+    margin-bottom: 5px;
+    margin-left: 0;
+    margin-right: -5px;
+    margin-top: 5px
 }
 
 .navbar-default {
-		    
-	background-color: #94821b;
-background-image: url(http://www.transparenttextures.com/patterns/wavecut.png);	
-		
-	}
-	.navbar-default{
-	border-color: #D2BD4A;
-	    color: #334433;
-	
-	}
-	.navbar-default .navbar-brand,.navbar-default .navbar-nav>li>a{
-		    color: #334433;
-	}
-.navbar-fixed-top{
-	    border-width: 0 0 3px;
+    background-color: #94821b;
+    background-image: url(../../../assets/wavecut.png)
 }
 
-body{
-	background-color: #decc66;
-background-color: #decc66;
-background-image: url(http://www.transparenttextures.com/patterns/wavecut.png);
-/* This is mostly in#decc66tended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-	color:#334433;
-	border-radius:5px;
+.navbar-default {
+    border-color: #D2BD4A;
+    color: #343
 }
 
+.navbar-default .navbar-brand,.navbar-default .navbar-nav>li>a {
+    color: #343
+}
+
+.navbar-fixed-top {
+    border-width: 0 0 3px
+}
+
+body {
+    background-color: #decc66;
+    background-color: #decc66;
+    background-image: url(../../../assets/wavecut.png)
+
+    color: #343;
+    border-radius: 5px
+}
 
 #langNotActive {
-   pointer-events: none;
-   cursor: default;
-  background-color: rgba(255, 255, 255, 0.08);
-  
-   font-weight:bold;
-    
+    pointer-events: none;
+    cursor: default;
+    background-color: rgba(255,255,255,0.08);
+    font-weight: 700
 }

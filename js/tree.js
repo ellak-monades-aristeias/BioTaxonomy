@@ -1,37 +1,34 @@
 //var buttonClicked = false;
 /*Functions that handle details and important taxon members*/
 $(document).on("click", ".details", function() {
- //   buttonClicked = !buttonClicked;
-   console.log('in details');
-  //  if (buttonClicked == true) {
-       
-        var name = getName($(this));
-        var greekName = getGreekName($(this));
-        var rank = getRank($(this));
-
-	
-        var img_url = $(this).closest('.thumbnail').find('img').attr(
-            'src');
-        img_url = getImg300(img_url);
-      
-        query = getSummaryQuery(name,greekName);
-        console.log("sum query "+query);
-        sessionStorage.setItem('name', name);
-        sessionStorage.setItem('rank', rank);
-        $(".modal-title").text(name);
-        $(".article").attr('onclick', 'showArticle("' + name+ '")');
-        $('#modalThumb').children('img').attr('src', img_url);
-        startLoading('#modalSum');
-        var queryUrl = query;
-        $.ajax({
-            dataType: "jsonp",
-            url: queryUrl,
-            rank: rank,
-            img_url: img_url,
-            name: name,
-            success: summarySuccess
-        });
-   // }
+    //   buttonClicked = !buttonClicked;
+    console.log('in details');
+    //  if (buttonClicked == true) {
+    var name = getName($(this));
+    getGreekName(name);
+    var greekName = sessionStorage.getItem('greekName');
+    var rank = getRank($(this));
+    var img_url = $(this).closest('.thumbnail').find('img').attr('src');
+    img_url = getImg300(img_url);
+    console.log(img_url);
+    query = getSummaryQuery(name, greekName);
+    console.log("sum query " + query);
+    sessionStorage.setItem('name', name);
+    sessionStorage.setItem('rank', rank);
+    $(".modal-title").text(name);
+    $(".article").attr('onclick', 'showArticle("' + name + '")');
+    $('#modalThumb').children('img').attr('src', img_url);
+    startLoading('#modalSum');
+    var queryUrl = query;
+    $.ajax({
+        dataType: "jsonp",
+        url: queryUrl,
+        rank: rank,
+        img_url: img_url,
+        name: name,
+        success: summarySuccess
+    });
+    // }
 });
 
 function summarySuccess(_data) {
@@ -66,7 +63,6 @@ function membersSuccess(_data) {
         for (var j in dbpedia_results) {
             var src = dbpedia_results[j].name.value;
             var name = nameFromUrl(src);
-            
             array[j] = name;
         }
         for (var i in wikirank_results) {
@@ -76,8 +72,14 @@ function membersSuccess(_data) {
                 var thumb = dbpedia_results[$.inArray(src, array)].thumb.value;
                 animals_html = animals_html +
                     " <li> <div class='thumbnail'><img src='" + thumb +
+                    "'width='50px' > <div class='caption'><p>" + src +
+                    "</p></div></div></li>";
+                //na kanw kai th lista twn melwn na emfanizetai sta ellhnika  
+                /*
+					 " <li> <div class='thumbnail'><img src='" + thumb +
                     "'width='50px' > <div class='caption'><p><a href='javascript:showArticle(\"" +
                     src + "\")'>" + src + "</a></p></div></div></li>";
+					*/
             }
             if (k > 6) break;
         }
@@ -88,32 +90,29 @@ function membersSuccess(_data) {
     /*End of details functions*/
     /*Functions that make the tree*/
 $(document).on("click", ".open", function() {
-  //  buttonClicked = !buttonClicked;
+    //  buttonClicked = !buttonClicked;
     $('button').prop('disabled', true);
-	
     //if (buttonClicked == true) {
-        // Do stuff once
-        var name = getName($(this));
-        sessionStorage.setItem('prevRankName', name)
-            //name.replace(/ /g,"_");
-        var rank = getRank($(this));
-        selectRank($(this), rank);
-        var next_rank = getNextRank(rank); //get the next rank
-      
-        var rank_index = rankArray.indexOf(rank);
-        for (i = rank_index + 1; i < rankArray.length; i++) { // clear data of next ranks before adding new data
-            $("#" + rankArray[i]+'>div').nextAll().remove();
-        }
-       startLoading('#' + next_rank+'>div');
-        if ($(window).width() <= 480) {
-           
-            var mobilePlace = $(this).parent().parent().parent();
-            var contents = $("#" + next_rank).detach();
-            mobilePlace.after(contents);
-        }
-        query = getOpenQuery(name, rank, next_rank);
-		console.log(query);
-        executeQuery(query, next_rank, name);
+    // Do stuff once
+    var name = getName($(this));
+    sessionStorage.setItem('prevRankName', name)
+        //name.replace(/ /g,"_");
+    var rank = getRank($(this));
+    selectRank($(this), rank);
+    var next_rank = getNextRank(rank); //get the next rank
+    var rank_index = rankArray.indexOf(rank);
+    for (i = rank_index + 1; i < rankArray.length; i++) { // clear data of next ranks before adding new data
+        $("#" + rankArray[i] + '>div').nextAll().remove();
+    }
+    startLoading('#' + next_rank + '>div');
+    if ($(window).width() <= 480) {
+        var mobilePlace = $(this).parent().parent().parent();
+        var contents = $("#" + next_rank).detach();
+        mobilePlace.after(contents);
+    }
+    query = getOpenQuery(name, rank, next_rank);
+    console.log(query);
+    executeQuery(query, next_rank, name);
     //}
 });
 
@@ -131,8 +130,7 @@ function executeQuery(query, rank, name, callback) {
 function openSuccess(_data) {
     var thumb_url = "";
     var rank = this.rank;
-   stopLoading('#' + rank+'>div');
-
+    stopLoading('#' + rank + '>div');
     var results = _data.results.bindings;
     if (results.length > 0) {
         for (var i in results) {
@@ -144,27 +142,18 @@ function openSuccess(_data) {
                 thumb_url = shrinkImg200(results[i].thumb.value);
             }
             var html = thumbHtml(name, thumb_url, rank);
-				
-         $("#" + rank ).append(html);
-		
+            $("#" + rank).append(html);
         }
-       
-		//edw na exetazei th glwssa
-		 if (sessionStorage.getItem('lang')=='gr'){
-			
-			 treeToGreek("#" + rank);//Translates tree to greek
-			 
-        }else{
-	changeLanguage('en');
-	$("#" + rank).find('.caption>p[caption]').each(function() {
-
-$( this ).html($( this ).attr('caption')) ;
-});
-$("#" + rank).find('.caption p').quickfit();	
-		}
-		
-	
-		
+        //edw na exetazei th glwssa
+        if (sessionStorage.getItem('lang') == 'gr') {
+            treeToGreek("#" + rank); //Translates tree to greek
+        } else {
+            changeLanguage('en');
+            $("#" + rank).find('.caption>p[caption]').each(function() {
+                $(this).html($(this).attr('caption'));
+            });
+            $("#" + rank).find('.caption p').quickfit();
+        }
         sessionStorage.setItem('treePage', $('#tree_container').html());
         if ($(window).width() <= 480) {
             $(".glyphicon-menu-right").addClass("glyphicon-plus-sign");
@@ -173,41 +162,40 @@ $("#" + rank).find('.caption p').quickfit();
     } else {
         $("#" + rank).append('<span name="lbl" caption="noResults"></span>');
     }
-	changeLanguage(sessionStorage.getItem('lang'));
+    changeLanguage(sessionStorage.getItem('lang'));
     $('button').prop('disabled', false);
 }
 
-
-
-
-
-
-
 function thumbHtml(name, thumb_url, rank) {
-	 var buttonStart='';
-	 var buttonEnd='';
-	 if ($(window).width() <= 480) {
-	buttonStart='<button class="btn btn-info details" data-target="#myModal" data-toggle="modal" type="button">';
-	 buttonEnd='</button>';
-	 }
-
+    var buttonStart = '';
+    var buttonEnd = '';
+    if ($(window).width() <= 480) {
+        buttonStart =
+            '<button class="btn btn-info details" data-target="#myModal" data-toggle="modal" type="button">';
+        buttonEnd = '</button>';
+    }
     if (rank != "species") {
-        return html = '   <div class=\"thumbnail clearfix\">' +buttonStart+'<img class="img-rounded" src=\"' + thumb_url +
-            '\" alt=\"...\">' +buttonEnd+ '<div class=\"caption\">'+
-			'<p caption=\"'+name+'\"></p>'+
-			'<div class="btn-group" role="group" aria-label="..."> <button class="btn btn-info details hidden-xs "data-target="#myModal" data-toggle="modal"type="button"><span class="glyphicon glyphicon-search hidden-lg "></span><span name="lbl" class="visible-lg" caption="details"></span></button>  <button type="button"class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></div>' +
+        return html = '   <div class=\"thumbnail clearfix\">' + buttonStart +
+            '<img class="img-rounded" src=\"' + thumb_url +
+            '\" alt=\"...\">' + buttonEnd + '<div class=\"caption\">' +
+            '<p caption=\"' + name + '\"></p>' +
+            '<div class="btn-group" role="group" aria-label="..."> <button class="btn btn-info details"data-target="#myModal" data-toggle="modal" type="button"><span name="lbl" caption="details"></span></button>  <button type="button"class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></div>' +
             '</div>   ' + '</div>';
     } else {
-        return html = '   <div class=\"thumbnail clearfix\">'+buttonStart+'<img class="img-rounded" src=\"' + thumb_url +
-            '\" alt=\"...\">' + buttonEnd+'<div class=\"caption\"><p caption="'+name+'">'+
-            +'</p> <button class="btn btn-info details hidden-xs "data-target="#myModal" data-toggle="modal"type="button"><span class="glyphicon glyphicon-search hidden-lg "></span><span name="lbl" class="visible-lg" caption="details"></span></button>' +
+        return html = '   <div class=\"thumbnail clearfix\">' + buttonStart +
+            '<img class="img-rounded" src=\"' + thumb_url +
+            '\" alt=\"...\">' + buttonEnd +
+            '<div class=\"caption\"><p caption="' + name + '">' + +
+            '</p> <button class="btn btn-info details" data-target="#myModal" data-toggle="modal"type="button"><span name="lbl" caption="details"></span></button>' +
             '</div>   ' + '</div>';
     }
 }
+
 function openError() {
     console.log("error");
     var rank = this.rank;
-    $("#" + rank).html("<span></br>There was a problem with the data</span>");
+    $("#" + rank).html(
+        "<span></br>There was a problem with the data</span>");
 }
 
 function makeSearchTree() {
@@ -282,20 +270,40 @@ function makeSearchTreeSuccess(_data) {
     /*Helper functions*/
 
 function getName(obj) {
-  
-	return name = obj.closest('.thumbnail').find('.caption>p[caption]').attr('caption');
-	
+    return name = obj.closest('.thumbnail').find('.caption>p[caption]').attr(
+        'caption');
 }
-function getGreekName(obj) {
-  return obj.closest('.thumbnail').find('.caption>p[caption]').html()
 
+function getGreekName(name) {
+    console.log("in query")
+    queryUrl = returnOneGreekNameQuery(name)
+    $.ajax({
+        // type: "GET",
+        dataType: "jsonp",
+        url: queryUrl,
+        name: name,
+        success: greekNameSuccess
+    });
+    //return obj.closest('.thumbnail').find('.caption>p[caption]').html()
+}
+
+function greekNameSuccess(_data) {
+    var results = _data.query.pages;
+    console.log(_data);
+    for (var i in results) {
+        if (results[i].langlinks != undefined) {
+            sessionStorage.setItem('greekName', results[i].langlinks[0][
+                Object.keys(results[i].langlinks[0])[1]
+            ]);
+        } else {
+            sessionStorage.setItem('greekName', this.name);
+        }
+    }
 }
 
 function getRank(obj) {
     return rank = obj.parents('div:eq(3)').attr('id');
 }
-
-
 
 function selectRank(button, rank) {
     $('#' + rank + ' .thumbnail').removeClass('selected');
@@ -309,8 +317,7 @@ function startLoading(container) {
 }
 
 function stopLoading(container) {
-  
-	 $(container).next("span").remove();
+    $(container).next("span").remove();
 }
 
 function shrinkImg200(thumb_url) {

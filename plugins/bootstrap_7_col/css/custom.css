@@ -1,3 +1,7 @@
+a {
+    color: #134E82;
+}
+
 .rankHead {
     margin-top: -10px;
     margin-bottom: 5px;
@@ -15,17 +19,16 @@ img {
 }
 
 .caption p {
-	
-    border: 1px solid #094004;
     padding-top: 3px;
-    padding-bottom: 3px
-	font-weight:bold;
+    padding-bottom: 3px;
+    font-weight: 700
 }
 
 .thumbnail {
-    border: 2px solid #12540B;
+    border: 2px solid rgba(0,0,0,0.14);
     margin-bottom: 10px;
-    padding: 4px 4px 0
+    padding: 4px 4px 0;
+    background-color: rgba(31,121,22,0.42)
 }
 
 .thumbnail .caption {
@@ -38,7 +41,7 @@ img {
 .thumbnail img {
     min-height: 100px;
     height: 100px;
-    border: 1px solid #094004
+    border: 1px solid rgba(0,0,0,0.21)
 }
 
 li>.thumbnail img {
@@ -62,12 +65,6 @@ li>.thumbnail img {
     height: auto
 }
 
-.thumbnail {
-background-color: #1f7916;
-background-image: url(http://www.transparenttextures.com/patterns/textured-stripes.png);
-/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-}
-
 .navbar-default {
     background-color: #94821b;
     background-image: url(../../../assets/wavecut.png)
@@ -87,9 +84,9 @@ background-image: url(http://www.transparenttextures.com/patterns/textured-strip
 }
 
 .selected {
-    background-color: rgba(255, 0, 0, 0.66);
-   border-color:#9E4343;
+    background-color: rgba(255,0,0,0.42)!important
 }
+
 body,.modal-content {
     background-color: #decc66;
     background-image: url(../../../assets/wavecut.png);
@@ -102,8 +99,6 @@ body,.modal-content {
     border-radius: 5px;
     color: #343
 }
-
-
 
 html {
     overflow-y: scroll
@@ -159,11 +154,15 @@ to {
 }
 
 @media only screen and (max-width : 480px) {
-.col-sm-1 .col-sm-1{
-	padding-left:0px;
-padding-right:0px;	
-		
-	}
+.col-sm-1 .col-sm-1 {
+    padding-left: 0;
+    padding-right: 0
+}
+
+.open {
+    font-size: 25px
+}
+
 .thumbnail {
     background-image: none;
     padding: 4px
@@ -174,25 +173,24 @@ padding-right:0px;
 }
 
 .thumbnail img {
-    
     min-height: 60px;
     height: 60px;
-	border:2px double;
-
+    border: 2px double
 }
 
-.details{
-	float: left;
-	max-width: 20%;
-	padding:0px;
-
+.details {
+    float: left;
+    max-width: 20%;
+    padding: 0
 }
 
-.btn-info{
-background-color: transparent;
-border:0px;
-	
-	
+.caption .details {
+    display: none
+}
+
+.btn-info {
+    background-color: transparent;
+    border: 0
 }
 
 .caption p {
@@ -201,38 +199,44 @@ border:0px;
     text-align: left;
     margin-left: 10px;
     padding-left: 5px;
-	background-color: transparent;
-	border:0px;
-	font-size:18px;
-	
+    background-color: transparent;
+    border: 0;
+    font-size: 18px
 }
 
 .caption>.btn-group {
+    margin-top: -4px;
     float: right;
     margin-right: 10px
 }
 
-#phylum .thumbnail{
-background-color:#7a1916;	
-}
-#class .thumbnail{
-background-color:#1e1e96
-}
-#order .thumbnail{
-background-color:#a17d20
-}
-#family .thumbnail{
-background-color:#ad23ad
+#kingdom>.rankHead {
+    background-color: rgba(31,121,22,0.42)
 }
 
-#genus .thumbnail{
-background-color:#187a7a
+#phylum .thumbnail,#phylum>.rankHead {
+    background-color: rgba(122,25,22,0.42)
 }
 
-#species .thumbnail{
-background-color:#ba2525
+#class .thumbnail,#class>.rankHead {
+    background-color: rgba(30,30,150,0.42)
 }
 
+#order .thumbnail,#order>.rankHead {
+    background-color: rgba(161,125,32,0.42)
+}
+
+#family .thumbnail,#family>.rankHead {
+    background-color: rgba(173,35,173,0.42)
+}
+
+#genus .thumbnail,#genus>.rankHead {
+    background-color: rgba(24,122,122,0.42)
+}
+
+#species .thumbnail,#species>.rankHead {
+    background-color: rgba(186,37,37,0.42)
+}
 }
 
 @media only screen and (max-width : 768px) {
@@ -250,30 +254,25 @@ background-color:#ba2525
 }
 
 .rankHead {
-    margin-top: 0px;
-
+    margin-top: 0
+}
 }
 
-
+@media only screen and (max-width : 992px) and (min-width : 480px) {
+.row {
+    width: 1270px
 }
-@media only screen and (max-width : 992px) and  (min-width : 480px){
 
-.row{
-	width:1270px;
-	}
-	.col-sm-1{
-	display: inline-block;
+.col-sm-1 {
+    display: inline-block;
     float: left;
-    width: 180px;
-	}
-	
+    width: 180px
+}
 }
 
 #langNotActive {
-   pointer-events: none;
-   cursor: default;
-  background-color: rgba(255, 255, 255, 0.08);
-  
-   font-weight:bold;
-    
+    pointer-events: none;
+    cursor: default;
+    background-color: rgba(255,255,255,0.08);
+    font-weight: 700
 }

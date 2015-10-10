@@ -103,10 +103,9 @@
                         <div class="caption">
                             <p caption="Animal"><b><span name="lbl" caption="animal"></span></b></p>
                             <div class="btn-group">
-                                <button class="btn btn-info details hidden-xs "
+                                <button class="btn btn-info details"
                                 data-target="#myModal" data-toggle="modal"
-                                type="button"><span class=
-                                "glyphicon glyphicon-search hidden-lg "></span><span class="visible-lg"><span name="lbl" caption="details" class="visible-lg"></span></span></button>
+                                type="button"><span name="lbl" caption="details"></span></button>
                                 <button class="btn btn-default open" type=
                                 "button"><span class=
                                 "glyphicon glyphicon-menu-right"></span></button>
@@ -119,10 +118,9 @@
                         <div class="caption">
                             <p caption="Plant"><b><span name="lbl" caption="plant"></span></b></p>
                             <div class="btn-group">
-                                <button class="btn btn-info details hidden-xs "
+                                <button class="btn btn-info details"
                                 data-target="#myModal" data-toggle="modal"
-                                type="button"><span class=
-                                "glyphicon glyphicon-search hidden-lg "></span><span class="visible-lg"><span name="lbl" caption="details" class="visible-lg"></span></span></button>
+                                type="button"><span name="lbl" caption="details" ></span></button>
                                 <button class="btn btn-default open" type=
                                 "button"><span class=
                                 "glyphicon glyphicon-menu-right"></span></button>
@@ -192,7 +190,7 @@
         if (width <= 480) {
 		
 		//put img in button
-		 $( ".thumbnail>img" ).wrap( '<button class="btn btn-info details" data-target="#myModal" data-toggle="modal" type="button"> </button>');
+		 $( ".col-sm-1>.thumbnail>img" ).wrap( '<button class="btn btn-info details" data-target="#myModal" data-toggle="modal" type="button"> </button>');
 
 		var contents='';
         $(".glyphicon-menu-right").addClass("glyphicon-plus-sign");
