@@ -67,7 +67,16 @@ function membersSuccess(_data) {
         var name = nameFromUrl(src);
         dbArray[j] = name;
     }
-
+//TODO an h lista twn melwn einai 8 tote na mh ginetai sugkrish me wikirank 
+if(dbArray.length<=8){
+	for (var i in dbArray){
+	 var thumb = dbpedia_results[i].thumb.value;
+            animals_html = animals_html +
+                " <li> <div class='thumbnail'><img src='" + thumb +
+                "'width='50px' > <div class='caption'><p caption='"+dbArray[i]+"'>" + dbArray[i] +
+                "</p></div></div></li>";
+	}
+}else{
     for (var i in wikirankResults ) { //Traverse wikirank data, compare each element to dbpedia results and if it exists add to animal list
 	var wikiArray = wikirankResults[i].split(',');
 	console.log(i);
@@ -91,7 +100,7 @@ function membersSuccess(_data) {
     }
 	if (k > 7) break;
 	}
-	//TODO an h lista twn melwn einai 8 tote na mh ginetai sugkrish me wikirank 
+}
     stopLoading('#membersList');
     $('#membersList').html(animals_html)
     $('#membersList').find('.caption>p').quickfit();

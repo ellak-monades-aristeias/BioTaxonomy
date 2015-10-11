@@ -7,8 +7,8 @@ function getImportantQuery(rank, name) {
     name = name.replace(' ', "_");
     return query =
         'SELECT DISTINCT ?name,?thumb, COUNT(*) AS ?count WHERE {?name dbo:' +
-        rank + ' dbr:' + name +
-        ';dbo:thumbnail ?thumb;dbo:genus ?k.?s ?p ?name} ORDER BY DESC(COUNT(*)) LIMIT 500 ';
+        rank + ' <http://dbpedia.org/resource/' + name +
+        '>;dbo:thumbnail ?thumb;dbo:genus ?k.?s ?p ?name} ORDER BY DESC(COUNT(*)) LIMIT 500 ';
 }
 
 function getOpenQuery(name, rank, next_rank) {
