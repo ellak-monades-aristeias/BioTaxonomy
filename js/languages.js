@@ -84,8 +84,8 @@ function treeToGreek(container) {
 }
 
 function greekSuccess(_data) {
-	console.log(_data)
-	if(_data.query!==undefined){
+	
+	
     var results = _data.query.pages;
     for (var i in results) {
         if (results[i].langlinks != undefined) {
@@ -97,7 +97,7 @@ function greekSuccess(_data) {
         }
     }
     $(this.container).find('.caption p').quickfit();
-	}
+	
 }
 
 function changeLanguage(lang) {
