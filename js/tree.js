@@ -152,8 +152,11 @@ function openSuccess(_data) {
 
 /* Function that make the Search Tree*/
 function makeSearchTree() {
-    var name = $('#searchBox').val().replace(' ', "_");
+    var name = $('#searchBox').val();
+	if (name==''){name = $('#searchBoxMobile').val();}
+	console.log("searh term "+name);
     query = getSearchQuery(name);
+	console.log(query);
     var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
     $.ajax({
         dataType: "jsonp",
@@ -164,8 +167,9 @@ function makeSearchTree() {
 }
 
 function makeSearchTreeSuccess(_data) {
-    clearNextRanks("#kingdom"); //Clear data of all ranks
 
+    clearNextRanks("kingdom"); //Clear data of all ranks
+	var kingdomType='';
     var kingdom = '';
     var phylum = '';
     var classis = '';
@@ -174,7 +178,7 @@ function makeSearchTreeSuccess(_data) {
     var genus = '';
     var type = '';
     var results = _data.results.bindings;
-
+console.log(_data);
     for (var i in results) {
         if (results[i].kingdom != undefined) {
             var kingdom = nameFromUrl(results[i].kingdom.value);
@@ -202,15 +206,16 @@ function makeSearchTreeSuccess(_data) {
         }
 
     }
-    if (kingdom == 'Animal' || kingdom == 'Animalia') kingdom_type =
+    if (kingdom == 'Animal' || kingdom == 'Animalia') kingdomType =
         "Animal";
-    if (kingdom == 'Plant' || kingdom == 'Plantae') kingdom_type =
+    if (kingdom == 'Plant' || kingdom == 'Plantae') kingdomType =
         "Plant";
-    if (kingdomType == 'Animal' || kingdomType = 'Plant') { //Only make tree if kingdom is plant or animal
+    if (kingdomType == 'Animal' || kingdomType == 'Plant') { //Only make tree if kingdom is plant or animal
 
-        selectRank($('p[caption=' + kingdom_type + ']'), 'kingdom'); //TODO check if this works. Makes animal or plant selected
+        selectRank($('p[caption=' + kingdomType + ']'), 'kingdom'); 
+		selected.insertAfter($('#' + rank + '>.rankHead')); 
         //Find phylums	 
-        query = getOpenQuery(kingdom_type, 'kingdom', 'phylum');
+        query = getOpenQuery(kingdomType, 'kingdom', 'phylum');
         executeOpenQuery(query, 'phylum', type);
         //Find classes
         query = getOpenQuery(phylum, 'phylum', 'class');
@@ -304,8 +309,10 @@ function getRank(obj) {
 }
 
 function selectRank(button, rank) {
+	var selected =button.closest('.thumbnail');
     $('#' + rank + ' .thumbnail').removeClass('selected');
-    button.closest('.thumbnail').addClass('selected');
+    selected.addClass('selected');
+	//selected.insertAfter($('#' + rank + '>.rankHead')); //TODO return to original position when unselected
 }
 
 function startLoading(container) {

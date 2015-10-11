@@ -19,7 +19,7 @@ function searchTree() {
 }
 
 function searchArticle() {
-    var queryUrl = articleExistsQuery($('#searchBox').val())
+    var queryUrl = articleExistsQuery($('.searchBox').val())
     $.ajax({
         dataType: "jsonp",
         url: queryUrl,
