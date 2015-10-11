@@ -169,68 +169,70 @@ function makeSearchTree() {
 function makeSearchTreeSuccess(_data) {
 
     clearNextRanks("kingdom"); //Clear data of all ranks
+    var values=['','','','','','','']
 	var kingdomType='';
-    var kingdom = '';
-    var phylum = '';
-    var classis = '';
-    var order = '';
-    var family = '';
-    var genus = '';
-    var type = '';
+
+   
     var results = _data.results.bindings;
 console.log(_data);
     for (var i in results) {
         if (results[i].kingdom != undefined) {
             var kingdom = nameFromUrl(results[i].kingdom.value);
-            kingdom = kingdom.replace(' ', "_");
+            values[0] = kingdom.replace(' ', "_");
         }
         if (results[i].phylum != undefined) {
             var phylum = nameFromUrl(results[i].phylum.value);
-            phylum = phylum.replace(' ', "_");
+            values[1] = phylum.replace(' ', "_");
         }
         if (results[i].classis != undefined) {
             var classis = nameFromUrl(results[i].classis.value);
-            classis = classis.replace(' ', "_");
+            values[2] = classis.replace(' ', "_");
         }
         if (results[i].order != undefined) {
             var order = nameFromUrl(results[i].order.value);
-            order = order.replace(' ', "_");
+            values[3] = order.replace(' ', "_");
         }
         if (results[i].family != undefined) {
             var family = nameFromUrl(results[i].family.value);
-            family = family.replace(' ', "_");
+            values[4] = family.replace(' ', "_");
         }
         if (results[i].genus != undefined) {
             var genus = nameFromUrl(results[i].genus.value);
-            genus = genus.replace(' ', "_");
+            values[5]= genus.replace(' ', "_");
+        }
+        //TODO add species
+
+    }
+    if (values[0] == 'Animal' || values[0]  == 'Animalia') values[0]  =
+        "Animal";
+    if (values[0] == 'Plant' || values[0]  == 'Plantae') values[0]  =
+        "Plant";
+    if (values[0]  == 'Animal' || values[0]  == 'Plant') { //Only make tree if kingdom is plant or animal
+
+     //TODO add species 
+    for(i=0;i<6;i++){
+         
+        query = getOpenQuery(values[i], rankArray[i], rankArray[i+1]);
+        executeOpenQuery(query, rankArray[i+1], values[i]);
+        console.log("value "+values[i]);
+       
         }
 
-    }
-    if (kingdom == 'Animal' || kingdom == 'Animalia') kingdomType =
-        "Animal";
-    if (kingdom == 'Plant' || kingdom == 'Plantae') kingdomType =
-        "Plant";
-    if (kingdomType == 'Animal' || kingdomType == 'Plant') { //Only make tree if kingdom is plant or animal
-
-        selectRank($('p[caption=' + kingdomType + ']'), 'kingdom'); 
-		selected.insertAfter($('#' + rank + '>.rankHead')); 
-        //Find phylums	 
-        query = getOpenQuery(kingdomType, 'kingdom', 'phylum');
-        executeOpenQuery(query, 'phylum', type);
-        //Find classes
-        query = getOpenQuery(phylum, 'phylum', 'class');
-        executeOpenQuery(query, 'class', phylum);
-        //Find orders
-        query = getOpenQuery(classis, 'class', 'order');
-        executeOpenQuery(query, 'order', classis);
-        //Find families
-        query = getOpenQuery(order, 'order', 'family');
-        executeOpenQuery(query, 'family', order);
-        //Find genii
-        query = getOpenQuery(family, 'family', 'genus');
-        executeOpenQuery(query, 'genus', family);
-    }
+    }   
+      
+  
+  myFunc(values[1]);  
 }
+
+function myFunc() {
+       if ($('#'+rankArray[1]+' p[caption="' + name + '"]').length) {
+       selectRank($('p[caption="' + name + '"]'), rankArray[1]); 
+	//	$('#'+rankArray[1]+' .selected').insertAfter($('#' + rankArray[1]+ '>.rankHead')); 
+    console.log( "The DOM is now loaded and can be manipulated." );
+  } else {
+    setTimeout(myFunc, 15);
+  }
+  }
 /*End of tree functions*/
 /*Helper functions*/
 function thumbHtml(name, thumb_url, rank) {
@@ -310,6 +312,7 @@ function getRank(obj) {
 
 function selectRank(button, rank) {
 	var selected =button.closest('.thumbnail');
+  console.log(selected);
     $('#' + rank + ' .thumbnail').removeClass('selected');
     selected.addClass('selected');
 	//selected.insertAfter($('#' + rank + '>.rankHead')); //TODO return to original position when unselected
