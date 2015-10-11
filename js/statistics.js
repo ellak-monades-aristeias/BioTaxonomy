@@ -56,10 +56,12 @@
   var prevRank = getPrevRank(rank);
   query = getTotalQuery(prevRank, prevRankName, rank);
   var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
+  checkUrl();
   $.ajax({
-      dataType: "jsonp",
+      dataType: "json",
       url: queryUrl,
-      success: totalQuerySuccess
+      success: totalQuerySuccess,
+      error: ajaxError
   });
    //Otan ginetai allagh glwssas na allazei kai to prohgoumeno rank
   function getPluralRank(rank) {

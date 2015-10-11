@@ -55,6 +55,8 @@ function getLanguageResources() {
     en['members'] = "members";
     gr['noResults'] = "Κανένα αποτέλεσμα!";
     en['noResults'] = "No results!";
+    en['errorMsg'] = "There was a problem with the data";
+    gr['errorMsg'] = "Υπήρξε πρόβλημα με τα δεδομένα"
     var resources = new Array();
     resources['gr'] = gr;
     resources['en'] = en;
@@ -62,15 +64,12 @@ function getLanguageResources() {
 }
 
 function treeToGreek(container) {
-
     var nameList = [];
     $(container).find('.caption>p[caption]').each(function() {
         nameList.push($(this).attr('caption'));
     });
     fiftyCounter = Math.floor(nameList.length / 50);
-   
     for (i = 0; i <= fiftyCounter; i++) {
-     
         fiftyNameList = nameList.slice(i * 50, (i * 50) + 50);
         var queryUrl = returnGreekNameQuery(fiftyNameList);
         $.ajax({
@@ -78,14 +77,14 @@ function treeToGreek(container) {
             dataType: "jsonp",
             url: queryUrl,
             container: container,
-            success: greekSuccess
+            success: greekSuccess,
+            error: ajaxError
         });
     }
 }
 
 function greekSuccess(_data) {
     var results = _data.query.pages;
-    
     for (var i in results) {
         if (results[i].langlinks != undefined) {
             var greekName = results[i].langlinks[0][Object.keys(results[i].langlinks[
@@ -104,16 +103,15 @@ function changeLanguage(lang) {
         $("a:contains('gr')").addClass("not-active");
         var currPage = getCurrPage();
         if (lang == 'gr') {
-            
-            $("a:contains('en')").attr('id', ' ')
-            $("a:contains('gr')").attr('id', 'langNotActive')
+            $("a:contains('en')").attr('id', ' ');
+            $("a:contains('gr')").attr('id', 'langNotActive');
             if (currPage == 'index.html') {
                 treeToGreek('#tree_container');
                 $('#tree_container').find('.caption p').quickfit();
             }
         } else {
-            $("a:contains('gr')").attr('id', ' ')
-            $("a:contains('en')").attr('id', 'langNotActive')
+            $("a:contains('gr')").attr('id', ' ');
+            $("a:contains('en')").attr('id', 'langNotActive');
             if (currPage == 'index.html') {
                 $('#tree_container').find('.caption p').each(function() {
                     $(this).html($(this).attr('caption'));
@@ -124,7 +122,6 @@ function changeLanguage(lang) {
         if (currPage == 'article.html') {
             if ((lang == 'gr') && (sessionStorage.getItem('name') !=
                 sessionStorage.getItem('greekName'))) {
-              
                 $('#title').html(sessionStorage.getItem('greekName'));
                 $('#wikiLink').attr('href', 'https://el.wikipedia.org/wiki/' +
                     (sessionStorage.getItem('greekName')).replace(' ', '_')
@@ -135,7 +132,6 @@ function changeLanguage(lang) {
                     page: sessionStorage.getItem('greekName'),
                 });
             } else {
-             
                 $('#title').html(sessionStorage.getItem('name'));
                 $('#wikiLink').attr('href', 'https://en.wikipedia.org/wiki/' +
                     (sessionStorage.getItem('name')).replace(' ', '_'));

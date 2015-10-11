@@ -19,7 +19,7 @@ function searchTree() {
 }
 
 function searchArticle() {
-    var queryUrl = articleExistsQuery($('.searchBox').val())
+    var queryUrl = articleExistsQuery($('.searchBox').val());
     $.ajax({
         dataType: "jsonp",
         url: queryUrl,
@@ -41,13 +41,13 @@ function searchSuccess(_data) {
         sessionStorage.setItem('name', searchTerm);
         window.location.replace('article.html');
     } else {
-        $('#article').html("Wikipedia article doesn't exist")
+        $('#article').html("Wikipedia article doesn't exist");
     }
 }
 
 function getCurrPage() {
     var currPageUrl = document.location.href;
-    return currPage = currPageUrl.substr(currPageUrl.lastIndexOf('/') + 1);
+    return currPageUrl.substr(currPageUrl.lastIndexOf('/') + 1);
 }
 
 function goBack() {
@@ -58,7 +58,7 @@ function goBack() {
 }
 
 function loadArticle() {
-    if (sessionStorage.getItem('name') != undefined) {
+    if (sessionStorage.getItem('name') !== undefined) {
         if (sessionStorage.getItem('lang') == 'gr' && sessionStorage.getItem(
             'name') != sessionStorage.getItem('greekName')) {
             $('#title').html(sessionStorage.getItem('greekName'));
@@ -80,6 +80,6 @@ function loadArticle() {
             });
         }
     } else {
-        $('#article').html("No article selected!")
+        $('#article').html("No article selected!");
     }
 }
