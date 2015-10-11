@@ -27,8 +27,7 @@ function getOpenQuery(name, rank, next_rank) {
     name = name.replace(' ', "_");
     if (rank == "genus") {
         return 'SELECT ?taxon,?thumb WHERE { ?taxon  dbp:genus \"' + name +
-            '\"@en .OPTIONAL{?taxon dbo:thumbnail ?thumb}.FILTER (?taxon!=<http://dbpedia.org/resource/' +
-            name + '>)}';
+            '\"@en .OPTIONAL{?taxon dbo:thumbnail ?thumb}.FILTER (?taxon!=<http://dbpedia.org/resource/' + name + '>)}';
     } else {
         return "SELECT DISTINCT ?taxon, ?thumb WHERE {?name  dbo:" + rank + " dbr:" + name +
             ";dbo:" + next_rank +

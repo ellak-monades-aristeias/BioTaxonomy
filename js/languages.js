@@ -55,8 +55,7 @@ function getLanguageResources() {
     en['members'] = "members";
     gr['noResults'] = "Κανένα αποτέλεσμα!";
     en['noResults'] = "No results!";
-    en['errorMsg'] = "There was a problem with the data";
-    gr['errorMsg'] = "Υπήρξε πρόβλημα με τα δεδομένα"
+ 
     var resources = new Array();
     resources['gr'] = gr;
     resources['en'] = en;
@@ -72,6 +71,7 @@ function treeToGreek(container) {
     for (i = 0; i <= fiftyCounter; i++) {
         fiftyNameList = nameList.slice(i * 50, (i * 50) + 50);
         var queryUrl = returnGreekNameQuery(fiftyNameList);
+		console.log(queryUrl);
         $.ajax({
             // type: "GET",
             dataType: "jsonp",
@@ -84,17 +84,20 @@ function treeToGreek(container) {
 }
 
 function greekSuccess(_data) {
+	console.log(_data)
+	if(_data.query!==undefined){
     var results = _data.query.pages;
     for (var i in results) {
         if (results[i].langlinks != undefined) {
-            var greekName = results[i].langlinks[0][Object.keys(results[i].langlinks[
-                0])[1]];
+            var greekName = results[i].langlinks[0][Object.keys(results[i].langlinks[0])[1]];
+               
             $("p[caption='" + results[i].title + "']").html(greekName);
         } else {
             $("p[caption='" + results[i].title + "']").html(results[i].title);
         }
     }
     $(this.container).find('.caption p').quickfit();
+	}
 }
 
 function changeLanguage(lang) {
@@ -147,7 +150,4 @@ function changeLanguage(lang) {
             $(elt).text(langResources[$(elt).attr("caption")]);
         });
     }
-    //todo na allazoun ta onomata otan kapoios allazei glwssa
-    // na allaxw kai to placeholder <input class="form-control" id="searchBox"
-    //                                    placeholder="Search" type="text">
-    //<span name="lbl" caption="about"></span>
+  

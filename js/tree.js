@@ -88,7 +88,7 @@ function membersSuccess(_data) {
             }
             if (k > 7) break;
         }
-        //TODO an h lista twn melwn einai 8 tote na mh ginetai sugkrish me wikirank 
+     
         stopLoading('#membersList');
         $('#membersList').html(animals_html);
         $('#membersList').find('.caption>p').quickfit();
