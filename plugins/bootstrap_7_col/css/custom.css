@@ -160,7 +160,7 @@ to {
 }
 
 .open {
-    font-size: 25px
+    font-size: 20px
 }
 
 .thumbnail {
@@ -213,29 +213,58 @@ to {
 #kingdom>.rankHead {
     background-color: rgba(31,121,22,0.42)
 }
+#kingdom{
+	    border-bottom: 20px solid rgba(31,121,22,0.42);
+    margin-bottom: 10px;
+}
 
 #phylum .thumbnail,#phylum>.rankHead {
     background-color: rgba(122,25,22,0.42)
+}
+#phylum{
+	    border-bottom: 20px solid rgba(122,25,22,0.42);
+    margin-bottom: 10px;
 }
 
 #class .thumbnail,#class>.rankHead {
     background-color: rgba(30,30,150,0.42)
 }
 
+#class{
+	    border-bottom: 20px solid rgba(30,30,150,0.42);
+    margin-bottom: 10px;
+}
+
 #order .thumbnail,#order>.rankHead {
     background-color: rgba(161,125,32,0.42)
+}
+#order{
+	    border-bottom: 20px solid rgba(161,125,32,0.42);
+    margin-bottom: 10px;
 }
 
 #family .thumbnail,#family>.rankHead {
     background-color: rgba(173,35,173,0.42)
 }
-
+#family{
+	    border-bottom: 20px solid rgba(173,35,173,0.42);
+    margin-bottom: 10px;
+}
 #genus .thumbnail,#genus>.rankHead {
     background-color: rgba(24,122,122,0.42)
+}
+#genus{
+	    border-bottom: 20px solid rgba(24,122,122,0.42);
+    margin-bottom: 10px;
 }
 
 #species .thumbnail,#species>.rankHead {
     background-color: rgba(186,37,37,0.42)
+}
+
+#species{
+	    border-bottom: 20px solid rgba(186,37,37,0.42);
+    margin-bottom: 10px;
 }
 }
 

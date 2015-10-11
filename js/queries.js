@@ -26,7 +26,7 @@ function getOpenQuery(name, rank, next_rank) {
 }
 
 function getSummaryQuery(name, greekName) {
-    console.log("name " + name + " greek " + greekName);
+    
     if (sessionStorage.getItem('lang') == 'gr' && (name != greekName)) {
         return query =
             'https://el.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=' +

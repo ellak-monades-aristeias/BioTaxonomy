@@ -62,15 +62,15 @@ function getLanguageResources() {
 }
 
 function treeToGreek(container) {
-    console.log("in maketRe");
+
     var nameList = [];
     $(container).find('.caption>p[caption]').each(function() {
         nameList.push($(this).attr('caption'));
     });
     fiftyCounter = Math.floor(nameList.length / 50);
-    console.log("counter " + fiftyCounter)
+   
     for (i = 0; i <= fiftyCounter; i++) {
-        console.log("in loop " + i);
+     
         fiftyNameList = nameList.slice(i * 50, (i * 50) + 50);
         var queryUrl = returnGreekNameQuery(fiftyNameList);
         $.ajax({
@@ -85,7 +85,7 @@ function treeToGreek(container) {
 
 function greekSuccess(_data) {
     var results = _data.query.pages;
-    console.log(_data);
+    
     for (var i in results) {
         if (results[i].langlinks != undefined) {
             var greekName = results[i].langlinks[0][Object.keys(results[i].langlinks[
@@ -104,7 +104,7 @@ function changeLanguage(lang) {
         $("a:contains('gr')").addClass("not-active");
         var currPage = getCurrPage();
         if (lang == 'gr') {
-            console.log('in gr');
+            
             $("a:contains('en')").attr('id', ' ')
             $("a:contains('gr')").attr('id', 'langNotActive')
             if (currPage == 'index.html') {
@@ -124,7 +124,7 @@ function changeLanguage(lang) {
         if (currPage == 'article.html') {
             if ((lang == 'gr') && (sessionStorage.getItem('name') !=
                 sessionStorage.getItem('greekName'))) {
-                console.log("gr ")
+              
                 $('#title').html(sessionStorage.getItem('greekName'));
                 $('#wikiLink').attr('href', 'https://el.wikipedia.org/wiki/' +
                     (sessionStorage.getItem('greekName')).replace(' ', '_')
@@ -135,7 +135,7 @@ function changeLanguage(lang) {
                     page: sessionStorage.getItem('greekName'),
                 });
             } else {
-                console.log("en ")
+             
                 $('#title').html(sessionStorage.getItem('name'));
                 $('#wikiLink').attr('href', 'https://en.wikipedia.org/wiki/' +
                     (sessionStorage.getItem('name')).replace(' ', '_'));
