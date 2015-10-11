@@ -4,18 +4,19 @@ $(document).on("click", ".details", function() {
 
     var name = getName($(this)); //Get name of node that was clicked
     getGreekName(name);
-    var greekName = sessionStorage.setItem('greekName'); //Retrieve greek name that was found from ajax request - TODO with better way
+    var greekName = sessionStorage.getItem('greekName'); //Retrieve greek name that was found from ajax request - TODO with better way
     var rank = getRank($(this));
     var img_url = $(this).closest('.thumbnail').find('img').attr('src');
     img_url = getImg300(img_url);
 
     query = getSummaryQuery(name, greekName);
-
+console.log("name"+name);
     sessionStorage.setItem('name', name);
     sessionStorage.setItem('rank', rank);
     $(".modal-title").text(name);
     $(".article").attr('onclick', 'showArticle("' + name + '")');
     $('#modalThumb').children('img').attr('src', img_url);
+	$('#membersList').html('');//Clear memberlist data
     startLoading('#modalSum');
 
     var queryUrl = query;
@@ -53,26 +54,31 @@ function getMembers(rank, name, img_url) {
 }
 
 function membersSuccess(_data) {
+	
     animals_html = "";
     var k = 0;
-    var array = [];
+    var dbArray = [];
     var dbpedia_results = _data.results.bindings;
-    var wikirank_results = jsonObject.items;
+	
+    var wikirankResults = [wikirank0,wikirank1,wikirank2,wikirank3,wikirank4,wikirank5,wikirank6,wikirank7,wikirank8,wikirank9]
 
     for (var j in dbpedia_results) { //pass all dbpedia results in array for easier understanding
         var src = dbpedia_results[j].name.value;
         var name = nameFromUrl(src);
-        array[j] = name;
+        dbArray[j] = name;
     }
 
-    for (var i in wikirank_results) { //Traverse wikirank data, compare each element to dbpedia results and if it exists add to animal list
-        var src = $.trim(wikirank_results[i].n);
-        if ($.inArray(src, array) > -1) {
+    for (var i in wikirankResults ) { //Traverse wikirank data, compare each element to dbpedia results and if it exists add to animal list
+	var wikiArray = wikirankResults[i].split(',');
+	console.log(i);
+	for (var j in wikiArray){
+       src=wikiArray[j];
+        if ($.inArray(src, dbArray) > -1) {
             k++;
-            var thumb = dbpedia_results[$.inArray(src, array)].thumb.value;
+            var thumb = dbpedia_results[$.inArray(src, dbArray)].thumb.value;
             animals_html = animals_html +
                 " <li> <div class='thumbnail'><img src='" + thumb +
-                "'width='50px' > <div class='caption'><p>" + src +
+                "'width='50px' > <div class='caption'><p caption='"+src+"'>" + src +
                 "</p></div></div></li>";
             //na kanw kai th lista twn melwn na emfanizetai sta ellhnika  
             /*
@@ -81,11 +87,16 @@ function membersSuccess(_data) {
                     src + "\")'>" + src + "</a></p></div></div></li>";
 					*/
         }
-        if (k > 6) break;
+        if (k > 7) break;
     }
+	if (k > 7) break;
+	}
+	//TODO an h lista twn melwn einai 8 tote na mh ginetai sugkrish me wikirank 
     stopLoading('#membersList');
     $('#membersList').html(animals_html)
     $('#membersList').find('.caption>p').quickfit();
+	if(sessionStorage.getItem('lang')=='gr')
+	treeToGreek('#myModal');
 }
 /*End of details functions*/
 /*Functions that make the tree*/
@@ -219,20 +230,15 @@ console.log(_data);
         }
 
     }   
-      
-  
-  myFunc(values[1]);  
+//TODO De mporei na vrei ta thumbnails. Na to kanw me sessionStorage sth xeiroterh an de vrw allo tropo 
+selectRank($('p[caption="' + name + '"]'), rankArray[1]); 
+	//	$('#'+rankArray[1]+' .selected').insertAfter($('#' + rankArray[1]+ '>.rankHead'));   
+
+
+
 }
 
-function myFunc() {
-       if ($('#'+rankArray[1]+' p[caption="' + name + '"]').length) {
-       selectRank($('p[caption="' + name + '"]'), rankArray[1]); 
-	//	$('#'+rankArray[1]+' .selected').insertAfter($('#' + rankArray[1]+ '>.rankHead')); 
-    console.log( "The DOM is now loaded and can be manipulated." );
-  } else {
-    setTimeout(myFunc, 15);
-  }
-  }
+
 /*End of tree functions*/
 /*Helper functions*/
 function thumbHtml(name, thumb_url, rank) {
