@@ -160,14 +160,14 @@
             </div>
         </div><!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-		    <script language="javascript" src="wikirank_data/rank0.json" type="text/javascript"></script>
-		  <script language="javascript" src="wikirank_data/rank1.json" type="text/javascript"></script>
-		    <script language="javascript" src="wikirank_data/rank2.json" type="text/javascript"></script>
-			 <script language="javascript" src="wikirank_data/rank3.json" type="text/javascript"></script>
-			  <script language="javascript" src="wikirank_data/rank4.json" type="text/javascript"></script>
-			   <script language="javascript" src="wikirank_data/rank5.json" type="text/javascript"></script>
-			    <script language="javascript" src="wikirank_data/rank6.json" type="text/javascript"></script>
-				 <script language="javascript" src="wikirank_data/rank7.json" type="text/javascript"></script>
+	    <script language="javascript" src="wikirank_data/rank0.json" type="text/javascript"></script>
+    <script language="javascript" src="wikirank_data/rank1.json" type="text/javascript"></script>
+    <script language="javascript" src="wikirank_data/rank2.json" type="text/javascript"></script>
+    <script language="javascript" src="wikirank_data/rank3.json" type="text/javascript"></script>
+    <script language="javascript" src="wikirank_data/rank4.json" type="text/javascript"></script>
+    <script language="javascript" src="wikirank_data/rank5.json" type="text/javascript"></script>
+    <script language="javascript" src="wikirank_data/rank6.json" type="text/javascript"></script>
+    <script language="javascript" src="wikirank_data/rank7.json" type="text/javascript"></script>
          <script language="javascript" src="wikirank_data/rank8.json" type="text/javascript"></script>
 		  <script language="javascript" src="wikirank_data/rank9.json" type="text/javascript"></script>
 		<script src="plugins/jquery.min.js"></script>
@@ -178,12 +178,11 @@
 		<script src="js/languages.js"></script>
         <script src="js/queries.js"></script>
 		     <script src="js/tree.js"></script>
+			 <script src="plugins/bootbox.min.js"></script>
       
         <script src="plugins/jquery-quickfit/jquery.quickfit.js"></script>
 
         <script>
-
-
         if (sessionStorage.getItem('treePage')!=undefined){
         $('#tree_container').html(sessionStorage.getItem('treePage'));
         }
@@ -195,19 +194,14 @@
 		sessionStorage.setItem('lang','en');
 		}
 		
-
         $(document).ajaxError(function(){
         alert("An error occurred!");
         });
-
-
        
         $(function() {
         $('button').prop('disabled', false);
-
         $('.caption p').quickfit();
         });
-
         $(function () {
         var onLoadWidth = $(window).width();
         ChangeDiv(onLoadWidth);
