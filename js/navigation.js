@@ -1,3 +1,38 @@
+function prettyLoadRank(elements,rank,time){
+	if(time===undefined){
+	var time = 150;
+	}
+	var fadeInTime=time;
+	var i=0;
+var count = 0;
+if (rank!==undefined){
+var timer = $.timer(function() {
+ count=count+1;
+	$("#" + rank+" .counter").html(" "+count+"/"+elements.length);
+});
+timer.set({ time : time, autostart : false});
+}
+
+	$(elements).each(function() {
+		i++;
+		var self=$(this);
+		 setTimeout( function(){
+			 if (rank!==undefined){
+			 timer.once();
+			 }
+			 self.fadeIn(fadeInTime); 
+		  
+		 }, time);
+		 
+		
+		 
+      time += 150;
+	
+ });
+ 	
+  return time;
+}
+
 function showArticle(title) {
     sessionStorage.setItem('treePage', $('#tree_container').html());
     window.location.replace('article.html');

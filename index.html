@@ -20,8 +20,8 @@
         <link href="favicon.ico" rel="shortcut icon">
         <link href="favicon.ico" rel="icon">
         <link href="plugins/bootstrap_7_col/css/custom.css" rel="stylesheet">
-    
-     
+    <script src="plugins/jquery.min.js"></script>
+
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -90,19 +90,19 @@
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
-        <div class="container">
+        <div class="container" >
        
             <div class="row seven-cols text-center" id="tree_container">
                 <div class="col-sm-1" id="kingdom">
-				 <div class="rankHead"><span name="lbl" caption="kingdom"></span></div>
+				 <div class="rankHead"><span name="lbl" caption="kingdom">Kingdom</span></div>
                     <div class="thumbnail clearfix"><img alt="Plant" class="img-rounded" src=
                         "https://upload.wikimedia.org/wikipedia/commons/1/14/Animal_diversity.png">
                         <div class="caption">
-                            <p caption="Animal"><b><span name="lbl" caption="animal"></span></b></p>
+                            <p caption="Animal"><b><span name="lbl" caption="animal">Animal</span></b></p>
                             <div class="btn-group">
                                 <button class="btn btn-info details"
                                 data-target="#myModal" data-toggle="modal"
-                                type="button"><span name="lbl" caption="details"></span></button>
+                                type="button"><span name="lbl" caption="details">Details</span></button>
                                 <button class="btn btn-default open" type=
                                 "button"><span class=
                                 "glyphicon glyphicon-menu-right"></span></button>
@@ -113,11 +113,11 @@
 						<img alt="Plant" class="img-rounded" src=
                         "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Diversity_of_plants_image_version_5.png/161px-Diversity_of_plants_image_version_5.png">
                         <div class="caption">
-                            <p caption="Plant"><b><span name="lbl" caption="plant"></span></b></p>
+                            <p caption="Plant"><b><span name="lbl" caption="plant">Plant</span></b></p>
                             <div class="btn-group">
                                 <button class="btn btn-info details"
                                 data-target="#myModal" data-toggle="modal"
-                                type="button"><span name="lbl" caption="details" ></span></button>
+                                type="button"><span name="lbl" caption="details" >Details</span></button>
                                 <button class="btn btn-default open" type=
                                 "button"><span class=
                                 "glyphicon glyphicon-menu-right"></span></button>
@@ -125,15 +125,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-1 " id="phylum"><div class="rankHead"><span name="lbl" caption="phylum"></span></div ></div>
-                <div class="col-sm-1 " id="class"><div  class="rankHead"><span name="lbl" caption="class"></span></div ></div>
-                <div class="col-sm-1 " id="order"><div  class="rankHead"><span name="lbl" caption="order"></span></div ></div>
-                <div class="col-sm-1 " id="family"><div  class="rankHead"><span name="lbl" caption="family"></span></div ></div>
+                <div class="col-sm-1 " id="phylum"><div class="rankHead"><span name="lbl" caption="phylum">Phylum</span><span class="counter"><span></div ></div>
+                <div class="col-sm-1 " id="class"><div  class="rankHead"><span name="lbl" caption="class">Class</span><span class="counter"><span></div ></div>
+                <div class="col-sm-1 " id="order"><div  class="rankHead"><span name="lbl" caption="order">Order</span><span class="counter"><span></div ></div>
+                <div class="col-sm-1 " id="family"><div  class="rankHead"><span name="lbl" caption="family">Family</span><span class="counter"><span></div ></div>
                 <div class="col-sm-1 " id="genus"><div class="rankHead">
-				<span name="lbl" caption="genus"></span></div ></div>
-                <div class="col-sm-1 " id="species"><div  class="rankHead"><span name="lbl" caption="species"></span></div ></div>
+				<span name="lbl" caption="genus">Genus</span><span class="counter"><span></div ></div>
+                <div class="col-sm-1 " id="species"><div  class="rankHead"><span name="lbl" caption="species">Species</span><span class="counter"><span></div ></div>
             </div>
         </div>
+	
         <div class="modal fade" id="myModal">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -170,7 +171,7 @@
     <script language="javascript" src="wikirank_data/rank7.json" type="text/javascript"></script>
          <script language="javascript" src="wikirank_data/rank8.json" type="text/javascript"></script>
 		  <script language="javascript" src="wikirank_data/rank9.json" type="text/javascript"></script>
-		<script src="plugins/jquery.min.js"></script>
+		
 		 
       
         <script src="plugins/bootstrap_7_col/js/bootstrap.min.js"></script>
@@ -179,10 +180,13 @@
         <script src="js/queries.js"></script>
 		     <script src="js/tree.js"></script>
 			 <script src="plugins/bootbox.min.js"></script>
+			 <script src="plugins/jquery.timer.js"></script>
+			 
       
         <script src="plugins/jquery-quickfit/jquery.quickfit.js"></script>
 
         <script>
+		
         if (sessionStorage.getItem('treePage')!=undefined){
         $('#tree_container').html(sessionStorage.getItem('treePage'));
         }
