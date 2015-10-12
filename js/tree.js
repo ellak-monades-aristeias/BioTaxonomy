@@ -12,8 +12,17 @@ $(document).on("click", ".details", function() {
     sessionStorage.setItem('name', name);
     sessionStorage.setItem('rank', rank);
     $(".modal-title").text(name);
+	
+	
     $(".article").attr('onclick', 'showArticle("' + name + '")');
-    $('#modalThumb').children('img').attr('src', img_url);
+	
+	
+	$('#modalThumb img').hide();
+    $('#modalThumb img').attr('src', img_url);
+	
+	time=prettyLoadRank($('#modalThumb img'),'null',900);
+	
+	
     $('#membersList').html(''); //Clear memberlist data
     startLoading('#modalSum');
     $.ajax({
@@ -33,7 +42,11 @@ function summarySuccess(_data) {
         var sum = results[j].extract;
     }
     stopLoading('#modalSum');
+	
+	$('#modalSum').hide();
     $('#modalSum').text(sum);
+	var time=prettyLoadRank($('#modalSum'),'null',700);
+	
     startLoading('#membersList');
     getMembers(this.rank, this.name, this.img_url);
 }
@@ -67,7 +80,7 @@ function membersSuccess(_data) {
         }
         for (var i in wikirankResults) { //Traverse wikirank data, compare each element to dbpedia results and if it exists add to animal list
             var wikiArray = wikirankResults[i].split(',');
-            console.log(i);
+         
             for (var j in wikiArray) {
                 src = wikiArray[j];
                 if ($.inArray(src, dbArray) > -1) {
@@ -91,6 +104,19 @@ function membersSuccess(_data) {
      
         stopLoading('#membersList');
         $('#membersList').html(animals_html);
+		$("#membersList .thumbnail").hide();
+		
+				var $thumbnails=$("#membersList .thumbnail");
+				var time2=$thumbnails.length*250;
+				 setTimeout( function(){ 
+		var time=prettyLoadRank($thumbnails,'null',250);
+			 }, 800)	
+		
+		
+		
+		
+			
+			 
         $('#membersList').find('.caption>p').quickfit();
         if (sessionStorage.getItem('lang') == 'gr') treeToGreek('#myModal');
     }
@@ -125,10 +151,11 @@ function executeOpenQuery(query, rank) {
 }
 
 function openSuccess(_data) {
+	
         console.log(_data);
         var thumb_url = "";
         var rank = this.rank;
-        stopLoading('#' + rank + '>div');
+        
         var results = _data.results.bindings;
         if (results.length > 0) { //if there are any results
             for (var i in results) {
@@ -140,17 +167,48 @@ function openSuccess(_data) {
                     thumb_url = shrinkImg200(results[i].thumb.value);
                 }
                 var html = thumbHtml(name, thumb_url, rank);
-                $("#" + rank).append(html);
-            }
-            sessionStorage.setItem('treePage', $('#tree_container').html());
+				
+           //   $("#" + rank).append(html).hide().fadeIn(300);
+		   
+			
+			var item = $(html).hide();
+			
+$("#" + rank).append(item);
+$('button').prop('disabled', true);
+stopLoading('#' + rank + '>div');
+//item.slideDown(500);//Na dw pws na ginetai gia ena ena xehwrista
+
+			
+
+        }
+		
+		var $thumbnails=$("#" + rank+" .thumbnail");
+		
+		var time=prettyLoadRank($thumbnails,rank);
+		
+		
+			 setTimeout( function(){ 
+			 $("#" + rank+" .counter").html(" "+$thumbnails.length);
+			 $thumbnails.show();
+			 
+			 sessionStorage.setItem('treePage', $('#tree_container').html());
+			 $('button').prop('disabled', false);
+			 }, time+100)	
+            
         } else {
+			stopLoading('#' + rank + '>div');
+			$('button').prop('disabled', false);
             $("#" + rank).append('<span name="lbl" caption="noResults"></span>');
         }
         ChangeDiv($(window).width()); //Does changes related to screen size
         changeLanguage(sessionStorage.getItem('lang')); //does text translation for selected language
-        $('button').prop('disabled', false);
+        
     }
+	
+	
+	
     /* Function that make the Search Tree*/
+
 
 function makeSearchTree() {
     var name = $('#searchBox').val();
@@ -247,6 +305,8 @@ function clearNextRanks(rank) {
         $("#" + rankArray[i] + '>span').remove(); //remove spans with text 
         contents = $("#" + rankArray[i]).detach();
         $("#" + rankArray[i - 1]).after(contents);
+		
+		$("#" + rankArray[i] + ' .counter').html("");
     }
 }
 
@@ -259,7 +319,7 @@ function getGreekName(name) {
     queryUrl = returnOneGreekNameQuery(name);
     $.ajax({
         // type: "GET",
-        dataType: "json",
+        dataType: "jsonp",
         url: queryUrl,
         name: name,
         success: greekNameSuccess,

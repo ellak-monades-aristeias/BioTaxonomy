@@ -149,5 +149,7 @@ function changeLanguage(lang) {
         $("span[name='lbl']").each(function(i, elt) {
             $(elt).text(langResources[$(elt).attr("caption")]);
         });
+		
+	
     }
   
