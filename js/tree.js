@@ -4,11 +4,15 @@ $(document).on("click", ".details", function() {
     var name = getName($(this)); //Get name of node that was clicked
     getGreekName(name);
     var greekName = sessionStorage.getItem('greekName'); //Retrieve greek name that was found from ajax request - TODO with better way
-    var rank = getRank($(this));
-    var img_url = $(this).closest('.thumbnail').find('img').attr('src');
+	if ($(window).width() <= 480) {
+    var rank = getRankDetailsMobile($(this));
+	}else{
+	var rank = getRank($(this));
+	}
+	var img_url = $(this).closest('.thumbnail').find('img').attr('src');
     img_url = getImg300(img_url);
     query = getSummaryQuery(name, greekName);
-    console.log("name" + name);
+   
     sessionStorage.setItem('name', name);
     sessionStorage.setItem('rank', rank);
     $(".modal-title").text(name);
@@ -40,6 +44,8 @@ function summarySuccess(_data) {
     var results = _data.query.pages;
     for (var j in results) {
         var sum = results[j].extract;
+		if(sum.length>1000)
+		sum=sum.substr(0,1000)+'...';
     }
     stopLoading('#modalSum');
 	
@@ -52,9 +58,12 @@ function summarySuccess(_data) {
 }
 
 function getMembers(rank, name, img_url) {
+	
+	
     query = getImportantQuery(rank, name.replace(' ', "_"));
+	checkUrl();
     var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
-    checkUrl();
+    
     $.ajax({
         dataType: "json",
         url: queryUrl,
@@ -69,6 +78,7 @@ function membersSuccess(_data) {
         var k = 0;
         var dbArray = [];
         var dbpedia_results = _data.results.bindings;
+		console.log(dbpedia_results);
         var wikirankResults = [wikirank0, wikirank1, wikirank2, wikirank3,
             wikirank4, wikirank5, wikirank6, wikirank7, wikirank8,
             wikirank9
@@ -84,6 +94,7 @@ function membersSuccess(_data) {
             for (var j in wikiArray) {
                 src = wikiArray[j];
                 if ($.inArray(src, dbArray) > -1) {
+					
                     k++;
                     var thumb = dbpedia_results[$.inArray(src, dbArray)].thumb.value;
                     animals_html = animals_html +
@@ -133,26 +144,33 @@ $(document).on("click", ".open", function() {
     clearNextRanks(rank); //Clear data of next ranks
     startLoading('#' + next_rank + '>div');
     query = getOpenQuery(name, rank, next_rank);
-    executeOpenQuery(query, next_rank);
+    executeOpenQuery(query, next_rank,"open");
     //}
 });
 
-function executeOpenQuery(query, rank) {
+function executeOpenQuery(query, rank,func,selectedName) {
+	if (selectedName === undefined){
+		selectedName='';
+	}
+		
+	checkUrl();
     var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
-    checkUrl();
+    
     $.ajax({
         type: "GET",
         dataType: "json",
         url: queryUrl,
         rank: rank,
+		selectedName:selectedName,
         success: openSuccess,
+		func:func,
         error: ajaxError
     });
 }
 
 function openSuccess(_data) {
 	
-        console.log(_data);
+       
         var thumb_url = "";
         var rank = this.rank;
         
@@ -166,7 +184,7 @@ function openSuccess(_data) {
                 } else {
                     thumb_url = shrinkImg200(results[i].thumb.value);
                 }
-                var html = thumbHtml(name, thumb_url, rank);
+                var html = thumbHtml(name, thumb_url, rank,this.selectedName);
 				
            //   $("#" + rank).append(html).hide().fadeIn(300);
 		   
@@ -174,6 +192,10 @@ function openSuccess(_data) {
 			var item = $(html).hide();
 			
 $("#" + rank).append(item);
+   var contents = $("#" + rank+" .selected").detach();
+   $('#' + rank+">.rankHead").after(contents);
+//$("#" + rank+">#rankHead").prepend($("#" + rank+" .selected"));
+//$("#" + rank+" .selected").insertAfter("#" + rank+">#rankHead");
 $('button').prop('disabled', true);
 stopLoading('#' + rank + '>div');
 //item.slideDown(500);//Na dw pws na ginetai gia ena ena xehwrista
@@ -198,7 +220,9 @@ stopLoading('#' + rank + '>div');
         } else {
 			stopLoading('#' + rank + '>div');
 			$('button').prop('disabled', false);
+			if(this.func=="open"){
             $("#" + rank).append('<span name="lbl" caption="noResults"></span>');
+			}
         }
         ChangeDiv($(window).width()); //Does changes related to screen size
         changeLanguage(sessionStorage.getItem('lang')); //does text translation for selected language
@@ -215,26 +239,32 @@ function makeSearchTree() {
     if (name == '') {
         name = $('#searchBoxMobile').val();
     }
-    console.log("searh term " + name);
+   
     query = getSearchQuery(name);
-    console.log(query);
+  
+	checkUrl();
+	
     var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
-    checkUrl();
+	console.log(query);
+    
     $.ajax({
         dataType: "json",
         url: queryUrl,
         title: $('#searchBox').val(),
+		name:name,
         success: makeSearchTreeSuccess,
         error:ajaxError
     });
 }
 
 function makeSearchTreeSuccess(_data) {
+	var name=this.name;
+	console.log("in search")
         clearNextRanks("kingdom"); //Clear data of all ranks
         var values = ['', '', '', '', '', '', '']
         var kingdomType = '';
         var results = _data.results.bindings;
-        console.log(_data);
+       console.log(results);
         for (var i in results) {
             if (results[i].kingdom !== undefined) {
                 var kingdom = nameFromUrl(results[i].kingdom.value);
@@ -269,27 +299,40 @@ function makeSearchTreeSuccess(_data) {
             //TODO add species 
             for (i = 0; i < 6; i++) {
                 query = getOpenQuery(values[i], rankArray[i], rankArray[i + 1]);
-                executeOpenQuery(query, rankArray[i + 1], values[i]);
-                console.log("value " + values[i]);
+				startLoading('#' + rankArray[i+1] + '>div');
+				if(values[i+1]==''){
+					values[i+1]=name;
+				}
+                executeOpenQuery(query, rankArray[i + 1],"tree", values[i+1]);
+				
+			  
+			 
+              
             }
+			selectRank($('p[caption="' + values[0] + '"]'), rankArray[0]); 
         }
         //TODO De mporei na vrei ta thumbnails. Na to kanw me sessionStorage sth xeiroterh an de vrw allo tropo 
-        selectRank($('p[caption="' + name + '"]'), rankArray[1]);
+        
         //	$('#'+rankArray[1]+' .selected').insertAfter($('#' + rankArray[1]+ '>.rankHead'));   
     }
     /*End of tree functions*/
     /*Helper functions*/
 
-function thumbHtml(name, thumb_url, rank) {
+function thumbHtml(name, thumb_url, rank,selectedName) {
+	if (selectedName==name){
+		select="selected";
+	}else{
+		select="";
+	}
     if (rank != "species") {
-        return '   <div class=\"thumbnail clearfix\">' +
+        return '   <div class="thumbnail clearfix '+select+'">' +
             '<img class="img-rounded" src=\"' + thumb_url +
             '\" alt=\"...\"><div class=\"caption\">' + '<p caption=\"' +
             name + '\"></p>' +
             '<div class="btn-group" role="group" aria-label="..."> <button class="btn btn-info details"data-target="#myModal" data-toggle="modal" type="button"><span name="lbl" caption="details"></span></button>  <button type="button"class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></div>' +
             '</div>   ' + '</div>';
     } else {
-        return '   <div class=\"thumbnail clearfix\">' +
+        return '   <div class=\"thumbnail clearfix '+select+'">' +
             '<img class="img-rounded" src=\"' + thumb_url +
             '\" alt=\"...\">' + '<div class=\"caption\"><p caption="' +
             name + '">' + 
@@ -345,8 +388,13 @@ function getRank(obj) {
     return obj.parents('div:eq(3)').attr('id');
 }
 
+function getRankDetailsMobile(obj){
+	return obj.parents('div:eq(1)').attr('id');
+}
+
 function selectRank(button, rank) {
     var selected = button.closest('.thumbnail');
+	console.log("selected")
     console.log(selected);
     $('#' + rank + ' .thumbnail').removeClass('selected');
     selected.addClass('selected');

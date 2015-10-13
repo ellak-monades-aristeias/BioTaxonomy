@@ -1,18 +1,22 @@
 var url = "http://live.dbpedia.org/sparql";
 
 function checkUrl() {
-    query = 'select distinct ?Concept where {[] a ?Concept} LIMIT 1';
+	/*
+    var query = 'select distinct ?Concept where {[] a ?Concept} LIMIT 1';
     var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
     $.ajax({
-        dataType: "json",
+        dataType: "jsonp",
         url: queryUrl,
         success: function() {
+			console.log("live")
             url = 'http://live.dbpedia.org/sparql';
         },
         error: function() {
+			console.log("normal")
             url = 'http://dbpedia.org/sparql';
         }
     });
+	*/
 }
 var rankArray = ["kingdom", "phylum", "class", "order", "family", "genus", "species"];
 

@@ -2,6 +2,16 @@ a {
     color: #134E82;
 }
 
+#modalSum{
+	padding-bottom: 20px;
+	padding-top: 10px;
+    margin: auto;
+    width: 90%;
+}
+
+#modalThumb>img{
+   margin-top: 15px;
+}
 
 .rankHead {
     margin-top: -10px;
@@ -116,7 +126,7 @@ html {
 }
 
 .modal-body {
-    padding: 30px
+    padding: 15px 30px;
 }
 
 .modal-header {
@@ -127,6 +137,10 @@ html {
 .modal-footer {
     border-color: #8C5607;
     border-top: 3px solid #8C5607
+}
+
+.modal-footer .thumbnail{
+	width:120px;
 }
 
 .glyphicon-refresh-animate {
@@ -191,10 +205,26 @@ to {
 
 .btn-info {
     background-color: transparent;
+	
     border: 0
 }
 
-.caption p {
+#myModal .btn-info {
+    background-color: #DB2;
+    border-color: #DB2;
+}
+
+li>.thumbnail img{
+	 min-width: 60px;
+    width: 60px;
+    border: 0px solid;
+}
+
+.modal-footer .thumbnail{
+ min-width: 70px;
+    width: 70px;	
+}
+.container .caption p {
     float: left;
     width: 60%;
     text-align: left;
