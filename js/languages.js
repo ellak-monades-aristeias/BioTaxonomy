@@ -71,7 +71,7 @@ function treeToGreek(container) {
     for (i = 0; i <= fiftyCounter; i++) {
         fiftyNameList = nameList.slice(i * 50, (i * 50) + 50);
         var queryUrl = returnGreekNameQuery(fiftyNameList);
-		console.log(queryUrl);
+		
         $.ajax({
             // type: "GET",
             dataType: "jsonp",
