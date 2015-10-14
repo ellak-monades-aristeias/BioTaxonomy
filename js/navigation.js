@@ -50,7 +50,7 @@ function showIndex() {
 
 function searchTree() {
     //Load function from tree.js to make tree	
-    makeSearchTree();
+    getSearchRank();
 }
 
 function searchArticle() {

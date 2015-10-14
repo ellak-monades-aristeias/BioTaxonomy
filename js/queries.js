@@ -39,6 +39,12 @@ function getOpenQuery(name, rank, next_rank) {
     }
 }
 
+function getSearchRankQuery(name){
+
+var query = 'SELECT DISTINCT COUNT(?phylum) AS ?countphylum,COUNT(?classis) AS ?countclass,COUNT(?order) AS ?countorder,COUNT(?family) AS ?countfamily,COUNT(?genus) AS ?countgenus  WHERE {{ ?phylum dbo:phylum dbr:'+name+'}UNION{?classis dbo:class dbr:'+name+'}UNION{ ?order dbo:order dbr:'+name+'}UNION{?family dbo:family dbr:'+name+'}UNION{?genus dbo:genus dbr:'+name+'}}';
+return query;
+}
+
 function getSummaryQuery(name, greekName) {
     if (sessionStorage.getItem('lang') == 'gr' && (name != greekName)) {
         return 'https://el.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=' +

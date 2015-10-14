@@ -11,7 +11,7 @@ $(document).on("click", ".details", function() {
 	}
 	var img_url = $(this).closest('.thumbnail').find('img').attr('src');
     img_url = getImg300(img_url);
-    query = getSummaryQuery(name, greekName);
+    var query = getSummaryQuery(name, greekName);
    
     sessionStorage.setItem('name', name);
     sessionStorage.setItem('rank', rank);
@@ -60,7 +60,7 @@ function summarySuccess(_data) {
 function getMembers(rank, name, img_url) {
 	
 	
-    query = getImportantQuery(rank, name.replace(' ', "_"));
+    var query = getImportantQuery(rank, name.replace(' ', "_"));
 	checkUrl();
     var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
     
@@ -143,7 +143,8 @@ $(document).on("click", ".open", function() {
     var next_rank = getNextRank(rank); //get the next rank
     clearNextRanks(rank); //Clear data of next ranks
     startLoading('#' + next_rank + '>div');
-    query = getOpenQuery(name, rank, next_rank);
+    var query = getOpenQuery(name, rank, next_rank);
+    console.log(query);
     executeOpenQuery(query, next_rank,"open");
     //}
 });
@@ -232,26 +233,61 @@ stopLoading('#' + rank + '>div');
 	
 	
     /* Function that make the Search Tree*/
+function getSearchRank(){
 
-
-function makeSearchTree() {
-    var name = $('#searchBox').val();
+     var name = $('#searchBox').val();
     if (name == '') {
         name = $('#searchBoxMobile').val();
     }
-   
-    query = getSearchQuery(name);
-  
+    name = name.replace(' ', "_");
+    
+     
+   var query = getSearchRankQuery(name);
+ 
 	checkUrl();
 	
     var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
-	console.log(query);
+
     
     $.ajax({
         dataType: "json",
         url: queryUrl,
-        title: $('#searchBox').val(),
-		name:name,
+		    name:name,
+        success: makeSearchTree,
+        error:ajaxError
+    });     
+    
+}
+
+
+function makeSearchTree(_data) {
+var values=['','','','','']
+//find rank of searched term
+  var results = _data.results.bindings[0];
+  values[0]= results.countphylum.value;
+  values[1]=results.countclass.value;
+  values[2]=results.countorder.value;
+  values[3]=results.countfamily.value;
+  values[4]=results.countgenus.value;
+ 
+//Find index of max value, and add 1 to use with rankArray  
+maxValue = Math.max.apply(this, values);
+var index=$.inArray(maxValue.toString(),values)+1;
+
+
+ 
+    var query = getSearchQuery(this.name);
+ console.log(query); 
+	checkUrl();
+	
+    var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
+
+    
+    $.ajax({
+        dataType: "json",
+        url: queryUrl,
+        index:index,
+		    name:this.name,
         success: makeSearchTreeSuccess,
         error:ajaxError
     });
@@ -259,12 +295,12 @@ function makeSearchTree() {
 
 function makeSearchTreeSuccess(_data) {
 	var name=this.name;
-	console.log("in search")
+   console.log(rankArray[this.index])
         clearNextRanks("kingdom"); //Clear data of all ranks
         var values = ['', '', '', '', '', '', '']
         var kingdomType = '';
         var results = _data.results.bindings;
-       console.log(results);
+          console.log(_data);
         for (var i in results) {
             if (results[i].kingdom !== undefined) {
                 var kingdom = nameFromUrl(results[i].kingdom.value);
@@ -297,7 +333,7 @@ function makeSearchTreeSuccess(_data) {
         if (values[0] == 'Plant' || values[0] == 'Plantae') values[0] = "Plant";
         if (values[0] == 'Animal' || values[0] == 'Plant') { //Only make tree if kingdom is plant or animal
             //TODO add species 
-            for (i = 0; i < 6; i++) {
+            for (i = 0; i < this.index; i++) {
                 query = getOpenQuery(values[i], rankArray[i], rankArray[i + 1]);
 				startLoading('#' + rankArray[i+1] + '>div');
 				if(values[i+1]==''){
@@ -359,7 +395,7 @@ function getName(obj) {
 }
 
 function getGreekName(name) {
-    queryUrl = returnOneGreekNameQuery(name);
+    var queryUrl = returnOneGreekNameQuery(name);
     $.ajax({
         // type: "GET",
         dataType: "jsonp",
