@@ -50,6 +50,7 @@
       var ctx = $("#myChart").get(0).getContext("2d");
       // This will get the first returned node in the jQuery collection.
       var myPieChart = new Chart(ctx).Pie(data);
+	  changeLanguage(sessionStorage.getItem('lang'));
   }
   var prevRankName = sessionStorage.getItem('prevRankName');
   var rank = sessionStorage.getItem('rank');
