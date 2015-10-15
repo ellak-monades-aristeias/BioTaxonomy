@@ -237,8 +237,8 @@ function openSuccess(_data) {
         $thumbnails.show();
         sessionStorage.setItem('treePage', $('#tree_container').html());
         $('button').prop('disabled', false);
-     
-  $("img").unveil();
+      changeLanguage(sessionStorage.getItem('lang'));
+  //$("img").unveil();
 
       }, time + 100)
      
@@ -247,11 +247,12 @@ function openSuccess(_data) {
       $('button').prop('disabled', false);
       if (this.func == "open") {
         $("#" + rank).append('<span name="lbl" caption="noResults"></span>');
+		 changeLanguage(sessionStorage.getItem('lang'));
       }
     }
     //window.onload = imgLoading;
     ChangeDiv($(window).width()); //Does changes related to screen size
-    changeLanguage(sessionStorage.getItem('lang')); //does text translation for selected language
+    //does text translation for selected language
   }
   /* Functions that make the Search Tree*/
 
