@@ -9,7 +9,7 @@ $(document).on("click", ".details", function() {
   } else {
     var rank = getRank($(this));
   }
-  var img_url = $(this).closest('.thumbnail').find('img').attr('src');
+  var img_url = $(this).closest('.thumbnail').find('img').attr('data-src');
   img_url = getImg300(img_url);
   var query = getSummaryQuery(name, greekName);
   sessionStorage.setItem('name', name);
@@ -88,7 +88,7 @@ function importantMembersSuccess(_data) {
         thumb="assets/no_img_thumb.jpg"
         }
         src = dbArray[i];
-          animals_html = animals_html + " <li> <div class='thumbnail'><img src='" + thumb + "'width='50px' > <div class='caption'><p caption='" + src + "'>" + src + "</p></div></div></li>";
+          animals_html = animals_html + " <li> <div class='thumbnail'><img src='" + thumb + "'  data-src='" + thumb + "'width='50px' > <div class='caption'><p caption='" + src + "'>" + src + "</p></div></div></li>";
       }
     }else{
     
@@ -99,7 +99,7 @@ function importantMembersSuccess(_data) {
         if ($.inArray(src, dbArray) > -1) {
           k++;
           var thumb = dbpedia_results[$.inArray(src, dbArray)].thumb.value;
-          animals_html = animals_html + " <li> <div class='thumbnail'><img src='" + thumb + "'width='50px' > <div class='caption'><p caption='" + src + "'>" + src + "</p></div></div></li>";
+          animals_html = animals_html + " <li> <div class='thumbnail'><img src='" + thumb + "' data-src='" + thumb + "' width='50px' > <div class='caption'><p caption='" + src + "'>" + src + "</p></div></div></li>";
           //na kanw kai th lista twn melwn na emfanizetai sta ellhnika  
           /*
 					 " <li> <div class='thumbnail'><img src='" + thumb +
@@ -119,9 +119,11 @@ function importantMembersSuccess(_data) {
     var time2 = $thumbnails.length * 250;
     setTimeout(function() {
       var time = prettyLoadRank($thumbnails, 'null', 250);
+       $("img").unveil();
     }, 800)
     $('#membersList').find('.caption>p').quickfit();
     if (sessionStorage.getItem('lang') == 'gr') treeToGreek('#myModal');
+     $("img").unveil();
   }
   /*End of details functions*/
   /*Functions that make the tree*/
@@ -158,7 +160,7 @@ function membersSuccess(_data){
         thumb="assets/no_img_thumb.jpg"
         }
       
-          animals_html = animals_html + " <li> <div class='thumbnail'><img src='" + thumb + "'width='50px' > <div class='caption'><p caption='" + name + "'>" + name + "</p></div></div></li>";
+          animals_html = animals_html + " <li> <div class='thumbnail'><img src='assets/Timer.gif' data-src='" + thumb + "'width='50px' > <div class='caption'><p caption='" + name + "'>" + name + "</p></div></div></li>";
       }
     
     
@@ -168,9 +170,10 @@ function membersSuccess(_data){
     var time2 = $thumbnails.length * 250;
     setTimeout(function() {
       var time = prettyLoadRank($thumbnails, 'null', 250);
+       $("img").unveil();
     }, 800)
     $('#membersList').find('.caption>p').quickfit();
-    
+       $("img").unveil();
   
   }
   
@@ -224,12 +227,18 @@ function openSuccess(_data) {
       }
       var $thumbnails = $("#" + rank + " .thumbnail");
       var time = prettyLoadRank($thumbnails, rank);
+      
+      
       setTimeout(function() {
         $("#" + rank + " .counter").html(" " + $thumbnails.length);
         $thumbnails.show();
         sessionStorage.setItem('treePage', $('#tree_container').html());
         $('button').prop('disabled', false);
+     
+  $("img").unveil();
+
       }, time + 100)
+     
     } else {
       stopLoading('#' + rank + '>div');
       $('button').prop('disabled', false);
@@ -237,6 +246,7 @@ function openSuccess(_data) {
         $("#" + rank).append('<span name="lbl" caption="noResults"></span>');
       }
     }
+    window.onload = imgLoading;
     ChangeDiv($(window).width()); //Does changes related to screen size
     changeLanguage(sessionStorage.getItem('lang')); //does text translation for selected language
   }
@@ -405,9 +415,9 @@ function makeSearchTreeSuccess(_data) {
       }
       selectRank($('p[caption="' + values[0] + '"]'), rankArray[0]);
     }
-    //TODO De mporei na vrei ta thumbnails. Na to kanw me sessionStorage sth xeiroterh an de vrw allo tropo 
+    
     $('button').prop('disabled', false);
-    //	$('#'+rankArray[1]+' .selected').insertAfter($('#' + rankArray[1]+ '>.rankHead'));   
+      
   }
   /*End of tree functions*/
   /*Helper functions*/
@@ -419,9 +429,9 @@ function thumbHtml(name, thumb_url, rank, selectedName) {
     select = "";
   }
   if (rank != "species") {
-    return '   <div class="thumbnail clearfix ' + select + '">' + '<img class="img-rounded" src=\"' + thumb_url + '\" alt=\"...\"><div class=\"caption\">' + '<p caption=\"' + name + '\"></p>' + '<div class="btn-group" role="group" aria-label="..."> <button class="btn btn-info details"data-target="#myModal" data-toggle="modal" type="button"><span name="lbl" caption="details"></span></button>  <button type="button"class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></div>' + '</div>   ' + '</div>';
+    return '   <div class="thumbnail clearfix ' + select + '">' + '<img class="img-rounded" src="assets/Timer.gif" data-src=\"' + thumb_url + '\" alt=\"...\"><div class=\"caption\">' + '<p caption=\"' + name + '\"></p>' + '<div class="btn-group" role="group" aria-label="..."> <button class="btn btn-info details"data-target="#myModal" data-toggle="modal" type="button"><span name="lbl" caption="details"></span></button>  <button type="button"class="btn btn-default open "><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></div>' + '</div>   ' + '</div>';
   } else {
-    return '   <div class=\"thumbnail clearfix ' + select + '">' + '<img class="img-rounded" src=\"' + thumb_url + '\" alt=\"...\">' + '<div class=\"caption\"><p caption="' + name + '">' + '</p> <button class="btn btn-info details" data-target="#myModal" data-toggle="modal"type="button"><span name="lbl" caption="details"></span></button>' + '</div>   ' + '</div>';
+    return '   <div class=\"thumbnail clearfix ' + select + '">' + '<img class="img-rounded" src="assets/Timer.gif" data-src=\"' + thumb_url + '\" alt=\"...\">' + '<div class=\"caption\"><p caption="' + name + '">' + '</p> <button class="btn btn-info details" data-target="#myModal" data-toggle="modal"type="button"><span name="lbl" caption="details"></span></button>' + '</div>   ' + '</div>';
   }
 }
 
@@ -468,12 +478,12 @@ function stopLoading(container) {
 }
 
 function shrinkImg200(thumb_url) {
-  var shrinkedImg = thumb_url.replace('width=300', 'width=200');
+  var shrinkedImg = thumb_url.replace('width=300', 'width=150');
   return shrinkedImg;
 }
 
 function getImg300(thumb_url) {
-  var bigImg = thumb_url.replace('width=200', 'width=300');
+  var bigImg = thumb_url.replace('width=150', 'width=300');
   return bigImg;
 }
 
