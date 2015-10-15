@@ -27,6 +27,19 @@ function getImportantQuery(rank, name) {
 
 function getOpenQuery(name, rank, next_rank) {
     name = name.replace(' ', "_");
+	
+	
+	if (next_rank=="phylum"){
+		return "SELECT DISTINCT ?taxon, ?thumb WHERE {{?name  dbo:kingdom dbr:" + name + ";dbo:phylum  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbo:kingdom dbr:" + name + ";dbp:divisio  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbo:kingdom dbr:" + name + ";dbo:division  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbo:kingdom dbr:" + name + ";dbp:phylum  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}FILTER(isURI(?taxon))} order by asc(UCASE(str(?taxon)))";
+	}else if(next_rank=="class"){
+		return "SELECT DISTINCT ?taxon, ?thumb WHERE {{?name  dbo:phylum dbr:" + name + ";dbo:class  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbo:division dbr:" + name + ";dbp:classis  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbo:phylum dbr:" + name + ";dbp:classis  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbo:division dbr:" + name + ";dbo:class  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbp:phylum dbr:" + name + ";dbo:class  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbp:divisio dbr:" + name + ";dbp:classis  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbp:phylum dbr:" + name + ";dbp:classis  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbp:division dbr:" + name + ";dbo:class  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}FILTER(isURI(?taxon))} order by asc(UCASE(str(?taxon)))";
+
+	}else if(next_rank=="order"){
+		return "SELECT DISTINCT ?taxon, ?thumb WHERE {{?name  dbo:class dbr:" + name + ";dbo:order  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbp:classis dbr:" + name + ";dbp:ordo  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbo:class dbr:" + name + ";dbp:ordo  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbp:classis dbr:" + name + ";dbo:order  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}FILTER(isURI(?taxon))} order by asc(UCASE(str(?taxon)))";
+
+	}else if(next_rank=="family"){
+		"SELECT DISTINCT ?taxon, ?thumb WHERE {{?name  dbo:order dbr:" + name + ";dbo:family  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbp:ordo dbr:" + name + ";dbp:familia  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbo:order dbr:" + name + ";dbp:familia  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbp:ordo dbr:" + name + ";dbo:family  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}FILTER(isURI(?taxon))} order by asc(UCASE(str(?taxon)))";
+	}
     if (rank == "genus") {
         return 'SELECT ?taxon,?thumb WHERE { ?taxon  dbp:genus \"' + name +
             '\"@en .OPTIONAL{?taxon dbo:thumbnail ?thumb}.FILTER (?taxon!=<http://dbpedia.org/resource/' + name + '>)}';
