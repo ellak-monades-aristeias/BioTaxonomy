@@ -142,7 +142,7 @@ function changeLanguage(lang) {
                 console.log("before greek");
                 $('#statName').html(sessionStorage.getItem('greekName'));
 
-                getGreekName($('#statPrevRank').attr('caption'));
+                getGreekName($('#statPrevRank').attr('caption'),"stats");
                 
                 console.log(sessionStorage.getItem('greekName'));
                 
@@ -170,34 +170,38 @@ function changeLanguage(lang) {
 	
     }
  
- function getGreekName(name) {
+ function getGreekName(name,func) {
   var queryUrl = returnOneGreekNameQuery(name);
   $.ajax({
     // type: "GET",
     dataType: "jsonp",
     url: queryUrl,
+	func: func,
     name: name,
     success: greekNameSuccess,
     error: ajaxError
   });
-  //return obj.closest('.thumbnail').find('.caption>p[caption]').html()
+
 }
 function greekNameSuccess(_data) {
-    var currPage = getCurrPage();
+	console.log("in greek");
+ 
     var results = _data.query.pages;
     for (var i in results) {
       if (results[i].langlinks !== undefined) {
-        if (currPage == 'article.html') {
+        if (this.func == 'stats') {
+			
           $('#statPrevRank').html(results[i].langlinks[0][
             Object.keys(results[i].langlinks[0])[1]
           ]);
         } else {
+			
           sessionStorage.setItem('greekName', results[i].langlinks[0][
             Object.keys(results[i].langlinks[0])[1]
           ]);
         }
       } else {
-        if (currPage == 'article.html') {
+        if (this.func== 'stats') {
           $('#statPrevRank').html(this.name);
         } else {
           sessionStorage.setItem('greekName', this.name);
@@ -205,7 +209,9 @@ function greekNameSuccess(_data) {
       }
     }
  
-  
+  if (this.func=="article"){
+	   window.location.replace('article.html');
+  }
  
   
   console.log("in query"+sessionStorage.getItem('greekName'));

@@ -2,7 +2,8 @@
 /*Functions that handle details and important taxon members*/
 $(document).on("click", ".details", function() {
   var name = getName($(this)); //Get name of node that was clicked
-  getGreekName(name);
+ 
+  getGreekName(name,"index");
   var greekName = sessionStorage.getItem('greekName'); //Retrieve greek name that was found from ajax request - TODO with better way
   if ($(window).width() <= 480) {
     var rank = getRankDetailsMobile($(this));
@@ -11,7 +12,9 @@ $(document).on("click", ".details", function() {
   }
   var img_url = $(this).closest('.thumbnail').find('img').attr('data-src');
   img_url = getImg300(img_url);
+ 
   var query = getSummaryQuery(name, greekName);
+  
   sessionStorage.setItem('name', name);
   sessionStorage.setItem('rank', rank);
   $(".modal-title").text(name);
@@ -246,16 +249,23 @@ function openSuccess(_data) {
         $("#" + rank).append('<span name="lbl" caption="noResults"></span>');
       }
     }
-    window.onload = imgLoading;
+    //window.onload = imgLoading;
     ChangeDiv($(window).width()); //Does changes related to screen size
     changeLanguage(sessionStorage.getItem('lang')); //does text translation for selected language
   }
-  /* Function that make the Search Tree*/
+  /* Functions that make the Search Tree*/
 
-function getSearchRank() {
+function getSearchRank(func) {
+	
   //TODO-αν το search term ειναι στα ελληνικά να το μεταφράζει. Έχω ετοιμάσει το query στο  returnOneEnglishNameQuery(name)
   $('button').prop('disabled', true);
   //An einai plant h Animal na paravlepetai to query
+  if(func=="article"){
+	  
+	  var callback=articleRankSuccess;
+  }else{
+	 var callback=makeSearchTree;  
+  }
   var name = $('#searchBox').val();
   if (name == '') {
     name = $('#searchBoxMobile').val();
@@ -271,7 +281,7 @@ function getSearchRank() {
     dataType: "json",
     url: queryUrl,
     name: name,
-    success: makeSearchTree,
+    success: callback,
     error: ajaxError
   });
 }

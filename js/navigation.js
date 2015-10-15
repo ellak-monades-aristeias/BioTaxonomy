@@ -51,7 +51,7 @@ function showIndex() {
 
 function searchTree() {
     //Load function from tree.js to make tree	
-    getSearchRank();
+    getSearchRank("tree");
 }
 
 function searchArticle() {
@@ -73,12 +73,50 @@ function searchSuccess(_data) {
     var results = _data.query.pages;
     for (var i in results) {}
     if (i > 0) {
-        var searchTerm = $('#searchBox').val();
-        sessionStorage.setItem('name', searchTerm);
-        window.location.replace('article.html');
+		
+		//Edw psaxnei to rank
+		getSearchRank("article");
+        
     } else {
         $('#article').html("Wikipedia article doesn't exist");
     }
+}
+
+function articleRankSuccess(_data){
+	console.log("in success");
+	getGreekName(this.name,"article");
+	//Na vriskei kai to onoma tou rank pou prohgeitai tou parontos rank.Sto prohgoumeno rank na lamvanei kai ta onomata ektos apo to count mono
+	var values = ['', '', '', '', ''];
+  var checkValue = 0;
+  //find rank of searched term
+  var results = _data.results.bindings[0];
+  values[0] = results.countphylum.value;
+  values[1] = results.countclass.value;
+  values[2] = results.countorder.value;
+  values[3] = results.countfamily.value;
+  values[4] = results.countgenus.value;
+  for (var i in values) {
+    if (values[i] != 0) checkValue = values[i];
+  }
+  
+  //Find index of max value, and add 1 to use with rankArray  
+  if (checkValue == 0) {
+    index = 6; //Search term is species	
+  } else {
+    maxValue = Math.max.apply(this, values);
+    var index = $.inArray(maxValue.toString(), values) + 1;
+  }
+  
+  sessionStorage.setItem('rank',rankArray[index]);
+  if (index>0){
+  sessionStorage.setItem('prevRank',rankArray[index-1]);
+  }
+	//var searchTerm = $('#searchBox').val();
+        sessionStorage.setItem('name',this.name)
+		
+	
+       
+	
 }
 
 function getCurrPage() {
@@ -119,12 +157,4 @@ function loadArticle() {
         $('#article').html("No article selected!");
     }
 }
-//image deferring https://varvy.com/pagespeed/defer-images.html 
-function imgLoading() {
-var imgDefer = document.getElementsByTagName('img');
-for (var i=0; i<imgDefer.length; i++) {
-if(imgDefer[i].getAttribute('data-src')) {
-imgDefer[i].setAttribute('src',imgDefer[i].getAttribute('data-src'));
-} 
-}
- }
+
