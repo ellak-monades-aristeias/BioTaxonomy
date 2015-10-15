@@ -121,7 +121,7 @@ function changeLanguage(lang) {
         } else {
             $("a:contains('gr')").attr('id', ' ');
             $("a:contains('en')").attr('id', 'langNotActive');
-            if (currPage == 'index.html') {
+            if (currPage != 'article.html') {
 				
                 $('#tree_container').find('.caption p').each(function() {
                     $(this).html($(this).attr('caption'));
