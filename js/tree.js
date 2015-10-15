@@ -238,7 +238,7 @@ function openSuccess(_data) {
         sessionStorage.setItem('treePage', $('#tree_container').html());
         $('button').prop('disabled', false);
       changeLanguage(sessionStorage.getItem('lang'));
-  //$("img").unveil();
+  $("img").unveil();
 
       }, time + 100)
      

@@ -120,10 +120,11 @@ function changeLanguage(lang) {
             $("a:contains('gr')").attr('id', ' ');
             $("a:contains('en')").attr('id', 'langNotActive');
             if (currPage == 'index.html') {
+				console.log("in changeLanguage")
                 $('#tree_container').find('.caption p').each(function() {
                     $(this).html($(this).attr('caption'));
                 });
-                $('#tree_container').find('.caption p').quickfit();
+              //  $('#tree_container').find('.caption p').quickfit();
             }
         }
         if (currPage == 'article.html') {
