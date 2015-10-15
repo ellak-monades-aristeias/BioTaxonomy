@@ -1,6 +1,7 @@
 function prettyLoadRank(elements,rank,time){
 	if(time===undefined){
-	var time = 150;
+	var time = 50;
+  var timestep=time;
 	}
 	var fadeInTime=time;
 	var i=0;
@@ -26,7 +27,7 @@ timer.set({ time : time, autostart : false});
 		 
 		
 		 
-      time += 150;
+      time += timestep;
 	
  });
  	
@@ -50,7 +51,7 @@ function showIndex() {
 
 function searchTree() {
     //Load function from tree.js to make tree	
-    makeSearchTree();
+    getSearchRank();
 }
 
 function searchArticle() {
@@ -118,3 +119,12 @@ function loadArticle() {
         $('#article').html("No article selected!");
     }
 }
+//image deferring https://varvy.com/pagespeed/defer-images.html 
+function imgLoading() {
+var imgDefer = document.getElementsByTagName('img');
+for (var i=0; i<imgDefer.length; i++) {
+if(imgDefer[i].getAttribute('data-src')) {
+imgDefer[i].setAttribute('src',imgDefer[i].getAttribute('data-src'));
+} 
+}
+ }

@@ -95,7 +95,7 @@
             <div class="row seven-cols text-center" id="tree_container">
                 <div class="col-sm-1" id="kingdom">
 				 <div class="rankHead"><span name="lbl" caption="kingdom">Kingdom</span></div>
-                    <div class="thumbnail clearfix"><img alt="Plant" class="img-rounded" src=
+                    <div class="thumbnail clearfix"><img alt="Plant" class="img-rounded" src='data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=' data-src=
                         "https://upload.wikimedia.org/wikipedia/commons/1/14/Animal_diversity.png">
                         <div class="caption">
                             <p caption="Animal"><b><span name="lbl" caption="animal">Animal</span></b></p>
@@ -110,7 +110,7 @@
                         </div>
                     </div>
                     <div class="thumbnail clearfix">
-						<img alt="Plant" class="img-rounded" src=
+						<img alt="Plant" class="img-rounded" src='data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=' data-src=
                         "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Diversity_of_plants_image_version_5.png/161px-Diversity_of_plants_image_version_5.png">
                         <div class="caption">
                             <p caption="Plant"><b><span name="lbl" caption="plant">Plant</span></b></p>
@@ -178,9 +178,11 @@
          		 <script src="js/navigation.js"></script>
 		<script src="js/languages.js"></script>
         <script src="js/queries.js"></script>
+        <script src="plugins/jquery.timer.js"></script>
+        <script src="plugins/jquery.unveil.js"></script>
 		     <script src="js/tree.js"></script>
 			 <script src="plugins/bootbox.min.js"></script>
-			 <script src="plugins/jquery.timer.js"></script>
+			 
 			 
       
         <script src="plugins/jquery-quickfit/jquery.quickfit.js"></script>
@@ -215,6 +217,9 @@
         ChangeDiv(resizeWidth);
         });
         })
+        $(document).ready(function() {
+  $("img").unveil();
+});
         </script>
     </body>
 </html>

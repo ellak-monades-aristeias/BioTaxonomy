@@ -45,8 +45,8 @@ function getLanguageResources() {
     en['wikiPage'] = "Wikipedia Page";
     gr['articleTo'] = "Το";
     en['articleTo'] = "";
-    gr['articleΗ'] = "H";
-    en['articleΗ'] = "";
+    gr['articleH'] = "H";
+    en['articleH'] = "";
     gr['has'] = "έχει";
     en['has'] = "has";
     gr['withTotal'] = "με σύνολο";
@@ -55,6 +55,10 @@ function getLanguageResources() {
     en['members'] = "members";
     gr['noResults'] = "Κανένα αποτέλεσμα!";
     en['noResults'] = "No results!";
+    gr['is']="είναι";
+    en['is']="is";
+    gr['with']="με";
+    en['with']="with";
  
     var resources = new Array();
     resources['gr'] = gr;
@@ -71,7 +75,7 @@ function treeToGreek(container) {
     for (i = 0; i <= fiftyCounter; i++) {
         fiftyNameList = nameList.slice(i * 50, (i * 50) + 50);
         var queryUrl = returnGreekNameQuery(fiftyNameList);
-		console.log(queryUrl);
+		
         $.ajax({
             // type: "GET",
             dataType: "jsonp",
@@ -125,6 +129,7 @@ function changeLanguage(lang) {
         if (currPage == 'article.html') {
             if ((lang == 'gr') && (sessionStorage.getItem('name') !=
                 sessionStorage.getItem('greekName'))) {
+                 console.log("first one");
                 $('#title').html(sessionStorage.getItem('greekName'));
                 $('#wikiLink').attr('href', 'https://el.wikipedia.org/wiki/' +
                     (sessionStorage.getItem('greekName')).replace(' ', '_')
@@ -134,7 +139,16 @@ function changeLanguage(lang) {
                     section: 0,
                     page: sessionStorage.getItem('greekName'),
                 });
+                console.log("before greek");
+                $('#statName').html(sessionStorage.getItem('greekName'));
+
+                getGreekName($('#statPrevRank').attr('caption'));
+                
+                console.log(sessionStorage.getItem('greekName'));
+                
             } else {
+                 $('#statName').html(sessionStorage.getItem('name'));
+                  $('#statPrevRank').html($('#statPrevRank').attr('caption'));
                 $('#title').html(sessionStorage.getItem('name'));
                 $('#wikiLink').attr('href', 'https://en.wikipedia.org/wiki/' +
                     (sessionStorage.getItem('name')).replace(' ', '_'));
@@ -142,8 +156,11 @@ function changeLanguage(lang) {
                     section: 0,
                     page: sessionStorage.getItem('name'),
                 });
+                $('#statName').html(sessionStorage.getItem('name'));
             }
         }
+        
+        
         var langResources = getLanguageResources()[lang];
         sessionStorage.setItem('lang', lang);
         $("span[name='lbl']").each(function(i, elt) {
@@ -152,4 +169,46 @@ function changeLanguage(lang) {
 		
 	
     }
+ 
+ function getGreekName(name) {
+  var queryUrl = returnOneGreekNameQuery(name);
+  $.ajax({
+    // type: "GET",
+    dataType: "jsonp",
+    url: queryUrl,
+    name: name,
+    success: greekNameSuccess,
+    error: ajaxError
+  });
+  //return obj.closest('.thumbnail').find('.caption>p[caption]').html()
+}
+
+function greekNameSuccess(_data) {
+var currPage = getCurrPage();
+  var results = _data.query.pages;
+  for (var i in results) {
+    if (results[i].langlinks !== undefined) {
+    if (currPage='article.html'){
+    $('#statPrevRank').html(results[i].langlinks[0][
+        Object.keys(results[i].langlinks[0])[1]
+      ]);
+    }else{
+      sessionStorage.setItem('greekName', results[i].langlinks[0][
+        Object.keys(results[i].langlinks[0])[1]
+      ]);
+      }
+    } else {
+    if(currPage='article.html'){
+         $('#statPrevRank').html(this.name);
+      }
+      else{
+      sessionStorage.setItem('greekName', this.name);
+      }
+    }
+  }
+ 
   
+ 
+  
+  console.log("in query"+sessionStorage.getItem('greekName'));
+} 
