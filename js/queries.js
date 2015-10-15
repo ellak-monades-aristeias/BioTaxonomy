@@ -22,9 +22,7 @@ var rankArray = ["kingdom", "phylum", "class", "order", "family", "genus", "spec
 
 function getImportantQuery(rank, name) {
     name = name.replace(' ', "_");
-    return 'SELECT DISTINCT ?name,?thumb, COUNT(*) AS ?count WHERE {?name dbo:' + rank +
-        ' dbr:' + name +
-        ';dbo:thumbnail ?thumb;dbo:genus ?k.?s ?p ?name} ORDER BY DESC(COUNT(*)) LIMIT 500 ';
+    return 'SELECT DISTINCT ?name,?thumb,COUNT(*) AS ?count WHERE {?name dbo:'+rank+' dbr:'+name+'.?name dbo:genus ?k.?s ?p ?name.OPTIONAL{ ?name dbo:thumbnail ?thumb }.FILTER(?name!=?k)} ORDER BY DESC(COUNT(*)) LIMIT 500';
 }
 
 function getOpenQuery(name, rank, next_rank) {

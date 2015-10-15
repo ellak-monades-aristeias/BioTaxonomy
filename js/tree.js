@@ -43,23 +43,29 @@ function summarySuccess(_data) {
   $('#modalSum').text(sum);
   var time = prettyLoadRank($('#modalSum'), 'null', 700);
   startLoading('#membersList');
-  getMembers(this.rank, this.name, this.img_url);
+  getMembers(this.rank, this.name,"index");
 }
 
-function getMembers(rank, name, img_url) {
+function getMembers(rank, name,page) {
+if(page=="index"){
+var success=importantMembersSuccess;
+}else{
+var success=membersSuccess;
+}
   var query = getImportantQuery(rank, name.replace(' ', "_"));
+  console.log(query);
   checkUrl();
   var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
   $.ajax({
     dataType: "json",
     url: queryUrl,
-    img_url: img_url,
-    success: membersSuccess,
+  
+    success: success,
     error: ajaxError,
   });
 }
 
-function membersSuccess(_data) {
+function importantMembersSuccess(_data) {
     animals_html = "";
     var k = 0;
     var dbArray = [];
@@ -74,6 +80,18 @@ function membersSuccess(_data) {
       var name = nameFromUrl(src);
       dbArray[j] = name;
     }
+    if(dbArray.length<=8){ //Skip the wikirank part if rank has 8 or fewer members
+      for (var i in dbArray) {
+        if (dbpedia_results[i].thumb!==undefined){
+        var thumb = dbpedia_results[i].thumb.value;
+        }else{
+        thumb="assets/no_img_thumb.jpg"
+        }
+        src = dbArray[i];
+          animals_html = animals_html + " <li> <div class='thumbnail'><img src='" + thumb + "'width='50px' > <div class='caption'><p caption='" + src + "'>" + src + "</p></div></div></li>";
+      }
+    }else{
+    
     for (var i in wikirankResults) { //Traverse wikirank data, compare each element to dbpedia results and if it exists add to animal list
       var wikiArray = wikirankResults[i].split(',');
       for (var j in wikiArray) {
@@ -92,6 +110,7 @@ function membersSuccess(_data) {
         if (k > 7) break;
       }
       if (k > 7) break;
+    }
     }
     stopLoading('#membersList');
     $('#membersList').html(animals_html);
@@ -122,7 +141,45 @@ $(document).on("click", ".open", function() {
   //}
 });
 
+
+
+function membersSuccess(_data){
+  animals_html = "";
+   
+    var dbpedia_results = _data.results.bindings;
+ 
+    for (var i in dbpedia_results) { //pass all dbpedia results in array for easier understanding
+      var src = dbpedia_results[i].name.value;
+      var name = nameFromUrl(src);
+   
+         if (dbpedia_results[i].thumb!==undefined){
+        var thumb = dbpedia_results[i].thumb.value;
+        }else{
+        thumb="assets/no_img_thumb.jpg"
+        }
+      
+          animals_html = animals_html + " <li> <div class='thumbnail'><img src='" + thumb + "'width='50px' > <div class='caption'><p caption='" + name + "'>" + name + "</p></div></div></li>";
+      }
+    
+    
+    $('#membersList').html(animals_html);
+    $("#membersList .thumbnail").hide();
+    var $thumbnails = $("#membersList .thumbnail");
+    var time2 = $thumbnails.length * 250;
+    setTimeout(function() {
+      var time = prettyLoadRank($thumbnails, 'null', 250);
+    }, 800)
+    $('#membersList').find('.caption>p').quickfit();
+    
+  
+  }
+  
+  /*End of details functions*/
+  /*Functions that make the tree*/
+
+
 function executeOpenQuery(query, rank, func, selectedName) {
+
   if (selectedName === undefined) {
     selectedName = '';
   }
@@ -383,31 +440,7 @@ function getName(obj) {
   return obj.closest('.thumbnail').find('.caption>p[caption]').attr('caption');
 }
 
-function getGreekName(name) {
-  var queryUrl = returnOneGreekNameQuery(name);
-  $.ajax({
-    // type: "GET",
-    dataType: "jsonp",
-    url: queryUrl,
-    name: name,
-    success: greekNameSuccess,
-    error: ajaxError
-  });
-  //return obj.closest('.thumbnail').find('.caption>p[caption]').html()
-}
 
-function greekNameSuccess(_data) {
-  var results = _data.query.pages;
-  for (var i in results) {
-    if (results[i].langlinks !== undefined) {
-      sessionStorage.setItem('greekName', results[i].langlinks[0][
-        Object.keys(results[i].langlinks[0])[1]
-      ]);
-    } else {
-      sessionStorage.setItem('greekName', this.name);
-    }
-  }
-}
 
 function getRank(obj) {
   return obj.parents('div:eq(3)').attr('id');

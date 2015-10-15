@@ -23,7 +23,7 @@
           var count = dbpedia_results[j].count.value;
           totalCount = totalCount + parseInt(count);
           name = name.replace("_", ' ');
-          if (name == sessionStorage.getItem('title')) {
+          if (name == sessionStorage.getItem('name')) {
               var currRanking = parseInt(j) + 1;
               var currCount = count;
           }
@@ -35,23 +35,27 @@
           });
       }
       var total = parseInt(j) + 1;
-      $('#totalNumber').html(getArticle() + '<span name="lbl" caption="' +
+      $('#totalNumber').html(getArticle(getPrevRank(sessionStorage.getItem('rank'))) + '<span name="lbl" caption="' +
           getPrevRank(sessionStorage.getItem('rank')) + '"></span> ' +
           '<b><a href="javascript:showArticle(\'' + sessionStorage.getItem(
-              'prevRankName') + '\');"> ' + sessionStorage.getItem(
-              'prevRankName') +
+              'prevRankName') + '\');"> <span id="statPrevRank" caption="' + sessionStorage.getItem(
+              'prevRankName') +'"></span>'+
+              
+              
           '</a></b> <span name="lbl" caption="has"></span> <b>' + total +
           ' ' + getPluralRank() +
           '</b> <span name="lbl" caption="withTotal"></span> <b>' +
           totalCount + '</b> members');
-      $('#current').html('<b>' + sessionStorage.getItem('title') +
-          '</b> is <b>#' + currRanking + '</b> with <b>' + currCount +
+      $('#current').html(getArticle(sessionStorage.getItem('rank')) + '<span name="lbl" caption="' +
+          sessionStorage.getItem('rank') + '"></span><b><p id="statName" caption="' + sessionStorage.getItem('name') + '">' + sessionStorage.getItem('name') + '</p>' +
+          '</b> <span name="lbl" caption="is"></span> <b>#' + currRanking + '</b> <span name="lbl" caption="with"></span> <b>' + currCount +
           '</b> <span name="lbl" caption="members"></span> ');
       var ctx = $("#myChart").get(0).getContext("2d");
       // This will get the first returned node in the jQuery collection.
-      var myPieChart = new Chart(ctx).Pie(data);
+      var myPieChart = new Chart(ctx).Pie(data,{segmentShowStroke : false});
 	  changeLanguage(sessionStorage.getItem('lang'));
   }
+  function getStatistics(){
   var prevRankName = sessionStorage.getItem('prevRankName');
   var rank = sessionStorage.getItem('rank');
   var prevRank = getPrevRank(rank);
@@ -64,14 +68,15 @@
       success: totalQuerySuccess,
       error: ajaxError
   });
+  }
    //Otan ginetai allagh glwssas na allazei kai to prohgoumeno rank
   function getPluralRank(rank) {
       return '<span name="lbl" caption="' + sessionStorage.getItem('rank') +
           'Plural"></span>';
   }
 
-  function getArticle() {
-      rank = getPrevRank(sessionStorage.getItem('rank'));
+  function getArticle(rank) {
+      
       if (rank == 'kingdom' || rank == 'genus' || rank == 'species') {
           return '<span name="lbl" caption="articleTo"></span> ';
       } else {

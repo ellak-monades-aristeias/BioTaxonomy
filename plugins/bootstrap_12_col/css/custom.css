@@ -100,3 +100,38 @@ body {
     background-color: rgba(255,255,255,0.08);
     font-weight: 700
 }
+
+.thumbnail {
+    border: 2px solid rgba(0,0,0,0.14);
+    margin-bottom: 10px;
+    padding: 4px 4px 0;
+    background-color: rgba(31,121,22,0.42)
+}
+
+.thumbnail .caption {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 0;
+    padding-right: 0
+}
+
+.thumbnail img {
+    min-height: 100px;
+    height: 100px;
+    border: 1px solid rgba(0,0,0,0.21)
+}
+
+li>.thumbnail img {
+    min-width: 100px;
+    width: 100px
+}
+
+li>.thumbnail{
+	width:120px;
+}
+
+.caption p {
+    background-color: #decb3e;
+    border-radius: 5px;
+    color: #343
+}

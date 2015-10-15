@@ -127,6 +127,25 @@
                     <div id="article"></div>
                 </div>
             </div>
+                 
+            <div class="row">
+             <div class=
+                "col-lg-2 col-lg-push-10 col-md-3 col-md-push-9 col-sm-6">
+                    
+                </div>
+                <div class=
+                "col-lg-2 col-lg-pull-2 hidden-md col-sm-6 text-center" id=
+                "statisticsCol">
+               
+                </div>
+                <div class=
+                "col-lg-8 col-lg-pull-2 col-md-9 col-md-pull-3 col-sm-12">
+                    <ul class="list-inline text-center" id="membersList">
+                        </ul>
+                    
+                </div>
+            
+            </div>
         </div><!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <!-- Script that handles tree functions-->
@@ -141,15 +160,22 @@
         <script src="js/queries.js"></script> 
 		<script src="plugins/Chart/Chart.min.js"></script> 
 		<script src="js/statistics.js"></script> 
+    <script src="plugins/jquery.timer.js"></script>
+    <script src="js/tree.js"></script>
 		<script src="plugins/bootbox.min.js"></script>
 		
 		<script type="text/javascript" >
-if (sessionStorage.getItem('lang') != undefined) {
-    changeLanguage(sessionStorage.getItem('lang'));
-} else {
-    changeLanguage('en');
-    sessionStorage.setItem('lang', 'en');
-}
+        /*<ul class="pagination"> //gia pagination twn melwn
+  <li><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+</ul>*/      
+    
+    getStatistics();
+    getMembers(sessionStorage.getItem('rank'), sessionStorage.getItem('name'),"article");
+
 //stack statistics div link
 function ChangeDiv(width) {
     if (width < 1200 && width > 992) {

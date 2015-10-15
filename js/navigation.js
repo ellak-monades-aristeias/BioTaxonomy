@@ -1,6 +1,7 @@
 function prettyLoadRank(elements,rank,time){
 	if(time===undefined){
-	var time = 150;
+	var time = 50;
+  var timestep=time;
 	}
 	var fadeInTime=time;
 	var i=0;
@@ -26,7 +27,7 @@ timer.set({ time : time, autostart : false});
 		 
 		
 		 
-      time += 150;
+      time += timestep;
 	
  });
  	
