@@ -109,11 +109,11 @@ function changeLanguage(lang) {
         $("a:contains('en')").removeClass("not-active");
         $("a:contains('gr')").addClass("not-active");
         var currPage = getCurrPage();
-		console.log("currPage "+currPage);
+		console.log("currPage"+currPage+".");
         if (lang == 'gr') {
             $("a:contains('en')").attr('id', ' ');
             $("a:contains('gr')").attr('id', 'langNotActive');
-            if (currPage == ' ') {
+            if (currPage == '') {
 				console.log("in changeLanguage")
                 treeToGreek('#tree_container');
                 $('#tree_container').find('.caption p').quickfit();
