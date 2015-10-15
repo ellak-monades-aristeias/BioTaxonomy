@@ -113,7 +113,7 @@ function changeLanguage(lang) {
         if (lang == 'gr') {
             $("a:contains('en')").attr('id', ' ');
             $("a:contains('gr')").attr('id', 'langNotActive');
-            if (currPage == '') {
+            if (currPage != 'article.html') {
 				console.log("in changeLanguage")
                 treeToGreek('#tree_container');
                 $('#tree_container').find('.caption p').quickfit();
