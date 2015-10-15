@@ -182,30 +182,28 @@ function changeLanguage(lang) {
   });
   //return obj.closest('.thumbnail').find('.caption>p[caption]').html()
 }
-
 function greekNameSuccess(_data) {
-var currPage = getCurrPage();
-  var results = _data.query.pages;
-  for (var i in results) {
-    if (results[i].langlinks !== undefined) {
-    if (currPage='article.html'){
-    $('#statPrevRank').html(results[i].langlinks[0][
-        Object.keys(results[i].langlinks[0])[1]
-      ]);
-    }else{
-      sessionStorage.setItem('greekName', results[i].langlinks[0][
-        Object.keys(results[i].langlinks[0])[1]
-      ]);
-      }
-    } else {
-    if(currPage='article.html'){
-         $('#statPrevRank').html(this.name);
-      }
-      else{
-      sessionStorage.setItem('greekName', this.name);
+    var currPage = getCurrPage();
+    var results = _data.query.pages;
+    for (var i in results) {
+      if (results[i].langlinks !== undefined) {
+        if (currPage == 'article.html') {
+          $('#statPrevRank').html(results[i].langlinks[0][
+            Object.keys(results[i].langlinks[0])[1]
+          ]);
+        } else {
+          sessionStorage.setItem('greekName', results[i].langlinks[0][
+            Object.keys(results[i].langlinks[0])[1]
+          ]);
+        }
+      } else {
+        if (currPage == 'article.html') {
+          $('#statPrevRank').html(this.name);
+        } else {
+          sessionStorage.setItem('greekName', this.name);
+        }
       }
     }
-  }
  
   
  
