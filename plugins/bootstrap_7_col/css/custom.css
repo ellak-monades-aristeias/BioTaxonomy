@@ -1,0 +1,338 @@
+a {
+    color: #134E82;
+}
+
+#modalSum{
+	padding-bottom: 20px;
+	padding-top: 10px;
+    margin: auto;
+    width: 90%;
+}
+
+#modalThumb>img{
+   margin-top: 15px;
+}
+
+.rankHead {
+    margin-top: -10px;
+    margin-bottom: 5px;
+    font-size: 18px
+}
+
+img {
+    display: block;
+    height: auto;
+    max-width: 100%
+}
+
+.details,.open {
+    padding: 2px 5px
+}
+
+.caption p {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-weight: 700
+}
+
+.thumbnail {
+    border: 2px solid rgba(0,0,0,0.14);
+    margin-bottom: 10px;
+    padding: 4px 4px 0;
+    background-color: rgba(31,121,22,0.42)
+}
+
+.thumbnail .caption {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 0;
+    padding-right: 0
+}
+
+.thumbnail img {
+    min-height: 100px;
+    height: 100px;
+    border: 1px solid rgba(0,0,0,0.21)
+}
+
+li>.thumbnail img {
+    min-width: 100px;
+    width: 100px
+}
+
+.ui-dialog .ui-dialog-title {
+    float: left;
+    margin: .1em 16px .1em 0;
+    text-align: center;
+    width: 100%
+}
+
+.ui-front {
+    z-index: 1060
+}
+
+#modalThumb img {
+    max-height: 300px;
+    height: auto
+}
+
+.navbar-default {
+    background-color: #94821b;
+    background-image: url(../../../assets/wavecut.png)
+}
+
+.navbar-default {
+    border-color: #D2BD4A;
+    color: #343
+}
+
+.navbar-default .navbar-brand,.navbar-default .navbar-nav>li>a {
+    color: #343
+}
+
+.navbar-fixed-top {
+    border-width: 0 0 3px
+}
+
+.selected {
+    background-color: rgba(255,0,0,0.42)!important
+}
+
+body,.modal-content {
+    background-color: #decc66;
+    background-image: url(../../../assets/wavecut.png);
+    color: #343;
+    border-radius: 5px
+}
+
+.caption p {
+    background-color: #decb3e;
+    border-radius: 5px;
+    color: #343
+}
+
+html {
+    overflow-y: scroll
+}
+
+.btn-info {
+    background-color: #DB2;
+    border-color: #DB2;
+    color: #343
+}
+
+.caption .open {
+    color: #343
+}
+
+.modal-body {
+    padding: 15px 30px;
+}
+
+.modal-header {
+    border-color: #8C5607;
+    border-bottom: 3px solid #8C5607
+}
+
+.modal-footer {
+    border-color: #8C5607;
+    border-top: 3px solid #8C5607
+}
+
+.modal-footer .thumbnail{
+	width:120px;
+}
+
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear
+}
+
+@-webkit-keyframes spin2 {
+from {
+    -webkit-transform: rotate(0deg)
+}
+
+to {
+    -webkit-transform: rotate(360deg)
+}
+}
+
+@keyframes spin {
+from {
+    transform: scale(1) rotate(0deg)
+}
+
+to {
+    transform: scale(1) rotate(360deg)
+}
+}
+
+@media only screen and (max-width : 480px) {
+.col-sm-1 .col-sm-1 {
+    padding-left: 0;
+    padding-right: 0
+}
+
+.open {
+    font-size: 20px
+}
+
+.thumbnail {
+    background-image: none;
+    padding: 4px
+}
+
+.caption {
+    margin-top: 8px
+}
+
+.thumbnail img {
+    min-height: 60px;
+    height: 60px;
+    border: 2px double
+}
+
+.details {
+    float: left;
+    max-width: 20%;
+    padding: 0
+}
+
+.caption .details {
+    display: none
+}
+
+.btn-info {
+    background-color: transparent;
+	
+    border: 0
+}
+
+#myModal .btn-info {
+    background-color: #DB2;
+    border-color: #DB2;
+}
+
+li>.thumbnail img{
+	 min-width: 60px;
+    width: 60px;
+    border: 0px solid;
+}
+
+.modal-footer .thumbnail{
+ min-width: 70px;
+    width: 70px;	
+}
+.container .caption p {
+    float: left;
+    width: 60%;
+    text-align: left;
+    margin-left: 10px;
+    padding-left: 5px;
+    background-color: transparent;
+    border: 0;
+    font-size: 18px
+}
+
+.caption>.btn-group {
+    margin-top: -4px;
+    float: right;
+    margin-right: 10px
+}
+
+#kingdom>.rankHead {
+    background-color: rgba(31,121,22,0.42)
+}
+#kingdom{
+	    border-bottom: 20px solid rgba(31,121,22,0.42);
+    margin-bottom: 10px;
+}
+
+#phylum .thumbnail,#phylum>.rankHead {
+    background-color: rgba(122,25,22,0.42)
+}
+#phylum{
+	    border-bottom: 20px solid rgba(122,25,22,0.42);
+    margin-bottom: 10px;
+}
+
+#class .thumbnail,#class>.rankHead {
+    background-color: rgba(30,30,150,0.42)
+}
+
+#class{
+	    border-bottom: 20px solid rgba(30,30,150,0.42);
+    margin-bottom: 10px;
+}
+
+#order .thumbnail,#order>.rankHead {
+    background-color: rgba(161,125,32,0.42)
+}
+#order{
+	    border-bottom: 20px solid rgba(161,125,32,0.42);
+    margin-bottom: 10px;
+}
+
+#family .thumbnail,#family>.rankHead {
+    background-color: rgba(173,35,173,0.42)
+}
+#family{
+	    border-bottom: 20px solid rgba(173,35,173,0.42);
+    margin-bottom: 10px;
+}
+#genus .thumbnail,#genus>.rankHead {
+    background-color: rgba(24,122,122,0.42)
+}
+#genus{
+	    border-bottom: 20px solid rgba(24,122,122,0.42);
+    margin-bottom: 10px;
+}
+
+#species .thumbnail,#species>.rankHead {
+    background-color: rgba(186,37,37,0.42)
+}
+
+#species{
+	    border-bottom: 20px solid rgba(186,37,37,0.42);
+    margin-bottom: 10px;
+}
+}
+
+@media only screen and (max-width : 768px) {
+.navbar-default .navbar-collapse,.navbar-default .navbar-form {
+    margin-bottom: -2px;
+    border: 0
+}
+
+.navbar-default .navbar-toggle {
+    border: 0
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #343
+}
+
+.rankHead {
+    margin-top: 0
+}
+}
+
+@media only screen and (max-width : 992px) and (min-width : 480px) {
+.row {
+    width: 1270px
+}
+
+.col-sm-1 {
+    display: inline-block;
+    float: left;
+    width: 180px
+}
+}
+
+#langNotActive {
+    pointer-events: none;
+    cursor: default;
+    background-color: rgba(255,255,255,0.08);
+    font-weight: 700
+}
