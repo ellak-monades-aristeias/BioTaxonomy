@@ -59,6 +59,8 @@ function getLanguageResources() {
     en['is']="is";
     gr['with']="με";
     en['with']="with";
+	en['noSummary']="No summary exists!";
+	gr['noSummary']="Δεν υπάρχει περίληψη!";
  
     var resources = new Array();
     resources['gr'] = gr;
@@ -124,7 +126,7 @@ function changeLanguage(lang,container) {
         } else {
             $("a:contains('gr')").attr('id', ' ');
             $("a:contains('en')").attr('id', 'langNotActive');
-            if (currPage == 'index.html') {
+            if (currPage !='article.html') {
                 $(container).find('.caption p').each(function() {
                     $(this).html($(this).attr('caption'));
                 });

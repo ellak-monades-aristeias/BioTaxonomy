@@ -35,12 +35,18 @@ $(document).on("click", ".details", function() {
 function summarySuccess(_data) {
   var results = _data.query.pages;
   for (var j in results) {
+	  if (results[j].extract!==undefined){
     var sum = results[j].extract;
+	
     if (sum.length > 1000) sum = sum.substr(0, 1000) + '...';
+  }else{
+	var sum='<span name="lbl" caption="noSummary"></span>';  
+	  
+  }
   }
   stopLoading('#modalSum');
   $('#modalSum').hide();
-  $('#modalSum').text(sum);
+  $('#modalSum').html(sum);
   var time = prettyLoadRank($('#modalSum'), 'null', 700);
   startLoading('#membersList');
   getMembers(this.rank, this.name,"index");
@@ -89,7 +95,7 @@ function membersSuccess(_data){
       var time = prettyLoadRank($thumbnails, 'null', 250);
        $("img").unveil();
     }, 800)
-    
+    changeLanguage(sessionStorage.getItem('lang'),'#membersList');
        $("img").unveil();
   
   }
@@ -142,8 +148,8 @@ function importantMembersSuccess(_data) {
       var time = prettyLoadRank($thumbnails, 'null', 250);
        $("img").unveil();
     }, 800)
-
-    if (sessionStorage.getItem('lang') == 'gr') treeToGreek('#myModal');
+ changeLanguage(sessionStorage.getItem('lang'),'#myModal');
+    
      $("img").unveil();
   }
   /*End of details functions*/
@@ -410,7 +416,8 @@ function selectRank(button, rank) {
 }
 
 function startLoading(container) {
-  $(container).after("<span><span class='glyphicon glyphicon-refresh glyphicon-refresh-animate'></span> Loading...</span>");
+ // $(container).after("<span><span class='glyphicon glyphicon-refresh glyphicon-refresh-animate'></span> Loading...</span>");
+ $(container).after("<span><span class='glyphicon glyphicon-refresh glyphicon-refresh-animate'></span> Loading...</span>");
 }
 
 function stopLoading(container) {

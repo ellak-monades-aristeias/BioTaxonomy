@@ -1,3 +1,6 @@
+
+
+
 a {
     color: #134E82;
 }
@@ -106,7 +109,7 @@ body,.modal-content {
 }
 
 .caption p {
-	
+	    font-size: 12px;
 	overflow: hidden;
 	text-overflow: ellipsis;
     background-color: #decb3e;
