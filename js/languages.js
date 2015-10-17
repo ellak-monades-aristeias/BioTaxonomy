@@ -100,30 +100,35 @@ function greekSuccess(_data) {
             $("p[caption='" + results[i].title + "']").html(results[i].title);
         }
     }
-    $(this.container).find('.caption p').quickfit();
+  
 	
 }
 
-function changeLanguage(lang) {
+function changeLanguage(lang,container) {
+	if (container===undefined){
+		container='body';
+	}
+	console.log("language");
         $('html').attr('lang', lang);
         $("a:contains('en')").removeClass("not-active");
         $("a:contains('gr')").addClass("not-active");
+		
         var currPage = getCurrPage();
         if (lang == 'gr') {
             $("a:contains('en')").attr('id', ' ');
             $("a:contains('gr')").attr('id', 'langNotActive');
             if (currPage == 'index.html') {
-                treeToGreek('#tree_container');
-                $('#tree_container').find('.caption p').quickfit();
+                treeToGreek(container);
+                
             }
         } else {
             $("a:contains('gr')").attr('id', ' ');
             $("a:contains('en')").attr('id', 'langNotActive');
             if (currPage == 'index.html') {
-                $('#tree_container').find('.caption p').each(function() {
+                $(container).find('.caption p').each(function() {
                     $(this).html($(this).attr('caption'));
                 });
-                $('#tree_container').find('.caption p').quickfit();
+                
             }
         }
         if (currPage == 'article.html') {
@@ -163,7 +168,7 @@ function changeLanguage(lang) {
         
         var langResources = getLanguageResources()[lang];
         sessionStorage.setItem('lang', lang);
-        $("span[name='lbl']").each(function(i, elt) {
+        $("*[name='lbl']").each(function(i, elt) {
             $(elt).text(langResources[$(elt).attr("caption")]);
         });
 		
@@ -184,7 +189,7 @@ function changeLanguage(lang) {
 
 }
 function greekNameSuccess(_data) {
-	console.log("in greek");
+
  
     var results = _data.query.pages;
     for (var i in results) {
@@ -214,5 +219,4 @@ function greekNameSuccess(_data) {
   }
  
   
-  console.log("in query"+sessionStorage.getItem('greekName'));
 } 

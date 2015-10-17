@@ -56,8 +56,8 @@ var query = 'SELECT DISTINCT COUNT(?phylum) AS ?countphylum,COUNT(?classis) AS ?
 return query;
 }
 
-function getSummaryQuery(name, greekName) {
-    if (sessionStorage.getItem('lang') == 'gr' && (name != greekName)) {
+function getSummaryQuery(name) {
+    if (sessionStorage.getItem('lang') == 'gr' && (name != sessionStorage.getItem('greekName'))) {
         return 'https://el.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=' +
         greekName;
         //return query='SELECT ?sum WHERE {<http://dbpedia.org/resource/'+name+'> dbo:abstract?sum.filter(langMatches(lang(?sum),"EN"))} '
@@ -140,6 +140,24 @@ function nameFromUrl(src) {
     return name;
 }
 
+function getSearchRankName(name,count){
+	var maxValue=0;
+	var value='';
+  if (name !== undefined) {
+        var name = nameFromUrl(name.value);
+        if (count !== undefined) {
+          var count = parseInt(count.value);
+          if (count > maxValue) {
+            maxValue = count;
+            value = name.replace(' ', "_");
+          }
+        } else {
+          value = name.replace(' ', "_");
+        }
+      }	
+return value;
+}
+ 
 function ajaxError() {
 	$('button').prop('disabled', false);
     if (sessionStorage.getItem('lang') == 'gr') {

@@ -106,9 +106,15 @@ body,.modal-content {
 }
 
 .caption p {
+	
+	overflow: hidden;
+	text-overflow: ellipsis;
     background-color: #decb3e;
     border-radius: 5px;
-    color: #343
+    color: #343;
+	white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 html {
