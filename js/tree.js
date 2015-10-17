@@ -63,7 +63,7 @@ var success=membersSuccess;
   checkUrl();
   var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
   $.ajax({
-    dataType: "json",
+    dataType: "jsonp",
     url: queryUrl,
   
     success: success,
@@ -273,7 +273,7 @@ function getSearchRank(func) {
   checkUrl();
   var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
   $.ajax({
-    dataType: "json",
+    dataType: "jsonp",
     url: queryUrl,
     name: name,
     success: callback,
@@ -308,7 +308,7 @@ function makeSearchTree(_data) {
   checkUrl();
   var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
   $.ajax({
-    dataType: "json",
+    dataType: "jsonp",
     url: queryUrl,
     index: index,
     name: this.name,
