@@ -6,7 +6,11 @@
         <meta content="width=device-width, initial-scale=1" name="viewport">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
           <!--  No caching. Delete after development -->
-	
+		<meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
 	
 		<title>
             BioTaxonomy
@@ -17,18 +21,7 @@
         <link href="favicon.ico" rel="icon">
         <link href="plugins/bootstrap_7_col/css/custom.css" rel="stylesheet">
     <script src="plugins/jquery.min.js"></script>
-	<script src="plugins/bootstrap_7_col/js/bootstrap.min.js"></script>
-         		 <script src="js/navigation.js"></script>
-		<script src="js/languages.js"></script>
-        <script src="js/queries.js"></script>
-        <script src="plugins/jquery.timer.js"></script>
-        <script src="plugins/jquery.unveil.js"></script>
-		     <script src="js/tree.js"></script>
-			 <script src="plugins/bootbox.min.js"></script>
-			 
-			 
-      
-        <script src="plugins/jquery-quickfit/jquery.quickfit.js"></script>
+	<script src="plugins/iscroll-lite.js"></script>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -108,9 +101,9 @@
                         <div class="caption">
                             <p caption="Animal"><b><span name="lbl" caption="animal">Animal</span></b></p>
                             <div class="btn-group">
-                                <button class="btn btn-info details"
+                                <button name="lbl" caption="details" class="btn btn-info details"
                                 data-target="#myModal" data-toggle="modal"
-                                type="button"><span name="lbl" caption="details">Details</span></button>
+                                type="button">Details</button>
                                 <button class="btn btn-default open" type=
                                 "button"><span class=
                                 "glyphicon glyphicon-menu-right"></span></button>
@@ -123,9 +116,9 @@
                         <div class="caption">
                             <p caption="Plant"><b><span name="lbl" caption="plant">Plant</span></b></p>
                             <div class="btn-group">
-                                <button class="btn btn-info details"
+                                <button name="lbl" caption="details" class="btn btn-info details"
                                 data-target="#myModal" data-toggle="modal"
-                                type="button"><span name="lbl" caption="details" >Details</span></button>
+                                type="button">Details</button>
                                 <button class="btn btn-default open" type=
                                 "button"><span class=
                                 "glyphicon glyphicon-menu-right"></span></button>
@@ -182,10 +175,21 @@
 		
 		 
       
-        
+        <script src="plugins/bootstrap_7_col/js/bootstrap.min.js"></script>
+         		 <script src="js/navigation.js"></script>
+		<script src="js/languages.js"></script>
+        <script src="js/queries.js"></script>
+        <script src="plugins/jquery.timer.js"></script>
+        <script src="plugins/jquery.unveil.js"></script>
+		     <script src="js/tree.js"></script>
+			 <script src="plugins/bootbox.min.js"></script>
+			 
+			 
+      
+        <script src="plugins/jquery-quickfit/jquery.quickfit.js"></script>
 
         <script>
-		
+		var myScroll = new IScroll('#tree_container');
         if (sessionStorage.getItem('treePage')!=undefined){
         $('#tree_container').html(sessionStorage.getItem('treePage'));
         }

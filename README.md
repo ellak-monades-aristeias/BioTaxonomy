@@ -15,7 +15,8 @@
 
 ###Βιβλιοθήκες  
 * [Twitter Bootstrap](http://getbootstrap.com/): Framework για τη γρήγορη ανάπτυξη responsive ιστοσελίδων.
-* [jquery quickfit](https://github.com/chunksnbits/jquery-quickfit): Plugin που συρρικνώνει ένα κείμενο για να μη προεξέχει από το div του. 
+* [Bootbox.js](http://bootboxjs.com/): Plugin για την εύκολη δημιουργία alerts. 
+* [Unveil.js](http://luis-almeida.github.io/unveil/): Lazy load για εικόνες. 
 * [Wikiblurb](https://github.com/9bitStudios/wikiblurb): jQuery Plugin για τη λήψη δεδομένων από τη Wikipedia και άλλα wikis.
 * [Lity](http://sorgalla.com/lity/): Lightbox plugin για τη προβολή εικόνων. 
 * [Chart.js](http://www.chartjs.org/): Plugin για τη δημιουργία διαγραμμάτων

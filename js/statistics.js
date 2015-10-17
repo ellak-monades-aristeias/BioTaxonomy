@@ -63,7 +63,7 @@
   var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
   checkUrl();
   $.ajax({
-      dataType: "jsonp",
+      dataType: "json",
       url: queryUrl,
       success: totalQuerySuccess,
       error: ajaxError
