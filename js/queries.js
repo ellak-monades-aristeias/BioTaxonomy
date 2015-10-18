@@ -59,7 +59,7 @@ return query;
 function getSummaryQuery(name) {
     if (sessionStorage.getItem('lang') == 'gr' && (name != sessionStorage.getItem('greekName'))) {
         return 'https://el.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=' +
-        greekName;
+        sessionStorage.getItem('greekName');
         //return query='SELECT ?sum WHERE {<http://dbpedia.org/resource/'+name+'> dbo:abstract?sum.filter(langMatches(lang(?sum),"EN"))} '
     } else {
         return 'https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=' +

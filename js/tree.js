@@ -4,16 +4,21 @@ $(document).on("click", ".details", function() {
   var name = getName($(this)); //Get name of node that was clicked
 
   getGreekName(name,"index");//Finds greek name and stores in sessionStorage
+  var button=$(this);
   
-  var rank = getRank($(this));
-  var img_url = $(this).closest('.thumbnail').find('img').attr('data-src');
+
+    setTimeout(function() {
+     var rank = getRank(button);
+  var img_url = button.closest('.thumbnail').find('img').attr('data-src');
   img_url = getImg300(img_url);
   
   sessionStorage.setItem('name', name);
   sessionStorage.setItem('rank', rank);
-  
-  
-  $(".modal-title").text(name);
+  if (sessionStorage.getItem('lang')=='en'){
+  $(".modal-title").text(name);}
+  else{
+	$(".modal-title").text(sessionStorage.getItem('greekName'));  
+  }
   $(".article").attr('onclick', 'showArticle("' + name + '")');
   $('#modalThumb img').hide();
   $('#modalThumb img').attr('src', img_url);
@@ -30,6 +35,9 @@ $(document).on("click", ".details", function() {
     success: summarySuccess,
     error: ajaxError
   });
+    }, 1000)
+  
+
 });
 
 function summarySuccess(_data) {
