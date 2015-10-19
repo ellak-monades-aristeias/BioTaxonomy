@@ -14,7 +14,15 @@
         <link href="favicon.ico" rel="icon">
         <link href="plugins/bootstrap_7_col/css/navbar-fixed-top.css" rel=
         "stylesheet">
-        <script src="plugins/jquery.min.js"></script>
+       
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js">
+
+</script >
+<script >
+if (!window.jQuery) {
+    document.write('<script src="plugins/jquery.min.js"><\/script >');
+}
+</script >
 		 <link href="plugins/bootstrap_12_col/css/custom.css" rel="stylesheet">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -98,7 +106,6 @@
     <h3>Βιβλιοθήκες</h3>
     <ul>
       <li>Twitter Bootstrap: Framework για τη γρήγορη ανάπτυξη responsive ιστοσελίδων.</li>
-      <li>jquery quickfit: Plugin που συρρικνώνει ένα κείμενο για να μη προεξέχει από το div του.</li>
       <li>Wikiblurb: jQuery Plugin για τη λήψη δεδομένων από τη Wikipedia και άλλα wikis.</li>
       <li>Lity: Lightbox plugin για τη προβολή εικόνων.</li>
       <li>Chart.js: Plugin για τη δημιουργία διαγραμμάτων</li>

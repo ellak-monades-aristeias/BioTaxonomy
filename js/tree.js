@@ -168,6 +168,7 @@ $(document).on("click", ".open", function() {
   sessionStorage.setItem('prevRankName', name);
   //name.replace(/ /g,"_");
   var rank = getRank($(this));
+  console.log("rank "+rank);
   selectRank($(this), rank); //Make clicked node selected
   var next_rank = getNextRank(rank); //get the next rank
   clearNextRanks(rank); //Clear data of next ranks
@@ -403,11 +404,9 @@ function getName(obj) {
 
 
 function getRank(obj) {
-	if ($(window).width() <= 480) {
-    var rank = obj.parents('div:eq(1)').attr('id');
-  } else {
+	
     var rank = obj.parents('div:eq(3)').attr('id');
-  }
+ 
   return rank;
 }
 

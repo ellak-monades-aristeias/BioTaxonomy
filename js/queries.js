@@ -1,4 +1,4 @@
-var url = "http://dbpedia.org/sparql";
+var url = "http://live.dbpedia.org/sparql";
 
 function checkUrl() {
 	/*
