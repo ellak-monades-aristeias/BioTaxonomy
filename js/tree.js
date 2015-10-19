@@ -4,16 +4,21 @@ $(document).on("click", ".details", function() {
   var name = getName($(this)); //Get name of node that was clicked
 
   getGreekName(name,"index");//Finds greek name and stores in sessionStorage
+  var button=$(this);
   
-  var rank = getRank($(this));
-  var img_url = $(this).closest('.thumbnail').find('img').attr('data-src');
+
+    setTimeout(function() {
+     var rank = getRank(button);
+  var img_url = button.closest('.thumbnail').find('img').attr('data-src');
   img_url = getImg300(img_url);
   
   sessionStorage.setItem('name', name);
   sessionStorage.setItem('rank', rank);
-  
-  
-  $(".modal-title").text(name);
+  if (sessionStorage.getItem('lang')=='en'){
+  $(".modal-title").text(name);}
+  else{
+	$(".modal-title").text(sessionStorage.getItem('greekName'));  
+  }
   $(".article").attr('onclick', 'showArticle("' + name + '")');
   $('#modalThumb img').hide();
   $('#modalThumb img').attr('src', img_url);
@@ -30,6 +35,9 @@ $(document).on("click", ".details", function() {
     success: summarySuccess,
     error: ajaxError
   });
+    }, 1000)
+  
+
 });
 
 function summarySuccess(_data) {
@@ -160,6 +168,7 @@ $(document).on("click", ".open", function() {
   sessionStorage.setItem('prevRankName', name);
   //name.replace(/ /g,"_");
   var rank = getRank($(this));
+  console.log("rank "+rank);
   selectRank($(this), rank); //Make clicked node selected
   var next_rank = getNextRank(rank); //get the next rank
   clearNextRanks(rank); //Clear data of next ranks
@@ -395,11 +404,9 @@ function getName(obj) {
 
 
 function getRank(obj) {
-	if ($(window).width() <= 480) {
-    var rank = obj.parents('div:eq(1)').attr('id');
-  } else {
+	
     var rank = obj.parents('div:eq(3)').attr('id');
-  }
+ 
   return rank;
 }
 
