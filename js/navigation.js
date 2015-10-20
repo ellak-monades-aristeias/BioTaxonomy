@@ -72,8 +72,9 @@ function saveTree() {
 function searchSuccess(_data) {
     var results = _data.query.pages;
     for (var i in results) {}
+	
     if (i > 0) {
-		
+		console.log("i is"+i);
 		//Edw psaxnei to rank
 		getSearchRank("article");
         
@@ -84,7 +85,7 @@ function searchSuccess(_data) {
 
 function articleRankSuccess(_data){
 	console.log("in success");
-	getGreekName(this.name,"article");
+	getGreekName(this.name,"searchArticle");
 	//Na vriskei kai to onoma tou rank pou prohgeitai tou parontos rank.Sto prohgoumeno rank na lamvanei kai ta onomata ektos apo to count mono
 	var values = ['', '', '', '', ''];
   var checkValue = 0;
@@ -114,9 +115,40 @@ function articleRankSuccess(_data){
 	//var searchTerm = $('#searchBox').val();
         sessionStorage.setItem('name',this.name)
 		
+	var query =getprevRankNameQuery(this.name,index);
+console.log(query);
+   var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
+  $.ajax({
+    dataType: "jsonp",
+    url: queryUrl,
+    success: prevRankSuccess,
+    error: ajaxError
+  }); 
 	
+}
+
+function prevRankSuccess(_data){
+  var results = _data.results.bindings;
+
+  
+  	var maxValue=0;
+	var value='';
+	
+  for (var i in results) {
+  if (results[i].taxon !== undefined) {
        
-	
+         var count = parseInt(results[i].counttaxon.value);
+          if (count > maxValue) {
+            maxValue = count;
+			var name = nameFromUrl(results[i].taxon.value);
+            value = name.replace(' ', "_");
+          }
+        
+      }	
+   }
+
+sessionStorage.setItem('prevRankName',value);
+window.location.replace('article.html');
 }
 
 function getCurrPage() {
