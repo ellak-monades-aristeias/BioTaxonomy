@@ -131,7 +131,16 @@ li>.thumbnail{
 }
 
 .caption p {
+	   padding-top: 3px;
+    padding-bottom: 3px;
+    font-weight: 700;
+	    font-size: 12px;
+	overflow: hidden;
+	text-overflow: ellipsis;
     background-color: #decb3e;
     border-radius: 5px;
-    color: #343
+    color: #343;
+	white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

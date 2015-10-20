@@ -118,6 +118,20 @@ function getSearchQuery(name,rank) {
 		
 }
 
+function getprevRankNameQuery(name,rankIndex) {
+	
+	name = name.replace(' ', "_");
+	
+	if(rankIndex==6){
+	return 'SELECT DISTINCT ?genus  WHERE {dbr:' + name + ' dbo:genus ?genus}';	
+	}else if (rankIndex>0){
+	return 'SELECT DISTINCT ?taxon,COUNT(?taxon) AS ?counttaxon WHERE {?name  dbo:'+rankArray[rankIndex]+' dbr:'+name+';dbo:'+rankArray[rankIndex-1]+'  ?taxon}';		
+	}
+	
+	    
+		
+}
+
 function getTotalQuery(prevRank, prevRankName, rank) {
     prevRankName = prevRankName.replace(' ', "_");
     return 'SELECT DISTINCT ?order, COUNT(*) AS ?count WHERE {{?name  dbo:' + prevRank +
@@ -140,23 +154,6 @@ function nameFromUrl(src) {
     return name;
 }
 
-function getSearchRankName(name,count){
-	var maxValue=0;
-	var value='';
-  if (name !== undefined) {
-        var name = nameFromUrl(name.value);
-        if (count !== undefined) {
-          var count = parseInt(count.value);
-          if (count > maxValue) {
-            maxValue = count;
-            value = name.replace(' ', "_");
-          }
-        } else {
-          value = name.replace(' ', "_");
-        }
-      }	
-return value;
-}
  
 function ajaxError() {
 	$('button').prop('disabled', false);

@@ -19,6 +19,13 @@ $(document).on("click", ".details", function() {
   else{
 	$(".modal-title").text(sessionStorage.getItem('greekName'));  
   }
+ 
+  prevRank=getPrevRank(rank);
+  var selected =$("#"+prevRank).find(".selected");
+  
+  sessionStorage.setItem('prevRankName',selected.find('p[caption]').attr('caption'));
+  
+  
   $(".article").attr('onclick', 'showArticle("' + name + '")');
   $('#modalThumb img').hide();
   $('#modalThumb img').attr('src', img_url);
@@ -61,7 +68,7 @@ function summarySuccess(_data) {
 }
 
 function getMembers(rank, name,page) {
-if(page=="index"){
+if(page!="article"){
 var success=importantMembersSuccess;
 }else{
 var success=membersSuccess;
@@ -88,6 +95,7 @@ function membersSuccess(_data){
     for (var i in dbpedia_results) { //pass all dbpedia results in array for easier understanding
       var src = dbpedia_results[i].name.value;
       var name = nameFromUrl(src);
+	  name = name.replace("_", ' ');
    thumb_url=getThumbUrl(dbpedia_results[i].thumb);
         
       
@@ -278,7 +286,7 @@ function getSearchRank(func) {
   name = capitalizeFirstLetter(name);
   
   var query = getSearchRankQuery(name);
- 
+ console.log(query);
   checkUrl();
   var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
   $.ajax({
@@ -313,7 +321,7 @@ function makeSearchTree(_data) {
   }
 
   var query = getSearchQuery(this.name, rankArray[index]);
-  
+  console.log(query);
   checkUrl();
   var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
   $.ajax({
@@ -329,19 +337,67 @@ function makeSearchTree(_data) {
 function makeSearchTreeSuccess(_data) {
     var name = this.name;
     clearNextRanks("kingdom"); //Clear data of all ranks
-    var values = ['', '', '', '', '', '', ''];
     var kingdomType = '';
     var results = _data.results.bindings;
-  
+  console.log
+  	var maxValue=[0,0,0,0,0,0];
+	var values=['','','','','',''];
+	var tempName='';
+ 
     for (var i in results) {
-	values[0]=getSearchRankName(results[i].kingdom,results[i].countkingdom);
-	values[1]=getSearchRankName(results[i].phylum,results[i].countphylum);
-	values[2]=getSearchRankName(results[i].classis,results[i].countclassis);
-	values[3]=getSearchRankName(results[i].order,results[i].countorder);
-	values[4]=getSearchRankName(results[i].family,results[i].countfamily);
-	values[5]=getSearchRankName(results[i].genus,results[i].countgenus);
+		if (results[i].countkingdom!==undefined){
+          if (parseInt(results[i].countkingdom.value) > maxValue[0]) {
+            maxValue[0] = parseInt(results[i].countkingdom.value);
+			 tempName = nameFromUrl(results[i].kingdom.value);
+			 
+            values[0] = tempName.replace(' ', "_");
+          }
+		}
+		if (results[i].countphylum!==undefined){
+		   if (parseInt(results[i].countphylum.value) > maxValue[1]) {
+            maxValue[1] = parseInt(results[i].countphylum.value);
+			 tempName = nameFromUrl(results[i].phylum.value);
+			 
+            values[1] = tempName.replace(' ', "_");
+          }
+		}
+		if (results[i].countclassis!==undefined){
+		  if (parseInt(results[i].countclassis.value) > maxValue[2]) {
+            maxValue[2] = parseInt(results[i].countclassis.value);
+			 tempName = nameFromUrl(results[i].classis.value);
+			
+            values[2] = tempName.replace(' ', "_");
+          }
+		}
+		if (results[i].countorder!==undefined){
+          if (parseInt(results[i].countorder.value) > maxValue[3]) {
+            maxValue[3] = parseInt(results[i].countorder.value);
+			 tempName = nameFromUrl(results[i].order.value);
+			
+            values[3] = tempName.replace(' ', "_");
+          }
+		}
+		if (results[i].countfamily!==undefined){
+		  if (parseInt(results[i].countfamily.value) > maxValue[4]) {
+            maxValue[4] = parseInt(results[i].countfamily.value);
+			 tempName = nameFromUrl(results[i].family.value);
+			 
+            values[4] = tempName.replace(' ', "_");
+          }
+		}
+		if (results[i].countgenus!==undefined){
+		   if (parseInt(results[i].countgenus.value) > maxValue[5]) {
+            maxValue[5] = parseInt(results[i].countgenus.value);
+			 tempName = nameFromUrl(results[i].genus.value);
+			 
+            values[5] = tempName.replace(' ', "_");
+          }
+		}
+      
+      
+	
     }
-
+ console.log("value 0 "+values[0]+" value 1 "+ values[1]+" value 2 "+values[2]+" value 3"+values[3]+" value 4 "+values[4]+" value 5"+ values[5]);
     if (values[0] == 'Animal' || values[0] == 'Animalia') values[0] = "Animal";
     if (values[0] == 'Plant' || values[0] == 'Plantae') values[0] = "Plant";
     if (values[0] == 'Animal' || values[0] == 'Plant') { //Only make tree if kingdom is plant or animal
@@ -366,7 +422,7 @@ function makeSearchTreeSuccess(_data) {
 
 function thumbHtml(name, thumb, rank, selectedName) {
 	  thumb_url=getThumbUrl(thumb);
-	  
+	name=name.replace("_"," ");  
   if (selectedName == name) {
     select = "selected";
   } else {
