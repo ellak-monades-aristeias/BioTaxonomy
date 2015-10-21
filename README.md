@@ -36,4 +36,57 @@ Demo της εφαρμογής μπορείτε να δείτε στο http://el
 
 ##License/Attributions
 Για το λογότυπο χρησιμοποιήθηκε η εικόνα του χρήστη [tzunghaor](https://openclipart.org/user-detail/tzunghaor) .  
-Η εφαρμογή υλοποιείται στο πλαίσιο του έργου “Ηλεκτρονικές Υπηρεσίες για την Ανάπτυξη και Διάδοση του Ανοιχτού Λογισμικού”.
+Η εφαρμογή υλοποιείται στο πλαίσιο του έργου “Ηλεκτρονικές Υπηρεσίες για την Ανάπτυξη και Διάδοση του Ανοιχτού Λογισμικού”. 
+
+##Πίνακας Παραδοτέων  
+
+<table>
+    <tr>
+    <td><b>-</b></td>
+        <td><b>Τίτλος Παραδοτέου</b></td>
+        <td></url><b>URL</b></td>
+        
+    </tr>
+        <tr>
+        <td><b>1</b></td>
+        <td>Wireframes και mockups της εφαρμογής που θα παρουσιάζουν παραδείγματα λειτουργικότητας σε διάφορα μεγέθη συσκευών</td>
+        <td><a href="https://github.com/ellak-monades-aristeias/BioTaxonomy/wiki/%CE%95%CE%B2%CE%B4%CE%BF%CE%BC%CE%AC%CE%B4%CE%B1-1:-Wireframes">Παραδοτέο 1</a></td>
+    </tr>
+    
+        <tr>
+        <td><b>2</b></td>
+        <td>Δημιουργία Αλγορίθμων που θα χρησιμοποιούν δεδομένα της Wikipedia</td>
+        <td><a href="https://github.com/ellak-monades-aristeias/BioTaxonomy/wiki/%CE%95%CE%B2%CE%B4%CE%BF%CE%BC%CE%AC%CE%B4%CE%B1-2:-%CE%95%CE%BE%CE%B1%CE%B3%CF%89%CE%B3%CE%AE-%CF%84%CF%89%CE%BD-%CE%B4%CE%B5%CE%B4%CE%BF%CE%BC%CE%AD%CE%BD%CF%89%CE%BD-%CE%B1%CF%80%CF%8C-%CF%84%CE%B7-Wikipedia">Παραδοτέο 2</a></td>
+    </tr>
+    
+       <tr>
+        <td><b>3</b></td>
+        <td>Πρώτη έκδοση εφαρμογής: Το διάγραμμα που παρουσιάζει τα έμβια όντα</td>
+        <td><a href="https://github.com/ellak-monades-aristeias/BioTaxonomy/wiki/%CE%95%CE%B2%CE%B4%CE%BF%CE%BC%CE%AC%CE%B4%CE%B1-3:-%CE%94%CE%B7%CE%BC%CE%B9%CE%BF%CF%85%CF%81%CE%B3%CE%AF%CE%B1-%CE%B4%CE%AD%CE%BD%CF%84%CF%81%CE%BF%CF%85-%CE%B4%CE%B5%CE%B4%CE%BF%CE%BC%CE%AD%CE%BD%CF%89%CE%BD">Παραδοτέο 3</a></td>
+    </tr>
+    
+      <tr>
+        <td><b>4</b></td>
+        <td>Πρόσθετη λειτουργικότητα: Λεπτομέρειες της ταξινομικής βαθμίδας και λίστα με τα πιο σημαντικά μέλη της τάξης</td>
+        <td><a href="https://github.com/ellak-monades-aristeias/BioTaxonomy/wiki/%CE%95%CE%B2%CE%B4%CE%BF%CE%BC%CE%AC%CE%B4%CE%B1-4:-%CE%9B%CE%B5%CF%80%CF%84%CE%BF%CE%BC%CE%AD%CF%81%CE%B5%CE%B9%CE%B5%CF%82-%CF%84%CE%B7%CF%82-%CE%BA%CE%AC%CE%B8%CE%B5-%CF%84%CE%B1%CE%BE%CE%B9%CE%BD%CE%BF%CE%BC%CE%B9%CE%BA%CE%AE%CF%82-%CE%B2%CE%B1%CE%B8%CE%BC%CE%AF%CE%B4%CE%B1%CF%82-%CE%BA%CE%B1%CE%B9-%CE%BB%CE%AF%CF%83%CF%84%CE%B1-%CE%BC%CE%B5-%CF%84%CE%B1-%CF%80%CE%B9%CE%BF-%CF%83%CE%B7%CE%BC%CE%B1%CE%BD%CF%84%CE%B9%CE%BA%CE%AC-%CE%BC%CE%AD%CE%BB%CE%B7-%CF%84%CE%B7%CF%82-%CF%84%CE%AC%CE%BE%CE%B7%CF%82">Παραδοτέο 4</a></td>
+    </tr>
+    
+        <tr>
+        <td><b>5</b></td>
+        <td>Πρόσθετη λειτουργικότητα: Προβολή της σελίδας της Wikipedia για κάποιο έμβιο ον και αναζήτηση για κάποιο συγκεκριμένο έμβιο ον</td>
+        <td><a href="https://github.com/ellak-monades-aristeias/BioTaxonomy/wiki/%CE%95%CE%B2%CE%B4%CE%BF%CE%BC%CE%AC%CE%B4%CE%B1-5:-%CE%A0%CF%81%CE%BF%CE%B2%CE%BF%CE%BB%CE%AE-%CF%84%CE%B7%CF%82-%CF%83%CE%B5%CE%BB%CE%AF%CE%B4%CE%B1%CF%82-%CF%84%CE%B7%CF%82-Wikipedia-%CE%B3%CE%B9%CE%B1-%CE%BA%CE%AC%CF%80%CE%BF%CE%B9%CE%BF-%CE%AD%CE%BC%CE%B2%CE%B9%CE%BF-%CE%BF%CE%BD-%CE%BA%CE%B1%CE%B9-%CE%B1%CE%BD%CE%B1%CE%B6%CE%AE%CF%84%CE%B7%CF%83%CE%B7-%CE%B3%CE%B9%CE%B1-%CE%BA%CE%AC%CF%80%CE%BF%CE%B9%CE%BF-%CF%83%CF%85%CE%B3%CE%BA%CE%B5%CE%BA%CF%81%CE%B9%CE%BC%CE%AD%CE%BD%CE%BF-%CE%AD%CE%BC%CE%B2%CE%B9%CE%BF-%CE%BF%CE%BD">Παραδοτέο 5</a></td>
+    </tr>
+    
+            <tr>
+        <td><b>6</b></td>
+        <td>Διορθώσεις στην εμφάνιση της εφαρμογής, έναρξη υλοποίησης του responsive τμήματος της εφαρμογής </td>
+        <td><a href="https://github.com/ellak-monades-aristeias/BioTaxonomy/wiki/%CE%95%CE%B2%CE%B4%CE%BF%CE%BC%CE%AC%CE%B4%CE%B1-6:-%CE%94%CE%B9%CE%BF%CF%81%CE%B8%CF%8E%CF%83%CE%B5%CE%B9%CF%82-%CF%83%CF%84%CE%B7%CE%BD-%CE%B5%CE%BC%CF%86%CE%AC%CE%BD%CE%B9%CF%83%CE%B7-%CF%84%CE%B7%CF%82-%CE%B5%CF%86%CE%B1%CF%81%CE%BC%CE%BF%CE%B3%CE%AE%CF%82,-%CE%AD%CE%BD%CE%B1%CF%81%CE%BE%CE%B7-%CF%85%CE%BB%CE%BF%CF%80%CE%BF%CE%AF%CE%B7%CF%83%CE%B7%CF%82-%CF%84%CE%BF%CF%85-responsive-%CF%84%CE%BC%CE%AE%CE%BC%CE%B1%CF%84%CE%BF%CF%82-%CF%84%CE%B7%CF%82-%CE%B5%CF%86%CE%B1%CF%81%CE%BC%CE%BF%CE%B3%CE%AE%CF%82">Παραδοτέο 6</a></td>
+    </tr>
+    
+        <tr>
+        <td><b>7</b></td>
+        <td>Τελική εφαρμογή, πλήρης υλοποίηση του responsive τμήματος της εφαρμογής</td>
+        <td><a href="https://github.com/ellak-monades-aristeias/BioTaxonomy/wiki/%CE%95%CE%B2%CE%B4%CE%BF%CE%BC%CE%AC%CE%B4%CE%B1-7:-%CE%A4%CE%B5%CE%BB%CE%B9%CE%BA%CE%AE-%CE%B5%CF%86%CE%B1%CF%81%CE%BC%CE%BF%CE%B3%CE%AE-%CE%BC%CE%B5-%CF%80%CE%BB%CE%AE%CF%81%CE%B7-%CE%BB%CE%B5%CE%B9%CF%84%CE%BF%CF%85%CF%81%CE%B3%CE%B9%CE%BA%CF%8C%CF%84%CE%B7%CF%84%CE%B1">Παραδοτέο 7</a></td>
+    </tr>
+    
+</table>
