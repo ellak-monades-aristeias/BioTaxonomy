@@ -1,2 +1,2 @@
-License κώδικα: EUPL v1.1 
-License περιεχομένου: CC-BY-SA 4.0.
+Code licence: EUPL v1.1 
+Content licence: CC-BY-SA 4.0.
