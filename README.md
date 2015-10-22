@@ -28,6 +28,12 @@
 Κατεβάζετε όλα τα αρχεία και εκτελείτε το αρχείο index.html .  
 Για να λειτουργήσει η εφαρμογή είναι απαραίτητη η σύνδεση στο διαδίκτυο καθώς τα δεδομένα λαμβάνονται σε πραγματικό χρόνο.  
 
+##Οδηγίες χρήσης  
+[Για χρήστες](https://github.com/ellak-monades-aristeias/BioTaxonomy/blob/master/%CE%9F%CE%B4%CE%B7%CE%B3%CE%AF%CE%B5%CF%82%20%CF%87%CF%81%CE%AE%CF%83%CE%B7%CF%82%20%CE%B3%CE%B9%CE%B1%20%CF%87%CF%81%CE%AE%CF%83%CF%84%CE%B5%CF%82.md)    
+[Για προγραμματιστές](https://github.com/ellak-monades-aristeias/BioTaxonomy/blob/master/%CE%9F%CE%B4%CE%B7%CE%B3%CE%AF%CE%B5%CF%82%20%CF%87%CF%81%CE%AE%CF%83%CE%B7%CF%82%20%CE%B3%CE%B9%CE%B1%20%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%B1%CE%BC%CE%BC%CE%B1%CF%84%CE%B9%CF%83%CF%84%CE%AD%CF%82.md)  
+
+
+
 ##Demo της εφαρμογής  
 Demo της εφαρμογής μπορείτε να δείτε στο http://ellak-monades-aristeias.github.io/BioTaxonomy . 
 
