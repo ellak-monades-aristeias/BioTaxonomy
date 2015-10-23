@@ -33,7 +33,7 @@ if (!window.jQuery) {
     </head>
     <body style="padding-top: 70px;">
         <!-- Fixed navbar -->
-        <nav class="navbar navbar-default navbar-fixed-top">
+   <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button class="navbar-toggle collapsed" data-target=
@@ -48,40 +48,44 @@ if (!window.jQuery) {
                     <form class="navbar-form collapsed navbar-right visible-xs"
                     onsubmit="return false">
                         <div class="input-group">
-                            <input class="form-control" id="searchBox"
+                            <input class="form-control" id="searchBoxMobile"
                             placeholder="Search" type="text">
                             <div class="input-group-btn">
                                 <button class=
                                 "btn btn-default glyphicon glyphicon-search"
-                                onclick="searchTree();" style=
+                                onclick="searchArticle();" style=
                                 "font-style: italic"></button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="navbar-collapse collapse" id="navbar">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="javascript:showAbout();">About</a>
-                        </li>
-                        <li>
-                            <a href="javascript:changeLanguage();">en/gr</a>
-                        </li>
+                     <ul class="nav navbar-nav navbar-right">
+                      
                         <li>
                             <form class=
                             "navbar-form collapsed navbar-right hidden-xs"
                             onsubmit="return false">
+					
+							
+							
                                 <div class="input-group">
                                     <input class="form-control" id="searchBox"
                                     placeholder="Search" type="text">
                                     <div class="input-group-btn">
                                         <button class=
-                                        "btn btn-default glyphicon glyphicon-search"
+                                        "btn btn-default "
                                         onclick="searchArticle();" style=
-                                        "font-style: italic"></button>
+                                        "font-style: italic"><span class="glyphicon glyphicon-search"></span></button>
                                     </div>
                                 </div>
                             </form>
+                        </li>
+						  <li>
+                            <a href="javascript:showAbout();"><span name="lbl" caption="about"></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:changeLanguage('en');">en</a></li><li><a href="javascript:changeLanguage('gr');">gr</a>
                         </li>
                     </ul>
                 </div><!--/.nav-collapse -->

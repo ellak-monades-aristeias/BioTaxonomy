@@ -1,5 +1,17 @@
+/**
+ * Queries used in the ajax requests.
+ *
+ * @module Queries
+ */
+ 
 var url = "http://live.dbpedia.org/sparql";
-
+var rankArray = ["kingdom", "phylum", "class", "order", "family", "genus", "species"];
+/**
+* Checks if dbpedia or dbpedia live is up and sets url accordingly
+*
+* @class checkUrl
+* @constructor
+*/
 function checkUrl() {
 	/*
     var query = 'select distinct ?Concept where {[] a ?Concept} LIMIT 1';
@@ -18,13 +30,30 @@ function checkUrl() {
     });
 	*/
 }
-var rankArray = ["kingdom", "phylum", "class", "order", "family", "genus", "species"];
 
+
+
+/**
+* Query that gets members of rank species.
+*
+* @class getImportantQuery
+* @constructor
+* @param {string} rank The rank of the node
+* @param {string} name The name of the node
+*/
 function getImportantQuery(rank, name) {
     name = name.replace(' ', "_");
     return 'SELECT DISTINCT ?name,?thumb,COUNT(*) AS ?count WHERE {?name dbo:'+rank+' dbr:'+name+'.?name dbo:genus ?k.?s ?p ?name.OPTIONAL{ ?name dbo:thumbnail ?thumb }.FILTER(?name!=?k)} ORDER BY DESC(COUNT(*)) LIMIT 500';
 }
-
+/**
+* Query that gets members of next rank/tree branch. 
+*
+* @class getOpenQuery
+* @constructor
+* @param {string} name The name of the node
+* @param {string} rank The rank of the node
+* @param {string} next_rank The rank
+*/
 function getOpenQuery(name, rank, next_rank) {
     name = name.replace(' ', "_");
 	
@@ -49,13 +78,25 @@ function getOpenQuery(name, rank, next_rank) {
             "  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}} order by asc(UCASE(str(?taxon)))";
     }
 }
-
+/**
+* Query that gets rank of search term. 
+*
+* @class getSearchRankQuery
+* @constructor
+* @param {string} name The name of the node
+*/
 function getSearchRankQuery(name){
 
 var query = 'SELECT DISTINCT COUNT(?phylum) AS ?countphylum,COUNT(?classis) AS ?countclass,COUNT(?order) AS ?countorder,COUNT(?family) AS ?countfamily,COUNT(?genus) AS ?countgenus  WHERE {{ ?phylum dbo:phylum dbr:'+name+'}UNION{?classis dbo:class dbr:'+name+'}UNION{ ?order dbo:order dbr:'+name+'}UNION{?family dbo:family dbr:'+name+'}UNION{?genus dbo:genus dbr:'+name+'}}';
 return query;
 }
-
+/**
+* Query that gets summary of node from wikipedia. 
+*
+* @class getSummaryQuery
+* @constructor
+* @param {string} name The name of the node
+*/
 function getSummaryQuery(name) {
     if (sessionStorage.getItem('lang') == 'gr' && (name != sessionStorage.getItem('greekName'))) {
         return 'https://el.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=' +
@@ -66,7 +107,13 @@ function getSummaryQuery(name) {
         name;
     }
 }
-
+/**
+* Query that gets greek names of a list of english names. 
+*
+* @class returnGreekNameQuery
+* @constructor
+* @param {string} nameList List of names
+*/
 function returnGreekNameQuery(nameList) {
     var nameString = '';
     for (var i in nameList) {
@@ -76,22 +123,47 @@ function returnGreekNameQuery(nameList) {
     return 'https://en.wikipedia.org/w/api.php?format=json&action=query&titles=' + nameString +
         '&lllang=el&prop=langlinks';
 }
-
+/**
+* Query that gets greek name from an english name. 
+*
+* @class returnGreekNameQuery
+* @constructor
+* @param {string} name The name of the node
+*/
 function returnOneGreekNameQuery(name) {
     return 'https://en.wikipedia.org/w/api.php?format=json&action=query&titles=' + name +
         '&lllang=el&prop=langlinks';
 }
-
+/**
+* Query that gets english name from a greek name. 
+*
+* @class returnOneEnglishNameQuery
+* @constructor
+* @param {string} name The name of the node
+*/
 function returnOneEnglishNameQuery(name){
 	
 	    return 'https://en.wikipedia.org/w/api.php?format=json&action=query&titles=' + name +
         '&lllang=en&prop=langlinks';
 }
-
+/**
+* Query that checks if a wikipedia article exists. 
+*
+* @class articleExistsQuery
+* @constructor
+* @param {string} title Title of article
+*/
 function articleExistsQuery(title) {
     return 'https://en.wikipedia.org/w/api.php?action=query&format=json&titles=' + title;
 }
-
+/**
+* Query for search tree. 
+*
+* @class getSearchQuery
+* @constructor
+* @param {string} name Name of search term
+* @param {string} rank Rank of search term
+*/
 function getSearchQuery(name,rank) {
 	
 	name = name.replace(' ', "_");
@@ -117,7 +189,14 @@ function getSearchQuery(name,rank) {
 	    
 		
 }
-
+/**
+* Query that gets name of previous rank member. 
+*
+* @class getprevRankNameQuery
+* @constructor
+* @param {string} name Name of search term
+* @param {number} rankIndex Index of rank used to find rank from rankArray
+*/
 function getprevRankNameQuery(name,rankIndex) {
 	
 	name = name.replace(' ', "_");
@@ -131,7 +210,15 @@ function getprevRankNameQuery(name,rankIndex) {
 	    
 		
 }
-
+/**
+* Query that gets total number of species in rank. 
+*
+* @class getTotalQuery
+* @constructor
+* @param {string} prevRank Previous rank
+* @param {string} prevRankName Name of previous rank
+* @param {string} rank Rank
+*/
 function getTotalQuery(prevRank, prevRankName, rank) {
     prevRankName = prevRankName.replace(' ', "_");
     return 'SELECT DISTINCT ?order, COUNT(*) AS ?count WHERE {{?name  dbo:' + prevRank +
@@ -139,22 +226,45 @@ function getTotalQuery(prevRank, prevRankName, rank) {
         '  dbo:wikiPageRedirects ?rank.?rank dbo:' + rank + ' ?rank2.?rank2 dbo:' + rank +
         ' ?order}}order by desc(?count)';
 }
-
+/**
+* Get next rank with help of rankArray.
+*
+* @class getNextRank
+* @constructor
+* @param {string} rank Rank
+*/
 function getNextRank(rank) {
     if (rank != 'species') return rankArray[rankArray.indexOf(rank) + 1];
 }
-
+/**
+* Get preious rank with help of rankArray.
+*
+* @class getPrevRank
+* @constructor
+* @param {string} rank Rank
+*/
 function getPrevRank(rank) {
     if (rank != 'kingdom') return rankArray[rankArray.indexOf(rank) - 1];
 }
-
+/**
+* Strip uri to get name.
+*
+* @class nameFromUrl
+* @constructor
+* @param {string} src Name
+*/
 function nameFromUrl(src) {
     var name = src.substring(src.lastIndexOf('/') + 1);
     name = name.replace("_", ' ');
     return name;
 }
 
- 
+/**
+* Show error if something goes wrong with an ajax request. 
+*
+* @class ajaxError
+* @constructor
+*/ 
 function ajaxError() {
 	$('button').prop('disabled', false);
     if (sessionStorage.getItem('lang') == 'gr') {

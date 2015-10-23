@@ -1,0 +1,1599 @@
+{
+    "project": {},
+    "files": {
+        "article.js": {
+            "name": "article.js",
+            "modules": {
+                "Article": 1
+            },
+            "classes": {
+                "randomColorGenerator": 1,
+                "shadeColor2": 1,
+                "totalQuerySuccess": 1,
+                "getStatistics": 1,
+                "getPluralRank": 1,
+                "getArticle": 1,
+                "loadArticle": 1,
+                "articleRankSuccess": 1,
+                "prevRankSuccess": 1,
+                "searchSuccess": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "languages.js": {
+            "name": "languages.js",
+            "modules": {
+                "Languages": 1
+            },
+            "classes": {
+                "getLanguageResources": 1,
+                "treeToGreek": 1,
+                "greekSuccess": 1,
+                "changeLanguage": 1,
+                "getGreekName": 1,
+                "greekNameSuccess": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "navigation.js": {
+            "name": "navigation.js",
+            "modules": {
+                "Navigation": 1
+            },
+            "classes": {
+                "showArticle": 1,
+                "showAbout": 1,
+                "showIndex": 1,
+                "searchTree": 1,
+                "searchArticle": 1,
+                "saveTree": 1,
+                "getCurrPage": 1,
+                "goBack": 1,
+                "prettyLoadRank": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "queries.js": {
+            "name": "queries.js",
+            "modules": {
+                "Queries": 1
+            },
+            "classes": {
+                "checkUrl": 1,
+                "getImportantQuery": 1,
+                "getOpenQuery": 1,
+                "getSearchRankQuery": 1,
+                "getSummaryQuery": 1,
+                "returnGreekNameQuery": 1,
+                "returnOneEnglishNameQuery": 1,
+                "articleExistsQuery": 1,
+                "getSearchQuery": 1,
+                "getprevRankNameQuery": 1,
+                "getTotalQuery": 1,
+                "getNextRank": 1,
+                "getPrevRank": 1,
+                "nameFromUrl": 1,
+                "ajaxError": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "tree.js": {
+            "name": "tree.js",
+            "modules": {
+                "Tree": 1
+            },
+            "classes": {
+                "$(document).on()": 1,
+                "summarySuccess": 1,
+                "getMembers": 1,
+                "membersSuccess": 1,
+                "importantMembersSuccess": 1,
+                "executeOpenQuery": 1,
+                "openSuccess": 1,
+                "getSearchRank": 1,
+                "thumbHtml": 1,
+                "clearNextRanks": 1,
+                "getThumbUrl": 1,
+                "getName": 1,
+                "startLoading": 1,
+                "stopLoading": 1,
+                "shrinkImg200": 1,
+                "shrinkImg300": 1,
+                "hideShowDivs": 1,
+                "showAllDivs": 1,
+                "divsForMobile": 1,
+                "normalDivs": 1,
+                "ChangeDiv": 1,
+                "capitalizeFirstLetter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "Article": {
+            "name": "Article",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "randomColorGenerator": 1,
+                "shadeColor2": 1,
+                "totalQuerySuccess": 1,
+                "getStatistics": 1,
+                "getPluralRank": 1,
+                "getArticle": 1,
+                "loadArticle": 1,
+                "articleRankSuccess": 1,
+                "prevRankSuccess": 1,
+                "searchSuccess": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "article.js",
+            "line": 246,
+            "description": "Functions for article page."
+        },
+        "Languages": {
+            "name": "Languages",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "getLanguageResources": 1,
+                "treeToGreek": 1,
+                "greekSuccess": 1,
+                "changeLanguage": 1,
+                "getGreekName": 1,
+                "greekNameSuccess": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "languages.js",
+            "line": 231,
+            "description": "Handles language changes."
+        },
+        "Navigation": {
+            "name": "Navigation",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "showArticle": 1,
+                "showAbout": 1,
+                "showIndex": 1,
+                "searchTree": 1,
+                "searchArticle": 1,
+                "saveTree": 1,
+                "getCurrPage": 1,
+                "goBack": 1,
+                "prettyLoadRank": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "navigation.js",
+            "line": 105,
+            "description": "Methods used for navigation."
+        },
+        "Queries": {
+            "name": "Queries",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "checkUrl": 1,
+                "getImportantQuery": 1,
+                "getOpenQuery": 1,
+                "getSearchRankQuery": 1,
+                "getSummaryQuery": 1,
+                "returnGreekNameQuery": 1,
+                "returnOneEnglishNameQuery": 1,
+                "articleExistsQuery": 1,
+                "getSearchQuery": 1,
+                "getprevRankNameQuery": 1,
+                "getTotalQuery": 1,
+                "getNextRank": 1,
+                "getPrevRank": 1,
+                "nameFromUrl": 1,
+                "ajaxError": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "queries.js",
+            "line": 262,
+            "description": "Queries used in the ajax requests."
+        },
+        "Tree": {
+            "name": "Tree",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "$(document).on()": 1,
+                "summarySuccess": 1,
+                "getMembers": 1,
+                "membersSuccess": 1,
+                "importantMembersSuccess": 1,
+                "executeOpenQuery": 1,
+                "openSuccess": 1,
+                "getSearchRank": 1,
+                "thumbHtml": 1,
+                "clearNextRanks": 1,
+                "getThumbUrl": 1,
+                "getName": 1,
+                "startLoading": 1,
+                "stopLoading": 1,
+                "shrinkImg200": 1,
+                "shrinkImg300": 1,
+                "hideShowDivs": 1,
+                "showAllDivs": 1,
+                "divsForMobile": 1,
+                "normalDivs": 1,
+                "ChangeDiv": 1,
+                "capitalizeFirstLetter": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "tree.js",
+            "line": 745,
+            "description": "Methods for creating the tree."
+        }
+    },
+    "classes": {
+        "randomColorGenerator": {
+            "name": "randomColorGenerator",
+            "shortname": "randomColorGenerator",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Article",
+            "namespace": "",
+            "file": "article.js",
+            "line": 7,
+            "description": "Generates a random color",
+            "is_constructor": 1
+        },
+        "shadeColor2": {
+            "name": "shadeColor2",
+            "shortname": "shadeColor2",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Article",
+            "namespace": "",
+            "file": "article.js",
+            "line": 18,
+            "description": "Generates a color shade",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "color",
+                    "description": "Color",
+                    "type": "String"
+                },
+                {
+                    "name": "percent",
+                    "description": "Precentage",
+                    "type": "Number"
+                }
+            ]
+        },
+        "totalQuerySuccess": {
+            "name": "totalQuerySuccess",
+            "shortname": "totalQuerySuccess",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Article",
+            "namespace": "",
+            "file": "article.js",
+            "line": 37,
+            "description": "Callback for getStatistics. Creates pie chart with help of chart.js",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "_data",
+                    "description": "Ajax response that contains total number of species",
+                    "type": "Object"
+                }
+            ]
+        },
+        "getStatistics": {
+            "name": "getStatistics",
+            "shortname": "getStatistics",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Article",
+            "namespace": "",
+            "file": "article.js",
+            "line": 87,
+            "description": "Makes ajax request for statistics.",
+            "is_constructor": 1
+        },
+        "getPluralRank": {
+            "name": "getPluralRank",
+            "shortname": "getPluralRank",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Article",
+            "namespace": "",
+            "file": "article.js",
+            "line": 108,
+            "description": "Gets plural form of rank. Used in statistics message.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "rank",
+                    "description": "Rank",
+                    "type": "String"
+                }
+            ]
+        },
+        "getArticle": {
+            "name": "getArticle",
+            "shortname": "getArticle",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Article",
+            "namespace": "",
+            "file": "article.js",
+            "line": 119,
+            "description": "Gets article used before rank. Used for greek translation.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "rank",
+                    "description": "Rank",
+                    "type": "String"
+                }
+            ]
+        },
+        "loadArticle": {
+            "name": "loadArticle",
+            "shortname": "loadArticle",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Article",
+            "namespace": "",
+            "file": "article.js",
+            "line": 134,
+            "description": "Inserts article into DOM.",
+            "is_constructor": 1
+        },
+        "articleRankSuccess": {
+            "name": "articleRankSuccess",
+            "shortname": "articleRankSuccess",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Article",
+            "namespace": "",
+            "file": "article.js",
+            "line": 166,
+            "description": "Callback for getSearchRank. Makes ajax request that gets name of previous rank member.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "_data",
+                    "description": "Ajax response that contains counts of ranks",
+                    "type": "Object"
+                }
+            ]
+        },
+        "prevRankSuccess": {
+            "name": "prevRankSuccess",
+            "shortname": "prevRankSuccess",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Article",
+            "namespace": "",
+            "file": "article.js",
+            "line": 215,
+            "description": "Callback for articleRankSuccess. Gets most probable rank name from a list of possible rank names.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "_data",
+                    "description": "Ajax response that contains possible ranks.",
+                    "type": "Object"
+                }
+            ]
+        },
+        "searchSuccess": {
+            "name": "searchSuccess",
+            "shortname": "searchSuccess",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Article",
+            "namespace": "",
+            "file": "article.js",
+            "line": 246,
+            "description": "Callback for searchArticle.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "_data",
+                    "description": "Ajax response that contains wikipedia page url",
+                    "type": "Object"
+                }
+            ]
+        },
+        "getLanguageResources": {
+            "name": "getLanguageResources",
+            "shortname": "getLanguageResources",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Languages",
+            "namespace": "",
+            "file": "languages.js",
+            "line": 6,
+            "description": "Make arrays with static text in greek and english.",
+            "is_constructor": 1
+        },
+        "treeToGreek": {
+            "name": "treeToGreek",
+            "shortname": "treeToGreek",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Languages",
+            "namespace": "",
+            "file": "languages.js",
+            "line": 82,
+            "description": "Makes ajax request to convert tree branch to greek.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "container",
+                    "description": "Container to be translated, usually tree branch",
+                    "type": "Object"
+                }
+            ]
+        },
+        "greekSuccess": {
+            "name": "greekSuccess",
+            "shortname": "greekSuccess",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Languages",
+            "namespace": "",
+            "file": "languages.js",
+            "line": 109,
+            "description": "Callback for treeToGreek. Puts the translated names in the DOM.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "_data",
+                    "description": "Ajax response that contains a list with up to 50 names.",
+                    "type": "Object"
+                }
+            ]
+        },
+        "changeLanguage": {
+            "name": "changeLanguage",
+            "shortname": "changeLanguage",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Languages",
+            "namespace": "",
+            "file": "languages.js",
+            "line": 132,
+            "description": "Change language from greek to english and vice versa.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "lang",
+                    "description": "Language, \"en\" or \"gr\"",
+                    "type": "String"
+                },
+                {
+                    "name": "container",
+                    "description": "Container to be translated",
+                    "type": "Object"
+                }
+            ]
+        },
+        "getGreekName": {
+            "name": "getGreekName",
+            "shortname": "getGreekName",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Languages",
+            "namespace": "",
+            "file": "languages.js",
+            "line": 210,
+            "description": "Ajax request to get greek translation of a name.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Name",
+                    "type": "String"
+                },
+                {
+                    "name": "func",
+                    "description": "Variable to differentiate between call from stats or article",
+                    "type": "String"
+                }
+            ]
+        },
+        "greekNameSuccess": {
+            "name": "greekNameSuccess",
+            "shortname": "greekNameSuccess",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Languages",
+            "namespace": "",
+            "file": "languages.js",
+            "line": 231,
+            "description": "Callback of getGreekName",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "_data",
+                    "description": "Ajax response that contains a greek name",
+                    "type": "Object"
+                }
+            ]
+        },
+        "showArticle": {
+            "name": "showArticle",
+            "shortname": "showArticle",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Navigation",
+            "namespace": "",
+            "file": "navigation.js",
+            "line": 7,
+            "description": "Saves the tree and loads article page",
+            "is_constructor": 1
+        },
+        "showAbout": {
+            "name": "showAbout",
+            "shortname": "showAbout",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Navigation",
+            "namespace": "",
+            "file": "navigation.js",
+            "line": 19,
+            "description": "Shows about page",
+            "is_constructor": 1
+        },
+        "showIndex": {
+            "name": "showIndex",
+            "shortname": "showIndex",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Navigation",
+            "namespace": "",
+            "file": "navigation.js",
+            "line": 30,
+            "description": "Shows index page",
+            "is_constructor": 1
+        },
+        "searchTree": {
+            "name": "searchTree",
+            "shortname": "searchTree",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Navigation",
+            "namespace": "",
+            "file": "navigation.js",
+            "line": 41,
+            "description": "Starts creation of search tree",
+            "is_constructor": 1
+        },
+        "searchArticle": {
+            "name": "searchArticle",
+            "shortname": "searchArticle",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Navigation",
+            "namespace": "",
+            "file": "navigation.js",
+            "line": 52,
+            "description": "Gets value of searchbox and prepares query for article search.",
+            "is_constructor": 1
+        },
+        "saveTree": {
+            "name": "saveTree",
+            "shortname": "saveTree",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Navigation",
+            "namespace": "",
+            "file": "navigation.js",
+            "line": 67,
+            "description": "Saves the tree on index page",
+            "is_constructor": 1
+        },
+        "getCurrPage": {
+            "name": "getCurrPage",
+            "shortname": "getCurrPage",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Navigation",
+            "namespace": "",
+            "file": "navigation.js",
+            "line": 80,
+            "description": "Returns current page.",
+            "is_constructor": 1
+        },
+        "goBack": {
+            "name": "goBack",
+            "shortname": "goBack",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Navigation",
+            "namespace": "",
+            "file": "navigation.js",
+            "line": 91,
+            "description": "Goes to previous page",
+            "is_constructor": 1
+        },
+        "prettyLoadRank": {
+            "name": "prettyLoadRank",
+            "shortname": "prettyLoadRank",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Navigation",
+            "namespace": "",
+            "file": "navigation.js",
+            "line": 105,
+            "description": "Animation for pretty loading thumbnails in a rank",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "elements",
+                    "description": "Elements to be pretty loaded",
+                    "type": "Object"
+                },
+                {
+                    "name": "rank",
+                    "description": "Rank",
+                    "type": "String"
+                },
+                {
+                    "name": "time",
+                    "description": "Duration of animation for loading of each element",
+                    "type": "Number"
+                }
+            ]
+        },
+        "checkUrl": {
+            "name": "checkUrl",
+            "shortname": "checkUrl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Queries",
+            "namespace": "",
+            "file": "queries.js",
+            "line": 9,
+            "description": "Checks if dbpedia or dbpedia live is up and sets url accordingly",
+            "is_constructor": 1
+        },
+        "getImportantQuery": {
+            "name": "getImportantQuery",
+            "shortname": "getImportantQuery",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Queries",
+            "namespace": "",
+            "file": "queries.js",
+            "line": 36,
+            "description": "Query that gets members of rank species.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "rank",
+                    "description": "The rank of the node",
+                    "type": "String"
+                },
+                {
+                    "name": "name",
+                    "description": "The name of the node",
+                    "type": "String"
+                }
+            ]
+        },
+        "getOpenQuery": {
+            "name": "getOpenQuery",
+            "shortname": "getOpenQuery",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Queries",
+            "namespace": "",
+            "file": "queries.js",
+            "line": 48,
+            "description": "Query that gets members of next rank/tree branch.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the node",
+                    "type": "String"
+                },
+                {
+                    "name": "rank",
+                    "description": "The rank of the node",
+                    "type": "String"
+                },
+                {
+                    "name": "next_rank",
+                    "description": "The rank",
+                    "type": "String"
+                }
+            ]
+        },
+        "getSearchRankQuery": {
+            "name": "getSearchRankQuery",
+            "shortname": "getSearchRankQuery",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Queries",
+            "namespace": "",
+            "file": "queries.js",
+            "line": 81,
+            "description": "Query that gets rank of search term.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the node",
+                    "type": "String"
+                }
+            ]
+        },
+        "getSummaryQuery": {
+            "name": "getSummaryQuery",
+            "shortname": "getSummaryQuery",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Queries",
+            "namespace": "",
+            "file": "queries.js",
+            "line": 93,
+            "description": "Query that gets summary of node from wikipedia.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the node",
+                    "type": "String"
+                }
+            ]
+        },
+        "returnGreekNameQuery": {
+            "name": "returnGreekNameQuery",
+            "shortname": "returnGreekNameQuery",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Queries",
+            "namespace": "",
+            "file": "queries.js",
+            "line": 126,
+            "description": "Query that gets greek name from an english name.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "nameList",
+                    "description": "List of names",
+                    "type": "String"
+                }
+            ]
+        },
+        "returnOneEnglishNameQuery": {
+            "name": "returnOneEnglishNameQuery",
+            "shortname": "returnOneEnglishNameQuery",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Queries",
+            "namespace": "",
+            "file": "queries.js",
+            "line": 137,
+            "description": "Query that gets english name from a greek name.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the node",
+                    "type": "String"
+                }
+            ]
+        },
+        "articleExistsQuery": {
+            "name": "articleExistsQuery",
+            "shortname": "articleExistsQuery",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Queries",
+            "namespace": "",
+            "file": "queries.js",
+            "line": 149,
+            "description": "Query that checks if a wikipedia article exists.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "title",
+                    "description": "Title of article",
+                    "type": "String"
+                }
+            ]
+        },
+        "getSearchQuery": {
+            "name": "getSearchQuery",
+            "shortname": "getSearchQuery",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Queries",
+            "namespace": "",
+            "file": "queries.js",
+            "line": 159,
+            "description": "Query for search tree.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Name of search term",
+                    "type": "String"
+                },
+                {
+                    "name": "rank",
+                    "description": "Rank of search term",
+                    "type": "String"
+                }
+            ]
+        },
+        "getprevRankNameQuery": {
+            "name": "getprevRankNameQuery",
+            "shortname": "getprevRankNameQuery",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Queries",
+            "namespace": "",
+            "file": "queries.js",
+            "line": 192,
+            "description": "Query that gets name of previous rank member.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Name of search term",
+                    "type": "String"
+                },
+                {
+                    "name": "rankIndex",
+                    "description": "Index of rank used to find rank from rankArray",
+                    "type": "Number"
+                }
+            ]
+        },
+        "getTotalQuery": {
+            "name": "getTotalQuery",
+            "shortname": "getTotalQuery",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Queries",
+            "namespace": "",
+            "file": "queries.js",
+            "line": 213,
+            "description": "Query that gets total number of species in rank.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "prevRank",
+                    "description": "Previous rank",
+                    "type": "String"
+                },
+                {
+                    "name": "prevRankName",
+                    "description": "Name of previous rank",
+                    "type": "String"
+                },
+                {
+                    "name": "rank",
+                    "description": "Rank",
+                    "type": "String"
+                }
+            ]
+        },
+        "getNextRank": {
+            "name": "getNextRank",
+            "shortname": "getNextRank",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Queries",
+            "namespace": "",
+            "file": "queries.js",
+            "line": 229,
+            "description": "Get next rank with help of rankArray.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "rank",
+                    "description": "Rank",
+                    "type": "String"
+                }
+            ]
+        },
+        "getPrevRank": {
+            "name": "getPrevRank",
+            "shortname": "getPrevRank",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Queries",
+            "namespace": "",
+            "file": "queries.js",
+            "line": 239,
+            "description": "Get preious rank with help of rankArray.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "rank",
+                    "description": "Rank",
+                    "type": "String"
+                }
+            ]
+        },
+        "nameFromUrl": {
+            "name": "nameFromUrl",
+            "shortname": "nameFromUrl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Queries",
+            "namespace": "",
+            "file": "queries.js",
+            "line": 249,
+            "description": "Strip uri to get name.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "src",
+                    "description": "Name",
+                    "type": "String"
+                }
+            ]
+        },
+        "ajaxError": {
+            "name": "ajaxError",
+            "shortname": "ajaxError",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Queries",
+            "namespace": "",
+            "file": "queries.js",
+            "line": 262,
+            "description": "Show error if something goes wrong with an ajax request.",
+            "is_constructor": 1
+        },
+        "$(document).on()": {
+            "name": "$(document).on()",
+            "shortname": "$(document).on()",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 222,
+            "description": "Executed when somebody clicks on an open button.\nSets variables and calls function that creates next rank of tree.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "\"click\"",
+                    "description": "The click event",
+                    "type": "Event"
+                },
+                {
+                    "name": "\".details\"",
+                    "description": "A node with class \"details\"",
+                    "type": "String"
+                },
+                {
+                    "name": "function",
+                    "description": "",
+                    "type": "Function"
+                }
+            ]
+        },
+        "summarySuccess": {
+            "name": "summarySuccess",
+            "shortname": "summarySuccess",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 70,
+            "description": "Callback for ajax request in details click event. \nAdds the summary to the modal window.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "_data",
+                    "description": "Ajax request response that contains node summary",
+                    "type": "Object"
+                }
+            ]
+        },
+        "getMembers": {
+            "name": "getMembers",
+            "shortname": "getMembers",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 98,
+            "description": "Makes ajax request to get important members of node.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "rank",
+                    "description": "Rank of node",
+                    "type": "String"
+                },
+                {
+                    "name": "name",
+                    "description": "Name of node",
+                    "type": "String"
+                },
+                {
+                    "name": "page",
+                    "description": "The page from where the function was called, either index or article",
+                    "type": "String"
+                }
+            ]
+        },
+        "membersSuccess": {
+            "name": "membersSuccess",
+            "shortname": "membersSuccess",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 126,
+            "description": "Callback of getMembers ajax request called when the page is article.\nCreates member thumbnails and loads them under article",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "_data",
+                    "description": "Ajax request response that contains all members of rank species of a node",
+                    "type": "Object"
+                }
+            ]
+        },
+        "importantMembersSuccess": {
+            "name": "importantMembersSuccess",
+            "shortname": "importantMembersSuccess",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 161,
+            "description": "Callback of getMembers ajax request called when the page is index.\nGets up to 8 most important members of rank species of a node.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "_data",
+                    "description": "Ajax request response that contains all members of rank species of a node",
+                    "type": "Object"
+                }
+            ]
+        },
+        "executeOpenQuery": {
+            "name": "executeOpenQuery",
+            "shortname": "executeOpenQuery",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 253,
+            "description": "Makes ajax request that gets the next rank of the tree.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "query",
+                    "description": "Ajax request query",
+                    "type": "String"
+                },
+                {
+                    "name": "rank",
+                    "description": "The rank",
+                    "type": "String"
+                },
+                {
+                    "name": "func",
+                    "description": "Variable that determines if function was called for a search or open",
+                    "type": "String"
+                },
+                {
+                    "name": "selectedName",
+                    "description": "Used for search function",
+                    "type": "String"
+                }
+            ]
+        },
+        "openSuccess": {
+            "name": "openSuccess",
+            "shortname": "openSuccess",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 282,
+            "description": "Callback of executeOpenQuery. Loads rank thumbnails in page.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "_data",
+                    "description": "Response of ajax request query that contains members of rank",
+                    "type": "Object"
+                }
+            ]
+        },
+        "getSearchRank": {
+            "name": "getSearchRank",
+            "shortname": "getSearchRank",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 423,
+            "description": "Callback from makeSearchTree. Gets members of all ranks up to the search term and calls\nexecuteopenquery for each one.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "func",
+                    "description": "Article or index",
+                    "type": "String"
+                }
+            ]
+        },
+        "thumbHtml": {
+            "name": "thumbHtml",
+            "shortname": "thumbHtml",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 515,
+            "description": "Creates html for thumbnail.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Name of node",
+                    "type": "String"
+                },
+                {
+                    "name": "thumb",
+                    "description": "Image url for node",
+                    "type": "String"
+                },
+                {
+                    "name": "rank",
+                    "description": "Rank of node",
+                    "type": "String"
+                },
+                {
+                    "name": "selectedName",
+                    "description": "Used for search tree where node is selected automatically and not by the user",
+                    "type": "String"
+                }
+            ]
+        },
+        "clearNextRanks": {
+            "name": "clearNextRanks",
+            "shortname": "clearNextRanks",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 540,
+            "description": "Clears next ranks of data to insert new nodes.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "rank",
+                    "description": "Rank of node",
+                    "type": "String"
+                }
+            ]
+        },
+        "getThumbUrl": {
+            "name": "getThumbUrl",
+            "shortname": "getThumbUrl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 557,
+            "description": "Returns shrinked thumbnail url or placeholder image if image doesn't exist.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "thumb",
+                    "description": "Thumbnail url",
+                    "type": "String"
+                }
+            ]
+        },
+        "getName": {
+            "name": "getName",
+            "shortname": "getName",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 608,
+            "description": "Make a node selected.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "Dom object, usually thumbnail",
+                    "type": "Object"
+                }
+            ]
+        },
+        "startLoading": {
+            "name": "startLoading",
+            "shortname": "startLoading",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 623,
+            "description": "Adds loading span when something starts loading.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "container",
+                    "description": "Container to add loading span",
+                    "type": "Obj"
+                }
+            ]
+        },
+        "stopLoading": {
+            "name": "stopLoading",
+            "shortname": "stopLoading",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 633,
+            "description": "Removes loading span when something stops loading.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "container",
+                    "description": "Container to remove loading span from",
+                    "type": "Obj"
+                }
+            ]
+        },
+        "shrinkImg200": {
+            "name": "shrinkImg200",
+            "shortname": "shrinkImg200",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 643,
+            "description": "Returns image with width of 150 pixels.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "thumb_url",
+                    "description": "Url of image",
+                    "type": "String"
+                }
+            ]
+        },
+        "shrinkImg300": {
+            "name": "shrinkImg300",
+            "shortname": "shrinkImg300",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 654,
+            "description": "Returns image with width of 300 pixels.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "thumb_url",
+                    "description": "Url of image",
+                    "type": "String"
+                }
+            ]
+        },
+        "hideShowDivs": {
+            "name": "hideShowDivs",
+            "shortname": "hideShowDivs",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 665,
+            "description": "Toggle hiding and showing of divs.",
+            "is_constructor": 1
+        },
+        "showAllDivs": {
+            "name": "showAllDivs",
+            "shortname": "showAllDivs",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 681,
+            "description": "Show all divs.",
+            "is_constructor": 1
+        },
+        "divsForMobile": {
+            "name": "divsForMobile",
+            "shortname": "divsForMobile",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 693,
+            "description": "Rearrange divs for mobile.",
+            "is_constructor": 1
+        },
+        "normalDivs": {
+            "name": "normalDivs",
+            "shortname": "normalDivs",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 708,
+            "description": "Rearrange divs for normal page.",
+            "is_constructor": 1
+        },
+        "ChangeDiv": {
+            "name": "ChangeDiv",
+            "shortname": "ChangeDiv",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 721,
+            "description": "Change divs according to width.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "width",
+                    "description": "Width of browser window",
+                    "type": "Number"
+                }
+            ]
+        },
+        "capitalizeFirstLetter": {
+            "name": "capitalizeFirstLetter",
+            "shortname": "capitalizeFirstLetter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Tree",
+            "namespace": "",
+            "file": "tree.js",
+            "line": 745,
+            "description": "Capitalize first letter of string.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "string",
+                    "description": "A string",
+                    "type": "String"
+                }
+            ]
+        }
+    },
+    "elements": {},
+    "classitems": [],
+    "warnings": []
+}

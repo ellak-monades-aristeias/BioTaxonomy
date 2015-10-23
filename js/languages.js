@@ -1,3 +1,15 @@
+/**
+ * Handles language changes. 
+ *
+ * @module Languages
+ */
+ /**
+* Make arrays with static text in greek and english. 
+*
+* @class getLanguageResources
+* @constructor
+*/
+
 function getLanguageResources() {
     var gr = new Array();
     var en = new Array();
@@ -35,9 +47,9 @@ function getLanguageResources() {
     en['full_article'] = "Read full article";
     gr['details'] = "Λεπτομέρειες";
     en['details'] = "Details";
-    gr['plant'] = "Φυτό";
+    gr['plant'] = "Φυτά";
     en['plant'] = "Plant";
-    gr['animal'] = "Ζώο";
+    gr['animal'] = "Ζώα";
     en['animal'] = "Animal";
     gr['return'] = "Επιστροφή";
     en['return'] = "Return";
@@ -67,7 +79,13 @@ function getLanguageResources() {
     resources['en'] = en;
     return resources;
 }
-
+/**
+* Makes ajax request to convert tree branch to greek.    
+*
+* @class treeToGreek
+* @constructor
+* @param {object} container Container to be translated, usually tree branch
+*/
 function treeToGreek(container) {
     var nameList = [];
     $(container).find('.caption>p[caption]').each(function() {
@@ -88,7 +106,13 @@ function treeToGreek(container) {
         });
     }
 }
-
+/**
+* Callback for treeToGreek. Puts the translated names in the DOM.     
+*
+* @class greekSuccess
+* @constructor
+* @param {object} _data Ajax response that contains a list with up to 50 names. 
+*/
 function greekSuccess(_data) {
 	
 	
@@ -105,7 +129,14 @@ function greekSuccess(_data) {
   
 	
 }
-
+/**
+* Change language from greek to english and vice versa.     
+*
+* @class changeLanguage
+* @constructor
+* @param {string} lang Language, "en" or "gr"
+* @param {object} container Container to be translated
+*/
 function changeLanguage(lang,container) {
 	if (container===undefined){
 		container='body';
@@ -176,7 +207,14 @@ function changeLanguage(lang,container) {
 		
 	
     }
- 
+ /**
+* Ajax request to get greek translation of a name.     
+*
+* @class getGreekName
+* @constructor
+* @param {string} name Name 
+* @param {string} func Variable to differentiate between call from stats or article
+*/
  function getGreekName(name,func) {
   var queryUrl = returnOneGreekNameQuery(name);
   $.ajax({
@@ -190,6 +228,13 @@ function changeLanguage(lang,container) {
   });
 
 }
+ /**
+* Callback of getGreekName    
+*
+* @class greekNameSuccess
+* @constructor
+* @param {object} _data Ajax response that contains a greek name
+*/
 function greekNameSuccess(_data) {
 
  

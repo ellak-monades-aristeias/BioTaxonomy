@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>queries.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title="" width="117" height="52"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/$(document).on().html">$(document).on()</a></li>
+                                <li><a href="../classes/ajaxError.html">ajaxError</a></li>
+                                <li><a href="../classes/articleExistsQuery.html">articleExistsQuery</a></li>
+                                <li><a href="../classes/articleRankSuccess.html">articleRankSuccess</a></li>
+                                <li><a href="../classes/capitalizeFirstLetter.html">capitalizeFirstLetter</a></li>
+                                <li><a href="../classes/ChangeDiv.html">ChangeDiv</a></li>
+                                <li><a href="../classes/changeLanguage.html">changeLanguage</a></li>
+                                <li><a href="../classes/checkUrl.html">checkUrl</a></li>
+                                <li><a href="../classes/clearNextRanks.html">clearNextRanks</a></li>
+                                <li><a href="../classes/divsForMobile.html">divsForMobile</a></li>
+                                <li><a href="../classes/executeOpenQuery.html">executeOpenQuery</a></li>
+                                <li><a href="../classes/getArticle.html">getArticle</a></li>
+                                <li><a href="../classes/getCurrPage.html">getCurrPage</a></li>
+                                <li><a href="../classes/getGreekName.html">getGreekName</a></li>
+                                <li><a href="../classes/getImportantQuery.html">getImportantQuery</a></li>
+                                <li><a href="../classes/getLanguageResources.html">getLanguageResources</a></li>
+                                <li><a href="../classes/getMembers.html">getMembers</a></li>
+                                <li><a href="../classes/getName.html">getName</a></li>
+                                <li><a href="../classes/getNextRank.html">getNextRank</a></li>
+                                <li><a href="../classes/getOpenQuery.html">getOpenQuery</a></li>
+                                <li><a href="../classes/getPluralRank.html">getPluralRank</a></li>
+                                <li><a href="../classes/getPrevRank.html">getPrevRank</a></li>
+                                <li><a href="../classes/getprevRankNameQuery.html">getprevRankNameQuery</a></li>
+                                <li><a href="../classes/getSearchQuery.html">getSearchQuery</a></li>
+                                <li><a href="../classes/getSearchRank.html">getSearchRank</a></li>
+                                <li><a href="../classes/getSearchRankQuery.html">getSearchRankQuery</a></li>
+                                <li><a href="../classes/getStatistics.html">getStatistics</a></li>
+                                <li><a href="../classes/getSummaryQuery.html">getSummaryQuery</a></li>
+                                <li><a href="../classes/getThumbUrl.html">getThumbUrl</a></li>
+                                <li><a href="../classes/getTotalQuery.html">getTotalQuery</a></li>
+                                <li><a href="../classes/goBack.html">goBack</a></li>
+                                <li><a href="../classes/greekNameSuccess.html">greekNameSuccess</a></li>
+                                <li><a href="../classes/greekSuccess.html">greekSuccess</a></li>
+                                <li><a href="../classes/hideShowDivs.html">hideShowDivs</a></li>
+                                <li><a href="../classes/importantMembersSuccess.html">importantMembersSuccess</a></li>
+                                <li><a href="../classes/loadArticle.html">loadArticle</a></li>
+                                <li><a href="../classes/membersSuccess.html">membersSuccess</a></li>
+                                <li><a href="../classes/nameFromUrl.html">nameFromUrl</a></li>
+                                <li><a href="../classes/normalDivs.html">normalDivs</a></li>
+                                <li><a href="../classes/openSuccess.html">openSuccess</a></li>
+                                <li><a href="../classes/prettyLoadRank.html">prettyLoadRank</a></li>
+                                <li><a href="../classes/prevRankSuccess.html">prevRankSuccess</a></li>
+                                <li><a href="../classes/randomColorGenerator.html">randomColorGenerator</a></li>
+                                <li><a href="../classes/returnGreekNameQuery.html">returnGreekNameQuery</a></li>
+                                <li><a href="../classes/returnOneEnglishNameQuery.html">returnOneEnglishNameQuery</a></li>
+                                <li><a href="../classes/saveTree.html">saveTree</a></li>
+                                <li><a href="../classes/searchArticle.html">searchArticle</a></li>
+                                <li><a href="../classes/searchSuccess.html">searchSuccess</a></li>
+                                <li><a href="../classes/searchTree.html">searchTree</a></li>
+                                <li><a href="../classes/shadeColor2.html">shadeColor2</a></li>
+                                <li><a href="../classes/showAbout.html">showAbout</a></li>
+                                <li><a href="../classes/showAllDivs.html">showAllDivs</a></li>
+                                <li><a href="../classes/showArticle.html">showArticle</a></li>
+                                <li><a href="../classes/showIndex.html">showIndex</a></li>
+                                <li><a href="../classes/shrinkImg200.html">shrinkImg200</a></li>
+                                <li><a href="../classes/shrinkImg300.html">shrinkImg300</a></li>
+                                <li><a href="../classes/startLoading.html">startLoading</a></li>
+                                <li><a href="../classes/stopLoading.html">stopLoading</a></li>
+                                <li><a href="../classes/summarySuccess.html">summarySuccess</a></li>
+                                <li><a href="../classes/thumbHtml.html">thumbHtml</a></li>
+                                <li><a href="../classes/totalQuerySuccess.html">totalQuerySuccess</a></li>
+                                <li><a href="../classes/treeToGreek.html">treeToGreek</a></li>
+                            </ul>
+                
+                
+                            <ul id="api-modules" class="apis modules">
+                                <li><a href="../modules/Article.html">Article</a></li>
+                                <li><a href="../modules/Languages.html">Languages</a></li>
+                                <li><a href="../modules/Navigation.html">Navigation</a></li>
+                                <li><a href="../modules/Queries.html">Queries</a></li>
+                                <li><a href="../modules/Tree.html">Tree</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1 class="file-heading">File: queries.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/**
+ * Queries used in the ajax requests.
+ *
+ * @module Queries
+ */
+ 
+var url = &quot;http://live.dbpedia.org/sparql&quot;;
+var rankArray = [&quot;kingdom&quot;, &quot;phylum&quot;, &quot;class&quot;, &quot;order&quot;, &quot;family&quot;, &quot;genus&quot;, &quot;species&quot;];
+/**
+* Checks if dbpedia or dbpedia live is up and sets url accordingly
+*
+* @class checkUrl
+* @constructor
+*/
+function checkUrl() {
+	/*
+    var query = &#x27;select distinct ?Concept where {[] a ?Concept} LIMIT 1&#x27;;
+    var queryUrl = encodeURI(url + &quot;?query=&quot; + query + &quot;&amp;format=json&quot;);
+    $.ajax({
+        dataType: &quot;jsonp&quot;,
+        url: queryUrl,
+        success: function() {
+			
+            url = &#x27;http://live.dbpedia.org/sparql&#x27;;
+        },
+        error: function() {
+			
+            url = &#x27;http://dbpedia.org/sparql&#x27;;
+        }
+    });
+	*/
+}
+
+
+
+/**
+* Query that gets members of rank species.
+*
+* @class getImportantQuery
+* @constructor
+* @param {string} rank The rank of the node
+* @param {string} name The name of the node
+*/
+function getImportantQuery(rank, name) {
+    name = name.replace(&#x27; &#x27;, &quot;_&quot;);
+    return &#x27;SELECT DISTINCT ?name,?thumb,COUNT(*) AS ?count WHERE {?name dbo:&#x27;+rank+&#x27; dbr:&#x27;+name+&#x27;.?name dbo:genus ?k.?s ?p ?name.OPTIONAL{ ?name dbo:thumbnail ?thumb }.FILTER(?name!=?k)} ORDER BY DESC(COUNT(*)) LIMIT 500&#x27;;
+}
+/**
+* Query that gets members of next rank/tree branch. 
+*
+* @class getOpenQuery
+* @constructor
+* @param {string} name The name of the node
+* @param {string} rank The rank of the node
+* @param {string} next_rank The rank
+*/
+function getOpenQuery(name, rank, next_rank) {
+    name = name.replace(&#x27; &#x27;, &quot;_&quot;);
+	
+	
+	if (next_rank==&quot;phylum&quot;){
+		return &quot;SELECT DISTINCT ?taxon, ?thumb WHERE {{?name  dbo:kingdom dbr:&quot; + name + &quot;;dbo:phylum  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbo:kingdom dbr:&quot; + name + &quot;;dbp:divisio  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbo:kingdom dbr:&quot; + name + &quot;;dbo:division  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbo:kingdom dbr:&quot; + name + &quot;;dbp:phylum  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}FILTER(isURI(?taxon))} order by asc(UCASE(str(?taxon)))&quot;;
+	}else if(next_rank==&quot;class&quot;){
+		return &quot;SELECT DISTINCT ?taxon, ?thumb WHERE {{?name  dbo:phylum dbr:&quot; + name + &quot;;dbo:class  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbo:division dbr:&quot; + name + &quot;;dbp:classis  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbo:phylum dbr:&quot; + name + &quot;;dbp:classis  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbo:division dbr:&quot; + name + &quot;;dbo:class  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbp:phylum dbr:&quot; + name + &quot;;dbo:class  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbp:divisio dbr:&quot; + name + &quot;;dbp:classis  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbp:phylum dbr:&quot; + name + &quot;;dbp:classis  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbp:division dbr:&quot; + name + &quot;;dbo:class  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}FILTER(isURI(?taxon))} order by asc(UCASE(str(?taxon)))&quot;;
+
+	}else if(next_rank==&quot;order&quot;){
+		return &quot;SELECT DISTINCT ?taxon, ?thumb WHERE {{?name  dbo:class dbr:&quot; + name + &quot;;dbo:order  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbp:classis dbr:&quot; + name + &quot;;dbp:ordo  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbo:class dbr:&quot; + name + &quot;;dbp:ordo  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbp:classis dbr:&quot; + name + &quot;;dbo:order  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}FILTER(isURI(?taxon))} order by asc(UCASE(str(?taxon)))&quot;;
+
+	}else if(next_rank==&quot;family&quot;){
+		&quot;SELECT DISTINCT ?taxon, ?thumb WHERE {{?name  dbo:order dbr:&quot; + name + &quot;;dbo:family  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbp:ordo dbr:&quot; + name + &quot;;dbp:familia  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbo:order dbr:&quot; + name + &quot;;dbp:familia  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}UNION{?name  dbp:ordo dbr:&quot; + name + &quot;;dbo:family  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}}FILTER(isURI(?taxon))} order by asc(UCASE(str(?taxon)))&quot;;
+	}
+    if (rank == &quot;genus&quot;) {
+        return &#x27;SELECT ?taxon,?thumb WHERE { ?taxon  dbp:genus \&quot;&#x27; + name +
+            &#x27;\&quot;@en .OPTIONAL{?taxon dbo:thumbnail ?thumb}.FILTER (?taxon!=&lt;http://dbpedia.org/resource/&#x27; + name + &#x27;&gt;)}&#x27;;
+    } else {
+        return &quot;SELECT DISTINCT ?taxon, ?thumb WHERE {?name  dbo:&quot; + rank + &quot; dbr:&quot; + name +
+            &quot;;dbo:&quot; + next_rank +
+            &quot;  ?taxon.OPTIONAL{?taxon dbo:thumbnail ?thumb}} order by asc(UCASE(str(?taxon)))&quot;;
+    }
+}
+/**
+* Query that gets rank of search term. 
+*
+* @class getSearchRankQuery
+* @constructor
+* @param {string} name The name of the node
+*/
+function getSearchRankQuery(name){
+
+var query = &#x27;SELECT DISTINCT COUNT(?phylum) AS ?countphylum,COUNT(?classis) AS ?countclass,COUNT(?order) AS ?countorder,COUNT(?family) AS ?countfamily,COUNT(?genus) AS ?countgenus  WHERE {{ ?phylum dbo:phylum dbr:&#x27;+name+&#x27;}UNION{?classis dbo:class dbr:&#x27;+name+&#x27;}UNION{ ?order dbo:order dbr:&#x27;+name+&#x27;}UNION{?family dbo:family dbr:&#x27;+name+&#x27;}UNION{?genus dbo:genus dbr:&#x27;+name+&#x27;}}&#x27;;
+return query;
+}
+/**
+* Query that gets summary of node from wikipedia. 
+*
+* @class getSummaryQuery
+* @constructor
+* @param {string} name The name of the node
+*/
+function getSummaryQuery(name) {
+    if (sessionStorage.getItem(&#x27;lang&#x27;) == &#x27;gr&#x27; &amp;&amp; (name != sessionStorage.getItem(&#x27;greekName&#x27;))) {
+        return &#x27;https://el.wikipedia.org/w/api.php?format=json&amp;action=query&amp;prop=extracts&amp;exintro=&amp;explaintext=&amp;titles=&#x27; +
+        sessionStorage.getItem(&#x27;greekName&#x27;);
+        //return query=&#x27;SELECT ?sum WHERE {&lt;http://dbpedia.org/resource/&#x27;+name+&#x27;&gt; dbo:abstract?sum.filter(langMatches(lang(?sum),&quot;EN&quot;))} &#x27;
+    } else {
+        return &#x27;https://en.wikipedia.org/w/api.php?format=json&amp;action=query&amp;prop=extracts&amp;exintro=&amp;explaintext=&amp;titles=&#x27; +
+        name;
+    }
+}
+/**
+* Query that gets greek names of a list of english names. 
+*
+* @class returnGreekNameQuery
+* @constructor
+* @param {string} nameList List of names
+*/
+function returnGreekNameQuery(nameList) {
+    var nameString = &#x27;&#x27;;
+    for (var i in nameList) {
+        nameString = nameString + nameList[i] + &#x27;|&#x27;;
+    }
+    nameString = nameString.slice(0, -1); //=nameString(0, nameString.length - 1);
+    return &#x27;https://en.wikipedia.org/w/api.php?format=json&amp;action=query&amp;titles=&#x27; + nameString +
+        &#x27;&amp;lllang=el&amp;prop=langlinks&#x27;;
+}
+/**
+* Query that gets greek name from an english name. 
+*
+* @class returnGreekNameQuery
+* @constructor
+* @param {string} name The name of the node
+*/
+function returnOneGreekNameQuery(name) {
+    return &#x27;https://en.wikipedia.org/w/api.php?format=json&amp;action=query&amp;titles=&#x27; + name +
+        &#x27;&amp;lllang=el&amp;prop=langlinks&#x27;;
+}
+/**
+* Query that gets english name from a greek name. 
+*
+* @class returnOneEnglishNameQuery
+* @constructor
+* @param {string} name The name of the node
+*/
+function returnOneEnglishNameQuery(name){
+	
+	    return &#x27;https://en.wikipedia.org/w/api.php?format=json&amp;action=query&amp;titles=&#x27; + name +
+        &#x27;&amp;lllang=en&amp;prop=langlinks&#x27;;
+}
+/**
+* Query that checks if a wikipedia article exists. 
+*
+* @class articleExistsQuery
+* @constructor
+* @param {string} title Title of article
+*/
+function articleExistsQuery(title) {
+    return &#x27;https://en.wikipedia.org/w/api.php?action=query&amp;format=json&amp;titles=&#x27; + title;
+}
+/**
+* Query for search tree. 
+*
+* @class getSearchQuery
+* @constructor
+* @param {string} name Name of search term
+* @param {string} rank Rank of search term
+*/
+function getSearchQuery(name,rank) {
+	
+	name = name.replace(&#x27; &#x27;, &quot;_&quot;);
+	if (rank==&quot;phylum&quot;){
+			return &#x27;SELECT DISTINCT  ?kingdom, COUNT(?kingdom) AS ?countkingdom WHERE {?name  dbo:&#x27;+rank+&#x27; dbr:&#x27;+name+&#x27;;dbo:kingdom  ?kingdom}&#x27;;
+	}else if(rank==&quot;class&quot;){
+	return &#x27;SELECT DISTINCT  ?kingdom, COUNT(?kingdom) AS ?countkingdom,?phylum,COUNT(?phylum) AS ?countphylum WHERE {{?name  dbo:&#x27;+rank+&#x27; dbr:&#x27;+name+&#x27;;dbo:kingdom  ?kingdom}UNION{?name  dbo:&#x27;+rank+&#x27; dbr:&#x27;+name+&#x27;;dbo:phylum  ?phylum}}&#x27;;	
+	}else if(rank==&quot;order&quot;){
+		return &#x27;SELECT DISTINCT  ?kingdom, COUNT(?kingdom) AS ?countkingdom,?phylum,COUNT(?phylum) AS ?countphylum,?classis,COUNT(?classis) AS ?countclassis WHERE {{?name  dbo:&#x27;+rank+&#x27; dbr:&#x27;+name+&#x27;;dbo:kingdom  ?kingdom}UNION{?name  dbo:&#x27;+rank+&#x27; dbr:&#x27;+name+&#x27;;dbo:phylum  ?phylum}UNION{?name  dbo:&#x27;+rank+&#x27; dbr:&#x27;+name+&#x27;;dbo:class  ?classis}}&#x27;;	
+	}else if(rank==&quot;family&quot;){
+	return &#x27;SELECT DISTINCT  ?kingdom, COUNT(?kingdom) AS ?countkingdom,?phylum,COUNT(?phylum) AS ?countphylum,?classis,COUNT(?classis) AS ?countclassis,?order,COUNT(?order) AS ?countorder WHERE {{?name  dbo:&#x27;+rank+&#x27; dbr:&#x27;+name+&#x27;;dbo:kingdom  ?kingdom}UNION{?name  dbo:&#x27;+rank+&#x27; dbr:&#x27;+name+&#x27;;dbo:phylum  ?phylum}UNION{?name  dbo:&#x27;+rank+&#x27; dbr:&#x27;+name+&#x27;;dbo:class  ?classis}UNION{?name  dbo:&#x27;+rank+&#x27; dbr:&#x27;+name+&#x27;;dbo:order  ?order}}&#x27;;	
+	}else if(rank==&quot;genus&quot;){
+	return &#x27;SELECT DISTINCT  ?kingdom, COUNT(?kingdom) AS ?countkingdom,?phylum,COUNT(?phylum) AS ?countphylum,?classis,COUNT(?classis) AS ?countclassis,?order,COUNT(?order) AS ?countorder, ?family,COUNT(?family) AS ?countfamily WHERE {{?name  dbo:&#x27;+rank+&#x27; dbr:&#x27;+name+&#x27;;dbo:kingdom  ?kingdom}UNION{?name  dbo:&#x27;+rank+&#x27; dbr:&#x27;+name+&#x27;;dbo:phylum  ?phylum}UNION{?name  dbo:&#x27;+rank+&#x27; dbr:&#x27;+name+&#x27;;dbo:class  ?classis}UNION{?name  dbo:&#x27;+rank+&#x27; dbr:&#x27;+name+&#x27;;dbo:order  ?order}UNION{?name  dbo:&#x27;+rank+&#x27; dbr:&#x27;+name+&#x27;;dbo:family  ?family}}&#x27;;	
+	}
+	
+	else if(rank==&quot;species&quot;){
+	return &#x27;SELECT DISTINCT ?kingdom,?phylum,?classis,?order,?family,?genus  WHERE {dbr:&#x27; +
+    name + &#x27; dbo:kingdom ?kingdom.OPTIONAL{dbr:&#x27; + name + &#x27; dbo:class ?classis}.OPTIONAL{dbr:&#x27; +
+        name + &#x27; dbo:phylum ?phylum}.OPTIONAL{dbr:&#x27; + name + &#x27; dbp:ordo ?order}.OPTIONAL{dbr:&#x27; +
+        name + &#x27; dbp:familia ?family}.OPTIONAL{dbr:&#x27; + name + &#x27; dbo:genus ?genus}}&#x27;;	
+	}
+	
+	    
+		
+}
+/**
+* Query that gets name of previous rank member. 
+*
+* @class getprevRankNameQuery
+* @constructor
+* @param {string} name Name of search term
+* @param {number} rankIndex Index of rank used to find rank from rankArray
+*/
+function getprevRankNameQuery(name,rankIndex) {
+	
+	name = name.replace(&#x27; &#x27;, &quot;_&quot;);
+	
+	if(rankIndex==6){
+	return &#x27;SELECT DISTINCT ?genus  WHERE {dbr:&#x27; + name + &#x27; dbo:genus ?genus}&#x27;;	
+	}else if (rankIndex&gt;0){
+	return &#x27;SELECT DISTINCT ?taxon,COUNT(?taxon) AS ?counttaxon WHERE {?name  dbo:&#x27;+rankArray[rankIndex]+&#x27; dbr:&#x27;+name+&#x27;;dbo:&#x27;+rankArray[rankIndex-1]+&#x27;  ?taxon}&#x27;;		
+	}
+	
+	    
+		
+}
+/**
+* Query that gets total number of species in rank. 
+*
+* @class getTotalQuery
+* @constructor
+* @param {string} prevRank Previous rank
+* @param {string} prevRankName Name of previous rank
+* @param {string} rank Rank
+*/
+function getTotalQuery(prevRank, prevRankName, rank) {
+    prevRankName = prevRankName.replace(&#x27; &#x27;, &quot;_&quot;);
+    return &#x27;SELECT DISTINCT ?order, COUNT(*) AS ?count WHERE {{?name  dbo:&#x27; + prevRank +
+        &#x27; dbr:&#x27; + prevRankName + &#x27;;dbo:&#x27; + rank + &#x27; ?order}UNION {dbr:&#x27; + prevRankName +
+        &#x27;  dbo:wikiPageRedirects ?rank.?rank dbo:&#x27; + rank + &#x27; ?rank2.?rank2 dbo:&#x27; + rank +
+        &#x27; ?order}}order by desc(?count)&#x27;;
+}
+/**
+* Get next rank with help of rankArray.
+*
+* @class getNextRank
+* @constructor
+* @param {string} rank Rank
+*/
+function getNextRank(rank) {
+    if (rank != &#x27;species&#x27;) return rankArray[rankArray.indexOf(rank) + 1];
+}
+/**
+* Get preious rank with help of rankArray.
+*
+* @class getPrevRank
+* @constructor
+* @param {string} rank Rank
+*/
+function getPrevRank(rank) {
+    if (rank != &#x27;kingdom&#x27;) return rankArray[rankArray.indexOf(rank) - 1];
+}
+/**
+* Strip uri to get name.
+*
+* @class nameFromUrl
+* @constructor
+* @param {string} src Name
+*/
+function nameFromUrl(src) {
+    var name = src.substring(src.lastIndexOf(&#x27;/&#x27;) + 1);
+    name = name.replace(&quot;_&quot;, &#x27; &#x27;);
+    return name;
+}
+
+/**
+* Show error if something goes wrong with an ajax request. 
+*
+* @class ajaxError
+* @constructor
+*/ 
+function ajaxError() {
+	$(&#x27;button&#x27;).prop(&#x27;disabled&#x27;, false);
+    if (sessionStorage.getItem(&#x27;lang&#x27;) == &#x27;gr&#x27;) {
+        msg = &#x27;Υπήρξε πρόβλημα με την ανάκτηση των δεδομένων.Ανανεώστε τη σελίδα.&#x27;;
+    } else {
+        msg = &#x27;There was a problem getting the data. Refresh page.&#x27;;
+    }
+    bootbox.alert(msg);
+}
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
