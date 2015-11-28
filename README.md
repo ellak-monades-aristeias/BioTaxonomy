@@ -1,15 +1,45 @@
-#BioTaxonomy
+#BioTaxonomy - English Readme   
+A learning application for browsing animals and plants according to their taxonomy.
+
+##Description of the functionality of the application  
+Taxonomy is the theory and practice used by biologists to classify living beings. This classification is hierarchical and consists of branches. In Wikipedia there are many entries about living beings with information about their taxonomy (eg. Kingdom, Phylum, Class, Order, Family, Genus). The purpose of this application is to present this information visually and organized as a tree diagram, so that the user can have a full picture of the hierarchy.
+
+##Target - User Communities - Programmers (Developers)
+Can be used by biology students, secondary and higher education teachers, students, agronomists, veterinarians or generally anyone interested in biology. 
+
+
+##Technologies and libraries  
+
+###Languages  
+The application is implemented in Html and jQuery / Javascript. Data is received in JSON format with SPARQL queries to RDF database DBpedia and using the API of Wikipedia.
+
+###Libraries  
+
+Twitter Bootstrap: Framework for rapid development of responsive websites.
+Bootbox.js: Plugin for easy creation of alerts.
+Unveil.js: Lazy load for images.
+Wikiblurb: jQuery Plugin for receiving data from Wikipedia and other wikis.
+Lity: Lightbox plugin for viewing images.
+Chart.js: Plugin for creating diagrams
+
+
+##Installation  
+Download all files and run the file index.html.
+It is necessary to be connected to the internet because the data is obtained in real time.
+
+ 
+#BioTaxonomy - Ελληνικό Readme
 Εφαρμογή για εκμάθηση των ζώων και φυτών με βάση τη συστηματική τους ταξινόμηση.
 
 ##Περιγραφή της λειτουργικότητας της εφαρμογής
 Η συστηματική ταξινόμηση είναι η θεωρία και η πρακτική που χρησιμοποιούν οι βιολόγοι για την κατάταξη των έμβιων όντων. Η ταξινόμηση αυτή είναι ιεραρχική και αποτελείται από διακλαδώσεις. Στη Wikipedia υπάρχουν πολλά λήμματα έμβιων όντων με πληροφορίες για τη συστηματική τους ταξινόμηση(π.χ. για τα ζώα είναι Βασίλειο, Συνομοταξία, Υποσυνομοταξία, Ομοταξία, Τάξη, Οικογένεια, Γένος). 
 Σκοπός αυτής της εφαρμογής είναι να παρουσιάσει αυτές τις πληροφορίες οπτικά και οργανωμένα με τη μορφή διαγράμματος δέντρου, ώστε ο χρήστης να μπορεί να έχει πλήρη εικόνα της ιεραρχίας.  
 
-## Σε ποιους απευθύνεται - Κοινότητες Χρηστών - Προγραμματιστών(Developers) ##
+##Σε ποιους απευθύνεται - Κοινότητες Χρηστών - Προγραμματιστών(Developers)  
 Μπορεί να χρησιμοποιηθεί από φοιτητές βιολογίας, καθηγητές δευτεροβάθμιας και τριτοβάθμιας εκπαίδευσης, μαθητές, γεωπόνους, κτηνιάτρους ή γενικά όποιον ενδιαφέρεται για τη βιολογία. 
 πχ “Η χρήση του τελικού προϊόντος του έργου είναι (α) για εκπαιδευτικούς σκοπούς στο μάθημα της γεωγραφίας (π.χ. μαθητές σχολείου) (β) για ερευνητικούς σκοπούς στον τομέα των τρισδιάστατων αναπαραστάσεων με συστήματα γεωγραφικών πληροφοριών (π.χ. από φοιτητές – ερευνητές).”
 
-## Κόστος ##
+## Κόστος  
 Για προσωπική χρήση η εφαρμογή έχει μηδενικό κόστος. Αλλιώς απαιτείται η ενοικίαση κάποιου server για το hosting της εφαρμογής. 
 
 ##Τεχνολογίες και βιβλιοθήκες
