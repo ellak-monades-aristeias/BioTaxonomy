@@ -1,7 +1,7 @@
 #BioTaxonomy - English Readme   
 A learning application for browsing animals and plants according to their taxonomy.
 
-##Description of the functionality of the application  
+##Description of application functionality    
 Taxonomy is the theory and practice used by biologists to classify living beings. This classification is hierarchical and consists of branches. In Wikipedia there are many entries about living beings with information about their taxonomy (eg. Kingdom, Phylum, Class, Order, Family, Genus). The purpose of this application is to present this information visually and organized as a tree diagram, so that the user can have a full picture of the hierarchy.
 
 ##Target - User Communities - Programmers (Developers)
