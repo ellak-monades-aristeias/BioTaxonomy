@@ -15,17 +15,17 @@ The application is implemented in Html and jQuery / Javascript. Data is received
 
 ###Libraries  
 
-Twitter Bootstrap: Framework for rapid development of responsive websites.
-Bootbox.js: Plugin for easy creation of alerts.
-Unveil.js: Lazy load for images.
-Wikiblurb: jQuery Plugin for receiving data from Wikipedia and other wikis.
-Lity: Lightbox plugin for viewing images.
-Chart.js: Plugin for creating diagrams
+* [Twitter Bootstrap](http://getbootstrap.com/): Framework για τη γρήγορη ανάπτυξη responsive ιστοσελίδων.
+* [Bootbox.js](http://bootboxjs.com/): Plugin για την εύκολη δημιουργία alerts. 
+* [Unveil.js](http://luis-almeida.github.io/unveil/): Lazy load για εικόνες. 
+* [Wikiblurb](https://github.com/9bitStudios/wikiblurb): jQuery Plugin για τη λήψη δεδομένων από τη Wikipedia και άλλα wikis.
+* [Lity](http://sorgalla.com/lity/): Lightbox plugin για τη προβολή εικόνων. 
+* [Chart.js](http://www.chartjs.org/): Plugin για τη δημιουργία διαγραμμάτων
 
 
 ##Installation  
-Download all files and run the file index.html.
-It is necessary to be connected to the internet because the data is obtained in real time.
+Download all files and run the index.html.
+You need to be connected to the internet at all times because data is received from wikipedia and dbpedia in real-time. 
 
  
 #BioTaxonomy - Ελληνικό Readme
