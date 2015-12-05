@@ -1,5 +1,7 @@
 #BioTaxonomy - English Readme   
-A learning application for browsing animals and plants according to their taxonomy.
+A learning application for browsing animals and plants according to their taxonomy.  
+
+![site screenshot](https://github.com/ellak-monades-aristeias/BioTaxonomy/blob/wireframes/main.jpg?raw=true)
 
 ##Description of application functionality    
 Taxonomy is the theory and practice used by biologists to classify living beings. This classification is hierarchical and consists of branches. In Wikipedia there are many entries about living beings with information about their taxonomy (eg. Kingdom, Phylum, Class, Order, Family, Genus). The purpose of this application is to present this information visually and organized as a tree diagram, so that the user can have a full picture of the hierarchy.
@@ -37,7 +39,7 @@ You need to be connected to the internet at all times because data is received f
 
 ##Σε ποιους απευθύνεται - Κοινότητες Χρηστών - Προγραμματιστών(Developers)  
 Μπορεί να χρησιμοποιηθεί από φοιτητές βιολογίας, καθηγητές δευτεροβάθμιας και τριτοβάθμιας εκπαίδευσης, μαθητές, γεωπόνους, κτηνιάτρους ή γενικά όποιον ενδιαφέρεται για τη βιολογία. 
-πχ “Η χρήση του τελικού προϊόντος του έργου είναι (α) για εκπαιδευτικούς σκοπούς στο μάθημα της γεωγραφίας (π.χ. μαθητές σχολείου) (β) για ερευνητικούς σκοπούς στον τομέα των τρισδιάστατων αναπαραστάσεων με συστήματα γεωγραφικών πληροφοριών (π.χ. από φοιτητές – ερευνητές).”
+Η χρήση του τελικού προϊόντος του έργου είναι (α) για εκπαιδευτικούς σκοπούς στο μάθημα της βιολογίας (π.χ. μαθητές σχολείου) (β) για διευκόλυνση επέκτασης/διόρθωσης των λημμάτων της wikipedia.
 
 ## Κόστος  
 Για προσωπική χρήση η εφαρμογή έχει μηδενικό κόστος. Αλλιώς απαιτείται η ενοικίαση κάποιου server για το hosting της εφαρμογής. 
