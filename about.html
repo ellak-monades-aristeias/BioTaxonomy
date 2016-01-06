@@ -33,7 +33,7 @@ if (!window.jQuery) {
     </head>
     <body style="padding-top: 70px;">
         <!-- Fixed navbar -->
-        <nav class="navbar navbar-default navbar-fixed-top">
+         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button class="navbar-toggle collapsed" data-target=
@@ -48,40 +48,44 @@ if (!window.jQuery) {
                     <form class="navbar-form collapsed navbar-right visible-xs"
                     onsubmit="return false">
                         <div class="input-group">
-                            <input class="form-control" id="searchBox"
+                            <input class="form-control" id="searchBoxMobile"
                             placeholder="Search" type="text">
                             <div class="input-group-btn">
                                 <button class=
                                 "btn btn-default glyphicon glyphicon-search"
-                                onclick="searchTree();" style=
+                                onclick="searchArticle();" style=
                                 "font-style: italic"></button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="navbar-collapse collapse" id="navbar">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="javascript:showAbout();">About</a>
-                        </li>
-                        <li>
-                            <a href="javascript:changeLanguage();">en/gr</a>
-                        </li>
+                     <ul class="nav navbar-nav navbar-right">
+                      
                         <li>
                             <form class=
                             "navbar-form collapsed navbar-right hidden-xs"
                             onsubmit="return false">
+					
+							
+							
                                 <div class="input-group">
                                     <input class="form-control" id="searchBox"
                                     placeholder="Search" type="text">
                                     <div class="input-group-btn">
                                         <button class=
-                                        "btn btn-default glyphicon glyphicon-search"
+                                        "btn btn-default "
                                         onclick="searchArticle();" style=
-                                        "font-style: italic"></button>
+                                        "font-style: italic"><span class="glyphicon glyphicon-search"></span></button>
                                     </div>
                                 </div>
                             </form>
+                        </li>
+						  <li>
+                            <a href="javascript:showAbout();"><span name="lbl" caption="about"></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:changeLanguage('en');">en</a></li><li><a href="javascript:changeLanguage('gr');">gr</a>
                         </li>
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -120,10 +124,75 @@ if (!window.jQuery) {
     <p>Το έργο είναι προγραμματισμένο να ολοκληρωθεί σε 7 εβδομάδες, από τις 26/08/2015-15/10/2015 και μπορείτε να δείτε την εβδομαδιαία πρόοδο στο Wiki.</p>
     <h2>License/Attributions</h2>
     <p>Για το λογότυπο χρησιμοποιήθηκε η εικόνα του χρήστη tzunghaor . Η εφαρμογή υλοποιείται στο πλαίσιο του έργου “Ηλεκτρονικές Υπηρεσίες για την Ανάπτυξη και Διάδοση του Ανοιχτού Λογισμικού”.</p>
+    
+    <h1>Οδηγίες χρήσης για τελικούς χρήστες</h1>
+
+<h2>Γενικές Οδηγίες</h2> 
+<img src="https://github.com/ellak-monades-aristeias/BioTaxonomy/blob/wireframes/user-guide-1.jpg?raw=true">
+<h3>Επιστροφή στην αρχική σελίδα</h3>    
+<p>Πατώντας το λογότυπο της εφαρμογής πάνω αριστερά επιστρέφετε στην αρχική σελίδα </p> 
+
+<h3>Αλλαγή Γλώσσας</h3>  
+<p>Μπορείτε να επιλέξετε ανάμεσα σε ελληνικά και αγγλικά πατώντας τα αντίστοιχα κουμπιά πάνω δεξιά. Η προεπιλεγμένη γλώσσα είναι τα αγγλικά. Αν κάνετε αλλαγή γλώσσας μεταφράζεται αυτόματα το υπάρχον περιεχόμενο της σελίδας. Οι όροι που δεν υπάρχουν στα ελληνικά εμφανίζονται στα αγγλικά. 
+</p>
+<h3>Αναζήτηση</h3>  
+
+<p>Μπορείτε να κάνετε αναζήτηση στα ελληνικά ή τα αγγλικά αναλόγως με τη γλώσσα που έχετε επιλέξει. Η αναζήτηση εκτελεί διαφορετικές λειτουργίες ανάλογα με τη σελίδα που βρίσκεστε και περιγράφεται αναλυτικότερα παρακάτω 
+</p>
+<h2>Αρχική σελίδα</h2>  
+<img src="https://github.com/ellak-monades-aristeias/BioTaxonomy/blob/wireframes/user-guide-2.jpg?raw=true">
+<p>Όταν ανοίγετε την εφαρμογή βλέπετε στα αριστερά τους δύο κόμβους με τα Ζώα και τα Φυτά. Αυτά είναι τα σημεία εκκίνησης για να αναπτύξετε το δέντρο που θέλετε.</p>
+<p>Ο κάθε κόμβος έχει τη φωτογραφία του όντος ή της ομάδας όντων που αναπαριστά και δύο κουμπιά: Το κουμπί "Λεπτομέρειες", με το οποίο μπορείτε να δείτε λεπτομέρειες για το συγκεκριμένο κόμβο,  και το κουμπί ">" που εμφανίζει τα μέλη της αμέσως επόμενης ταξινομικής βαθμίδας. Στην έκδοση για κινητά πατήστε πάνω στην εικόνα του κόμβου για να δείτε λεπτομέρειες.</p>   
+<p>Αν φύγετε από την αρχική σελίδα(για παράδειγμα για να δείτε ένα πλήρες άρθρο), το δέντρο που ανοίξατε διατηρείτε μέχρι να κλείσετε τη σελίδα.</p>  
+
+<h3>Ανάπτυξη του δέντρου - Εμφάνιση των μελών της επόμενης ταξινομικής βαθμίδας.</h3>  
+<p>Υπάρχουν συνολικά 7 ταξινομικές βαθμίδες. Μπορείτε κάθε φορά να αναπτύξετε οποιοδήποτε κόμβο οποιασδήποτε βαθμίδας ανεξάρτητα με το πόσους κόμβους έχετε ανοίξει, το δέντρο διαμορφώνεται ανάλογα.  
+</p>
+<h3>Λεπτομέρειες</h3> 
+<img src="https://github.com/ellak-monades-aristeias/BioTaxonomy/blob/wireframes/modal.jpg?raw=true">
+<p>Πατώντας το κουμπί "Λεπτομέρειες" εμφανίζεται η εικόνα του κόμβου σε μεγέθυνση, μια μικρή περίληψη και μέχρι 8 απο τα πιο σημαντικά όντα-μέλη του κόμβου (εφόσον υπάρχουν). Επίσης μπορείτε να δείτε το πλήρες άρθρο της Wikipedia για αυτό το κόμβο.  
+</p>
+<h3>Αναζήτηση</h3>  
+<img src="https://github.com/ellak-monades-aristeias/BioTaxonomy/blob/wireframes/main.jpg?raw=true">
+<p>Αν κάνετε αναζήτηση, δημιουργείται αυτόματα το δέντρο μέχρι τη βαθμίδα του όρου αναζήτησης. Οι επιλεγμένοι κόμβοι σε κάθε βαθμίδα ανεβαίνουν στην κορυφή για ευκολότερη κατανόηση.  
+</p>
+<h2>Πλήρες άρθρο</h2>  
+<img src="https://github.com/ellak-monades-aristeias/BioTaxonomy/blob/wireframes/article.jpg?raw=true">
+<p>Η σελίδα με το πλήρες άρθρο χωρίζεται σε τρεις ενότητες:</p>  
+
+<h3>Το άρθρο της Wikipedia</h3>  
+<p>Το πλήρες άρθρο της wikipedia μαζί με το infobox του. Πάνω δεξιά υπάρχει ένας σύνδεσμος που σας ανακατευθύνει στη σελίδα της wikipedia σε περίπτωση που θέλετε π.χ. να κάνετε κάποια επεξεργασία στο άρθρο. 
+</p>
+<h3>Στατιστικά</h3>  
+<p>Διάγραμμα πίτας που παρουσιάζει σε ποιά τάξη ανήκει η επιλεγμένη τάξη και το ποσοστό των όντων της επιλεγμένης τάξης σε σχέση με τα υπόλοιπα της ίδιας τάξης.  Για παράδειγμα για τη συνομοταξία "Ακανθοκέφαλα" τα στατιστικά είναι τα εξής:  
+<code>
+Το Βασίλειο Ζώο έχει 114 Συνομοταξίες με σύνολο 181089 μέλη
+H Συνομοταξία Ακανθοκέφαλα είναι #30 με 37 μέλη  
+</code>
+ </p>
+<h3>Όλα τα όντα της τάξης</h3>  
+<p>Κάτω από το πλήρες άρθρο υπάρχουν τα thumbnail με όλα τα όντα της τάξης.</p> 
+
+<h3>Αναζήτηση</h3>  
+<p>Μπορείτε να αναζητήσετε κάτι συγκεκριμένο και να εμφανιστεί το πλήρες άρθρο του αν αυτό υπάρχει.</p>  
+
+<h3>Επικοινωνία</h3>  
+<p>Για απορίες/αναφορές τεχνικών προβλημάτων/προτάσεις για βελτιώσεις κτλ στείλτε e-mail στο biotaxonomy.project@gmail.com </p>
   </div>
+  
+
         </div><!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="plugins/bootstrap_12_col/js/bootstrap.min.js"></script> <!-- Script that handles tree functions-->
-         <script src="plugins/wikiblurb-master/js/jquery.wikiblurb.js"></script> <script src="js/queries.js"></script> <script src="js/tree.js"></script> <script src="js/navigation.js"></script>
+     <script src="js/navigation.js"></script>
+         <script src="js/languages.js"></script>
+   <script>
+  	if (sessionStorage.getItem('lang')!=undefined){
+        changeLanguage(sessionStorage.getItem('lang'));
+        }else{
+		changeLanguage('en');
+		sessionStorage.setItem('lang','en');
+		}
+   </script>
     </body>
 </html>
