@@ -29,6 +29,8 @@ The application is implemented in Html and jQuery / Javascript. Data is received
 Download all files and run the index.html.
 You need to be connected to the internet at all times because data is received from wikipedia and dbpedia in real-time. 
 
+##Application Demo 
+You can see a demo of the application here http://ellak-monades-aristeias.github.io/BioTaxonomy . 
  
 #BioTaxonomy - Ελληνικό Readme
 Εφαρμογή για εκμάθηση των ζώων και φυτών με βάση τη συστηματική τους ταξινόμηση.
