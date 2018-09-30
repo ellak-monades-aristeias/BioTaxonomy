@@ -1,21 +1,21 @@
-#BioTaxonomy - English Readme   
+# BioTaxonomy - English Readme   
 A learning application for browsing animals and plants according to their taxonomy.  
 
 ![site screenshot](https://github.com/ellak-monades-aristeias/BioTaxonomy/blob/wireframes/main.jpg?raw=true)
 
-##Description of application functionality    
+## Description of application functionality    
 Taxonomy is the theory and practice used by biologists to classify living beings. This classification is hierarchical and consists of branches. In Wikipedia there are many entries about living beings with information about their taxonomy (eg. Kingdom, Phylum, Class, Order, Family, Genus). The purpose of this application is to present this information visually and organized as a tree diagram, so that the user can have a full picture of the hierarchy.
 
-##Target - User Communities - Programmers (Developers)
+## Target - User Communities - Programmers (Developers)
 Can be used by biology students, secondary and higher education teachers, students, agronomists, veterinarians or generally anyone interested in biology. 
 
 
-##Technologies and libraries  
+## Technologies and libraries  
 
-###Languages  
+### Languages  
 The application is implemented in Html and jQuery / Javascript. Data is received in JSON format with SPARQL queries to RDF database DBpedia and using the API of Wikipedia.
 
-###Libraries  
+### Libraries  
 
 * [Twitter Bootstrap](http://getbootstrap.com/): Framework για τη γρήγορη ανάπτυξη responsive ιστοσελίδων.
 * [Bootbox.js](http://bootboxjs.com/): Plugin για την εύκολη δημιουργία alerts. 
@@ -25,33 +25,33 @@ The application is implemented in Html and jQuery / Javascript. Data is received
 * [Chart.js](http://www.chartjs.org/): Plugin για τη δημιουργία διαγραμμάτων
 
 
-##Installation  
+## Installation  
 Download all files and run the index.html.
 You need to be connected to the internet at all times because data is received from wikipedia and dbpedia in real-time. 
 
-##Application Demo 
+## Application Demo 
 You can see a demo of the application here http://ellak-monades-aristeias.github.io/BioTaxonomy . 
  
-#BioTaxonomy - Ελληνικό Readme
+# BioTaxonomy - Ελληνικό Readme
 Εφαρμογή για εκμάθηση των ζώων και φυτών με βάση τη συστηματική τους ταξινόμηση.
 
-##Περιγραφή της λειτουργικότητας της εφαρμογής
+## Περιγραφή της λειτουργικότητας της εφαρμογής
 Η συστηματική ταξινόμηση είναι η θεωρία και η πρακτική που χρησιμοποιούν οι βιολόγοι για την κατάταξη των έμβιων όντων. Η ταξινόμηση αυτή είναι ιεραρχική και αποτελείται από διακλαδώσεις. Στη Wikipedia υπάρχουν πολλά λήμματα έμβιων όντων με πληροφορίες για τη συστηματική τους ταξινόμηση(π.χ. για τα ζώα είναι Βασίλειο, Συνομοταξία, Υποσυνομοταξία, Ομοταξία, Τάξη, Οικογένεια, Γένος). 
 Σκοπός αυτής της εφαρμογής είναι να παρουσιάσει αυτές τις πληροφορίες οπτικά και οργανωμένα με τη μορφή διαγράμματος δέντρου, ώστε ο χρήστης να μπορεί να έχει πλήρη εικόνα της ιεραρχίας.  
 
-##Σε ποιους απευθύνεται - Κοινότητες Χρηστών - Προγραμματιστών(Developers)  
+## Σε ποιους απευθύνεται - Κοινότητες Χρηστών - Προγραμματιστών(Developers)  
 Μπορεί να χρησιμοποιηθεί από φοιτητές βιολογίας, καθηγητές δευτεροβάθμιας και τριτοβάθμιας εκπαίδευσης, μαθητές, γεωπόνους, κτηνιάτρους ή γενικά όποιον ενδιαφέρεται για τη βιολογία. 
 Η χρήση του τελικού προϊόντος του έργου είναι (α) για εκπαιδευτικούς σκοπούς στο μάθημα της βιολογίας (π.χ. μαθητές σχολείου) (β) για διευκόλυνση επέκτασης/διόρθωσης των λημμάτων της wikipedia.
 
 ## Κόστος  
 Για προσωπική χρήση η εφαρμογή έχει μηδενικό κόστος. Αλλιώς απαιτείται η ενοικίαση κάποιου server για το hosting της εφαρμογής. 
 
-##Τεχνολογίες και βιβλιοθήκες
-###Γλώσσες
+## Τεχνολογίες και βιβλιοθήκες
+### Γλώσσες
 * Η εφαρμογή είναι υλοποιημένη σε Html και jQuery/Javascript.
 * Η λήψη των δεδομένων γίνεται σε μορφή JSON με SPARQL queries στην RDF βάση DBpedia και με χρήση του API της Wikipedia.  
 
-###Βιβλιοθήκες  
+### Βιβλιοθήκες  
 * [Twitter Bootstrap](http://getbootstrap.com/): Framework για τη γρήγορη ανάπτυξη responsive ιστοσελίδων.
 * [Bootbox.js](http://bootboxjs.com/): Plugin για την εύκολη δημιουργία alerts. 
 * [Unveil.js](http://luis-almeida.github.io/unveil/): Lazy load για εικόνες. 
@@ -59,30 +59,30 @@ You can see a demo of the application here http://ellak-monades-aristeias.github
 * [Lity](http://sorgalla.com/lity/): Lightbox plugin για τη προβολή εικόνων. 
 * [Chart.js](http://www.chartjs.org/): Plugin για τη δημιουργία διαγραμμάτων
 
-##Issues  
+## Issues  
 Στα issues της εφαρμογής μπορείτε να δείτε τα θέματα προς επίλυση που προκύπτουν κατά την υλοποίηση. 
 
-##Εγκατάσταση  
+## Εγκατάσταση  
 Κατεβάζετε όλα τα αρχεία και εκτελείτε το αρχείο index.html .  
 Για να λειτουργήσει η εφαρμογή είναι απαραίτητη η σύνδεση στο διαδίκτυο καθώς τα δεδομένα λαμβάνονται σε πραγματικό χρόνο.  
 
-##Οδηγίες χρήσης  
+## Οδηγίες χρήσης  
 [Για χρήστες](https://github.com/ellak-monades-aristeias/BioTaxonomy/blob/master/%CE%9F%CE%B4%CE%B7%CE%B3%CE%AF%CE%B5%CF%82%20%CF%87%CF%81%CE%AE%CF%83%CE%B7%CF%82%20%CE%B3%CE%B9%CE%B1%20%CF%87%CF%81%CE%AE%CF%83%CF%84%CE%B5%CF%82.md)    
 [Για προγραμματιστές](https://github.com/ellak-monades-aristeias/BioTaxonomy/blob/master/%CE%9F%CE%B4%CE%B7%CE%B3%CE%AF%CE%B5%CF%82%20%CF%87%CF%81%CE%AE%CF%83%CE%B7%CF%82%20%CE%B3%CE%B9%CE%B1%20%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%B1%CE%BC%CE%BC%CE%B1%CF%84%CE%B9%CF%83%CF%84%CE%AD%CF%82.md)  
 
 
 
-##Demo της εφαρμογής  
+## Demo της εφαρμογής  
 Demo της εφαρμογής μπορείτε να δείτε στο http://ellak-monades-aristeias.github.io/BioTaxonomy . 
 
-##Χρονοδιάγραμμα - Wiki
+## Χρονοδιάγραμμα - Wiki
 Το έργο είναι προγραμματισμένο να ολοκληρωθεί σε 7 εβδομάδες, από τις 26/08/2015-15/10/2015 και μπορείτε να δείτε την εβδομαδιαία πρόοδο στο [Wiki](https://github.com/ellak-monades-aristeias/BioTaxonomy/wiki).   
 
-##License/Attributions
+## License/Attributions
 Για το λογότυπο χρησιμοποιήθηκε η εικόνα του χρήστη [tzunghaor](https://openclipart.org/user-detail/tzunghaor) .  
 Η εφαρμογή υλοποιείται στο πλαίσιο του έργου “Ηλεκτρονικές Υπηρεσίες για την Ανάπτυξη και Διάδοση του Ανοιχτού Λογισμικού”. 
 
-##Πίνακας Παραδοτέων  
+## Πίνακας Παραδοτέων  
 
 <table>
     <tr>
